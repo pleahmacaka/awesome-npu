@@ -6,26 +6,45 @@
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0c0b0a" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
-<meta name="description" content="Awesome NPU — 국내외 NPU·AI 추론 가속기 레퍼런스. MCU급부터 데이터센터 카드까지, 필터·검색·정렬 가능한 하드웨어 데이터북.">
-<title>Awesome NPU — NPU 하드웨어 레퍼런스</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23d23a1f'/%3E%3Ctext x='16' y='23' font-family='Arial,Helvetica,sans-serif' font-size='21' font-weight='700' text-anchor='middle' fill='%23fff'%3EN%3C/text%3E%3C/svg%3E">
+<meta name="description" content="국내외 NPU·AI 추론 가속기 64종을 정리한 인터랙티브 하드웨어 데이터북. Rebellions·FuriosaAI·DEEPX·Mobilint·Hailo 등 MCU급 온디바이스부터 데이터센터 추론 카드까지, 성능(TOPS)·메모리·가격·출시일 필터·검색·정렬.">
+<meta name="keywords" content="NPU, AI 가속기, AI inference accelerator, Rebellions, FuriosaAI, DEEPX, Mobilint, Hailo, Coral, 엣지 AI, 온디바이스 AI, TOPS, 데이터센터 추론, LPU">
+<meta name="author" content="pleahmacaka">
+<meta name="robots" content="index, follow">
+<title>Awesome NPU · NPU 하드웨어 데이터북</title>
+<link rel="canonical" href="https://pleahmacaka.github.io/awesome-npu/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Awesome NPU">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://pleahmacaka.github.io/awesome-npu/">
+<meta property="og:title" content="Awesome NPU · NPU 하드웨어 데이터북">
+<meta property="og:description" content="국내외 NPU·AI 추론 가속기 64종. MCU급 온디바이스부터 데이터센터 추론 카드까지, 성능·메모리·가격 비교 카탈로그.">
+<meta property="og:image" content="https://pleahmacaka.github.io/awesome-npu/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Awesome NPU · NPU 하드웨어 데이터북">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Awesome NPU · NPU 하드웨어 데이터북">
+<meta name="twitter:description" content="국내외 NPU·AI 추론 가속기 64종. MCU급 온디바이스부터 데이터센터 추론 카드까지 비교 카탈로그.">
+<meta name="twitter:image" content="https://pleahmacaka.github.io/awesome-npu/og.png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <style>
 :root{
-  --sans:'Pretendard','Pretendard Variable',Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
-  --mono:'SF Mono',ui-monospace,'JetBrains Mono',Menlo,'Cascadia Mono',Consolas,monospace;
+  --sans:'Pretendard','Pretendard Variable',sans-serif;
+  --mono:'Pretendard','Pretendard Variable',sans-serif;
   --stick-top:52px; --stick-controls:0px;
 }
 :root[data-theme="dark"]{
   --paper:#0c0b0a; --paper-2:#151311; --field:#1a1815;
-  --ink:#ece7dd; --ink-2:rgba(236,231,221,.60); --ink-3:rgba(236,231,221,.36);
+  --ink:#ece7dd; --ink-2:rgba(236,231,221,.66); --ink-3:rgba(236,231,221,.58);
   --rule:rgba(236,231,221,.14); --rule-2:rgba(236,231,221,.30); --rule-3:rgba(236,231,221,.55);
   --spot:#ff5a3c; --spot-soft:rgba(255,90,60,.14);
   --wash:rgba(236,231,221,.04);
 }
 :root[data-theme="light"]{
   --paper:#f4f1ea; --paper-2:#eeeae1; --field:#ebe7dd;
-  --ink:#17140f; --ink-2:rgba(23,20,15,.62); --ink-3:rgba(23,20,15,.42);
+  --ink:#17140f; --ink-2:rgba(23,20,15,.68); --ink-3:rgba(23,20,15,.64);
   --rule:rgba(23,20,15,.16); --rule-2:rgba(23,20,15,.32); --rule-3:rgba(23,20,15,.6);
   --spot:#d23a1f; --spot-soft:rgba(210,58,31,.1);
   --wash:rgba(23,20,15,.035);
@@ -94,7 +113,7 @@ select.sort{appearance:none;-webkit-appearance:none;background:none;border:none;
 .txtbtn.f[aria-expanded="true"]{color:var(--ink);border-color:var(--spot)}
 .txtbtn .fc{color:var(--spot)}
 /* quick filters */
-.quick{display:flex;align-items:center;gap:6px 14px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.quick{display:flex;align-items:center;gap:6px 14px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;min-height:30px}
 .quick::-webkit-scrollbar{display:none}
 .qgroup{display:flex;align-items:center;gap:14px;flex:none}
 .qlab{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
@@ -134,9 +153,8 @@ select.sort{appearance:none;-webkit-appearance:none;background:none;border:none;
 /* ---------- table (the hero) ---------- */
 .tscroll{overflow-x:auto;padding-bottom:64px;margin-inline:calc(-1*clamp(16px,4vw,44px));padding-inline:clamp(16px,4vw,44px)}
 table.db{width:100%;border-collapse:collapse;min-width:940px;font-size:13.5px}
-table.db thead th{position:sticky;top:calc(var(--stick-top) + var(--stick-controls) + 3px);z-index:5;background:var(--paper);
-  text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);
-  font-weight:500;padding:0 16px 10px;border-bottom:1.5px solid var(--rule-3);white-space:nowrap}
+table.db thead th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);
+  font-weight:600;padding:0 16px 11px;border-bottom:1.5px solid var(--rule-3);white-space:nowrap}
 table.db thead th.r{text-align:right}
 table.db tbody td{padding:14px 16px;border-bottom:1px solid var(--rule);vertical-align:baseline;white-space:nowrap}
 table.db tbody tr{transition:background .1s}
@@ -196,7 +214,7 @@ td.r{text-align:right}
 .doc p{color:var(--ink-2);margin:14px 0;max-width:76ch;line-height:1.72}
 .doc ul{margin:14px 0;padding:0;list-style:none;max-width:80ch}
 .doc li{position:relative;padding-left:22px;margin:9px 0;color:var(--ink-2);line-height:1.65}
-.doc li::before{content:"—";position:absolute;left:0;color:var(--ink-3);font-family:var(--mono)}
+.doc li::before{content:"·";position:absolute;left:0;color:var(--ink-3);font-weight:700}
 .doc strong{color:var(--ink);font-weight:650}
 .doc code{font-family:var(--mono);font-size:.82em;background:var(--field);padding:.1em .4em;color:var(--ink)}
 .doc .tbl-wrap{overflow-x:auto;margin:24px 0;border-top:1px solid var(--rule-2);border-bottom:1px solid var(--rule-2)}
@@ -245,8 +263,8 @@ footer{border-top:1px solid var(--rule-2)}
   <div class="wrap mast-in">
     <div class="mast-kicker">국내외 NPU · AI 추론 가속기 레퍼런스</div>
     <h1 class="mast-title">NPU 하드웨어<br>데이터북</h1>
-    <p class="mast-dek">MCU급 온디바이스 칩부터 데이터센터 추론 카드까지 — 제조사 공식 자료 기반으로 정리한 인터랙티브 카탈로그. <span class="spot mono">⚠</span> 는 단독 판매 완제품이 아니라 호스트 시스템에 통합해야 하는 내장형 제품입니다.</p>
-    <p class="mast-meta" id="meta"></p>
+    <p class="mast-dek">MCU급 온디바이스 칩부터 데이터센터 추론 카드까지, 제조사 공식 자료 기반으로 정리한 인터랙티브 카탈로그. <span class="spot mono">⚠</span> 는 단독 판매 완제품이 아니라 호스트 시스템에 통합해야 하는 내장형 제품입니다.</p>
+    <p class="mast-meta" id="meta"><!--__META__--></p>
   </div>
 </header>
 
@@ -257,7 +275,7 @@ footer{border-top:1px solid var(--rule-2)}
     <div class="crow">
       <label class="search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="search" id="search" placeholder="제품 · 벤더 · 키워드 검색" autocomplete="off">
+        <input type="search" id="search" aria-label="제품 검색" placeholder="제품 · 벤더 · 키워드 검색" autocomplete="off">
       </label>
       <div class="cbar">
         <div class="viewt" role="group" aria-label="보기">
@@ -266,7 +284,7 @@ footer{border-top:1px solid var(--rule-2)}
         </div>
         <div class="selwrap">
           <select class="sort" id="sortSel" aria-label="정렬">
-            <option value="default">정렬 — 기본</option>
+            <option value="default">정렬 · 기본</option>
             <option value="tops-desc">성능 높은순</option>
             <option value="tops-asc">성능 낮은순</option>
             <option value="price-asc">가격 낮은순</option>
@@ -295,7 +313,7 @@ footer{border-top:1px solid var(--rule-2)}
     <div style="grid-column:span 2;min-width:0"><div class="flabel">벤더</div><div class="chips" id="f-vendor"></div></div>
     <div>
       <div class="flabel">출시일 범위</div>
-      <div class="date"><input type="month" id="dateFrom" aria-label="시작"><span class="til">–</span><input type="month" id="dateTo" aria-label="종료"></div>
+      <div class="date"><input type="month" id="dateFrom" aria-label="시작"><span class="til">~</span><input type="month" id="dateTo" aria-label="종료"></div>
       <label class="chk"><input type="checkbox" id="includeNoDate" checked>출시일 미상 포함</label>
     </div>
     <div class="drawer-foot"><button class="txtbtn reset" id="resetBtn">필터 초기화 ↺</button></div>
@@ -304,28 +322,28 @@ footer{border-top:1px solid var(--rule-2)}
 
 <main class="wrap">
   <div class="rmeta">
-    <span id="count"></span>
+    <span id="count"><!--__COUNT__--></span>
     <span class="hint muted">제품명 클릭 → 제조사 공식 페이지</span>
   </div>
-  <div class="tscroll" id="tablewrap"></div>
+  <div class="tscroll" id="tablewrap"><!--__TABLE__--></div>
   <div id="grid" hidden></div>
   <div id="empty" hidden>조건에 맞는 제품이 없습니다.</div>
 </main>
 
 <section class="section about">
   <div class="wrap about-in">
-    <div class="shead">데이터 안내 — About the data</div>
-    <div id="about" class="doc"></div>
+    <div class="shead">데이터 안내 · About the data</div>
+    <div id="about" class="doc"><!--__ABOUT__--></div>
   </div>
 </section>
 
 <section class="section">
-  <div class="wrap docs-in"><div id="docs" class="doc"></div></div>
+  <div class="wrap docs-in"><div id="docs" class="doc"><!--__DOCS__--></div></div>
 </section>
 
 <footer>
   <div class="wrap foot-in">
-    <p>데이터는 저장소의 <a id="readmeLink" href="#" target="_blank" rel="noopener">README.md</a>에서 자동 생성됩니다.<br><span id="genstamp"></span></p>
+    <p>각 제조사 공식 자료 및 공개 보도(2025–2026) 기반 · 참고용 자료입니다.</p>
     <p><a id="repoLink2" href="#" target="_blank" rel="noopener">github.com/pleahmacaka/awesome-npu ↗</a></p>
   </div>
 </footer>
@@ -349,7 +367,7 @@ footer{border-top:1px solid var(--rule-2)}
 
   const cc = p => `<span class="cc ${p.origin==='kr'?'kr':''}" title="${CNAME[p.country]||p.country}">${esc(p.country)}</span>`;
   const metricParts = p => {
-    const d=p.computeDisplay||"—"; if(d==="—") return {num:"—",unit:"",dim:true};
+    const d=p.computeDisplay||"-"; if(d==="-") return {num:"-",unit:"",dim:true};
     const i=d.indexOf(" "); return {num:i<0?d:d.slice(0,i),unit:i<0?"":d.slice(i+1),dim:false};
   };
   const tagLine = t => (t||[]).map(esc).join('<span class="s">·</span>');
@@ -424,14 +442,14 @@ footer{border-top:1px solid var(--rule-2)}
     const specs=detail.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
     const tags=(p.tags&&p.tags.length)?`<div class="e-tags tags">${tagLine(p.tags)}</div>`:"";
     const note=p.note?`<p class="e-note">${esc(p.note)}</p>`:"";
-    const warn=p.standalone?"":`<div class="e-warn">⚠ 단독 제품 아님 — 호스트 SoC·보드·시스템에 통합 필요</div>`;
+    const warn=p.standalone?"":`<div class="e-warn">⚠ 단독 제품 아님 · 호스트 SoC·보드·시스템에 통합 필요</div>`;
     return `<article class="entry" data-o="${p.origin}">
       <div class="e-top"><span class="e-vendor">${esc(p.vendor)}</span>${cc(p)}</div>
       <a class="e-name" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a>
-      <div class="e-sub">${p.chip?esc(p.chip)+" — ":""}${SEGK[p.segment]||p.segment} / ${esc(p.form)}${p.standalone?"":" / 통합형"} / 출시 ${esc(p.releaseDisplay)}</div>
+      <div class="e-sub">${p.chip?esc(p.chip)+" · ":""}${SEGK[p.segment]||p.segment} / ${esc(p.form)}${p.standalone?"":" / 통합형"} / 출시 ${esc(p.releaseDisplay)}</div>
       <div class="e-figs">
         <div><i>성능</i><b class="perf ${m.dim?'dim':''}">${esc(m.num)}${m.unit?`<span class="u">${esc(m.unit)}</span>`:""}</b></div>
-        <div><i>메모리</i><b title="${esc(p.memory)}">${esc(p.memory||"—")}</b></div>
+        <div><i>메모리</i><b title="${esc(p.memory)}">${esc(p.memory||"-")}</b></div>
         <div><i>가격</i><b class="${p.priceUSD!=null?'':'dim'}">${esc(p.priceDisplay)}</b></div>
       </div>
       ${specs?`<dl class="e-specs">${specs}</dl>`:""}
@@ -440,8 +458,8 @@ footer{border-top:1px solid var(--rule-2)}
   }
 
   function row(p,i){
-    const perf=(p.specs&&(p.specs["성능"]||p.specs["DX-L2"]))||p.computeDisplay||"—";
-    const power=(p.specs&&(p.specs["전력"]||p.specs["효율"]))||"—";
+    const perf=(p.specs&&(p.specs["성능"]||p.specs["DX-L2"]))||p.computeDisplay||"-";
+    const power=(p.specs&&(p.specs["전력"]||p.specs["효율"]))||"-";
     const intg=p.standalone?"":' <span class="intg" title="호스트 통합 필요">⚠</span>';
     return `<tr>
       <td class="idx">${String(i+1).padStart(2,"0")}</td>
@@ -451,17 +469,15 @@ footer{border-top:1px solid var(--rule-2)}
       <td><span class="seg">${SEG[p.segment]||p.segment}</span></td>
       <td>${esc(p.form)}${intg}</td>
       <td class="r"><span class="num">${esc(perf)}</span></td>
-      <td class="muted">${esc(p.memory||"—")}</td>
+      <td class="muted">${esc(p.memory||"-")}</td>
       <td><span class="num">${esc(power)}</span></td>
       <td class="r"><span class="num ${p.priceUSD!=null?'':'muted'}">${esc(p.priceDisplay)}</span></td>
       <td class="r"><span class="num ${p.releaseDate?'':'muted'}">${esc(p.releaseDisplay)}</span></td>
     </tr>`;
   }
+  const THEAD=`<thead><tr><th scope="col"><span class="sr">번호</span></th><th scope="col">제품 / 칩</th><th scope="col">벤더</th><th scope="col">국가</th><th scope="col">체급</th><th scope="col">폼팩터</th><th scope="col" class="r">성능</th><th scope="col">메모리</th><th scope="col">전력 / 효율</th><th scope="col" class="r">가격</th><th scope="col" class="r">출시</th></tr></thead>`;
   function table(list){
-    return `<table class="db"><thead><tr>
-      <th></th><th>제품 / 칩</th><th>벤더</th><th>국가</th><th>체급</th><th>폼팩터</th>
-      <th class="r">성능</th><th>메모리</th><th>전력 / 효율</th><th class="r">가격</th><th class="r">출시</th>
-    </tr></thead><tbody>${list.map(row).join("")}</tbody></table>`;
+    return `<table class="db">${THEAD}<tbody>${list.map(row).join("")}</tbody></table>`;
   }
 
   function render(){
@@ -477,7 +493,7 @@ footer{border-top:1px solid var(--rule-2)}
 
   function meta(){
     const kr=products.filter(p=>p.origin==="kr").length, seg=k=>products.filter(p=>p.segment===k).length;
-    $("meta").innerHTML=`총 <b>${products.length}</b>종<span class="sep">/</span>국내 <b>${kr}</b> · 해외 <b>${products.length-kr}</b><span class="sep">/</span>데이터센터 <b>${seg("datacenter")}</b> · 엣지 <b>${seg("edge")}</b> · MCU <b>${seg("mcu")}</b><span class="sep">/</span>출처 README.md`;
+    $("meta").innerHTML=`총 <b>${products.length}</b>종<span class="sep">/</span>국내 <b>${kr}</b> · 해외 <b>${products.length-kr}</b><span class="sep">/</span>데이터센터 <b>${seg("datacenter")}</b> · 엣지 <b>${seg("edge")}</b> · MCU <b>${seg("mcu")}</b>`;
   }
 
   function setTheme(t){ document.documentElement.setAttribute("data-theme",t); $("themeBtn").innerHTML=t==="dark"?MOON:SUN; try{localStorage.setItem("npu-theme",t);}catch(e){} }
@@ -502,12 +518,11 @@ footer{border-top:1px solid var(--rule-2)}
     buildAll();fcount();render();};
   let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(setSticky,150);});
 
-  $("about").innerHTML=DATA.introHTML||""; $("docs").innerHTML=DATA.docsHTML||"";
-  if(DATA.repo){$("repoLink").href=DATA.repo;$("repoLink2").href=DATA.repo;$("readmeLink").href=DATA.repo.replace(/\/$/,"")+"/blob/main/README.md";}
-  if(DATA.generatedAt)$("genstamp").textContent=`자동 생성 · ${DATA.generatedAt}`;
-  buildAll();meta();fcount();
-  if(window.matchMedia&&window.matchMedia("(max-width: 767px)").matches)state.view="card";
-  setView(state.view);setSticky();setTimeout(setSticky,200);
+  if(DATA.repo){$("repoLink").href=DATA.repo;$("repoLink2").href=DATA.repo;}
+  buildAll();fcount();
+  // 초기 표·통계·문서는 서버에서 렌더됨(SSR). render()는 검색·필터·정렬·보기 전환 시에만 실행돼 레이아웃 시프트가 없음.
+  $("viewTable").setAttribute("aria-pressed","true");$("viewCard").setAttribute("aria-pressed","false");
+  setSticky();setTimeout(setSticky,200);
 })();
 </script>
 </body>

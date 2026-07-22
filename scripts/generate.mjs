@@ -17,8 +17,10 @@ import { fileURLToPath } from 'node:url';
 const __dir = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dir, '..');
 const REPO_URL = 'https://github.com/pleahmacaka/awesome-npu';
+const PAGES_URL = 'https://pleahmacaka.github.io/awesome-npu/';
 
 const FLAGS = { KR:'🇰🇷', US:'🇺🇸', NL:'🇳🇱', CN:'🇨🇳', NO:'🇳🇴', IL:'🇮🇱', JP:'🇯🇵', DE:'🇩🇪', FR:'🇫🇷', TW:'🇹🇼' };
+const CNAME_UI = { KR:'대한민국', US:'미국', NL:'네덜란드', CN:'중국', NO:'노르웨이', IL:'이스라엘', JP:'일본', DE:'독일', FR:'프랑스', TW:'대만' };
 
 /* 제조사 공식 자료·공개 보도 기반 한글 상세 (키: `벤더||README 제품명`) */
 const ENRICH = {
@@ -128,7 +130,7 @@ function splitRow(line){
   return s.split('|').map(c=>c.trim());
 }
 function renderMarkdown(md){
-  const lines = md.replace(/\r/g,'').split('\n');
+  const lines = md.replace(/\r/g,'').replace(/—/g,'·').split('\n');
   const N = lines.length;
   let html = '', i = 0;
   while (i < N) {
@@ -179,7 +181,7 @@ function parseCountry(cell){
 }
 function parseCompute(raw, isDatacenter){
   const s = (raw||'').trim();
-  if (!s || s === '-') return { tops:null, display:'—' };
+  if (!s || s === '-') return { tops:null, display:'-' };
   const m = s.match(/~?\s*([\d]+(?:\.[\d]+)?)/);
   const tops = m ? parseFloat(m[1]) : null;
   let display = s;
@@ -257,7 +259,7 @@ function parseTableUnder(lines, headingText, isDatacenter, usedKeys){
     const segment = (enrich && enrich.segment) || (isDatacenter ? 'datacenter' : (/MCU|TinyML/i.test(useCase) ? 'mcu' : 'edge'));
     let specs;
     if (enrich && enrich.specs) specs = enrich.specs;
-    else { specs = {}; specs['성능'] = comp.display; specs['메모리'] = memory || '—'; if (useCase) specs['용도'] = useCase; specs['출시'] = rel.display; }
+    else { specs = {}; specs['성능'] = comp.display; specs['메모리'] = memory || '-'; if (useCase) specs['용도'] = useCase; specs['출시'] = rel.display; }
     const tags = (enrich && enrich.tags) ? enrich.tags : [];
     const enriched = !!(enrich && (enrich.specs || enrich.note || (enrich.tags && enrich.tags.length)));
 
@@ -290,7 +292,7 @@ const products = [...mainProducts, ...dcProducts];
 const h1Idx = lines.findIndex(l => /^#\s+/.test(l));
 const contentsIdx = lines.findIndex(l => l.trim() === '## Contents');
 const introMd = lines.slice(h1Idx + 1, contentsIdx > 0 ? contentsIdx : h1Idx + 1)
-  .filter(l => !/pleahmacaka\.github\.io/.test(l))
+  .filter(l => !/pleahmacaka\.github\.io/.test(l) && !/^\s*Flags:/.test(l))
   .join('\n');
 
 // 문서: "## Raspberry Pi accelerators" ~ 끝
@@ -300,17 +302,66 @@ const docsMd = piIdx >= 0 ? lines.slice(piIdx).join('\n') : '';
 // 사용되지 않은 보강 키 경고(제품명 불일치 감지)
 for (const k of Object.keys(ENRICH)) if (!usedKeys.has(k)) console.warn(`[warn] 매칭되지 않은 보강 데이터: ${k}`);
 
-const DATA = {
-  products,
-  introHTML: renderMarkdown(introMd),
-  docsHTML: renderMarkdown(docsMd),
-  generatedAt: new Date().toISOString().slice(0,10),
-  repo: REPO_URL,
+const introHTML = renderMarkdown(introMd);
+const docsHTML = renderMarkdown(docsMd);
+const DATA = { products, generatedAt: new Date().toISOString().slice(0,10), repo: REPO_URL };
+
+// ---- SSR: 초기 표·통계를 정적 HTML로 미리 렌더 (레이아웃 시프트 방지 + 스크립트 없이도 내용 노출) ----
+const EXT_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>';
+const SEG_T = { mcu:'MCU', edge:'EDGE', datacenter:'DATACENTER' };
+const ccS = p => `<span class="cc ${p.origin==='kr'?'kr':''}" title="${escHtml(CNAME_UI[p.country]||p.country)}">${escHtml(p.country)}</span>`;
+function rowS(p,i){
+  const perf=(p.specs&&(p.specs['성능']||p.specs['DX-L2']))||p.computeDisplay||'-';
+  const power=(p.specs&&(p.specs['전력']||p.specs['효율']))||'-';
+  const intg=p.standalone?'':' <span class="intg" title="호스트 통합 필요">⚠</span>';
+  return `<tr><td class="idx">${String(i+1).padStart(2,'0')}</td>`+
+    `<td class="prod"><a class="pn" href="${escHtml(p.url)}" target="_blank" rel="noopener">${escHtml(p.product)}${EXT_SVG}</a>${p.chip?`<div class="pchip">${escHtml(p.chip)}</div>`:''}</td>`+
+    `<td class="muted">${escHtml(p.vendor)}</td><td>${ccS(p)}</td>`+
+    `<td><span class="seg">${SEG_T[p.segment]||p.segment}</span></td>`+
+    `<td>${escHtml(p.form)}${intg}</td>`+
+    `<td class="r"><span class="num">${escHtml(perf)}</span></td>`+
+    `<td class="muted">${escHtml(p.memory||'-')}</td>`+
+    `<td><span class="num">${escHtml(power)}</span></td>`+
+    `<td class="r"><span class="num ${p.priceUSD!=null?'':'muted'}">${escHtml(p.priceDisplay)}</span></td>`+
+    `<td class="r"><span class="num ${p.releaseDate?'':'muted'}">${escHtml(p.releaseDisplay)}</span></td></tr>`;
+}
+const THEAD = '<thead><tr><th scope="col"><span class="sr">번호</span></th><th scope="col">제품 / 칩</th><th scope="col">벤더</th><th scope="col">국가</th><th scope="col">체급</th><th scope="col">폼팩터</th><th scope="col" class="r">성능</th><th scope="col">메모리</th><th scope="col">전력 / 효율</th><th scope="col" class="r">가격</th><th scope="col" class="r">출시</th></tr></thead>';
+const ssrTable = `<table class="db">${THEAD}<tbody>${products.map(rowS).join('')}</tbody></table>`;
+const krCount = products.filter(p=>p.origin==='kr').length;
+const segCount = k => products.filter(p=>p.segment===k).length;
+const ssrCount = `<b>${products.length}</b> 제품 · 국내 <b>${krCount}</b> / 해외 <b>${products.length-krCount}</b>`;
+const ssrMeta = `총 <b>${products.length}</b>종<span class="sep">/</span>국내 <b>${krCount}</b> · 해외 <b>${products.length-krCount}</b><span class="sep">/</span>데이터센터 <b>${segCount('datacenter')}</b> · 엣지 <b>${segCount('edge')}</b> · MCU <b>${segCount('mcu')}</b>`;
+
+// JSON-LD 구조화 데이터 (검색엔진 SEO)
+const jsonld = {
+  '@context':'https://schema.org',
+  '@graph':[
+    { '@type':'WebSite', '@id':PAGES_URL+'#website', name:'Awesome NPU', url:PAGES_URL,
+      inLanguage:'ko', description:'국내외 NPU·AI 추론 가속기 하드웨어 데이터북.' },
+    { '@type':['CollectionPage','ItemList'], '@id':PAGES_URL+'#catalog',
+      name:'NPU 제품 카탈로그', url:PAGES_URL, isPartOf:{ '@id':PAGES_URL+'#website' },
+      numberOfItems:products.length,
+      itemListElement: products.map((p,i)=>({
+        '@type':'ListItem', position:i+1,
+        item:{ '@type':'Product', name:p.product, url:p.url,
+          brand:{ '@type':'Brand', name:p.vendor },
+          category:({mcu:'MCU-class NPU',edge:'Edge NPU',datacenter:'Datacenter AI accelerator'}[p.segment]||'NPU') }
+      }))
+    }
+  ]
 };
 
 const dataScript = `<script>window.DATA=${JSON.stringify(DATA).replace(/</g,'\\u003c')};</script>`;
-if (!template.includes('<!--__DATA__-->')) { console.error('template.html에 <!--__DATA__--> 자리표시자가 없습니다.'); process.exit(1); }
-const out = template.replace('<!--__DATA__-->', dataScript);
+const ldScript = `<script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g,'\\u003c')}</script>`;
+for (const ph of ['<!--__DATA__-->','<!--__META__-->','<!--__COUNT__-->','<!--__TABLE__-->','<!--__ABOUT__-->','<!--__DOCS__-->'])
+  if (!template.includes(ph)) { console.error(`template.html 자리표시자 누락: ${ph}`); process.exit(1); }
+const out = template
+  .replace('<!--__META__-->', ssrMeta)
+  .replace('<!--__COUNT__-->', ssrCount)
+  .replace('<!--__TABLE__-->', ssrTable)
+  .replace('<!--__ABOUT__-->', introHTML)
+  .replace('<!--__DOCS__-->', docsHTML)
+  .replace('<!--__DATA__-->', dataScript + '\n' + ldScript);
 fs.writeFileSync(path.join(ROOT,'index.html'), out);
 
 // 요약
