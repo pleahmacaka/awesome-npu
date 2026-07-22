@@ -19,9 +19,46 @@ const ROOT = path.resolve(__dir, '..');
 const REPO_URL = 'https://github.com/pleahmacaka/awesome-npu';
 const PAGES_URL = 'https://pleahmacaka.github.io/awesome-npu/';
 const I18N = JSON.parse(fs.readFileSync(path.join(__dir, 'i18n.json'), 'utf8'));
+const EI18N = JSON.parse(fs.readFileSync(path.join(__dir, 'enrich-i18n.json'), 'utf8'));
 
-const FLAGS = { KR:'🇰🇷', US:'🇺🇸', NL:'🇳🇱', CN:'🇨🇳', NO:'🇳🇴', IL:'🇮🇱', JP:'🇯🇵', DE:'🇩🇪', FR:'🇫🇷', TW:'🇹🇼' };
-const CNAME_UI = { KR:'대한민국', US:'미국', NL:'네덜란드', CN:'중국', NO:'노르웨이', IL:'이스라엘', JP:'일본', DE:'독일', FR:'프랑스', TW:'대만' };
+/* 상세 사양 번역 유틸 — 한국어 원본을 6개 언어로 옮긴다.
+   이미 표/카드에 별도로 표시되는 항목(성능·메모리·전력·출시)은 상세 그리드에서 제외한다. */
+const LANGS = ['ko', 'en', 'ja', 'zh', 'es', 'he'];
+const SKIP_SPEC_KEYS = new Set(['성능', '메모리', '전력', '출시']);
+const trKey = (k, lang) => lang === 'ko' ? k : ((EI18N.keys[k] && EI18N.keys[k][lang]) || k);
+const trVal = (v, lang) => lang === 'ko' ? v : ((EI18N.values[v] && EI18N.values[v][lang]) || v);
+function buildSpecsI18n(specs){
+  const entries = Object.entries(specs || {}).filter(([k]) => !SKIP_SPEC_KEYS.has(k));
+  const out = {};
+  for (const lang of LANGS) out[lang] = entries.map(([k, v]) => [trKey(k, lang), trVal(v, lang)]);
+  return out;
+}
+function buildNoteI18n(key, koNote){
+  const t = EI18N.notes[key];
+  const out = {};
+  for (const lang of LANGS) {
+    out[lang] = (t && t[lang]) || (lang === 'ko' ? (koNote || (t && t.en) || '') : ((t && t.en) || koNote || ''));
+  }
+  return out;
+}
+
+/* 칩(실리콘) 기준 그룹핑용 오버라이드 — 여러 제품이 같은 칩을 쓰는 경우 동일 칩명으로 묶는다.
+   (키: `벤더||README 제품명`) */
+const CHIP_OVERRIDE = {
+  'Google||Coral USB Accelerator': 'Edge TPU',
+  'Google||Coral M.2 / Mini PCIe (single)': 'Edge TPU',
+  'Google||Coral M.2 Dual Edge TPU': 'Edge TPU',
+  'Google||Coral Mini PCIe Accelerator': 'Edge TPU',
+  'Google||Coral Dev Board': 'Edge TPU',
+  'Google||Coral Dev Board Mini': 'Edge TPU',
+  'Google||Coral SoM': 'Edge TPU',
+  'Google||Coral Accelerator Module': 'Edge TPU',
+  'Gyrfalcon||Lightspeeur 2803S Plai Plug': 'Lightspeeur 2803S',
+  'Gyrfalcon||GAINBOARD 2803S': 'Lightspeeur 2803S',
+};
+
+const FLAGS = { KR:'🇰🇷', US:'🇺🇸', NL:'🇳🇱', CN:'🇨🇳', NO:'🇳🇴', IL:'🇮🇱', JP:'🇯🇵', DE:'🇩🇪', FR:'🇫🇷', TW:'🇹🇼', CH:'🇨🇭' };
+const CNAME_UI = { KR:'대한민국', US:'미국', NL:'네덜란드', CN:'중국', NO:'노르웨이', IL:'이스라엘', JP:'일본', DE:'독일', FR:'프랑스', TW:'대만', CH:'스위스' };
 
 /* 제조사 공식 자료·공개 보도 기반 한글 상세 (키: `벤더||README 제품명`) */
 const ENRICH = {
@@ -216,7 +253,9 @@ function formGroup(form){
   if (/MXM/i.test(f)) return 'MXM';
   if (/Box/i.test(f)) return 'Box';
   if (/PCIe/i.test(f)) return 'PCIe';
-  if (/SoC/i.test(f)) return 'SoC';
+  if (/OAM/i.test(f)) return 'OAM';
+  if (/SoM/i.test(f)) return 'SoM';
+  if (/SoC|sensor/i.test(f)) return 'SoC';
   return 'Server/System';
 }
 
@@ -263,17 +302,22 @@ function parseTableUnder(lines, headingText, isDatacenter, usedKeys){
     else { specs = {}; specs['성능'] = comp.display; specs['메모리'] = memory || '-'; if (useCase) specs['용도'] = useCase; specs['출시'] = rel.display; }
     const tags = (enrich && enrich.tags) ? enrich.tags : [];
     const enriched = !!(enrich && (enrich.specs || enrich.note || (enrich.tags && enrich.tags.length)));
+    const chip = CHIP_OVERRIDE[key] || (enrich && enrich.chip) || '';
+    const chipKey = chip || name;
+    const power = (specs && specs['전력']) || null;
+    const koNote = (enrich && enrich.note) || '';
 
     out.push({
-      enriched,
+      id: key, enriched, chip, chipKey,
       vendor, product:name, url, standalone,
       country, origin: country === 'KR' ? 'kr' : 'global',
       form, formGroup: formGroup(form),
       compute: comp.display === '—' ? null : (cells[col.compute]||'').trim(), computeDisplay: comp.display, tops: comp.tops,
-      memory, useCase,
+      memory, useCase, power,
       release: rel.date ? (cells[col.released]||'').trim() : null, releaseDate: rel.date, releaseDisplay: rel.display,
       price: (cells[col.price]||'').trim(), priceDisplay: pr.display, priceUSD: pr.priceUSD,
-      segment, chip: (enrich && enrich.chip) || '', tags, specs, note: (enrich && enrich.note) || '',
+      segment, tags,
+      specsI18n: buildSpecsI18n(specs), noteI18n: buildNoteI18n(key, koNote),
     });
   }
   return out;
@@ -316,11 +360,12 @@ const SEG_T = { mcu:T.seg_mcu, edge:T.seg_edge, datacenter:T.seg_datacenter };
 const ccS = p => `<span class="cc" title="${escHtml(cnameEN(p.country))}">${escHtml(p.country)}</span>`;
 function rowS(p,i){
   const perf = p.computeDisplay || '-';
-  const power = (p.specs && p.specs['전력']) || '-';
-  const intg = p.standalone ? '' : ` <span class="intg" title="${escHtml(T.warn_integrated)}">⚠</span>`;
+  const power = p.power || '-';
+  const intg = p.standalone ? '' : ` <span class="intg" data-tip="${escHtml(T.warn_integrated)}" role="img" aria-label="${escHtml(T.warn_integrated)}" tabindex="0">⚠</span>`;
   const price = p.priceDisplay==null ? T.undisclosed : p.priceDisplay;
   const rel = p.releaseDisplay || T.unknown;
-  return `<tr><td class="idx">${String(i+1).padStart(2,'0')}</td>`+
+  return `<tr data-id="${escHtml(p.id)}"><td class="sel"><input type="checkbox" class="rowchk" data-id="${escHtml(p.id)}" aria-label="${escHtml(p.product)}"></td>`+
+    `<td class="idx">${String(i+1).padStart(2,'0')}</td>`+
     `<td class="prod"><a class="pn" href="${escHtml(p.url)}" target="_blank" rel="noopener">${escHtml(p.product)}${EXT_SVG}</a>${p.chip?`<div class="pchip">${escHtml(p.chip)}</div>`:''}</td>`+
     `<td class="muted">${escHtml(p.vendor)}</td><td>${ccS(p)}</td>`+
     `<td><span class="seg">${escHtml(SEG_T[p.segment]||p.segment)}</span></td>`+
@@ -332,7 +377,7 @@ function rowS(p,i){
     `<td class="r"><span class="num ${p.releaseDate?'':'muted'}">${escHtml(rel)}</span></td></tr>`;
 }
 const TH = (k,r) => `<th scope="col"${r?' class="r"':''}>${escHtml(T[k])}</th>`;
-const THEAD = `<thead><tr><th scope="col"><span class="sr">#</span></th>${TH('col_product')}${TH('col_vendor')}${TH('col_country')}${TH('col_class')}${TH('col_form')}${TH('col_perf',1)}${TH('col_memory')}${TH('col_power')}${TH('col_price',1)}${TH('col_release',1)}</tr></thead>`;
+const THEAD = `<thead><tr><th class="sel"><input type="checkbox" class="selall" aria-label="${escHtml(T.a_selectall)}"></th><th scope="col"><span class="sr">#</span></th>${TH('col_product')}${TH('col_vendor')}${TH('col_country')}${TH('col_class')}${TH('col_form')}${TH('col_perf',1)}${TH('col_memory')}${TH('col_power')}${TH('col_price',1)}${TH('col_release',1)}</tr></thead>`;
 const ssrTable = `<table class="db">${THEAD}<tbody>${products.map(rowS).join('')}</tbody></table>`;
 const vendorsN = new Set(products.map(p=>p.vendor)).size;
 const countriesN = new Set(products.map(p=>p.country)).size;
@@ -344,9 +389,9 @@ const jsonld = {
   '@context':'https://schema.org',
   '@graph':[
     { '@type':'WebSite', '@id':PAGES_URL+'#website', name:'Awesome NPU', url:PAGES_URL,
-      inLanguage:'ko', description:'국내외 NPU·AI 추론 가속기 하드웨어 데이터북.' },
+      inLanguage:'en', description:'An interactive databook of NPUs and AI inference accelerators, from MCU-class on-device chips to datacenter cards.' },
     { '@type':['CollectionPage','ItemList'], '@id':PAGES_URL+'#catalog',
-      name:'NPU 제품 카탈로그', url:PAGES_URL, isPartOf:{ '@id':PAGES_URL+'#website' },
+      name:'NPU hardware catalog', url:PAGES_URL, isPartOf:{ '@id':PAGES_URL+'#website' },
       numberOfItems:products.length,
       itemListElement: products.map((p,i)=>({
         '@type':'ListItem', position:i+1,

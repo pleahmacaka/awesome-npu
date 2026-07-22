@@ -7,8 +7,8 @@
 <meta name="theme-color" content="#0c0b0a" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23d23a1f'/%3E%3Ctext x='16' y='23' font-family='Arial,Helvetica,sans-serif' font-size='21' font-weight='700' text-anchor='middle' fill='%23fff'%3EN%3C/text%3E%3C/svg%3E">
-<meta name="description" content="An interactive databook of 64 NPUs and AI inference accelerators, from MCU-class on-device chips to datacenter cards. Filter and sort by performance (TOPS), memory, price and release date across many vendors and countries.">
-<meta name="keywords" content="NPU, AI accelerator, AI inference accelerator, Rebellions, FuriosaAI, DEEPX, Mobilint, Hailo, Coral, edge AI, on-device AI, TOPS, datacenter inference, LPU">
+<meta name="description" content="An interactive databook of 100+ NPUs and AI inference accelerators, from MCU-class on-device chips to datacenter cards. Filter, sort and compare by performance (TOPS), memory, power, price and release date across many vendors and countries.">
+<meta name="keywords" content="NPU, AI accelerator, AI inference accelerator, Rebellions, FuriosaAI, DEEPX, Mobilint, Hailo, Coral, Jetson, TPU, Gaudi, edge AI, on-device AI, TinyML, TOPS, datacenter inference, LPU">
 <meta name="author" content="pleahmacaka">
 <meta name="robots" content="index, follow">
 <title>Awesome NPU</title>
@@ -46,8 +46,10 @@
   --spot:#d23a1f; --wash:rgba(23,20,15,.035);
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}
+  .reveal{opacity:1!important;transform:none!important}}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;font-variant-numeric:tabular-nums}
 body::before{content:"";position:fixed;top:0;inset-inline:0;height:3px;background:var(--spot);z-index:100}
@@ -74,6 +76,9 @@ input,select{font:inherit;color:inherit}
   background-position:calc(100% - 14px) 55%,calc(100% - 9px) 55%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
 [dir="rtl"] .langsel{padding:6px 10px 6px 26px;background-position:9px 55%,14px 55%}
 .langsel:hover{color:var(--ink);border-color:var(--rule-3)}
+select.sort,.langsel{color-scheme:dark}
+:root[data-theme="light"] select.sort,:root[data-theme="light"] .langsel{color-scheme:light}
+select.sort option,.langsel option{background:var(--paper-2);color:var(--ink)}
 .ibtn{width:34px;height:34px;display:grid;place-items:center;color:var(--ink-2);transition:color .12s}
 .ibtn:hover{color:var(--ink)}
 .ibtn svg{width:17px;height:17px}
@@ -110,22 +115,28 @@ select.sort{appearance:none;-webkit-appearance:none;background:none;border:none;
   font-size:12.5px;color:var(--ink-2);padding:5px 20px 5px 2px;cursor:pointer}
 [dir="rtl"] select.sort{padding:5px 2px 5px 20px}
 .selwrap svg{position:absolute;inset-inline-end:2px;width:12px;height:12px;color:var(--ink-3);pointer-events:none}
-.txtbtn.f[aria-expanded="true"]{color:var(--ink);border-color:var(--spot)}
-.txtbtn .fc{color:var(--spot)}
-.quick{display:flex;align-items:center;gap:6px 14px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;min-height:30px}
+.fbtn{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;letter-spacing:.02em;color:var(--ink-2);
+  border:1px solid var(--rule-2);padding:7px 13px;white-space:nowrap;flex:none;transition:color .14s,border-color .14s,background .14s}
+.fbtn:hover{color:var(--ink);border-color:var(--rule-3);background:var(--wash)}
+.fbtn svg{width:14px;height:14px}
+.fbtn[aria-expanded="true"]{color:var(--spot);border-color:var(--spot)}
+.fbtn .fc{color:#fff;background:var(--spot);font-size:11px;font-weight:700;min-width:16px;height:16px;
+  display:inline-grid;place-items:center;padding:0 4px;line-height:1}
+.quick{display:flex;align-items:center;gap:6px 14px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;min-height:34px}
 .quick::-webkit-scrollbar{display:none}
-.qgroup{display:flex;align-items:center;gap:14px;flex:none}
+.qgroup{display:flex;align-items:center;gap:10px;flex:none}
 .qlab{font-size:11.5px;letter-spacing:.02em;color:var(--ink-3)}
-.tog{flex:none;font-size:13px;color:var(--ink-3);white-space:nowrap;padding-bottom:2px;border-bottom:2px solid transparent;transition:.12s}
-.tog:hover{color:var(--ink-2)}
-.tog[aria-pressed="true"]{color:var(--ink);font-weight:600;border-color:var(--spot)}
+.tog{flex:none;font-size:12.5px;color:var(--ink-2);white-space:nowrap;padding:5px 12px;line-height:1.35;
+  border:1px solid var(--rule-2);transition:color .14s,border-color .14s,background .14s}
+.tog:hover{color:var(--ink);border-color:var(--rule-3);background:var(--wash)}
+.tog[aria-pressed="true"]{color:var(--spot);font-weight:600;border-color:var(--spot)}
 
 /* drawer */
 .drawer{border-bottom:1px solid var(--rule);overflow:hidden;max-height:0;transition:max-height .26s ease}
 .drawer.open{max-height:820px}
 .drawer-in{padding-block:24px;display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
 .flabel{font-size:11.5px;letter-spacing:.02em;color:var(--ink-3);margin-bottom:13px}
-.chips{display:flex;flex-wrap:wrap;gap:6px 16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
 .date{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .date input{background:none;border:none;border-bottom:1.5px solid var(--rule-2);font-size:12.5px;padding:4px 2px;color-scheme:dark}
 :root[data-theme="light"] .date input{color-scheme:light}
@@ -140,9 +151,6 @@ select.sort{appearance:none;-webkit-appearance:none;background:none;border:none;
 .rmeta .hint{margin-inline-start:auto}
 
 .cc{font-size:12.5px;letter-spacing:.02em;color:var(--ink-2);white-space:nowrap}
-.intg{color:var(--spot)}
-.tags{font-size:12.5px;color:var(--ink-2);line-height:1.7}
-.tags .s{color:var(--rule-3);margin-inline:7px}
 
 /* table */
 .tscroll{overflow-x:auto;padding-bottom:64px;margin-inline:calc(-1*clamp(16px,4vw,44px));padding-inline:clamp(16px,4vw,44px)}
@@ -185,9 +193,23 @@ td.r{text-align:end}
 .e-specs{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin-top:18px;padding-top:16px;border-top:1px solid var(--rule);font-size:12px}
 .e-specs dt{color:var(--ink-3)}
 .e-specs dd{margin:0;color:var(--ink);word-break:break-word}
-.e-tags{margin-top:16px}
 .e-note{font-size:12.5px;color:var(--ink-2);line-height:1.62;margin:16px 0 0}
-.e-warn{display:flex;gap:7px;font-size:11.5px;color:var(--spot);margin-top:14px}
+
+/* by-chip view */
+#chipwrap{padding-bottom:64px}
+.chipgrp{border-top:1px solid var(--rule);padding:20px 0}
+.chipgrp:first-child{border-top:none;padding-top:8px}
+.chip-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.chip-name{font-size:1.1rem;font-weight:750;letter-spacing:-.02em}
+.chip-badge{font-size:11px;color:var(--spot);border:1px solid var(--spot);padding:1px 7px;font-weight:600;white-space:nowrap}
+.chip-meta{font-size:12px;color:var(--ink-3);margin-inline-start:auto}
+.chip-items{display:flex;flex-direction:column}
+.chip-item{display:flex;align-items:baseline;justify-content:space-between;gap:14px 20px;padding:11px 0;border-top:1px solid var(--rule);flex-wrap:wrap}
+.chip-item:hover .ci-name b{color:var(--spot)}
+.ci-name{display:inline-flex;align-items:baseline;gap:8px;flex-wrap:wrap;min-width:0}
+.ci-name b{font-weight:650;font-size:14px;letter-spacing:-.01em}
+.ci-name .ci-vd{font-size:11.5px;color:var(--ink-3)}
+.ci-spec{font-size:12.5px;color:var(--ink-2);white-space:nowrap}
 
 /* doc / about */
 .section{border-top:1px solid var(--rule-2)}
@@ -218,11 +240,79 @@ footer{border-top:1px solid var(--rule-2)}
 .foot-in a{color:var(--ink-2);border-bottom:1px solid var(--rule-2)}
 .foot-in a:hover{color:var(--ink)}
 
+/* selection + tooltip */
+td.sel,th.sel{width:1%;padding-inline-end:6px}
+input.rowchk,input.selall{accent-color:var(--spot);width:15px;height:15px;cursor:pointer;margin:0;vertical-align:middle}
+tr.picked{background:rgba(210,58,31,.09)}
+tr.picked{background:color-mix(in srgb,var(--spot) 10%,transparent)}
+.entry.picked{background:rgba(210,58,31,.05)}
+.entry.picked{background:color-mix(in srgb,var(--spot) 6%,transparent)}
+body.cmp-pad{padding-bottom:62px}
+.intg{color:var(--spot);cursor:pointer;font-size:12px;line-height:1;padding:0 1px;transition:transform .12s}
+.intg:hover,.intg:focus-visible{transform:scale(1.18)}
+.tip{position:fixed;z-index:200;max-width:248px;background:var(--ink);color:var(--paper);font-size:11.5px;line-height:1.5;
+  padding:8px 11px;pointer-events:none;opacity:0;transform:translateY(3px);transition:opacity .13s ease,transform .13s ease}
+.tip.show{opacity:1;transform:none}
+
+/* card checkbox + wrap figs (perf/memory/power/price) */
+.e-chk{display:inline-flex;align-items:center;flex:none}
+.e-chk input{accent-color:var(--spot);width:15px;height:15px;cursor:pointer;margin:0}
+.e-topr{display:inline-flex;align-items:center;gap:11px;flex:none}
+.e-figs{flex-wrap:wrap;row-gap:16px}
+.e-figs>div{flex:none}
+
+/* slide-in: content gently enters from the right */
+@keyframes slin{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+@keyframes slinR{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:none}}
+.ri{animation:slin .46s cubic-bezier(.22,.61,.36,1) both;animation-delay:calc(var(--i,0)*22ms)}
+[dir="rtl"] .ri{animation-name:slinR}
+.reveal{opacity:0;transform:translateX(24px)}
+[dir="rtl"] .reveal{transform:translateX(-24px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .6s ease,transform .62s cubic-bezier(.22,.61,.36,1)}
+
+/* compare bar */
+.cmpbar{position:fixed;inset-inline:0;bottom:0;z-index:70;background:var(--paper-2);border-top:1px solid var(--rule-3);
+  transform:translateY(110%);transition:transform .28s cubic-bezier(.22,.61,.36,1)}
+.cmpbar.show{transform:none}
+.cmpbar-in{display:flex;align-items:center;gap:14px;padding-block:12px;flex-wrap:wrap}
+.cmpbar .cnt{font-size:13px;color:var(--ink-2)}
+.cmpbar .cnt b{color:var(--ink);font-weight:700}
+.cmpbar .sp{margin-inline-start:auto;display:flex;gap:10px}
+.btn{font-size:12.5px;border:1px solid var(--rule-2);padding:8px 15px;color:var(--ink-2);white-space:nowrap;
+  transition:color .14s,border-color .14s,background .14s}
+.btn:hover{color:var(--ink);border-color:var(--rule-3);background:var(--wash)}
+.btn.pri{background:var(--spot);border-color:var(--spot);color:#fff;font-weight:600}
+.btn.pri:hover{filter:brightness(1.08)}
+
+/* compare modal */
+.cmpmodal{position:fixed;inset:0;z-index:120;display:none}
+.cmpmodal.open{display:block}
+.cmpmodal .ov{position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.cmppanel{position:absolute;inset-inline:0;bottom:0;max-height:90vh;background:var(--paper);border-top:3px solid var(--spot);
+  display:flex;flex-direction:column;animation:slup .3s cubic-bezier(.22,.61,.36,1) both}
+@keyframes slup{from{transform:translateY(30px);opacity:.5}to{transform:none;opacity:1}}
+.cmphead{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px clamp(16px,4vw,44px);border-bottom:1px solid var(--rule-2)}
+.cmphead h2{margin:0;font-size:1.1rem;font-weight:750;letter-spacing:-.02em}
+.cmpx{width:34px;height:34px;display:grid;place-items:center;color:var(--ink-2);flex:none}
+.cmpx:hover{color:var(--ink)}
+.cmpx svg{width:18px;height:18px}
+.cmpscroll{overflow:auto;padding:0 clamp(16px,4vw,44px) 34px}
+table.cmp{border-collapse:collapse;font-size:13px}
+table.cmp th,table.cmp td{text-align:start;vertical-align:top;padding:12px 16px;border-bottom:1px solid var(--rule);white-space:normal;min-width:160px}
+table.cmp thead th{position:sticky;top:0;background:var(--paper);border-bottom:1.5px solid var(--rule-3);z-index:1}
+table.cmp .rl{color:var(--ink-3);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;
+  white-space:nowrap;position:sticky;inset-inline-start:0;background:var(--paper);min-width:0}
+table.cmp .pname{font-weight:750;font-size:1.02rem;letter-spacing:-.02em;display:inline-flex;align-items:baseline;gap:6px}
+table.cmp .pname svg{width:11px;height:11px;color:var(--ink-3);align-self:center}
+table.cmp .pv{font-size:11.5px;color:var(--ink-3);margin-top:3px}
+table.cmp .dim{color:var(--ink-3)}
+
 @media (max-width:860px){ .tnav{display:none} }
 @media (max-width:560px){
   .topbar-in{gap:10px}
   .e-figs{gap:16px}
   .rmeta .hint{display:none}
+  .cmpbar .cnt{width:100%}
 }
 </style>
 </head>
@@ -238,9 +328,9 @@ footer{border-top:1px solid var(--rule-2)}
       <a href="#glossary" data-i18n="nav_glossary">Glossary</a>
     </nav>
     <div class="tb-r">
-      <select id="langSel" class="langsel" aria-label="Language"></select>
+      <select id="langSel" class="langsel" data-i18n-aria="a_language" aria-label="Language"></select>
       <a id="repoLink" class="ibtn" href="#" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.34 9.34 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg></a>
-      <button id="themeBtn" class="ibtn" aria-label="Theme"></button>
+      <button id="themeBtn" class="ibtn" data-i18n-aria="a_theme" aria-label="Toggle theme"></button>
     </div>
   </div>
 </header>
@@ -251,7 +341,7 @@ footer{border-top:1px solid var(--rule-2)}
   <div class="wrap mast-in">
     <div class="mast-kicker" data-i18n="kicker">NPU hardware reference</div>
     <h1 class="mast-title" data-i18n="mast_title">NPU Hardware Databook</h1>
-    <p class="mast-dek" data-i18n="dek">An interactive catalog of NPUs, from MCU-class on-device chips to datacenter inference cards, compiled from official vendor sources. ⚠ marks non-standalone parts that must be integrated into a host system.</p>
+    <p class="mast-dek" data-i18n="dek">An interactive catalog of NPUs, from MCU-class on-device chips to datacenter inference cards, compiled from official vendor sources.</p>
     <p class="mast-meta" id="meta"><!--__META__--></p>
   </div>
 </header>
@@ -261,17 +351,22 @@ footer{border-top:1px solid var(--rule-2)}
 <div class="controls" id="controls">
   <div class="wrap controls-in">
     <div class="crow">
+      <button class="fbtn" id="filterToggle" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8L3 5Z"/></svg>
+        <span data-i18n="filters">Filters</span> <span class="fc" id="fcount" hidden>0</span>
+      </button>
       <label class="search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="search" id="search" aria-label="Search" data-i18n-ph="search_ph" placeholder="Search products, vendors, keywords" autocomplete="off">
+        <input type="search" id="search" data-i18n-aria="a_search" aria-label="Search" data-i18n-ph="search_ph" placeholder="Search products, vendors, keywords" autocomplete="off">
       </label>
       <div class="cbar">
-        <div class="viewt" role="group" aria-label="View">
+        <div class="viewt" role="group" data-i18n-aria="a_view" aria-label="View">
           <button id="viewTable" aria-pressed="true" data-i18n="view_table">Table</button>
           <button id="viewCard" aria-pressed="false" data-i18n="view_cards">Cards</button>
+          <button id="viewChip" aria-pressed="false" data-i18n="view_chips">By chip</button>
         </div>
         <div class="selwrap">
-          <select class="sort" id="sortSel" aria-label="Sort">
+          <select class="sort" id="sortSel" data-i18n-aria="a_sort" aria-label="Sort">
             <option value="default" data-i18n="sort_default">Default order</option>
             <option value="tops-desc" data-i18n="sort_tops_desc">Highest TOPS</option>
             <option value="tops-asc" data-i18n="sort_tops_asc">Lowest TOPS</option>
@@ -283,11 +378,10 @@ footer{border-top:1px solid var(--rule-2)}
           </select>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
         </div>
-        <button class="txtbtn f" id="filterToggle" aria-expanded="false" aria-controls="drawer"><span data-i18n="filters">Filters</span> <span class="fc" id="fcount" hidden>0</span></button>
       </div>
     </div>
     <div class="quick" id="quick">
-      <div class="qgroup"><span class="qlab" data-i18n="class_label">Class</span><div id="q-segment" style="display:flex;gap:14px"></div></div>
+      <div class="qgroup"><span class="qlab" data-i18n="class_label">Class</span><div id="q-segment" style="display:flex;gap:8px"></div></div>
     </div>
   </div>
 </div>
@@ -313,6 +407,7 @@ footer{border-top:1px solid var(--rule-2)}
   </div>
   <div class="tscroll" id="tablewrap"><!--__TABLE__--></div>
   <div id="grid" hidden></div>
+  <div id="chipwrap" hidden></div>
   <div id="empty" hidden data-i18n="no_results">No matching products.</div>
 </main>
 
@@ -334,6 +429,27 @@ footer{border-top:1px solid var(--rule-2)}
   </div>
 </footer>
 
+<div class="cmpbar" id="cmpbar" aria-hidden="true">
+  <div class="wrap cmpbar-in">
+    <span class="cnt"><b id="cmpCount">0</b> <span data-i18n="selected">selected</span></span>
+    <div class="sp">
+      <button class="btn" id="cmpClear" data-i18n="clear">Clear</button>
+      <button class="btn pri" id="cmpOpen" data-i18n="compare">Compare</button>
+    </div>
+  </div>
+</div>
+
+<div class="cmpmodal" id="cmpmodal" role="dialog" aria-modal="true" aria-labelledby="cmpTitle">
+  <div class="ov" id="cmpOv"></div>
+  <div class="cmppanel">
+    <div class="cmphead">
+      <h2 id="cmpTitle" data-i18n="compare">Compare</h2>
+      <button class="cmpx" id="cmpClose" data-i18n-aria="a_close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="cmpscroll" id="cmpBody"></div>
+  </div>
+</div>
+
 <!--__DATA__-->
 
 <script>
@@ -344,6 +460,7 @@ footer{border-top:1px solid var(--rule-2)}
   const $ = id => document.getElementById(id);
   const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const SUPPORTED = ["ko","en","ja","zh","es","he"];
+  const reduceMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion:reduce)").matches);
 
   let curLang = "en", L = I18N.en, regionDN = null;
   function setRegionDN(lang){ try{ regionDN = new Intl.DisplayNames([lang],{type:"region"}); }catch(e){ regionDN = null; } }
@@ -359,16 +476,22 @@ footer{border-top:1px solid var(--rule-2)}
     const d=p.computeDisplay||"-"; if(d==="-") return {num:"-",unit:"",dim:true};
     const i=d.indexOf(" "); return {num:i<0?d:d.slice(0,i),unit:i<0?"":d.slice(i+1),dim:false};
   };
-  const tagLine = t => (t||[]).map(esc).join('<span class="s">·</span>');
+  let animate = true;
+  const specsOf = p => (p.specsI18n && (p.specsI18n[curLang] || p.specsI18n.en)) || [];
+  const noteOf = p => (p.noteI18n && (p.noteI18n[curLang] || p.noteI18n.en)) || "";
+  const powerOf = p => p.power || "-";
+  const priceOf = p => p.priceDisplay==null ? L.undisclosed : p.priceDisplay;
+  const relOf = p => p.releaseDisplay || L.unknown;
+  const warnBtn = p => p.standalone ? "" : `<span class="intg" data-tip="${esc(L.warn_integrated)}" role="img" aria-label="${esc(L.warn_integrated)}" tabindex="0">⚠</span>`;
 
-  const FORM_ORDER = ["M.2","PCIe","USB","MXM","Box","SoC","Server/System"];
+  const FORM_ORDER = ["M.2","PCIe","USB","MXM","Box","OAM","SoM","SoC","Server/System"];
   const FORMS = [...new Set(products.map(p=>p.formGroup))].sort((a,b)=>FORM_ORDER.indexOf(a)-FORM_ORDER.indexOf(b));
   const VENDORS = [...new Set(products.map(p=>p.vendor))].sort();
   const SEGS = ["mcu","edge","datacenter"];
 
   const state = { search:"", view:"table", sort:"default",
     segment:new Set(), country:new Set(), form:new Set(), vendor:new Set(),
-    dateFrom:null, dateTo:null, includeNoDate:true };
+    dateFrom:null, dateTo:null, includeNoDate:true, compare:new Set() };
 
   function chipBtn(label, pressed, onclick){
     const b=document.createElement("button"); b.className="tog"; b.type="button"; b.textContent=label;
@@ -403,7 +526,7 @@ footer{border-top:1px solid var(--rule-2)}
       else{const rf=state.dateFrom?state.dateFrom+"-01":null,rt=state.dateTo?state.dateTo+"-31":null;
         if(rf&&p.releaseDate<rf)return false;if(rt&&p.releaseDate>rt)return false;} }
     else if(!p.releaseDate&&!state.includeNoDate)return false;
-    if(state.search){ const hay=[p.vendor,p.product,p.chip,regionOf(p.country),p.country,p.form,p.memory,p.useCase,...(p.tags||[]),...Object.values(p.specs||{}),p.note].join(" ").toLowerCase();
+    if(state.search){ const hay=[p.vendor,p.product,p.chip,regionOf(p.country),p.country,p.form,p.memory,p.useCase,powerOf(p),...(p.tags||[]),...specsOf(p).map(x=>x[1]),noteOf(p)].join(" ").toLowerCase();
       if(!hay.includes(state.search))return false; }
     return true;
   }
@@ -420,71 +543,173 @@ footer{border-top:1px solid var(--rule-2)}
   }
 
   function row(p,i){
-    const ko = curLang==="ko";
-    const perf = (ko && p.specs && (p.specs["성능"]||p.specs["DX-L2"])) || p.computeDisplay || "-";
-    const power = (p.specs && (p.specs["전력"] || (ko?p.specs["효율"]:""))) || "-";
-    const price = p.priceDisplay==null ? L.undisclosed : p.priceDisplay;
-    const rel = p.releaseDisplay || L.unknown;
-    const intg = p.standalone?"":` <span class="intg" title="${esc(L.warn_integrated)}">⚠</span>`;
-    return `<tr>
+    const perf = p.computeDisplay || "-";
+    const picked = state.compare.has(p.id);
+    const w = warnBtn(p);
+    const cls = [picked?"picked":"", animate?"ri":""].filter(Boolean).join(" ");
+    const st = animate?` style="--i:${Math.min(i,14)}"`:"";
+    return `<tr data-id="${esc(p.id)}"${cls?` class="${cls}"`:""}${st}>
+      <td class="sel"><input type="checkbox" class="rowchk" data-id="${esc(p.id)}" aria-label="${esc(p.product)}"${picked?" checked":""}></td>
       <td class="idx">${String(i+1).padStart(2,"0")}</td>
       <td class="prod"><a class="pn" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a>${p.chip?`<div class="pchip">${esc(p.chip)}</div>`:""}</td>
       <td class="muted">${esc(p.vendor)}</td>
       <td>${cc(p)}</td>
       <td><span class="seg">${esc(segLabel(p.segment))}</span></td>
-      <td>${esc(p.form)}${intg}</td>
+      <td>${esc(p.form)}${w?" "+w:""}</td>
       <td class="r"><span class="num">${esc(perf)}</span></td>
       <td class="muted">${esc(p.memory||"-")}</td>
-      <td><span class="num">${esc(power)}</span></td>
-      <td class="r"><span class="num ${p.priceUSD!=null?'':'muted'}">${esc(price)}</span></td>
-      <td class="r"><span class="num ${p.releaseDate?'':'muted'}">${esc(rel)}</span></td>
+      <td><span class="num">${esc(powerOf(p))}</span></td>
+      <td class="r"><span class="num ${p.priceUSD!=null?'':'muted'}">${esc(priceOf(p))}</span></td>
+      <td class="r"><span class="num ${p.releaseDate?'':'muted'}">${esc(relOf(p))}</span></td>
     </tr>`;
   }
   function buildThead(){ const th=(k,r)=>`<th scope="col"${r?' class="r"':''}>${esc(L[k])}</th>`;
-    return `<thead><tr><th scope="col"><span class="sr">#</span></th>${th('col_product')}${th('col_vendor')}${th('col_country')}${th('col_class')}${th('col_form')}${th('col_perf',1)}${th('col_memory')}${th('col_power')}${th('col_price',1)}${th('col_release',1)}</tr></thead>`; }
+    return `<thead><tr><th class="sel"><input type="checkbox" class="selall" aria-label="${esc(L.a_selectall)}"></th><th scope="col"><span class="sr">#</span></th>${th('col_product')}${th('col_vendor')}${th('col_country')}${th('col_class')}${th('col_form')}${th('col_perf',1)}${th('col_memory')}${th('col_power')}${th('col_price',1)}${th('col_release',1)}</tr></thead>`; }
   function table(list){ return `<table class="db">${buildThead()}<tbody>${list.map(row).join("")}</tbody></table>`; }
 
-  function entry(p){
-    const ko = curLang==="ko";
+  function entry(p,i){
     const m=metricParts(p);
-    let detail=[];
-    if(ko){ detail=Object.entries(p.specs||{}).filter(([k])=>!["성능","메모리","출시"].includes(k));
-      if(!detail.length && p.useCase && !(p.tags&&p.tags.length)) detail=[["용도",p.useCase]]; }
-    else if(p.useCase){ detail=[[L.uc, p.useCase]]; }
-    const specs=detail.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
-    const tags=(ko && p.tags && p.tags.length)?`<div class="e-tags tags">${tagLine(p.tags)}</div>`:"";
-    const note=(ko && p.note)?`<p class="e-note">${esc(p.note)}</p>`:"";
-    const warn=p.standalone?"":`<div class="e-warn">⚠ ${esc(L.warn_integrated)}</div>`;
-    const price = p.priceDisplay==null ? L.undisclosed : p.priceDisplay;
-    const rel = p.releaseDisplay || L.unknown;
-    const sub=[p.chip, segLabel(p.segment), p.form, (p.standalone?null:L.integrated), rel].filter(Boolean).map(esc).join(" / ");
-    return `<article class="entry">
-      <div class="e-top"><span class="e-vendor">${esc(p.vendor)}</span>${cc(p)}</div>
+    const specs=specsOf(p).map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
+    const nt=noteOf(p);
+    const note=nt?`<p class="e-note">${esc(nt)}</p>`:"";
+    const w=warnBtn(p);
+    const picked=state.compare.has(p.id);
+    const cls=["entry", animate?"ri":""].filter(Boolean).join(" ");
+    const st=animate?` style="--i:${Math.min(i,14)}"`:"";
+    const sub=[p.chip, segLabel(p.segment), p.form, (p.standalone?null:L.integrated), relOf(p)].filter(Boolean).map(esc).join(" / ");
+    return `<article class="${cls}"${st}>
+      <div class="e-top"><span class="e-vendor">${esc(p.vendor)}</span><span class="e-topr">${cc(p)}<label class="e-chk"><input type="checkbox" class="rowchk" data-id="${esc(p.id)}" aria-label="${esc(p.product)}"${picked?" checked":""}></label></span></div>
       <a class="e-name" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a>
-      <div class="e-sub">${sub}</div>
+      <div class="e-sub">${sub}${w?" "+w:""}</div>
       <div class="e-figs">
         <div><i>${esc(L.col_perf)}</i><b class="perf ${m.dim?'dim':''}">${esc(m.num)}${m.unit?`<span class="u">${esc(m.unit)}</span>`:""}</b></div>
         <div><i>${esc(L.col_memory)}</i><b title="${esc(p.memory)}">${esc(p.memory||"-")}</b></div>
-        <div><i>${esc(L.col_price)}</i><b class="${p.priceUSD!=null?'':'dim'}">${esc(price)}</b></div>
+        <div><i>${esc(L.col_power)}</i><b class="${p.power?'':'dim'}">${esc(powerOf(p))}</b></div>
+        <div><i>${esc(L.col_price)}</i><b class="${p.priceUSD!=null?'':'dim'}">${esc(priceOf(p))}</b></div>
       </div>
       ${specs?`<dl class="e-specs">${specs}</dl>`:""}
-      ${tags}${note}${warn}
+      ${note}
     </article>`;
   }
 
-  function render(){
-    const list=sortList(products.filter(matches));
-    const tw=$("tablewrap"),grid=$("grid"),empty=$("empty");
-    if(!list.length){tw.hidden=true;grid.hidden=true;empty.hidden=false;}
-    else if(state.view==="card"){empty.hidden=true;tw.hidden=true;grid.hidden=false;grid.innerHTML=list.map(entry).join("");}
-    else{empty.hidden=true;grid.hidden=true;tw.hidden=false;tw.innerHTML=table(list);}
-    $("count").innerHTML=`<b>${list.length}</b> ${esc(L.w_products)}`;
+  function chipView(list){
+    const map=new Map();
+    list.forEach(p=>{ const k=p.chipKey||p.product; if(!map.has(k)) map.set(k,[]); map.get(k).push(p); });
+    const groups=[...map.entries()].sort((a,b)=> b[1].length-a[1].length || a[0].localeCompare(b[0]));
+    return groups.map(([chip,items],gi)=>{
+      const vendors=[...new Set(items.map(p=>p.vendor))];
+      const vlabel = vendors.length===1 ? esc(vendors[0]) : `${vendors.length} ${esc(L.w_vendors)}`;
+      const badge = items.length>1 ? `<span class="chip-badge">${items.length} ${esc(L.w_products)}</span>` : "";
+      const rows=items.map(p=>{
+        const perf=p.computeDisplay||"-";
+        const w=warnBtn(p);
+        const spec=[p.country,p.form,perf,priceOf(p)].filter(Boolean).map(esc).join(" / ");
+        return `<a class="chip-item" href="${esc(p.url)}" target="_blank" rel="noopener"><span class="ci-name"><b>${esc(p.product)}</b>${w?" "+w:""}<span class="ci-vd">${esc(p.vendor)}</span></span><span class="ci-spec">${spec}</span></a>`;
+      }).join("");
+      const cls=["chipgrp", animate?"ri":""].filter(Boolean).join(" ");
+      const st=animate?` style="--i:${Math.min(gi,14)}"`:"";
+      return `<div class="${cls}"${st}><div class="chip-h"><span class="chip-name">${esc(chip)}</span>${badge}<span class="chip-meta">${vlabel}</span></div><div class="chip-items">${rows}</div></div>`;
+    }).join("");
   }
-  function setView(v){ state.view=v; $("viewTable").setAttribute("aria-pressed",v==="table");$("viewCard").setAttribute("aria-pressed",v==="card"); render(); }
+  let lastList=products.slice();
+  function render(anim){
+    animate = anim!==false && !reduceMotion;
+    const list=sortList(products.filter(matches));
+    lastList=list;
+    const tw=$("tablewrap"),grid=$("grid"),chipw=$("chipwrap"),empty=$("empty");
+    tw.hidden=true;grid.hidden=true;chipw.hidden=true;empty.hidden=true;
+    if(!list.length){empty.hidden=false;}
+    else if(state.view==="card"){grid.hidden=false;grid.innerHTML=list.map(entry).join("");}
+    else if(state.view==="chip"){chipw.hidden=false;chipw.innerHTML=chipView(list);}
+    else{tw.hidden=false;tw.innerHTML=table(list);}
+    $("count").innerHTML=`<b>${list.length}</b> ${esc(L.w_products)}`;
+    syncSelAll();
+  }
+  function syncSelAll(){ const el=document.querySelector(".selall"); if(!el)return;
+    const picked=lastList.filter(p=>state.compare.has(p.id)).length;
+    el.checked = lastList.length>0 && picked===lastList.length;
+    el.indeterminate = picked>0 && picked<lastList.length; }
+  function setView(v){ state.view=v;
+    $("viewTable").setAttribute("aria-pressed",v==="table");
+    $("viewCard").setAttribute("aria-pressed",v==="card");
+    $("viewChip").setAttribute("aria-pressed",v==="chip");
+    render(); }
 
   function buildMeta(){
     const vN=new Set(products.map(p=>p.vendor)).size, cN=new Set(products.map(p=>p.country)).size;
     $("meta").innerHTML=`<span><b>${products.length}</b> ${esc(L.w_products)}</span><span><b>${vN}</b> ${esc(L.w_vendors)}</span><span><b>${cN}</b> ${esc(L.w_countries)}</span>`;
+  }
+
+  // ---- tooltip (hover + focus + click) ----
+  const tipEl=document.createElement("div"); tipEl.className="tip"; document.body.appendChild(tipEl);
+  let tipFor=null;
+  function showTip(el){ const t=el.getAttribute("data-tip"); if(!t)return; tipEl.textContent=t; tipEl.classList.add("show");
+    const r=el.getBoundingClientRect(), tr=tipEl.getBoundingClientRect(), pad=8;
+    let left=r.left+r.width/2-tr.width/2; left=Math.max(pad,Math.min(left,innerWidth-tr.width-pad));
+    let top=r.top-tr.height-8; if(top<pad) top=r.bottom+8;
+    tipEl.style.left=left+"px"; tipEl.style.top=top+"px"; tipFor=el; }
+  function hideTip(){ tipEl.classList.remove("show"); tipFor=null; }
+  document.addEventListener("mouseover",e=>{ const el=e.target.closest&&e.target.closest("[data-tip]"); if(el&&el!==tipFor) showTip(el); });
+  document.addEventListener("mouseout",e=>{ const el=e.target.closest&&e.target.closest("[data-tip]"); if(el&&el===tipFor) hideTip(); });
+  document.addEventListener("focusin",e=>{ const el=e.target.closest&&e.target.closest("[data-tip]"); if(el) showTip(el); });
+  document.addEventListener("focusout",()=>{ if(tipFor) hideTip(); });
+  document.addEventListener("click",e=>{ const el=e.target.closest&&e.target.closest(".intg");
+    if(el){ e.preventDefault(); e.stopPropagation(); showTip(el); }
+    else if(tipFor && !(e.target.closest&&e.target.closest("[data-tip]"))) hideTip(); });
+  addEventListener("scroll",()=>{ if(tipFor) hideTip(); }, true);
+
+  // ---- compare / selection ----
+  function updateCmp(){
+    const n=state.compare.size;
+    $("cmpCount").textContent=n;
+    $("cmpbar").classList.toggle("show", n>0);
+    $("cmpbar").setAttribute("aria-hidden", n>0?"false":"true");
+    document.body.classList.toggle("cmp-pad", n>0);
+    syncSelAll();
+    if($("cmpmodal").classList.contains("open")){ n<1 ? closeCompare() : buildCmpTable(); }
+  }
+  function cmpItems(){ return products.filter(p=>state.compare.has(p.id)); }
+  function buildCmpTable(){
+    const items=cmpItems(); if(!items.length){ $("cmpBody").innerHTML=""; return; }
+    const rowsDef=[
+      ["col_vendor", p=>esc(p.vendor)],
+      ["col_country", p=>esc(regionOf(p.country))],
+      ["col_class", p=>esc(segLabel(p.segment))],
+      ["col_form", p=>{ const w=warnBtn(p); return esc(p.form||"-")+(w?" "+w:""); }],
+      ["col_perf", p=>esc(p.computeDisplay||"-")],
+      ["col_memory", p=>esc(p.memory||"-")],
+      ["col_power", p=>esc(powerOf(p))],
+      ["col_price", p=>`<span class="${p.priceUSD!=null?'':'dim'}">${esc(priceOf(p))}</span>`],
+      ["col_release", p=>`<span class="${p.releaseDate?'':'dim'}">${esc(relOf(p))}</span>`],
+    ];
+    const labels=[], seen=new Set();
+    items.forEach(p=>specsOf(p).forEach(([k])=>{ if(!seen.has(k)){seen.add(k);labels.push(k);} }));
+    const head=`<thead><tr><th class="rl"></th>${items.map(p=>`<th><a class="pname" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a><div class="pv">${esc(p.vendor)}</div></th>`).join("")}</tr></thead>`;
+    let body="";
+    rowsDef.forEach(([k,fn])=>{ body+=`<tr><td class="rl">${esc(L[k])}</td>${items.map(p=>`<td>${fn(p)}</td>`).join("")}</tr>`; });
+    labels.forEach(lab=>{ body+=`<tr><td class="rl">${esc(lab)}</td>${items.map(p=>{ const m=specsOf(p).find(x=>x[0]===lab); return `<td>${m?esc(m[1]):'<span class="dim">-</span>'}</td>`; }).join("")}</tr>`; });
+    if(items.some(p=>noteOf(p))) body+=`<tr><td class="rl">${esc(L.col_note)}</td>${items.map(p=>{ const n=noteOf(p); return `<td>${n?esc(n):'<span class="dim">-</span>'}</td>`; }).join("")}</tr>`;
+    $("cmpBody").innerHTML=`<table class="cmp">${head}<tbody>${body}</tbody></table>`;
+  }
+  function openCompare(){ if(!state.compare.size)return; buildCmpTable(); $("cmpmodal").classList.add("open"); document.body.style.overflow="hidden"; }
+  function closeCompare(){ $("cmpmodal").classList.remove("open"); document.body.style.overflow=""; }
+  function clearCompare(){ state.compare.clear(); closeCompare(); render(false); updateCmp(); }
+  document.addEventListener("change",e=>{
+    const t=e.target;
+    if(t.classList&&t.classList.contains("rowchk")){ const id=t.getAttribute("data-id");
+      t.checked ? state.compare.add(id) : state.compare.delete(id);
+      const host=t.closest("tr,.entry"); if(host) host.classList.toggle("picked", t.checked);
+      updateCmp();
+    } else if(t.classList&&t.classList.contains("selall")){
+      const on=t.checked; lastList.forEach(p=>{ on?state.compare.add(p.id):state.compare.delete(p.id); });
+      render(false); updateCmp();
+    }
+  });
+
+  // ---- reveal on scroll (right -> left) ----
+  function revealInit(){ if(reduceMotion)return; let io;
+    try{ io=new IntersectionObserver(es=>{ es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }); },{threshold:.05,rootMargin:"0px 0px -60px 0px"}); }catch(e){ return; }
+    document.querySelectorAll(".section").forEach(el=>{ el.classList.add("reveal"); io.observe(el); });
   }
 
   // ---- i18n ----
@@ -511,6 +736,7 @@ footer{border-top:1px solid var(--rule-2)}
     if($("langSel")) $("langSel").value=curLang;
     buildFilters(); buildMeta();
     if(!(initial && curLang==="en")) render();
+    updateCmp();
     try{ localStorage.setItem("npu-lang",curLang); }catch(e){}
     setTimeout(setSticky,0);
   }
@@ -518,17 +744,19 @@ footer{border-top:1px solid var(--rule-2)}
   // ---- theme ----
   function setTheme(t){ document.documentElement.setAttribute("data-theme",t); $("themeBtn").innerHTML=t==="dark"?MOON:SUN; try{localStorage.setItem("npu-theme",t);}catch(e){} }
   $("themeBtn").onclick=()=>setTheme(document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark");
-  (function(){let s=null;try{s=localStorage.getItem("npu-theme");}catch(e){} setTheme(s||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"));})();
+  (function(){let q=null;try{q=new URLSearchParams(location.search).get("theme");}catch(e){}
+    let s=null;try{s=localStorage.getItem("npu-theme");}catch(e){}
+    setTheme((q==="light"||q==="dark")?q:(s||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")));})();
 
   function setSticky(){ document.documentElement.style.setProperty("--stick-top",$("topbar").offsetHeight+"px"); }
 
   // ---- events ----
-  $("search").oninput=e=>{state.search=e.target.value.toLowerCase().trim();render();};
+  $("search").oninput=e=>{state.search=e.target.value.toLowerCase().trim();render(false);};
   $("sortSel").onchange=e=>{state.sort=e.target.value;render();};
   $("dateFrom").onchange=e=>{state.dateFrom=e.target.value||null;render();fcount();};
   $("dateTo").onchange=e=>{state.dateTo=e.target.value||null;render();fcount();};
   $("includeNoDate").onchange=e=>{state.includeNoDate=e.target.checked;render();fcount();};
-  $("viewTable").onclick=()=>setView("table"); $("viewCard").onclick=()=>setView("card");
+  $("viewTable").onclick=()=>setView("table"); $("viewCard").onclick=()=>setView("card"); $("viewChip").onclick=()=>setView("chip");
   $("filterToggle").onclick=()=>{const d=$("drawer");const o=d.classList.toggle("open");$("filterToggle").setAttribute("aria-expanded",String(o));setTimeout(setSticky,280);};
   $("resetBtn").onclick=()=>{Object.assign(state,{search:"",sort:"default",dateFrom:null,dateTo:null,includeNoDate:true});
     state.segment.clear();state.country.clear();state.form.clear();state.vendor.clear();
@@ -536,11 +764,20 @@ footer{border-top:1px solid var(--rule-2)}
     buildFilters();fcount();render();};
   let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(setSticky,150);});
 
+  // ---- compare controls ----
+  $("cmpClear").onclick=clearCompare;
+  $("cmpOpen").onclick=openCompare;
+  $("cmpClose").onclick=closeCompare;
+  $("cmpOv").onclick=closeCompare;
+  addEventListener("keydown",e=>{ if(e.key==="Escape"){ if($("cmpmodal").classList.contains("open"))closeCompare(); else if(tipFor)hideTip(); } });
+
   // ---- init ----
   if(DATA.repo){$("repoLink").href=DATA.repo;$("repoLink2").href=DATA.repo;}
-  $("viewTable").setAttribute("aria-pressed","true");$("viewCard").setAttribute("aria-pressed","false");
+  $("viewTable").setAttribute("aria-pressed","true");$("viewCard").setAttribute("aria-pressed","false");$("viewChip").setAttribute("aria-pressed","false");
   buildLangSel();
   applyLang(detectLang(), true);
+  try{ const vq=new URLSearchParams(location.search).get("view"); if(["table","card","chip"].includes(vq)) setView(vq); }catch(e){}
+  updateCmp(); revealInit();
   setSticky(); setTimeout(setSticky,200);
 })();
 </script>
