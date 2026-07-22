@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="dark">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -7,90 +7,90 @@
 <meta name="theme-color" content="#0c0b0a" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23d23a1f'/%3E%3Ctext x='16' y='23' font-family='Arial,Helvetica,sans-serif' font-size='21' font-weight='700' text-anchor='middle' fill='%23fff'%3EN%3C/text%3E%3C/svg%3E">
-<meta name="description" content="국내외 NPU·AI 추론 가속기 64종을 정리한 인터랙티브 하드웨어 데이터북. Rebellions·FuriosaAI·DEEPX·Mobilint·Hailo 등 MCU급 온디바이스부터 데이터센터 추론 카드까지, 성능(TOPS)·메모리·가격·출시일 필터·검색·정렬.">
-<meta name="keywords" content="NPU, AI 가속기, AI inference accelerator, Rebellions, FuriosaAI, DEEPX, Mobilint, Hailo, Coral, 엣지 AI, 온디바이스 AI, TOPS, 데이터센터 추론, LPU">
+<meta name="description" content="An interactive databook of 64 NPUs and AI inference accelerators, from MCU-class on-device chips to datacenter cards. Filter and sort by performance (TOPS), memory, price and release date across many vendors and countries.">
+<meta name="keywords" content="NPU, AI accelerator, AI inference accelerator, Rebellions, FuriosaAI, DEEPX, Mobilint, Hailo, Coral, edge AI, on-device AI, TOPS, datacenter inference, LPU">
 <meta name="author" content="pleahmacaka">
 <meta name="robots" content="index, follow">
-<title>Awesome NPU · NPU 하드웨어 데이터북</title>
+<title>Awesome NPU</title>
 <link rel="canonical" href="https://pleahmacaka.github.io/awesome-npu/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Awesome NPU">
-<meta property="og:locale" content="ko_KR">
 <meta property="og:url" content="https://pleahmacaka.github.io/awesome-npu/">
-<meta property="og:title" content="Awesome NPU · NPU 하드웨어 데이터북">
-<meta property="og:description" content="국내외 NPU·AI 추론 가속기 64종. MCU급 온디바이스부터 데이터센터 추론 카드까지, 성능·메모리·가격 비교 카탈로그.">
+<meta property="og:title" content="Awesome NPU">
+<meta property="og:description" content="An interactive databook of NPUs and AI inference accelerators, from MCU-class on-device chips to datacenter cards.">
 <meta property="og:image" content="https://pleahmacaka.github.io/awesome-npu/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Awesome NPU · NPU 하드웨어 데이터북">
+<meta property="og:image:alt" content="Awesome NPU">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Awesome NPU · NPU 하드웨어 데이터북">
-<meta name="twitter:description" content="국내외 NPU·AI 추론 가속기 64종. MCU급 온디바이스부터 데이터센터 추론 카드까지 비교 카탈로그.">
+<meta name="twitter:title" content="Awesome NPU">
+<meta name="twitter:description" content="An interactive databook of NPUs and AI inference accelerators, from MCU-class chips to datacenter cards.">
 <meta name="twitter:image" content="https://pleahmacaka.github.io/awesome-npu/og.png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <style>
 :root{
   --sans:'Pretendard','Pretendard Variable',sans-serif;
-  --mono:'Pretendard','Pretendard Variable',sans-serif;
-  --stick-top:52px; --stick-controls:0px;
+  --stick-top:52px;
 }
 :root[data-theme="dark"]{
   --paper:#0c0b0a; --paper-2:#151311; --field:#1a1815;
   --ink:#ece7dd; --ink-2:rgba(236,231,221,.66); --ink-3:rgba(236,231,221,.58);
   --rule:rgba(236,231,221,.14); --rule-2:rgba(236,231,221,.30); --rule-3:rgba(236,231,221,.55);
-  --spot:#ff5a3c; --spot-soft:rgba(255,90,60,.14);
-  --wash:rgba(236,231,221,.04);
+  --spot:#ff5a3c; --wash:rgba(236,231,221,.04);
 }
 :root[data-theme="light"]{
   --paper:#f4f1ea; --paper-2:#eeeae1; --field:#ebe7dd;
   --ink:#17140f; --ink-2:rgba(23,20,15,.68); --ink-3:rgba(23,20,15,.64);
   --rule:rgba(23,20,15,.16); --rule-2:rgba(23,20,15,.32); --rule-3:rgba(23,20,15,.6);
-  --spot:#d23a1f; --spot-soft:rgba(210,58,31,.1);
-  --wash:rgba(23,20,15,.035);
+  --spot:#d23a1f; --wash:rgba(23,20,15,.035);
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
-  font-variant-numeric:tabular-nums}
-body::before{content:"";position:fixed;top:0;left:0;right:0;height:3px;background:var(--spot);z-index:100}
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;font-variant-numeric:tabular-nums}
+body::before{content:"";position:fixed;top:0;inset-inline:0;height:3px;background:var(--spot);z-index:100}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;cursor:pointer;background:none;border:none;padding:0}
 input,select{font:inherit;color:inherit}
 ::selection{background:var(--spot);color:#fff}
 :focus-visible{outline:2px solid var(--spot);outline-offset:2px}
-.mono{font-family:var(--mono)}
 .wrap{width:100%;max-width:1280px;margin-inline:auto;padding-inline:clamp(16px,4vw,44px)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 .spot{color:var(--spot)}
 
-/* ---------- top bar ---------- */
+/* top bar */
 .topbar{position:sticky;top:3px;z-index:60;background:var(--paper);border-bottom:1px solid var(--rule)}
-.topbar-in{display:flex;align-items:center;height:52px;gap:22px}
-.wm{font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.14em;white-space:nowrap}
-.wm i{color:var(--spot);font-style:normal}
-.tnav{display:flex;gap:20px;margin-left:8px}
-.tnav a{font-size:13px;color:var(--ink-3);letter-spacing:.01em;transition:color .12s}
+.topbar-in{display:flex;align-items:center;height:52px;gap:20px}
+.wm{font-weight:800;font-size:15px;letter-spacing:-.01em;white-space:nowrap}
+.tnav{display:flex;gap:20px;margin-inline-start:6px}
+.tnav a{font-size:13px;color:var(--ink-3);transition:color .12s}
 .tnav a:hover{color:var(--ink)}
-.tb-r{margin-left:auto;display:flex;align-items:center;gap:4px}
+.tb-r{margin-inline-start:auto;display:flex;align-items:center;gap:6px}
+.langsel{appearance:none;-webkit-appearance:none;background:none;border:1px solid var(--rule-2);border-radius:0;
+  font-size:12.5px;color:var(--ink-2);padding:6px 26px 6px 10px;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);
+  background-position:calc(100% - 14px) 55%,calc(100% - 9px) 55%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+[dir="rtl"] .langsel{padding:6px 10px 6px 26px;background-position:9px 55%,14px 55%}
+.langsel:hover{color:var(--ink);border-color:var(--rule-3)}
 .ibtn{width:34px;height:34px;display:grid;place-items:center;color:var(--ink-2);transition:color .12s}
 .ibtn:hover{color:var(--ink)}
 .ibtn svg{width:17px;height:17px}
 
-/* ---------- masthead ---------- */
+/* masthead */
 .mast{border-bottom:1px solid var(--rule-2)}
 .mast-in{padding-block:clamp(36px,6vw,68px) clamp(26px,3.5vw,36px)}
-.mast-kicker{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--ink-3);margin-bottom:20px}
-.mast-title{font-size:clamp(2.3rem,6.2vw,4.1rem);line-height:.98;letter-spacing:-.045em;font-weight:800;margin:0;text-wrap:balance}
+.mast-kicker{font-size:13px;color:var(--ink-3);margin-bottom:20px}
+.mast-title{font-size:clamp(2.3rem,6.2vw,4.1rem);line-height:1.02;letter-spacing:-.045em;font-weight:800;margin:0;text-wrap:balance}
 .mast-dek{margin:22px 0 0;font-size:clamp(1rem,1.9vw,1.18rem);line-height:1.55;color:var(--ink-2);max-width:64ch}
-.mast-meta{font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--ink-3);margin:26px 0 0;
-  display:flex;flex-wrap:wrap;gap:6px 16px}
-.mast-meta b{color:var(--ink);font-weight:600}
-.mast-meta .sep{color:var(--rule-3)}
+.mast-meta{display:flex;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--ink-3);margin:26px 0 0}
+.mast-meta span{padding-inline:14px}
+.mast-meta span:first-child{padding-inline-start:0}
+.mast-meta span+span{border-inline-start:1px solid var(--rule-2)}
+.mast-meta b{color:var(--ink);font-weight:700}
 
-/* ---------- controls ---------- */
+/* controls */
 .controls{position:sticky;top:calc(52px + 3px);z-index:55;background:var(--paper);border-bottom:1px solid var(--rule-2)}
 .controls-in{padding-block:12px;display:flex;flex-direction:column;gap:12px}
 .crow{display:flex;align-items:center;gap:8px 22px;flex-wrap:wrap}
@@ -102,143 +102,127 @@ input,select{font:inherit;color:inherit}
 .search input:focus{outline:none}
 .cbar{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .viewt{display:inline-flex;gap:14px}
-.viewt button,.txtbtn{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--ink-3);padding-bottom:3px;border-bottom:2px solid transparent;transition:.12s}
+.viewt button,.txtbtn{font-size:12.5px;letter-spacing:.02em;color:var(--ink-3);padding-bottom:3px;border-bottom:2px solid transparent;transition:.12s}
 .viewt button:hover,.txtbtn:hover{color:var(--ink-2)}
-.viewt button[aria-pressed="true"]{color:var(--ink);border-color:var(--spot)}
+.viewt button[aria-pressed="true"]{color:var(--ink);border-color:var(--spot);font-weight:600}
 .selwrap{position:relative;display:inline-flex;align-items:center}
 select.sort{appearance:none;-webkit-appearance:none;background:none;border:none;border-bottom:1.5px solid var(--rule-2);
-  font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--ink-2);padding:5px 20px 5px 2px;cursor:pointer}
-.selwrap svg{position:absolute;right:2px;width:12px;height:12px;color:var(--ink-3);pointer-events:none}
+  font-size:12.5px;color:var(--ink-2);padding:5px 20px 5px 2px;cursor:pointer}
+[dir="rtl"] select.sort{padding:5px 2px 5px 20px}
+.selwrap svg{position:absolute;inset-inline-end:2px;width:12px;height:12px;color:var(--ink-3);pointer-events:none}
 .txtbtn.f[aria-expanded="true"]{color:var(--ink);border-color:var(--spot)}
 .txtbtn .fc{color:var(--spot)}
-/* quick filters */
 .quick{display:flex;align-items:center;gap:6px 14px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;min-height:30px}
 .quick::-webkit-scrollbar{display:none}
 .qgroup{display:flex;align-items:center;gap:14px;flex:none}
-.qlab{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.qlab{font-size:11.5px;letter-spacing:.02em;color:var(--ink-3)}
 .tog{flex:none;font-size:13px;color:var(--ink-3);white-space:nowrap;padding-bottom:2px;border-bottom:2px solid transparent;transition:.12s}
 .tog:hover{color:var(--ink-2)}
 .tog[aria-pressed="true"]{color:var(--ink);font-weight:600;border-color:var(--spot)}
-.qdiv{width:1px;height:16px;background:var(--rule-2);flex:none}
 
-/* ---------- drawer ---------- */
+/* drawer */
 .drawer{border-bottom:1px solid var(--rule);overflow:hidden;max-height:0;transition:max-height .26s ease}
-.drawer.open{max-height:760px}
+.drawer.open{max-height:820px}
 .drawer-in{padding-block:24px;display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
-.flabel{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:13px}
+.flabel{font-size:11.5px;letter-spacing:.02em;color:var(--ink-3);margin-bottom:13px}
 .chips{display:flex;flex-wrap:wrap;gap:6px 16px}
 .date{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.date input{background:none;border:none;border-bottom:1.5px solid var(--rule-2);font-family:var(--mono);font-size:12.5px;
-  padding:4px 2px;color-scheme:dark}
+.date input{background:none;border:none;border-bottom:1.5px solid var(--rule-2);font-size:12.5px;padding:4px 2px;color-scheme:dark}
 :root[data-theme="light"] .date input{color-scheme:light}
 .date .til{color:var(--ink-3)}
 .chk{display:inline-flex;align-items:center;gap:8px;margin-top:13px;font-size:13px;color:var(--ink-2);cursor:pointer}
 .chk input{accent-color:var(--spot);width:15px;height:15px}
 .drawer-foot{grid-column:1/-1;border-top:1px solid var(--rule);padding-top:16px;display:flex;justify-content:flex-end}
-.txtbtn.reset{text-transform:none;letter-spacing:.01em;font-family:var(--sans);font-size:13px}
 
-/* ---------- results meta ---------- */
-.rmeta{display:flex;align-items:baseline;gap:16px;padding-block:22px 12px;flex-wrap:wrap;font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}
-.rmeta b{color:var(--ink);font-weight:600}
-.rmeta .hint{margin-left:auto;font-family:var(--sans)}
+/* results meta */
+.rmeta{display:flex;align-items:baseline;gap:16px;padding-block:22px 12px;flex-wrap:wrap;font-size:13px;color:var(--ink-3)}
+.rmeta b{color:var(--ink);font-weight:700}
+.rmeta .hint{margin-inline-start:auto}
 
-/* country code + origin */
-.cc{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink-2);white-space:nowrap}
-.cc.kr{color:var(--spot);font-weight:600}
+.cc{font-size:12.5px;letter-spacing:.02em;color:var(--ink-2);white-space:nowrap}
 .intg{color:var(--spot)}
-.tags{font-family:var(--mono);font-size:12px;color:var(--ink-2);line-height:1.7}
-.tags .s{color:var(--rule-3);margin:0 7px}
+.tags{font-size:12.5px;color:var(--ink-2);line-height:1.7}
+.tags .s{color:var(--rule-3);margin-inline:7px}
 
-/* ---------- table (the hero) ---------- */
+/* table */
 .tscroll{overflow-x:auto;padding-bottom:64px;margin-inline:calc(-1*clamp(16px,4vw,44px));padding-inline:clamp(16px,4vw,44px)}
 table.db{width:100%;border-collapse:collapse;min-width:940px;font-size:13.5px}
-table.db thead th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);
+table.db thead th{text-align:start;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);
   font-weight:600;padding:0 16px 11px;border-bottom:1.5px solid var(--rule-3);white-space:nowrap}
-table.db thead th.r{text-align:right}
+table.db thead th.r{text-align:end}
 table.db tbody td{padding:14px 16px;border-bottom:1px solid var(--rule);vertical-align:baseline;white-space:nowrap}
 table.db tbody tr{transition:background .1s}
 table.db tbody tr:hover{background:var(--wash)}
-td.idx{font-family:var(--mono);font-size:11px;color:var(--ink-3);width:1%;padding-right:0}
+td.idx{font-size:11px;color:var(--ink-3);width:1%;padding-inline-end:0}
 td.prod{white-space:normal;min-width:210px}
 .pn{display:inline-flex;align-items:baseline;gap:6px;font-weight:650;letter-spacing:-.01em;font-size:14.5px}
 .pn svg{width:11px;height:11px;color:var(--ink-3);align-self:center;opacity:0;transition:.12s}
 .pn:hover{color:var(--spot)} .pn:hover svg{opacity:1;color:var(--spot)}
-.pchip{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:3px}
-td .num{font-family:var(--mono);letter-spacing:-.01em}
-td.r{text-align:right}
+.pchip{font-size:11px;color:var(--ink-3);margin-top:3px}
+td .num{letter-spacing:-.01em}
+td.r{text-align:end}
 .muted{color:var(--ink-3)}
-.seg{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2)}
-#empty{padding:96px 0;text-align:center;color:var(--ink-3);font-family:var(--mono);font-size:13px}
+.seg{font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-2)}
+#empty{padding:96px 0;text-align:center;color:var(--ink-3);font-size:14px}
 
-/* ---------- cards (entries) ---------- */
+/* cards */
 #grid{display:grid;gap:0;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));
-  border-top:1px solid var(--rule);border-left:1px solid var(--rule);padding-bottom:64px}
-.entry{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:22px 22px 24px;
-  display:flex;flex-direction:column;position:relative}
-.entry[data-o="kr"]::before{content:"";position:absolute;left:0;top:0;width:2px;height:44px;background:var(--spot)}
+  border-block-start:1px solid var(--rule);border-inline-start:1px solid var(--rule);padding-bottom:64px}
+.entry{border-inline-end:1px solid var(--rule);border-block-end:1px solid var(--rule);padding:22px 22px 24px;display:flex;flex-direction:column}
 .e-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:9px}
-.e-vendor{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--ink-2)}
+.e-vendor{font-size:12.5px;color:var(--ink-2)}
 .e-name{display:inline-flex;align-items:baseline;gap:7px;font-size:1.34rem;font-weight:750;letter-spacing:-.025em;line-height:1.12}
 .e-name svg{width:12px;height:12px;color:var(--ink-3);align-self:center;opacity:0;transition:.12s}
 .e-name:hover{color:var(--spot)} .e-name:hover svg{opacity:1;color:var(--spot)}
-.e-sub{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-top:8px;line-height:1.5}
+.e-sub{font-size:11.5px;color:var(--ink-3);margin-top:8px;line-height:1.5}
 .e-figs{display:flex;gap:22px;margin-top:18px;padding-top:16px;border-top:1px solid var(--rule)}
 .e-figs>div{display:flex;flex-direction:column;gap:6px;min-width:0}
-.e-figs i{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-style:normal}
-.e-figs b{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--ink);overflow:hidden;text-overflow:ellipsis}
+.e-figs i{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-style:normal}
+.e-figs b{font-weight:600;font-size:13px;color:var(--ink);overflow:hidden;text-overflow:ellipsis}
 .e-figs .perf{font-size:1.15rem;line-height:1;letter-spacing:-.02em}
-.e-figs .perf .u{font-size:.6em;color:var(--ink-3);margin-left:3px}
+.e-figs .perf .u{font-size:.6em;color:var(--ink-3);margin-inline-start:3px}
 .e-figs .dim{color:var(--ink-3)}
-.e-specs{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin-top:18px;padding-top:16px;border-top:1px solid var(--rule);
-  font-family:var(--mono);font-size:12px}
-.e-specs dt{color:var(--ink-3);letter-spacing:.02em}
+.e-specs{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin-top:18px;padding-top:16px;border-top:1px solid var(--rule);font-size:12px}
+.e-specs dt{color:var(--ink-3)}
 .e-specs dd{margin:0;color:var(--ink);word-break:break-word}
 .e-tags{margin-top:16px}
 .e-note{font-size:12.5px;color:var(--ink-2);line-height:1.62;margin:16px 0 0}
-.e-warn{display:flex;gap:7px;font-size:11.5px;color:var(--spot);margin-top:14px;font-family:var(--mono)}
+.e-warn{display:flex;gap:7px;font-size:11.5px;color:var(--spot);margin-top:14px}
 
-/* ---------- doc / about ---------- */
+/* doc / about */
 .section{border-top:1px solid var(--rule-2)}
 .about{background:var(--paper-2)}
 .about-in,.docs-in{padding-block:clamp(40px,6vw,64px)}
-.shead{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
-  margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+.shead{font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-3);margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
 .doc a{color:var(--ink);border-bottom:1.5px solid var(--spot);transition:.12s}
 .doc a:hover{color:var(--spot)}
-.doc h2{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:750;letter-spacing:-.025em;margin:60px 0 20px;
-  scroll-margin-top:calc(var(--stick-top) + 24px)}
+.doc h2{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:750;letter-spacing:-.025em;margin:60px 0 20px;scroll-margin-top:calc(var(--stick-top) + 24px)}
 .doc h2:first-child{margin-top:0}
-.doc h3{font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);
-  font-weight:600;margin:36px 0 14px;scroll-margin-top:calc(var(--stick-top) + 24px)}
+.doc h3{font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);font-weight:600;margin:36px 0 14px;scroll-margin-top:calc(var(--stick-top) + 24px)}
 .doc p{color:var(--ink-2);margin:14px 0;max-width:76ch;line-height:1.72}
 .doc ul{margin:14px 0;padding:0;list-style:none;max-width:80ch}
-.doc li{position:relative;padding-left:22px;margin:9px 0;color:var(--ink-2);line-height:1.65}
-.doc li::before{content:"·";position:absolute;left:0;color:var(--ink-3);font-weight:700}
+.doc li{position:relative;padding-inline-start:22px;margin:9px 0;color:var(--ink-2);line-height:1.65}
+.doc li::before{content:"·";position:absolute;inset-inline-start:3px;color:var(--ink-3);font-weight:700}
 .doc strong{color:var(--ink);font-weight:650}
-.doc code{font-family:var(--mono);font-size:.82em;background:var(--field);padding:.1em .4em;color:var(--ink)}
+.doc code{font-family:var(--sans);font-size:.85em;background:var(--field);padding:.1em .4em;color:var(--ink)}
 .doc .tbl-wrap{overflow-x:auto;margin:24px 0;border-top:1px solid var(--rule-2);border-bottom:1px solid var(--rule-2)}
 .doc table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
-.doc thead th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--ink-3);font-weight:500;padding:12px 16px;border-bottom:1px solid var(--rule-2);white-space:nowrap}
+.doc thead th{text-align:start;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);font-weight:600;padding:12px 16px;border-bottom:1px solid var(--rule-2);white-space:nowrap}
 .doc tbody td{padding:12px 16px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-2)}
 .doc tbody tr:last-child td{border-bottom:0}
 .doc tbody td:first-child{color:var(--ink)}
 
-/* ---------- footer ---------- */
+/* footer */
 footer{border-top:1px solid var(--rule-2)}
-.foot-in{padding-block:40px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
-  font-family:var(--mono);font-size:12px;color:var(--ink-3);line-height:1.8}
+.foot-in{padding-block:40px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-3);line-height:1.8}
 .foot-in a{color:var(--ink-2);border-bottom:1px solid var(--rule-2)}
 .foot-in a:hover{color:var(--ink)}
 
-/* ---------- responsive ---------- */
-@media (max-width:820px){ .tnav{display:none} }
+@media (max-width:860px){ .tnav{display:none} }
 @media (max-width:560px){
-  .topbar-in{gap:12px}
+  .topbar-in{gap:10px}
   .e-figs{gap:16px}
   .rmeta .hint{display:none}
-  .mast-dek br{display:none}
 }
 </style>
 </head>
@@ -246,13 +230,17 @@ footer{border-top:1px solid var(--rule-2)}
 
 <header class="topbar" id="topbar">
   <div class="wrap topbar-in">
-    <a href="#top" class="wm">AWESOME<i>·</i>NPU</a>
+    <a href="#top" class="wm">Awesome NPU</a>
     <nav class="tnav">
-      <a href="#explorer">제품</a><a href="#raspberry-pi-accelerators">라즈베리파이</a><a href="#software">소프트웨어</a><a href="#glossary">용어</a>
+      <a href="#explorer" data-i18n="nav_products">Products</a>
+      <a href="#raspberry-pi-accelerators" data-i18n="nav_rpi">Raspberry Pi</a>
+      <a href="#software" data-i18n="nav_software">Software</a>
+      <a href="#glossary" data-i18n="nav_glossary">Glossary</a>
     </nav>
     <div class="tb-r">
+      <select id="langSel" class="langsel" aria-label="Language"></select>
       <a id="repoLink" class="ibtn" href="#" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.34 9.34 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg></a>
-      <button id="themeBtn" class="ibtn" aria-label="테마 전환"></button>
+      <button id="themeBtn" class="ibtn" aria-label="Theme"></button>
     </div>
   </div>
 </header>
@@ -261,9 +249,9 @@ footer{border-top:1px solid var(--rule-2)}
 
 <header class="mast">
   <div class="wrap mast-in">
-    <div class="mast-kicker">국내외 NPU · AI 추론 가속기 레퍼런스</div>
-    <h1 class="mast-title">NPU 하드웨어<br>데이터북</h1>
-    <p class="mast-dek">MCU급 온디바이스 칩부터 데이터센터 추론 카드까지, 제조사 공식 자료 기반으로 정리한 인터랙티브 카탈로그. <span class="spot mono">⚠</span> 는 단독 판매 완제품이 아니라 호스트 시스템에 통합해야 하는 내장형 제품입니다.</p>
+    <div class="mast-kicker" data-i18n="kicker">NPU hardware reference</div>
+    <h1 class="mast-title" data-i18n="mast_title">NPU Hardware Databook</h1>
+    <p class="mast-dek" data-i18n="dek">An interactive catalog of NPUs, from MCU-class on-device chips to datacenter inference cards, compiled from official vendor sources. ⚠ marks non-standalone parts that must be integrated into a host system.</p>
     <p class="mast-meta" id="meta"><!--__META__--></p>
   </div>
 </header>
@@ -275,64 +263,62 @@ footer{border-top:1px solid var(--rule-2)}
     <div class="crow">
       <label class="search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="search" id="search" aria-label="제품 검색" placeholder="제품 · 벤더 · 키워드 검색" autocomplete="off">
+        <input type="search" id="search" aria-label="Search" data-i18n-ph="search_ph" placeholder="Search products, vendors, keywords" autocomplete="off">
       </label>
       <div class="cbar">
-        <div class="viewt" role="group" aria-label="보기">
-          <button id="viewTable" aria-pressed="true">표</button>
-          <button id="viewCard" aria-pressed="false">카드</button>
+        <div class="viewt" role="group" aria-label="View">
+          <button id="viewTable" aria-pressed="true" data-i18n="view_table">Table</button>
+          <button id="viewCard" aria-pressed="false" data-i18n="view_cards">Cards</button>
         </div>
         <div class="selwrap">
-          <select class="sort" id="sortSel" aria-label="정렬">
-            <option value="default">정렬 · 기본</option>
-            <option value="tops-desc">성능 높은순</option>
-            <option value="tops-asc">성능 낮은순</option>
-            <option value="price-asc">가격 낮은순</option>
-            <option value="price-desc">가격 높은순</option>
-            <option value="date-desc">출시 최신순</option>
-            <option value="date-asc">출시 오래된순</option>
-            <option value="vendor">벤더순</option>
+          <select class="sort" id="sortSel" aria-label="Sort">
+            <option value="default" data-i18n="sort_default">Default order</option>
+            <option value="tops-desc" data-i18n="sort_tops_desc">Highest TOPS</option>
+            <option value="tops-asc" data-i18n="sort_tops_asc">Lowest TOPS</option>
+            <option value="price-asc" data-i18n="sort_price_asc">Lowest price</option>
+            <option value="price-desc" data-i18n="sort_price_desc">Highest price</option>
+            <option value="date-desc" data-i18n="sort_date_desc">Newest</option>
+            <option value="date-asc" data-i18n="sort_date_asc">Oldest</option>
+            <option value="vendor" data-i18n="sort_vendor">By vendor</option>
           </select>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
         </div>
-        <button class="txtbtn f" id="filterToggle" aria-expanded="false" aria-controls="drawer">필터 <span class="fc" id="fcount" hidden>0</span></button>
+        <button class="txtbtn f" id="filterToggle" aria-expanded="false" aria-controls="drawer"><span data-i18n="filters">Filters</span> <span class="fc" id="fcount" hidden>0</span></button>
       </div>
     </div>
     <div class="quick" id="quick">
-      <div class="qgroup"><span class="qlab">유형</span><div id="q-origin" style="display:flex;gap:14px"></div></div>
-      <span class="qdiv"></span>
-      <div class="qgroup"><span class="qlab">체급</span><div id="q-segment" style="display:flex;gap:14px"></div></div>
+      <div class="qgroup"><span class="qlab" data-i18n="class_label">Class</span><div id="q-segment" style="display:flex;gap:14px"></div></div>
     </div>
   </div>
 </div>
 
 <div class="drawer" id="drawer">
   <div class="wrap drawer-in">
-    <div><div class="flabel">국가</div><div class="chips" id="f-country"></div></div>
-    <div><div class="flabel">폼팩터</div><div class="chips" id="f-form"></div></div>
-    <div style="grid-column:span 2;min-width:0"><div class="flabel">벤더</div><div class="chips" id="f-vendor"></div></div>
+    <div><div class="flabel" data-i18n="country">Country</div><div class="chips" id="f-country"></div></div>
+    <div><div class="flabel" data-i18n="form">Form factor</div><div class="chips" id="f-form"></div></div>
+    <div style="grid-column:span 2;min-width:0"><div class="flabel" data-i18n="vendor">Vendor</div><div class="chips" id="f-vendor"></div></div>
     <div>
-      <div class="flabel">출시일 범위</div>
-      <div class="date"><input type="month" id="dateFrom" aria-label="시작"><span class="til">~</span><input type="month" id="dateTo" aria-label="종료"></div>
-      <label class="chk"><input type="checkbox" id="includeNoDate" checked>출시일 미상 포함</label>
+      <div class="flabel" data-i18n="release_range">Release date</div>
+      <div class="date"><input type="month" id="dateFrom" data-i18n-aria="date_from" aria-label="From"><span class="til">~</span><input type="month" id="dateTo" data-i18n-aria="date_to" aria-label="To"></div>
+      <label class="chk"><input type="checkbox" id="includeNoDate" checked><span data-i18n="include_undated">Include undated</span></label>
     </div>
-    <div class="drawer-foot"><button class="txtbtn reset" id="resetBtn">필터 초기화 ↺</button></div>
+    <div class="drawer-foot"><button class="txtbtn reset" id="resetBtn" data-i18n="reset">Reset filters</button></div>
   </div>
 </div>
 
 <main class="wrap">
   <div class="rmeta">
     <span id="count"><!--__COUNT__--></span>
-    <span class="hint muted">제품명 클릭 → 제조사 공식 페이지</span>
+    <span class="hint muted" data-i18n="hint">Click a product to open the vendor's official page</span>
   </div>
   <div class="tscroll" id="tablewrap"><!--__TABLE__--></div>
   <div id="grid" hidden></div>
-  <div id="empty" hidden>조건에 맞는 제품이 없습니다.</div>
+  <div id="empty" hidden data-i18n="no_results">No matching products.</div>
 </main>
 
 <section class="section about">
   <div class="wrap about-in">
-    <div class="shead">데이터 안내 · About the data</div>
+    <div class="shead" data-i18n="about_head">About the data</div>
     <div id="about" class="doc"><!--__ABOUT__--></div>
   </div>
 </section>
@@ -343,7 +329,7 @@ footer{border-top:1px solid var(--rule-2)}
 
 <footer>
   <div class="wrap foot-in">
-    <p>각 제조사 공식 자료 및 공개 보도(2025–2026) 기반 · 참고용 자료입니다.</p>
+    <p data-i18n="footer_note">Reference data compiled from official vendor sources and public reporting (2025–2026).</p>
     <p><a id="repoLink2" href="#" target="_blank" rel="noopener">github.com/pleahmacaka/awesome-npu ↗</a></p>
   </div>
 </footer>
@@ -352,74 +338,72 @@ footer{border-top:1px solid var(--rule-2)}
 
 <script>
 (function(){
-  const DATA = window.DATA || { products:[], introHTML:"", docsHTML:"", generatedAt:"", repo:"" };
+  const DATA = window.DATA || { products:[], repo:"" };
+  const I18N = window.I18N || { en:{} };
   const products = DATA.products;
   const $ = id => document.getElementById(id);
   const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const SUPPORTED = ["ko","en","ja","zh","es","he"];
 
-  const CNAME = { KR:"대한민국", US:"미국", NL:"네덜란드", CN:"중국", NO:"노르웨이", IL:"이스라엘", JP:"일본", DE:"독일", FR:"프랑스", TW:"대만" };
-  const SEG = { mcu:"MCU", edge:"EDGE", datacenter:"DATACENTER" };
-  const SEGK = { mcu:"MCU급", edge:"엣지", datacenter:"데이터센터" };
-  const FORM_ORDER = ["M.2","PCIe","USB","MXM","Box","SoC","Server/System"];
+  let curLang = "en", L = I18N.en, regionDN = null;
+  function setRegionDN(lang){ try{ regionDN = new Intl.DisplayNames([lang],{type:"region"}); }catch(e){ regionDN = null; } }
+  const regionOf = code => { try{ return (regionDN && regionDN.of(code)) || code; }catch(e){ return code; } };
+  const segLabel = s => L["seg_"+s] || s;
+
   const EXT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>';
   const SUN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
   const MOON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>';
 
-  const cc = p => `<span class="cc ${p.origin==='kr'?'kr':''}" title="${CNAME[p.country]||p.country}">${esc(p.country)}</span>`;
+  const cc = p => `<span class="cc" title="${esc(regionOf(p.country))}">${esc(p.country)}</span>`;
   const metricParts = p => {
     const d=p.computeDisplay||"-"; if(d==="-") return {num:"-",unit:"",dim:true};
     const i=d.indexOf(" "); return {num:i<0?d:d.slice(0,i),unit:i<0?"":d.slice(i+1),dim:false};
   };
   const tagLine = t => (t||[]).map(esc).join('<span class="s">·</span>');
 
-  const FILTERS = {
-    country:{el:"f-country", opts:[...new Set(products.map(p=>p.country))].sort().map(c=>({key:c,label:`${c} · ${CNAME[c]||c}`}))},
-    form:{el:"f-form", opts:[...new Set(products.map(p=>p.formGroup))].sort((a,b)=>FORM_ORDER.indexOf(a)-FORM_ORDER.indexOf(b)).map(f=>({key:f,label:f}))},
-    vendor:{el:"f-vendor", opts:[...new Set(products.map(p=>p.vendor))].sort().map(v=>({key:v,label:v}))},
-  };
-  const ORIGIN=[{key:"all",label:"전체"},{key:"kr",label:"국내"},{key:"global",label:"해외"}];
-  const SEGS=[{key:"mcu",label:"MCU급"},{key:"edge",label:"엣지"},{key:"datacenter",label:"데이터센터"}];
+  const FORM_ORDER = ["M.2","PCIe","USB","MXM","Box","SoC","Server/System"];
+  const FORMS = [...new Set(products.map(p=>p.formGroup))].sort((a,b)=>FORM_ORDER.indexOf(a)-FORM_ORDER.indexOf(b));
+  const VENDORS = [...new Set(products.map(p=>p.vendor))].sort();
+  const SEGS = ["mcu","edge","datacenter"];
 
-  const state={search:"",view:"table",sort:"default",origin:"all",
-    country:new Set(),segment:new Set(),form:new Set(),vendor:new Set(),dateFrom:null,dateTo:null,includeNoDate:true};
+  const state = { search:"", view:"table", sort:"default",
+    segment:new Set(), country:new Set(), form:new Set(), vendor:new Set(),
+    dateFrom:null, dateTo:null, includeNoDate:true };
 
-  function multi(hostId,opts,set){
-    const host=$(hostId);host.innerHTML="";
-    opts.forEach(o=>{const b=document.createElement("button");b.className="tog";b.type="button";b.textContent=o.label;
-      b.setAttribute("aria-pressed",set.has(o.key)?"true":"false");
-      b.onclick=()=>{set.has(o.key)?(set.delete(o.key),b.setAttribute("aria-pressed","false")):(set.add(o.key),b.setAttribute("aria-pressed","true"));render();fcount();};
-      host.appendChild(b);});
+  function chipBtn(label, pressed, onclick){
+    const b=document.createElement("button"); b.className="tog"; b.type="button"; b.textContent=label;
+    b.setAttribute("aria-pressed", pressed?"true":"false"); b.onclick=onclick; return b;
   }
-  function single(hostId,opts,key){
-    const host=$(hostId);host.innerHTML="";
-    opts.forEach(o=>{const b=document.createElement("button");b.className="tog";b.type="button";b.textContent=o.label;
-      b.setAttribute("aria-pressed",state[key]===o.key?"true":"false");
-      b.onclick=()=>{state[key]=o.key;host.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed","false"));b.setAttribute("aria-pressed","true");render();};
-      host.appendChild(b);});
+  function multi(hostId, opts, set){
+    const host=$(hostId); host.innerHTML="";
+    opts.forEach(o=>host.appendChild(chipBtn(o.label, set.has(o.key), function(){
+      set.has(o.key) ? (set.delete(o.key), this.setAttribute("aria-pressed","false")) : (set.add(o.key), this.setAttribute("aria-pressed","true"));
+      render(); fcount();
+    })));
   }
-  function segQuick(){
-    const host=$("q-segment");host.innerHTML="";
-    SEGS.forEach(o=>{const b=document.createElement("button");b.className="tog";b.type="button";b.textContent=o.label;
-      b.setAttribute("aria-pressed",state.segment.has(o.key)?"true":"false");
-      b.onclick=()=>{state.segment.has(o.key)?(state.segment.delete(o.key),b.setAttribute("aria-pressed","false")):(state.segment.add(o.key),b.setAttribute("aria-pressed","true"));render();};
-      host.appendChild(b);});
+  function buildFilters(){
+    const seg=$("q-segment"); seg.innerHTML="";
+    SEGS.forEach(k=>seg.appendChild(chipBtn(segLabel(k), state.segment.has(k), function(){
+      state.segment.has(k) ? (state.segment.delete(k), this.setAttribute("aria-pressed","false")) : (state.segment.add(k), this.setAttribute("aria-pressed","true"));
+      render();
+    })));
+    multi("f-country", [...new Set(products.map(p=>p.country))].sort().map(c=>({key:c,label:regionOf(c)})), state.country);
+    multi("f-form", FORMS.map(f=>({key:f,label:f})), state.form);
+    multi("f-vendor", VENDORS.map(v=>({key:v,label:v})), state.vendor);
   }
-  function buildAll(){ single("q-origin",ORIGIN,"origin"); segQuick();
-    multi("f-country",FILTERS.country.opts,state.country); multi("f-form",FILTERS.form.opts,state.form); multi("f-vendor",FILTERS.vendor.opts,state.vendor); }
   function fcount(){ const n=state.country.size+state.form.size+state.vendor.size+((state.dateFrom||state.dateTo)?1:0)+(state.includeNoDate?0:1);
     const e=$("fcount"); if(n){e.hidden=false;e.textContent=n;}else e.hidden=true; }
 
   function matches(p){
-    if(state.origin!=="all"&&p.origin!==state.origin)return false;
-    if(state.country.size&&!state.country.has(p.country))return false;
     if(state.segment.size&&!state.segment.has(p.segment))return false;
+    if(state.country.size&&!state.country.has(p.country))return false;
     if(state.form.size&&!state.form.has(p.formGroup))return false;
     if(state.vendor.size&&!state.vendor.has(p.vendor))return false;
     if(state.dateFrom||state.dateTo){ if(!p.releaseDate){if(!state.includeNoDate)return false;}
       else{const rf=state.dateFrom?state.dateFrom+"-01":null,rt=state.dateTo?state.dateTo+"-31":null;
         if(rf&&p.releaseDate<rf)return false;if(rt&&p.releaseDate>rt)return false;} }
     else if(!p.releaseDate&&!state.includeNoDate)return false;
-    if(state.search){ const hay=[p.vendor,p.product,p.chip,CNAME[p.country],p.country,p.form,p.priceDisplay,p.memory,p.useCase,...(p.tags||[]),...Object.values(p.specs||{}),p.note].join(" ").toLowerCase();
+    if(state.search){ const hay=[p.vendor,p.product,p.chip,regionOf(p.country),p.country,p.form,p.memory,p.useCase,...(p.tags||[]),...Object.values(p.specs||{}),p.note].join(" ").toLowerCase();
       if(!hay.includes(state.search))return false; }
     return true;
   }
@@ -435,49 +419,57 @@ footer{border-top:1px solid var(--rule-2)}
     return a;
   }
 
-  function entry(p){
-    const m=metricParts(p);
-    let detail=Object.entries(p.specs||{}).filter(([k])=>!["성능","메모리","출시"].includes(k));
-    if(!detail.length&&p.useCase&&!(p.tags&&p.tags.length))detail=[["용도",p.useCase]];
-    const specs=detail.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
-    const tags=(p.tags&&p.tags.length)?`<div class="e-tags tags">${tagLine(p.tags)}</div>`:"";
-    const note=p.note?`<p class="e-note">${esc(p.note)}</p>`:"";
-    const warn=p.standalone?"":`<div class="e-warn">⚠ 단독 제품 아님 · 호스트 SoC·보드·시스템에 통합 필요</div>`;
-    return `<article class="entry" data-o="${p.origin}">
-      <div class="e-top"><span class="e-vendor">${esc(p.vendor)}</span>${cc(p)}</div>
-      <a class="e-name" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a>
-      <div class="e-sub">${p.chip?esc(p.chip)+" · ":""}${SEGK[p.segment]||p.segment} / ${esc(p.form)}${p.standalone?"":" / 통합형"} / 출시 ${esc(p.releaseDisplay)}</div>
-      <div class="e-figs">
-        <div><i>성능</i><b class="perf ${m.dim?'dim':''}">${esc(m.num)}${m.unit?`<span class="u">${esc(m.unit)}</span>`:""}</b></div>
-        <div><i>메모리</i><b title="${esc(p.memory)}">${esc(p.memory||"-")}</b></div>
-        <div><i>가격</i><b class="${p.priceUSD!=null?'':'dim'}">${esc(p.priceDisplay)}</b></div>
-      </div>
-      ${specs?`<dl class="e-specs">${specs}</dl>`:""}
-      ${tags}${note}${warn}
-    </article>`;
-  }
-
   function row(p,i){
-    const perf=(p.specs&&(p.specs["성능"]||p.specs["DX-L2"]))||p.computeDisplay||"-";
-    const power=(p.specs&&(p.specs["전력"]||p.specs["효율"]))||"-";
-    const intg=p.standalone?"":' <span class="intg" title="호스트 통합 필요">⚠</span>';
+    const ko = curLang==="ko";
+    const perf = (ko && p.specs && (p.specs["성능"]||p.specs["DX-L2"])) || p.computeDisplay || "-";
+    const power = (p.specs && (p.specs["전력"] || (ko?p.specs["효율"]:""))) || "-";
+    const price = p.priceDisplay==null ? L.undisclosed : p.priceDisplay;
+    const rel = p.releaseDisplay || L.unknown;
+    const intg = p.standalone?"":` <span class="intg" title="${esc(L.warn_integrated)}">⚠</span>`;
     return `<tr>
       <td class="idx">${String(i+1).padStart(2,"0")}</td>
       <td class="prod"><a class="pn" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a>${p.chip?`<div class="pchip">${esc(p.chip)}</div>`:""}</td>
       <td class="muted">${esc(p.vendor)}</td>
       <td>${cc(p)}</td>
-      <td><span class="seg">${SEG[p.segment]||p.segment}</span></td>
+      <td><span class="seg">${esc(segLabel(p.segment))}</span></td>
       <td>${esc(p.form)}${intg}</td>
       <td class="r"><span class="num">${esc(perf)}</span></td>
       <td class="muted">${esc(p.memory||"-")}</td>
       <td><span class="num">${esc(power)}</span></td>
-      <td class="r"><span class="num ${p.priceUSD!=null?'':'muted'}">${esc(p.priceDisplay)}</span></td>
-      <td class="r"><span class="num ${p.releaseDate?'':'muted'}">${esc(p.releaseDisplay)}</span></td>
+      <td class="r"><span class="num ${p.priceUSD!=null?'':'muted'}">${esc(price)}</span></td>
+      <td class="r"><span class="num ${p.releaseDate?'':'muted'}">${esc(rel)}</span></td>
     </tr>`;
   }
-  const THEAD=`<thead><tr><th scope="col"><span class="sr">번호</span></th><th scope="col">제품 / 칩</th><th scope="col">벤더</th><th scope="col">국가</th><th scope="col">체급</th><th scope="col">폼팩터</th><th scope="col" class="r">성능</th><th scope="col">메모리</th><th scope="col">전력 / 효율</th><th scope="col" class="r">가격</th><th scope="col" class="r">출시</th></tr></thead>`;
-  function table(list){
-    return `<table class="db">${THEAD}<tbody>${list.map(row).join("")}</tbody></table>`;
+  function buildThead(){ const th=(k,r)=>`<th scope="col"${r?' class="r"':''}>${esc(L[k])}</th>`;
+    return `<thead><tr><th scope="col"><span class="sr">#</span></th>${th('col_product')}${th('col_vendor')}${th('col_country')}${th('col_class')}${th('col_form')}${th('col_perf',1)}${th('col_memory')}${th('col_power')}${th('col_price',1)}${th('col_release',1)}</tr></thead>`; }
+  function table(list){ return `<table class="db">${buildThead()}<tbody>${list.map(row).join("")}</tbody></table>`; }
+
+  function entry(p){
+    const ko = curLang==="ko";
+    const m=metricParts(p);
+    let detail=[];
+    if(ko){ detail=Object.entries(p.specs||{}).filter(([k])=>!["성능","메모리","출시"].includes(k));
+      if(!detail.length && p.useCase && !(p.tags&&p.tags.length)) detail=[["용도",p.useCase]]; }
+    else if(p.useCase){ detail=[[L.uc, p.useCase]]; }
+    const specs=detail.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
+    const tags=(ko && p.tags && p.tags.length)?`<div class="e-tags tags">${tagLine(p.tags)}</div>`:"";
+    const note=(ko && p.note)?`<p class="e-note">${esc(p.note)}</p>`:"";
+    const warn=p.standalone?"":`<div class="e-warn">⚠ ${esc(L.warn_integrated)}</div>`;
+    const price = p.priceDisplay==null ? L.undisclosed : p.priceDisplay;
+    const rel = p.releaseDisplay || L.unknown;
+    const sub=[p.chip, segLabel(p.segment), p.form, (p.standalone?null:L.integrated), rel].filter(Boolean).map(esc).join(" / ");
+    return `<article class="entry">
+      <div class="e-top"><span class="e-vendor">${esc(p.vendor)}</span>${cc(p)}</div>
+      <a class="e-name" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a>
+      <div class="e-sub">${sub}</div>
+      <div class="e-figs">
+        <div><i>${esc(L.col_perf)}</i><b class="perf ${m.dim?'dim':''}">${esc(m.num)}${m.unit?`<span class="u">${esc(m.unit)}</span>`:""}</b></div>
+        <div><i>${esc(L.col_memory)}</i><b title="${esc(p.memory)}">${esc(p.memory||"-")}</b></div>
+        <div><i>${esc(L.col_price)}</i><b class="${p.priceUSD!=null?'':'dim'}">${esc(price)}</b></div>
+      </div>
+      ${specs?`<dl class="e-specs">${specs}</dl>`:""}
+      ${tags}${note}${warn}
+    </article>`;
   }
 
   function render(){
@@ -486,25 +478,51 @@ footer{border-top:1px solid var(--rule-2)}
     if(!list.length){tw.hidden=true;grid.hidden=true;empty.hidden=false;}
     else if(state.view==="card"){empty.hidden=true;tw.hidden=true;grid.hidden=false;grid.innerHTML=list.map(entry).join("");}
     else{empty.hidden=true;grid.hidden=true;tw.hidden=false;tw.innerHTML=table(list);}
-    const kr=list.filter(p=>p.origin==="kr").length;
-    $("count").innerHTML=`<b>${list.length}</b> 제품 · 국내 <b>${kr}</b> / 해외 <b>${list.length-kr}</b>`;
+    $("count").innerHTML=`<b>${list.length}</b> ${esc(L.w_products)}`;
   }
   function setView(v){ state.view=v; $("viewTable").setAttribute("aria-pressed",v==="table");$("viewCard").setAttribute("aria-pressed",v==="card"); render(); }
 
-  function meta(){
-    const kr=products.filter(p=>p.origin==="kr").length, seg=k=>products.filter(p=>p.segment===k).length;
-    $("meta").innerHTML=`총 <b>${products.length}</b>종<span class="sep">/</span>국내 <b>${kr}</b> · 해외 <b>${products.length-kr}</b><span class="sep">/</span>데이터센터 <b>${seg("datacenter")}</b> · 엣지 <b>${seg("edge")}</b> · MCU <b>${seg("mcu")}</b>`;
+  function buildMeta(){
+    const vN=new Set(products.map(p=>p.vendor)).size, cN=new Set(products.map(p=>p.country)).size;
+    $("meta").innerHTML=`<span><b>${products.length}</b> ${esc(L.w_products)}</span><span><b>${vN}</b> ${esc(L.w_vendors)}</span><span><b>${cN}</b> ${esc(L.w_countries)}</span>`;
   }
 
+  // ---- i18n ----
+  function detectLang(){
+    try{ const q=new URLSearchParams(location.search).get("lang"); if(q&&SUPPORTED.includes(q)) return q; }catch(e){}
+    try{ const s=localStorage.getItem("npu-lang"); if(s&&SUPPORTED.includes(s)) return s; }catch(e){}
+    const cands=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||"en"];
+    for(const c of cands){ let b=String(c).toLowerCase().split("-")[0]; if(b==="iw")b="he"; if(b==="zh")return "zh"; if(SUPPORTED.includes(b))return b; }
+    return "en";
+  }
+  function buildLangSel(){
+    const sel=$("langSel"); sel.innerHTML="";
+    SUPPORTED.forEach(lg=>{ const o=document.createElement("option"); o.value=lg; o.textContent=(I18N[lg]&&I18N[lg]._name)||lg; sel.appendChild(o); });
+    sel.onchange=e=>applyLang(e.target.value,false);
+  }
+  function applyLang(lang, initial){
+    curLang = SUPPORTED.includes(lang)?lang:"en";
+    L = I18N[curLang]||I18N.en; setRegionDN(curLang);
+    document.documentElement.lang = curLang;
+    document.documentElement.dir = (L._dir||"ltr");
+    document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.getAttribute("data-i18n"); if(L[k]!=null) el.textContent=L[k];});
+    document.querySelectorAll("[data-i18n-ph]").forEach(el=>{const k=el.getAttribute("data-i18n-ph"); if(L[k]!=null) el.placeholder=L[k];});
+    document.querySelectorAll("[data-i18n-aria]").forEach(el=>{const k=el.getAttribute("data-i18n-aria"); if(L[k]!=null) el.setAttribute("aria-label",L[k]);});
+    if($("langSel")) $("langSel").value=curLang;
+    buildFilters(); buildMeta();
+    if(!(initial && curLang==="en")) render();
+    try{ localStorage.setItem("npu-lang",curLang); }catch(e){}
+    setTimeout(setSticky,0);
+  }
+
+  // ---- theme ----
   function setTheme(t){ document.documentElement.setAttribute("data-theme",t); $("themeBtn").innerHTML=t==="dark"?MOON:SUN; try{localStorage.setItem("npu-theme",t);}catch(e){} }
   $("themeBtn").onclick=()=>setTheme(document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark");
-  (function(){let q=null;try{q=new URLSearchParams(location.search).get("theme");}catch(e){}
-    let s=null;try{s=localStorage.getItem("npu-theme");}catch(e){}
-    setTheme((q==="light"||q==="dark")?q:(s||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")));})();
+  (function(){let s=null;try{s=localStorage.getItem("npu-theme");}catch(e){} setTheme(s||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"));})();
 
-  function setSticky(){ document.documentElement.style.setProperty("--stick-top",$("topbar").offsetHeight+"px");
-    document.documentElement.style.setProperty("--stick-controls",$("controls").offsetHeight+"px"); }
+  function setSticky(){ document.documentElement.style.setProperty("--stick-top",$("topbar").offsetHeight+"px"); }
 
+  // ---- events ----
   $("search").oninput=e=>{state.search=e.target.value.toLowerCase().trim();render();};
   $("sortSel").onchange=e=>{state.sort=e.target.value;render();};
   $("dateFrom").onchange=e=>{state.dateFrom=e.target.value||null;render();fcount();};
@@ -512,17 +530,18 @@ footer{border-top:1px solid var(--rule-2)}
   $("includeNoDate").onchange=e=>{state.includeNoDate=e.target.checked;render();fcount();};
   $("viewTable").onclick=()=>setView("table"); $("viewCard").onclick=()=>setView("card");
   $("filterToggle").onclick=()=>{const d=$("drawer");const o=d.classList.toggle("open");$("filterToggle").setAttribute("aria-expanded",String(o));setTimeout(setSticky,280);};
-  $("resetBtn").onclick=()=>{Object.assign(state,{search:"",origin:"all",sort:"default",dateFrom:null,dateTo:null,includeNoDate:true});
-    state.country.clear();state.segment.clear();state.form.clear();state.vendor.clear();
+  $("resetBtn").onclick=()=>{Object.assign(state,{search:"",sort:"default",dateFrom:null,dateTo:null,includeNoDate:true});
+    state.segment.clear();state.country.clear();state.form.clear();state.vendor.clear();
     $("search").value="";$("dateFrom").value="";$("dateTo").value="";$("includeNoDate").checked=true;$("sortSel").value="default";
-    buildAll();fcount();render();};
+    buildFilters();fcount();render();};
   let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(setSticky,150);});
 
+  // ---- init ----
   if(DATA.repo){$("repoLink").href=DATA.repo;$("repoLink2").href=DATA.repo;}
-  buildAll();fcount();
-  // 초기 표·통계·문서는 서버에서 렌더됨(SSR). render()는 검색·필터·정렬·보기 전환 시에만 실행돼 레이아웃 시프트가 없음.
   $("viewTable").setAttribute("aria-pressed","true");$("viewCard").setAttribute("aria-pressed","false");
-  setSticky();setTimeout(setSticky,200);
+  buildLangSel();
+  applyLang(detectLang(), true);
+  setSticky(); setTimeout(setSticky,200);
 })();
 </script>
 </body>

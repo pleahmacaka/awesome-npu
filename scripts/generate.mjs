@@ -18,6 +18,7 @@ const __dir = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dir, '..');
 const REPO_URL = 'https://github.com/pleahmacaka/awesome-npu';
 const PAGES_URL = 'https://pleahmacaka.github.io/awesome-npu/';
+const I18N = JSON.parse(fs.readFileSync(path.join(__dir, 'i18n.json'), 'utf8'));
 
 const FLAGS = { KR:'🇰🇷', US:'🇺🇸', NL:'🇳🇱', CN:'🇨🇳', NO:'🇳🇴', IL:'🇮🇱', JP:'🇯🇵', DE:'🇩🇪', FR:'🇫🇷', TW:'🇹🇼' };
 const CNAME_UI = { KR:'대한민국', US:'미국', NL:'네덜란드', CN:'중국', NO:'노르웨이', IL:'이스라엘', JP:'일본', DE:'독일', FR:'프랑스', TW:'대만' };
@@ -190,7 +191,7 @@ function parseCompute(raw, isDatacenter){
 }
 function parseReleased(raw){
   const s = (raw||'').trim();
-  if (!s || s === '-') return { date:null, display:'미상' };
+  if (!s || s === '-') return { date:null, display:null }; // null = 미상(다국어 렌더 시 번역)
   if (/^\d{4}-\d{2}$/.test(s)) return { date:s+'-01', display:s.replace('-','.') };
   if (/^\d{4}$/.test(s)) return { date:s+'-01-01', display:s };
   const y = s.match(/\d{4}/);
@@ -205,7 +206,7 @@ function parsePrice(raw, enrich){
     const m = s.match(/\$\s?([\d,]+(?:\.\d+)?)/);
     if (m) priceUSD = parseFloat(m[1].replace(/,/g,''));
   }
-  const display = (!s || s === '-') ? '미공개' : s;
+  const display = (!s || s === '-') ? null : s; // null = 미공개(다국어 렌더 시 번역)
   return { priceUSD, display };
 }
 function formGroup(form){
@@ -306,31 +307,37 @@ const introHTML = renderMarkdown(introMd);
 const docsHTML = renderMarkdown(docsMd);
 const DATA = { products, generatedAt: new Date().toISOString().slice(0,10), repo: REPO_URL };
 
-// ---- SSR: 초기 표·통계를 정적 HTML로 미리 렌더 (레이아웃 시프트 방지 + 스크립트 없이도 내용 노출) ----
+// ---- SSR: 초기 표·통계를 정적 HTML로 미리 렌더 (레이아웃 시프트 방지 + 스크립트 없이도 내용 노출). 언어 기본값 = 영어(en) ----
+const T = I18N.en;
+const regionEN = new Intl.DisplayNames(['en'], { type:'region' });
+const cnameEN = code => { try { return regionEN.of(code) || code; } catch (e) { return code; } };
 const EXT_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>';
-const SEG_T = { mcu:'MCU', edge:'EDGE', datacenter:'DATACENTER' };
-const ccS = p => `<span class="cc ${p.origin==='kr'?'kr':''}" title="${escHtml(CNAME_UI[p.country]||p.country)}">${escHtml(p.country)}</span>`;
+const SEG_T = { mcu:T.seg_mcu, edge:T.seg_edge, datacenter:T.seg_datacenter };
+const ccS = p => `<span class="cc" title="${escHtml(cnameEN(p.country))}">${escHtml(p.country)}</span>`;
 function rowS(p,i){
-  const perf=(p.specs&&(p.specs['성능']||p.specs['DX-L2']))||p.computeDisplay||'-';
-  const power=(p.specs&&(p.specs['전력']||p.specs['효율']))||'-';
-  const intg=p.standalone?'':' <span class="intg" title="호스트 통합 필요">⚠</span>';
+  const perf = p.computeDisplay || '-';
+  const power = (p.specs && p.specs['전력']) || '-';
+  const intg = p.standalone ? '' : ` <span class="intg" title="${escHtml(T.warn_integrated)}">⚠</span>`;
+  const price = p.priceDisplay==null ? T.undisclosed : p.priceDisplay;
+  const rel = p.releaseDisplay || T.unknown;
   return `<tr><td class="idx">${String(i+1).padStart(2,'0')}</td>`+
     `<td class="prod"><a class="pn" href="${escHtml(p.url)}" target="_blank" rel="noopener">${escHtml(p.product)}${EXT_SVG}</a>${p.chip?`<div class="pchip">${escHtml(p.chip)}</div>`:''}</td>`+
     `<td class="muted">${escHtml(p.vendor)}</td><td>${ccS(p)}</td>`+
-    `<td><span class="seg">${SEG_T[p.segment]||p.segment}</span></td>`+
+    `<td><span class="seg">${escHtml(SEG_T[p.segment]||p.segment)}</span></td>`+
     `<td>${escHtml(p.form)}${intg}</td>`+
     `<td class="r"><span class="num">${escHtml(perf)}</span></td>`+
     `<td class="muted">${escHtml(p.memory||'-')}</td>`+
     `<td><span class="num">${escHtml(power)}</span></td>`+
-    `<td class="r"><span class="num ${p.priceUSD!=null?'':'muted'}">${escHtml(p.priceDisplay)}</span></td>`+
-    `<td class="r"><span class="num ${p.releaseDate?'':'muted'}">${escHtml(p.releaseDisplay)}</span></td></tr>`;
+    `<td class="r"><span class="num ${p.priceUSD!=null?'':'muted'}">${escHtml(price)}</span></td>`+
+    `<td class="r"><span class="num ${p.releaseDate?'':'muted'}">${escHtml(rel)}</span></td></tr>`;
 }
-const THEAD = '<thead><tr><th scope="col"><span class="sr">번호</span></th><th scope="col">제품 / 칩</th><th scope="col">벤더</th><th scope="col">국가</th><th scope="col">체급</th><th scope="col">폼팩터</th><th scope="col" class="r">성능</th><th scope="col">메모리</th><th scope="col">전력 / 효율</th><th scope="col" class="r">가격</th><th scope="col" class="r">출시</th></tr></thead>';
+const TH = (k,r) => `<th scope="col"${r?' class="r"':''}>${escHtml(T[k])}</th>`;
+const THEAD = `<thead><tr><th scope="col"><span class="sr">#</span></th>${TH('col_product')}${TH('col_vendor')}${TH('col_country')}${TH('col_class')}${TH('col_form')}${TH('col_perf',1)}${TH('col_memory')}${TH('col_power')}${TH('col_price',1)}${TH('col_release',1)}</tr></thead>`;
 const ssrTable = `<table class="db">${THEAD}<tbody>${products.map(rowS).join('')}</tbody></table>`;
-const krCount = products.filter(p=>p.origin==='kr').length;
-const segCount = k => products.filter(p=>p.segment===k).length;
-const ssrCount = `<b>${products.length}</b> 제품 · 국내 <b>${krCount}</b> / 해외 <b>${products.length-krCount}</b>`;
-const ssrMeta = `총 <b>${products.length}</b>종<span class="sep">/</span>국내 <b>${krCount}</b> · 해외 <b>${products.length-krCount}</b><span class="sep">/</span>데이터센터 <b>${segCount('datacenter')}</b> · 엣지 <b>${segCount('edge')}</b> · MCU <b>${segCount('mcu')}</b>`;
+const vendorsN = new Set(products.map(p=>p.vendor)).size;
+const countriesN = new Set(products.map(p=>p.country)).size;
+const ssrCount = `<b>${products.length}</b> ${escHtml(T.w_products)}`;
+const ssrMeta = `<span><b>${products.length}</b> ${escHtml(T.w_products)}</span><span><b>${vendorsN}</b> ${escHtml(T.w_vendors)}</span><span><b>${countriesN}</b> ${escHtml(T.w_countries)}</span>`;
 
 // JSON-LD 구조화 데이터 (검색엔진 SEO)
 const jsonld = {
@@ -351,7 +358,7 @@ const jsonld = {
   ]
 };
 
-const dataScript = `<script>window.DATA=${JSON.stringify(DATA).replace(/</g,'\\u003c')};</script>`;
+const dataScript = `<script>window.DATA=${JSON.stringify(DATA).replace(/</g,'\\u003c')};window.I18N=${JSON.stringify(I18N).replace(/</g,'\\u003c')};</script>`;
 const ldScript = `<script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g,'\\u003c')}</script>`;
 for (const ph of ['<!--__DATA__-->','<!--__META__-->','<!--__COUNT__-->','<!--__TABLE__-->','<!--__ABOUT__-->','<!--__DOCS__-->'])
   if (!template.includes(ph)) { console.error(`template.html 자리표시자 누락: ${ph}`); process.exit(1); }
