@@ -1,31 +1,27 @@
-name: Deploy to GitHub Pages
+name: Sync site from README
 
-# README.md 를 소스로 index.html 을 생성하고 GitHub Pages 에 배포한다.
-# Settings > Pages > Build and deployment > Source 를 "GitHub Actions" 로 설정하면
-# main 브랜치 push 시 자동으로 배포된다.
+# README.md 가 바뀌면 index.html 을 다시 생성해 커밋한다.
+# GitHub Pages 는 Settings > Pages > Source = "Deploy from a branch" (main / root)
+# 로 두면 커밋된 index.html 이 그대로 서빙된다. (별도 Pages 권한 불필요)
 
 on:
   push:
     branches: [main]
     paths:
       - 'README.md'
-      - 'index.html'
       - 'scripts/**'
       - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
-# 동시 실행 방지 (진행 중인 배포는 건너뛰지 않고 완료)
 concurrency:
-  group: pages
+  group: sync-site
   cancel-in-progress: false
 
 jobs:
-  build:
+  sync:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,29 +30,19 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
-      - name: Generate index.html from README.md
+      - name: Regenerate index.html from README.md
         run: node scripts/generate.mjs
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          # Pages 가 아직 활성화되지 않았다면 자동으로 활성화(Source=GitHub Actions)
-          enablement: true
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain index.html)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add index.html
+            git commit -m "chore: sync index.html from README.md [skip ci]"
+            git push
+          else
+            echo "index.html already up to date — nothing to commit."
+          fi
