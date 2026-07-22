@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1d232a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="description" content="Awesome NPU — 국내외 NPU·AI 추론 가속기 제품 목록. MCU급부터 데이터센터 카드까지, 필터·검색·정렬 가능한 인터랙티브 카탈로그.">
+<title>Awesome NPU · NPU 제품 목록</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css">
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<script>
+tailwind.config = { theme: { extend: { fontFamily: { sans: ['Pretendard','sans-serif'], mono: ['ui-monospace','SFMono-Regular','monospace'] } } } };
+</script>
+<style>
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { font-family: 'Pretendard', sans-serif; }
+  .mono { font-family: ui-monospace, monospace; }
+  .thumb-pattern { background-image: linear-gradient(135deg, rgba(128,128,128,0.06) 25%, transparent 25%, transparent 50%, rgba(128,128,128,0.06) 50%, rgba(128,128,128,0.06) 75%, transparent 75%); background-size: 16px 16px; }
+  [data-theme="dark"] { --kr:#ff8c6b; --gl:#4fe3b6; }
+  [data-theme="light"] { --kr:#d94f2a; --gl:#0e9468; }
+  .text-kr{color:var(--kr)} .text-gl{color:var(--gl)} .bg-kr{background:var(--kr)} .bg-gl{background:var(--gl)}
+  /* sticky 헤더가 행 위로 비치지 않도록 불투명 배경 강제 */
+  .prod-table thead th { position: sticky; top: 0; z-index: 5; background: hsl(var(--b2)); border-bottom: 1px solid hsl(var(--bc)/0.15); }
+  .prod-table tbody tr { border-bottom: 1px solid hsl(var(--bc)/0.08); }
+  .prod-table tbody tr:hover { background: hsl(var(--bc)/0.05); }
+  /* README에서 렌더된 문서 영역 */
+  .doc a { color: hsl(var(--p)); text-decoration: none; }
+  .doc a:hover { text-decoration: underline; }
+  .doc h2 { font-size: 1.35rem; font-weight: 700; margin: 2.5rem 0 0.75rem; letter-spacing: -0.01em; scroll-margin-top: 5rem; }
+  .doc h2:first-child { margin-top: 0.5rem; }
+  .doc h3 { font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: hsl(var(--bc)/0.9); scroll-margin-top: 5rem; }
+  .doc p { font-size: 0.9rem; line-height: 1.7; color: hsl(var(--bc)/0.72); margin: 0.6rem 0; }
+  .doc ul { list-style: disc; padding-left: 1.25rem; margin: 0.6rem 0; }
+  .doc li { font-size: 0.9rem; line-height: 1.65; color: hsl(var(--bc)/0.78); margin: 0.25rem 0; }
+  .doc code { font-family: ui-monospace, monospace; font-size: 0.8em; padding: 0.1em 0.4em; border-radius: 0.3rem; background: hsl(var(--bc)/0.1); }
+  .doc .tbl-wrap { overflow-x: auto; margin: 1rem 0; border: 1px solid hsl(var(--b3)); border-radius: 0.6rem; }
+  .doc table { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 480px; }
+  .doc thead th { text-align: left; padding: 0.6rem 0.85rem; background: hsl(var(--b2)); border-bottom: 1px solid hsl(var(--bc)/0.15); white-space: nowrap; font-weight: 600; }
+  .doc tbody td { padding: 0.55rem 0.85rem; border-bottom: 1px solid hsl(var(--bc)/0.07); vertical-align: top; }
+  .doc tbody tr:last-child td { border-bottom: 0; }
+  /* 모바일 가로 스크롤 방지: 페이지 본문은 절대 가로 스크롤되지 않도록 */
+  body { overflow-x: hidden; }
+</style>
+</head>
+<body class="bg-base-100 text-base-content min-h-screen">
+
+<header class="border-b border-base-300 bg-base-200/80 backdrop-blur sticky top-0 z-30">
+  <div class="max-w-[1320px] mx-auto px-4 sm:px-5 py-3 flex items-center justify-between gap-3">
+    <a href="#top" class="flex items-center gap-2 min-w-0">
+      <iconify-icon icon="ph:cpu-bold" width="22" class="text-primary shrink-0"></iconify-icon>
+      <span class="text-lg sm:text-xl font-bold tracking-tight truncate">Awesome NPU<span class="text-primary">.</span></span>
+    </a>
+    <nav class="hidden md:flex items-center gap-1 text-sm ml-auto mr-1">
+      <a href="#explorer" class="btn btn-ghost btn-sm">제품 목록</a>
+      <a href="#raspberry-pi-accelerators" class="btn btn-ghost btn-sm">라즈베리파이</a>
+      <a href="#software" class="btn btn-ghost btn-sm">소프트웨어</a>
+      <a href="#glossary" class="btn btn-ghost btn-sm">용어</a>
+    </nav>
+    <a id="repoLink" href="#" target="_blank" rel="noopener" class="btn btn-ghost btn-sm btn-square" title="GitHub 저장소">
+      <iconify-icon icon="ph:github-logo-bold" width="20"></iconify-icon>
+    </a>
+    <button id="themeBtn" class="btn btn-square btn-sm btn-outline" title="테마 전환">
+      <iconify-icon id="themeIcon" icon="ph:moon-bold" width="18"></iconify-icon>
+    </button>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- 히어로 / 소개 (README 인트로에서 생성) -->
+<section class="border-b border-base-300 bg-base-200/40">
+  <div class="max-w-[1320px] mx-auto px-4 sm:px-5 py-8 sm:py-10">
+    <h1 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">국내외 NPU 제품 목록</h1>
+    <div id="intro" class="doc max-w-3xl"></div>
+    <div id="stats" class="flex flex-wrap gap-2.5 mt-5"></div>
+  </div>
+</section>
+
+<a id="explorer"></a>
+
+<!-- 필터 -->
+<div class="border-b border-base-300 bg-base-100">
+  <div class="max-w-[1320px] mx-auto px-4 sm:px-5 py-4">
+    <div class="bg-base-200 border border-base-300 rounded-xl p-3.5 sm:p-4 flex flex-col gap-4">
+      <div class="flex items-center justify-between md:hidden">
+        <span class="text-sm font-semibold flex items-center gap-1.5"><iconify-icon icon="ph:funnel" width="16"></iconify-icon>필터</span>
+        <button id="filterToggle" class="btn btn-xs btn-ghost gap-1" aria-expanded="false" aria-controls="filterBody">
+          <span id="filterToggleLabel">펼치기</span><iconify-icon id="filterToggleIcon" icon="ph:caret-down-bold" width="12"></iconify-icon>
+        </button>
+      </div>
+      <div id="filterBody" class="hidden md:flex flex-col gap-4">
+        <div class="flex flex-wrap gap-x-6 sm:gap-x-8 gap-y-4">
+          <div class="flex flex-col gap-2"><span class="text-xs uppercase tracking-wider font-semibold text-base-content/55">제품 유형</span><div class="flex flex-wrap gap-1.5" id="f-origin"></div></div>
+          <div class="flex flex-col gap-2"><span class="text-xs uppercase tracking-wider font-semibold text-base-content/55">국가</span><div class="flex flex-wrap gap-1.5" id="f-country"></div></div>
+          <div class="flex flex-col gap-2"><span class="text-xs uppercase tracking-wider font-semibold text-base-content/55">체급</span><div class="flex flex-wrap gap-1.5" id="f-segment"></div></div>
+          <div class="flex flex-col gap-2"><span class="text-xs uppercase tracking-wider font-semibold text-base-content/55">폼팩터</span><div class="flex flex-wrap gap-1.5" id="f-form"></div></div>
+          <div class="flex flex-col gap-2">
+            <span class="text-xs uppercase tracking-wider font-semibold text-base-content/55">출시일 (범위)</span>
+            <div class="flex gap-2 items-center flex-wrap">
+              <input type="month" id="dateFrom" class="input input-sm input-bordered mono" title="시작일">
+              <span class="text-base-content/55">~</span>
+              <input type="month" id="dateTo" class="input input-sm input-bordered mono" title="종료일">
+            </div>
+            <label class="label cursor-pointer justify-start gap-2 py-0"><input type="checkbox" id="includeNoDate" class="checkbox checkbox-xs checkbox-primary" checked><span class="label-text text-xs">출시일 미상 포함</span></label>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2 border-t border-base-300 pt-3.5"><span class="text-xs uppercase tracking-wider font-semibold text-base-content/55">벤더</span><div class="flex flex-wrap gap-1.5" id="f-vendor"></div></div>
+        <button class="btn btn-xs btn-ghost self-start gap-1 text-base-content/60" id="resetBtn"><iconify-icon icon="ph:arrow-counter-clockwise" width="13"></iconify-icon>필터 초기화</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 검색 / 보기 전환 -->
+<div class="sticky top-[3.25rem] z-20 bg-base-100/95 backdrop-blur border-b border-base-300">
+  <div class="max-w-[1320px] mx-auto px-4 sm:px-5 py-3">
+    <div class="flex gap-2.5 items-center flex-wrap">
+      <label class="input input-bordered input-sm flex items-center gap-2 flex-1 min-w-0 basis-56">
+        <iconify-icon icon="ph:magnifying-glass" width="18" class="opacity-50"></iconify-icon>
+        <input type="search" id="search" class="grow min-w-0" placeholder="제품·벤더·키워드 검색 (예: Rebellions, M.2, LLM)">
+      </label>
+      <div class="join">
+        <button id="viewList" class="btn btn-sm join-item btn-active gap-1"><iconify-icon icon="ph:list-bold" width="14"></iconify-icon>목록</button>
+        <button id="viewCard" class="btn btn-sm join-item btn-outline gap-1"><iconify-icon icon="ph:squares-four-bold" width="14"></iconify-icon>카드</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-[1320px] mx-auto px-4 sm:px-5">
+  <div class="flex gap-3 items-center py-3.5 text-xs text-base-content/55 mono flex-wrap">
+    <span id="count"></span>
+    <select id="sortSel" class="select select-xs select-bordered ml-auto">
+      <option value="default">정렬: 기본 (README 순서)</option>
+      <option value="tops-desc">성능(TOPS) 높은순</option>
+      <option value="tops-asc">성능(TOPS) 낮은순</option>
+      <option value="price-asc">가격 낮은순</option>
+      <option value="price-desc">가격 높은순</option>
+      <option value="date-desc">출시일 최신순</option>
+      <option value="date-asc">출시일 오래된순</option>
+      <option value="vendor">벤더명순</option>
+    </select>
+  </div>
+  <div id="grid" class="hidden grid gap-4 pb-12" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr))"></div>
+  <div id="listwrap" class="pb-12 overflow-x-auto"></div>
+  <div id="empty" class="hidden text-center text-base-content/55 py-16">조건에 맞는 제품이 없습니다.</div>
+</div>
+
+<!-- README 문서 영역 (라즈베리파이 / 소프트웨어 / 학습자료 / 용어 / 기여) -->
+<section class="border-t border-base-300 bg-base-200/30">
+  <div class="max-w-[1320px] mx-auto px-4 sm:px-5 py-10">
+    <div id="docs" class="doc"></div>
+  </div>
+</section>
+
+<footer class="border-t border-base-300 py-6 text-xs text-base-content/55 leading-relaxed">
+  <div class="max-w-[1320px] mx-auto px-4 sm:px-5 space-y-1.5">
+    <p class="font-semibold text-base-content/70">안내</p>
+    <ul class="list-disc pl-4 space-y-1">
+      <li>본 자료는 각 제조사 공식 자료 및 공개 보도(2025–2026)를 바탕으로 정리한 참고용 정보이며, 실제 사양·출시일·가격은 제품 리비전, 판매 지역, 구성, 환율 등에 따라 달라질 수 있습니다.</li>
+      <li>가격은 공식적으로 공개된 경우에만 표기하며, 그 외에는 "미공개"로 표시됩니다. 도입 전 반드시 제조사 공식 데이터시트와 견적을 확인하시기 바랍니다.</li>
+      <li><span class="text-warning font-semibold">⚠</span> 표시는 단독으로 판매되는 완제품이 아니라, 호스트 SoC나 시스템에 통합해야 동작하는 내장형(SoC 통합/IP) 제품을 의미합니다.</li>
+      <li>제품명을 클릭하면 제조사 공식 페이지로 이동합니다. 이 페이지의 데이터는 저장소의 <code class="mono">README.md</code>에서 생성되어 항상 동일하게 유지됩니다.</li>
+    </ul>
+    <p id="genstamp" class="pt-2 text-base-content/40"></p>
+  </div>
+</footer>
+
+<!--__DATA__-->
+
+<script>
+(function(){
+  const DATA = window.DATA || { products: [], introHTML: "", docsHTML: "", generatedAt: "", repo: "" };
+  const products = DATA.products;
+
+  const FLAG = { KR:"🇰🇷", US:"🇺🇸", NL:"🇳🇱", CN:"🇨🇳", NO:"🇳🇴", IL:"🇮🇱", JP:"🇯🇵", DE:"🇩🇪", FR:"🇫🇷", TW:"🇹🇼" };
+  const CNAME = { KR:"대한민국", US:"미국", NL:"네덜란드", CN:"중국", NO:"노르웨이", IL:"이스라엘", JP:"일본", DE:"독일", FR:"프랑스", TW:"대만" };
+  const DOMAIN = {
+    "Rebellions":"rebellions.ai","FuriosaAI":"furiosa.ai","DEEPX":"deepx.ai","Mobilint":"mobilint.com","HyperAccel":"hyperaccel.ai",
+    "Google":"google.com","Hailo":"hailo.ai","NXP":"nxp.com","Intel":"intel.com","Rockchip":"rock-chips.com",
+    "Nordic Semiconductor":"nordicsemi.com","Qualcomm":"qualcomm.com","Syntiant":"syntiant.com","BrainChip":"brainchip.com",
+    "Telechips":"telechips.com","Apple":"apple.com","MediaTek":"mediatek.com","Ambarella":"ambarella.com","MemryX":"memryx.com",
+    "Kneron":"kneron.com","Blaize":"blaize.com","Huawei":"huawei.com","SiMa.ai":"sima.ai","Axelera AI":"axelera.ai",
+    "Tenstorrent":"tenstorrent.com","Graphcore":"graphcore.ai","SambaNova":"sambanova.ai","Cerebras":"cerebras.ai","Groq":"groq.com",
+    "d-Matrix":"d-matrix.ai","Untether AI":"untether.ai","Etched":"etched.com","Cambricon":"cambricon.com"
+  };
+  const FORM_ICON = { "PCIe":"ph:circuitry", "Server/System":"ph:hard-drives", "M.2":"ph:memory", "MXM":"ph:memory", "USB":"ph:usb", "Box":"ph:package", "SoC":"ph:cpu" };
+  const logoURL = v => DOMAIN[v] ? `https://logo.clearbit.com/${DOMAIN[v]}` : "";
+  const formIcon = f => FORM_ICON[f] || "ph:cpu";
+  const esc = s => String(s==null?"":s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+  const FILTERS = {
+    origin:{el:"f-origin",multi:false,opts:[{key:"all",label:"전체"},{key:"kr",label:"🇰🇷 국내"},{key:"global",label:"🌐 해외"}]},
+    country:{el:"f-country",multi:true,opts:[]},
+    segment:{el:"f-segment",multi:true,opts:[{key:"mcu",label:"MCU급"},{key:"edge",label:"엣지/온디바이스"},{key:"datacenter",label:"데이터센터/서버"}]},
+    form:{el:"f-form",multi:true,opts:[]},
+    vendor:{el:"f-vendor",multi:true,opts:[]}
+  };
+  const FORM_ORDER = ["M.2","PCIe","USB","MXM","Box","SoC","Server/System"];
+  FILTERS.country.opts=[...new Set(products.map(p=>p.country))].sort().map(c=>({key:c,label:`${FLAG[c]||"🏳️"} ${CNAME[c]||c}`}));
+  FILTERS.form.opts=[...new Set(products.map(p=>p.formGroup))].sort((a,b)=>FORM_ORDER.indexOf(a)-FORM_ORDER.indexOf(b)).map(f=>({key:f,label:f}));
+  FILTERS.vendor.opts=[...new Set(products.map(p=>p.vendor))].sort().map(v=>({key:v,label:v}));
+
+  const state={search:"",view:"list",sort:"default",origin:"all",country:new Set(),segment:new Set(),form:new Set(),vendor:new Set(),dateFrom:null,dateTo:null,includeNoDate:true};
+
+  function buildChips(conf,key){
+    const host=document.getElementById(conf.el); host.innerHTML="";
+    const OFF="btn btn-xs rounded-full bg-base-100 border border-base-300 text-base-content/70 hover:border-base-content/40";
+    const ON="btn btn-xs rounded-full btn-primary";
+    conf.opts.forEach(o=>{
+      const b=document.createElement("button");
+      const isOn=(!conf.multi&&o.key==="all");
+      b.className=isOn?ON:OFF;
+      b.textContent=o.label;
+      b.onclick=()=>{
+        if(conf.multi){const s=state[key];
+          if(s.has(o.key)){s.delete(o.key);b.className=OFF;}
+          else{s.add(o.key);b.className=ON;}
+        }else{state[key]=o.key;host.querySelectorAll("button").forEach(x=>x.className=OFF);b.className=ON;}
+        render();
+      };
+      host.appendChild(b);
+    });
+  }
+  Object.entries(FILTERS).forEach(([k,c])=>buildChips(c,k));
+
+  const $=id=>document.getElementById(id);
+  $("search").oninput=e=>{state.search=e.target.value.toLowerCase().trim();render();};
+  $("sortSel").onchange=e=>{state.sort=e.target.value;render();};
+  $("dateFrom").onchange=e=>{state.dateFrom=e.target.value||null;render();};
+  $("dateTo").onchange=e=>{state.dateTo=e.target.value||null;render();};
+  $("includeNoDate").onchange=e=>{state.includeNoDate=e.target.checked;render();};
+
+  function setView(v){
+    state.view=v;
+    $("viewList").className="btn btn-sm join-item "+(v==="list"?"btn-active":"btn-outline");
+    $("viewCard").className="btn btn-sm join-item "+(v==="card"?"btn-active":"btn-outline");
+    render();
+  }
+  $("viewList").onclick=()=>setView("list");
+  $("viewCard").onclick=()=>setView("card");
+
+  $("resetBtn").onclick=()=>{
+    Object.assign(state,{search:"",origin:"all",dateFrom:null,dateTo:null,includeNoDate:true,sort:"default"});
+    state.country.clear();state.segment.clear();state.form.clear();state.vendor.clear();
+    $("search").value="";$("dateFrom").value="";$("dateTo").value="";$("includeNoDate").checked=true;$("sortSel").value="default";
+    Object.entries(FILTERS).forEach(([k,c])=>buildChips(c,k));
+    render();
+  };
+
+  // 모바일 필터 접기/펼치기
+  const filterToggle=$("filterToggle"), filterBody=$("filterBody");
+  function syncFilterToggle(){
+    const expanded = !filterBody.classList.contains("hidden");
+    filterToggle.setAttribute("aria-expanded", String(expanded));
+    $("filterToggleLabel").textContent = expanded ? "접기" : "펼치기";
+    $("filterToggleIcon").setAttribute("icon", expanded ? "ph:caret-up-bold" : "ph:caret-down-bold");
+  }
+  filterToggle.onclick=()=>{ filterBody.classList.toggle("hidden"); syncFilterToggle(); };
+
+  // 테마
+  function setTheme(next){
+    document.documentElement.setAttribute("data-theme",next);
+    $("themeIcon").setAttribute("icon",next==="dark"?"ph:moon-bold":"ph:sun-bold");
+    try{ localStorage.setItem("npu-theme",next); }catch(e){}
+  }
+  $("themeBtn").onclick=()=>{
+    const cur=document.documentElement.getAttribute("data-theme");
+    setTheme(cur==="dark"?"light":"dark");
+  };
+  (function initTheme(){
+    let saved=null; try{ saved=localStorage.getItem("npu-theme"); }catch(e){}
+    if(saved){ setTheme(saved); }
+    else if(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches){ setTheme("light"); }
+  })();
+
+  function matches(p){
+    if(state.origin!=="all"&&p.origin!==state.origin)return false;
+    if(state.country.size&&!state.country.has(p.country))return false;
+    if(state.segment.size&&!state.segment.has(p.segment))return false;
+    if(state.form.size&&!state.form.has(p.formGroup))return false;
+    if(state.vendor.size&&!state.vendor.has(p.vendor))return false;
+    if(state.dateFrom||state.dateTo){
+      if(!p.releaseDate){if(!state.includeNoDate)return false;}
+      else{
+        const rf=state.dateFrom?state.dateFrom+"-01":null, rt=state.dateTo?state.dateTo+"-31":null;
+        if(rf&&p.releaseDate<rf)return false;if(rt&&p.releaseDate>rt)return false;
+      }
+    }else if(!p.releaseDate&&!state.includeNoDate)return false;
+    if(state.search){
+      const hay=[p.vendor,p.product,p.chip,CNAME[p.country],p.country,p.form,p.price,p.memory,p.useCase,...(p.tags||[]),...Object.values(p.specs||{}),p.note].join(" ").toLowerCase();
+      if(!hay.includes(state.search))return false;
+    }
+    return true;
+  }
+  function sortList(list){
+    const s=state.sort,a=[...list];
+    if(s==="default")return a; // README 문서 순서 유지
+    if(s==="tops-desc")a.sort((x,y)=>(y.tops??-1)-(x.tops??-1));
+    else if(s==="tops-asc")a.sort((x,y)=>(x.tops??Infinity)-(y.tops??Infinity));
+    else if(s==="price-asc")a.sort((x,y)=>(x.priceUSD??Infinity)-(y.priceUSD??Infinity));
+    else if(s==="price-desc")a.sort((x,y)=>(y.priceUSD??-1)-(x.priceUSD??-1));
+    else if(s==="date-desc")a.sort((x,y)=>(y.releaseDate||"").localeCompare(x.releaseDate||""));
+    else if(s==="date-asc")a.sort((x,y)=>{if(!x.releaseDate)return 1;if(!y.releaseDate)return -1;return x.releaseDate.localeCompare(y.releaseDate);});
+    else if(s==="vendor")a.sort((x,y)=>x.vendor.localeCompare(y.vendor));
+    return a;
+  }
+
+  const segLabel=s=>({mcu:"MCU급",edge:"엣지",datacenter:"데이터센터"}[s]||s);
+  const warnText=p=>"단독 제품 아님 — 호스트 SoC/보드/시스템에 통합 필요";
+
+  function card(p){
+    const isKr=p.origin==="kr", col=isKr?"text-kr":"text-gl";
+    const specs=Object.entries(p.specs||{}).map(([k,v])=>`<div class="flex flex-col"><span class="text-xs uppercase tracking-wide text-base-content/55">${esc(k)}</span><span class="text-sm mono break-words">${esc(v)}</span></div>`).join("");
+    const tags=(p.tags||[]).map(t=>`<span class="badge badge-sm badge-ghost text-xs">${esc(t)}</span>`).join("");
+    const warn=p.standalone?"":`<div class="text-xs text-warning mt-2.5 flex gap-1.5 items-start"><iconify-icon icon="ph:warning-fill" width="13" class="mt-0.5 shrink-0"></iconify-icon><span>${warnText(p)}</span></div>`;
+    const warnPill=p.standalone?"":`<span class="badge badge-sm badge-warning badge-outline gap-1 text-xs"><iconify-icon icon="ph:warning-fill" width="11"></iconify-icon>통합형</span>`;
+    const chipTag=p.chip?`<span class="absolute bottom-2 right-3 text-xs mono text-base-content/55">${esc(p.chip)}</span>`:"";
+    const logo=logoURL(p.vendor);
+    const noteHTML=p.note?`<div class="text-xs text-base-content/60 mt-3 leading-relaxed">${esc(p.note)}</div>`:"";
+    return `<div class="card bg-base-200 border border-base-300 hover:border-base-content/30 transition relative overflow-hidden">
+      <div class="absolute left-0 inset-y-0 w-1 z-[2] ${isKr?'bg-kr':'bg-gl'}"></div>
+      <div class="aspect-[16/7] bg-base-300/40 thumb-pattern border-b border-base-300 flex items-center justify-center gap-3 relative px-4">
+        ${logo?`<img src="${logo}" alt="${esc(p.vendor)}" loading="lazy" class="h-9 w-9 object-contain rounded bg-base-100 p-1 shadow-sm" onerror="this.style.display='none'">`:""}
+        <iconify-icon icon="${formIcon(p.formGroup)}" width="34" class="${col} opacity-70"></iconify-icon>
+        ${chipTag}
+      </div>
+      <div class="card-body p-4 sm:p-5 gap-0">
+        <div class="flex justify-between items-start gap-2.5 mb-1"><span class="text-xs text-base-content/60 font-medium">${esc(p.vendor)}</span><span class="badge badge-sm ${isKr?'text-kr':'text-gl'} bg-base-300/50 border-0">${FLAG[p.country]||"🏳️"} ${CNAME[p.country]||p.country}</span></div>
+        <a href="${esc(p.url)}" target="_blank" rel="noopener" class="text-lg font-bold tracking-tight mb-2 link link-hover inline-flex items-center gap-1">${esc(p.product)}<iconify-icon icon="ph:arrow-square-out" width="14" class="opacity-50"></iconify-icon></a>
+        <div class="text-xs mono text-base-content/55 mb-2 flex gap-2 flex-wrap items-center">
+          <span>${segLabel(p.segment)}</span><span class="badge badge-sm badge-ghost text-xs">${esc(p.form)}</span>${warnPill}<span>출시 ${esc(p.releaseDisplay)}</span>
+        </div>
+        <div class="mono text-sm mb-3"><iconify-icon icon="ph:tag" width="13" class="opacity-60"></iconify-icon> <span class="${p.priceUSD!=null?'text-success font-semibold':'text-base-content/55'}">${esc(p.priceDisplay)}</span></div>
+        ${tags?`<div class="flex flex-wrap gap-1.5 mb-4">${tags}</div>`:'<div class="mb-2"></div>'}
+        <div class="grid grid-cols-2 gap-x-4 gap-y-2.5 pt-3 border-t border-base-300">${specs}</div>
+        ${noteHTML}
+        ${warn}
+      </div></div>`;
+  }
+  function listView(list){
+    const rows=list.map(p=>{
+      const isKr=p.origin==="kr";
+      const perf=(p.specs&&(p.specs["성능"]||p.specs["DX-L2"]))||p.computeDisplay||"—";
+      const power=(p.specs&&(p.specs["전력"]||p.specs["효율"]))||"—";
+      const logo=logoURL(p.vendor);
+      const formCell=p.standalone?esc(p.form):`<span class="inline-flex items-center gap-1.5">${esc(p.form)}<iconify-icon icon="ph:warning-fill" width="13" class="text-warning" title="${warnText(p)}"></iconify-icon></span>`;
+      const chipLine=p.chip?`<div class="text-xs mono text-base-content/50">${esc(p.chip)}</div>`:"";
+      return `<tr class="hover">
+        <td class="align-middle"><div class="w-12 h-9 rounded-md bg-base-300/40 border border-base-300 flex items-center justify-center gap-1 ${isKr?'text-kr':'text-gl'}">${logo?`<img src="${logo}" alt="" loading="lazy" class="h-5 w-5 object-contain rounded-sm" onerror="this.style.display='none'">`:""}<iconify-icon icon="${formIcon(p.formGroup)}" width="16" class="opacity-50"></iconify-icon></div></td>
+        <td class="align-middle min-w-44"><a href="${esc(p.url)}" target="_blank" rel="noopener" class="font-semibold link link-hover inline-flex items-center gap-1">${esc(p.product)}<iconify-icon icon="ph:arrow-square-out" width="12" class="opacity-50"></iconify-icon></a>${chipLine}</td>
+        <td class="align-middle whitespace-nowrap text-base-content/80">${esc(p.vendor)}</td>
+        <td class="align-middle text-center"><span class="text-lg" title="${CNAME[p.country]||p.country}">${FLAG[p.country]||"🏳️"}</span></td>
+        <td class="align-middle whitespace-nowrap text-xs text-base-content/80">${segLabel(p.segment)}</td>
+        <td class="align-middle whitespace-nowrap text-xs text-base-content/80">${formCell}</td>
+        <td class="align-middle whitespace-nowrap mono">${esc(perf)}</td>
+        <td class="align-middle whitespace-nowrap text-xs text-base-content/75">${esc(p.memory||"—")}</td>
+        <td class="align-middle whitespace-nowrap mono">${esc(power)}</td>
+        <td class="align-middle min-w-36 mono text-xs ${p.priceUSD!=null?'text-success font-semibold':'text-base-content/50'}">${esc(p.priceDisplay)}</td>
+        <td class="align-middle whitespace-nowrap mono ${p.releaseDate?'text-base-content/80':'text-base-content/50'}">${esc(p.releaseDisplay)}</td>
+      </tr>`;
+    }).join("");
+    return `<table class="table table-sm align-middle prod-table" style="min-width:900px">
+      <thead><tr class="text-xs uppercase tracking-wide text-base-content/60">
+        <th></th><th>제품 / 칩</th><th>벤더</th><th class="text-center">국가</th><th>체급</th><th>폼팩터</th><th>성능</th><th>메모리</th><th>전력/효율</th><th>가격</th><th>출시일</th>
+      </tr></thead><tbody>${rows}</tbody></table>`;
+  }
+
+  function render(){
+    const list=sortList(products.filter(matches));
+    const grid=$("grid"),lw=$("listwrap"),empty=$("empty");
+    if(!list.length){grid.classList.add("hidden");lw.classList.add("hidden");empty.classList.remove("hidden");}
+    else{
+      empty.classList.add("hidden");
+      if(state.view==="card"){grid.classList.remove("hidden");lw.classList.add("hidden");grid.innerHTML=list.map(card).join("");}
+      else{grid.classList.add("hidden");lw.classList.remove("hidden");lw.innerHTML=listView(list);}
+    }
+    const kr=list.filter(p=>p.origin==="kr").length;
+    $("count").textContent=`${list.length}개 제품  ·  국내 ${kr}  ·  해외 ${list.length-kr}`;
+  }
+
+  // 통계 배지 (히어로)
+  function renderStats(){
+    const kr=products.filter(p=>p.origin==="kr").length;
+    const seg=k=>products.filter(p=>p.segment===k).length;
+    const items=[
+      ["ph:stack-bold", `전체 ${products.length}종`],
+      ["ph:flag-bold", `국내 ${kr} · 해외 ${products.length-kr}`],
+      ["ph:cpu-bold", `데이터센터 ${seg("datacenter")} · 엣지 ${seg("edge")} · MCU ${seg("mcu")}`],
+    ];
+    $("stats").innerHTML=items.map(([ic,t])=>`<span class="badge badge-lg gap-1.5 bg-base-100 border-base-300 text-base-content/75 font-medium"><iconify-icon icon="${ic}" width="14" class="text-primary"></iconify-icon>${esc(t)}</span>`).join("");
+  }
+
+  // 초기화: 문서/인트로 주입, 반응형 기본 보기
+  $("intro").innerHTML=DATA.introHTML||"";
+  $("docs").innerHTML=DATA.docsHTML||"";
+  if(DATA.repo){ $("repoLink").href=DATA.repo; }
+  if(DATA.generatedAt){ $("genstamp").textContent=`README.md 기준 자동 생성 · ${DATA.generatedAt}`; }
+  renderStats();
+
+  // 모바일에서는 카드 보기를 기본값으로
+  if(window.matchMedia && window.matchMedia("(max-width: 767px)").matches){ state.view="card"; }
+  setView(state.view);
+  syncFilterToggle();
+})();
+</script>
+</body>
+</html>

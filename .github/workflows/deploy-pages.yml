@@ -1,0 +1,62 @@
+name: Deploy to GitHub Pages
+
+# README.md 를 소스로 index.html 을 생성하고 GitHub Pages 에 배포한다.
+# Settings > Pages > Build and deployment > Source 를 "GitHub Actions" 로 설정하면
+# main 브랜치 push 시 자동으로 배포된다.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - 'index.html'
+      - 'scripts/**'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 동시 실행 방지 (진행 중인 배포는 건너뛰지 않고 완료)
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate index.html from README.md
+        run: node scripts/generate.mjs
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          # Pages 가 아직 활성화되지 않았다면 자동으로 활성화(Source=GitHub Actions)
+          enablement: true
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

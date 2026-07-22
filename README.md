@@ -1,5 +1,7 @@
 # Awesome NPU [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
+> 🌐 **인터랙티브 웹 버전 (필터·검색·모바일 대응):** https://pleahmacaka.github.io/awesome-npu/
+
 Commercial NPUs and AI inference accelerators, from MCU-class parts to datacenter cards.
 
 Data is compiled from vendor pages and public reporting (2025–2026) and may lag product revisions. Compute figures are vendor-stated peak TOPS at INT8 unless noted; datacenter parts often publish throughput/memory specs instead of a single TOPS number, shown as `-`. Prices are listed only where officially disclosed. Sorted by compute, ascending.
