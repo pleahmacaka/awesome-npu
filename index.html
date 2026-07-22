@@ -3,280 +3,484 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#1d232a" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="description" content="Awesome NPU — 국내외 NPU·AI 추론 가속기 제품 목록. MCU급부터 데이터센터 카드까지, 필터·검색·정렬 가능한 인터랙티브 카탈로그.">
-<title>Awesome NPU · NPU 제품 목록</title>
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0b0c0e" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)">
+<meta name="description" content="Awesome NPU — 국내외 NPU·AI 추론 가속기 카탈로그. MCU급부터 데이터센터 카드까지, 필터·검색·정렬 가능한 인터랙티브 데이터시트.">
+<title>Awesome NPU — NPU 제품 카탈로그</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css">
-<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
-<script>
-tailwind.config = { theme: { extend: { fontFamily: { sans: ['Pretendard','sans-serif'], mono: ['ui-monospace','SFMono-Regular','monospace'] } } } };
-</script>
 <style>
-  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-  body { font-family: 'Pretendard', sans-serif; }
-  .mono { font-family: ui-monospace, monospace; }
-  .thumb-pattern { background-image: linear-gradient(135deg, rgba(128,128,128,0.06) 25%, transparent 25%, transparent 50%, rgba(128,128,128,0.06) 50%, rgba(128,128,128,0.06) 75%, transparent 75%); background-size: 16px 16px; }
-  [data-theme="dark"] { --kr:#ff8c6b; --gl:#4fe3b6; }
-  [data-theme="light"] { --kr:#d94f2a; --gl:#0e9468; }
-  .text-kr{color:var(--kr)} .text-gl{color:var(--gl)} .bg-kr{background:var(--kr)} .bg-gl{background:var(--gl)}
-  /* sticky 헤더가 행 위로 비치지 않도록 불투명 배경 강제 */
-  .prod-table thead th { position: sticky; top: 0; z-index: 5; background: hsl(var(--b2)); border-bottom: 1px solid hsl(var(--bc)/0.15); }
-  .prod-table tbody tr { border-bottom: 1px solid hsl(var(--bc)/0.08); }
-  .prod-table tbody tr:hover { background: hsl(var(--bc)/0.05); }
-  /* README에서 렌더된 문서 영역 */
-  .doc a { color: hsl(var(--p)); text-decoration: none; }
-  .doc a:hover { text-decoration: underline; }
-  .doc h2 { font-size: 1.35rem; font-weight: 700; margin: 2.5rem 0 0.75rem; letter-spacing: -0.01em; scroll-margin-top: 5rem; }
-  .doc h2:first-child { margin-top: 0.5rem; }
-  .doc h3 { font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: hsl(var(--bc)/0.9); scroll-margin-top: 5rem; }
-  .doc p { font-size: 0.9rem; line-height: 1.7; color: hsl(var(--bc)/0.72); margin: 0.6rem 0; }
-  .doc ul { list-style: disc; padding-left: 1.25rem; margin: 0.6rem 0; }
-  .doc li { font-size: 0.9rem; line-height: 1.65; color: hsl(var(--bc)/0.78); margin: 0.25rem 0; }
-  .doc code { font-family: ui-monospace, monospace; font-size: 0.8em; padding: 0.1em 0.4em; border-radius: 0.3rem; background: hsl(var(--bc)/0.1); }
-  .doc .tbl-wrap { overflow-x: auto; margin: 1rem 0; border: 1px solid hsl(var(--b3)); border-radius: 0.6rem; }
-  .doc table { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 480px; }
-  .doc thead th { text-align: left; padding: 0.6rem 0.85rem; background: hsl(var(--b2)); border-bottom: 1px solid hsl(var(--bc)/0.15); white-space: nowrap; font-weight: 600; }
-  .doc tbody td { padding: 0.55rem 0.85rem; border-bottom: 1px solid hsl(var(--bc)/0.07); vertical-align: top; }
-  .doc tbody tr:last-child td { border-bottom: 0; }
-  /* 모바일 가로 스크롤 방지: 페이지 본문은 절대 가로 스크롤되지 않도록 */
-  body { overflow-x: hidden; }
+:root{
+  --sans:'Pretendard','Pretendard Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  --mono:'SF Mono',ui-monospace,'JetBrains Mono','Cascadia Code',Menlo,Consolas,monospace;
+  --r-sm:8px; --r:12px; --r-lg:16px;
+  --stick-top:56px; --stick-controls:0px;
+}
+:root[data-theme="dark"]{
+  --bg:#0b0c0e; --bg-elev:#101216; --surface:#14171c; --surface-2:#1b1f26;
+  --line:rgba(255,255,255,.075); --line-2:rgba(255,255,255,.13); --line-3:rgba(255,255,255,.22);
+  --tx:#e9ebee; --tx-dim:rgba(233,235,238,.60); --tx-faint:rgba(233,235,238,.38);
+  --accent:#4fe0b0; --accent-ink:#04120d;
+  --kr:#ffab6b; --gl:#7fb2ff; --warn:#f0c274;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+}
+:root[data-theme="light"]{
+  --bg:#faf9f7; --bg-elev:#ffffff; --surface:#ffffff; --surface-2:#f2f1ee;
+  --line:rgba(17,17,17,.09); --line-2:rgba(17,17,17,.14); --line-3:rgba(17,17,17,.24);
+  --tx:#17191d; --tx-dim:rgba(23,25,29,.62); --tx-faint:rgba(23,25,29,.42);
+  --accent:#0e9c74; --accent-ink:#ffffff;
+  --kr:#c26426; --gl:#2f6bd6; --warn:#9a6b12;
+  --shadow:0 1px 2px rgba(17,17,17,.05),0 12px 28px -16px rgba(17,17,17,.28);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);font-size:15px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+  font-feature-settings:"ss01","cv01","tnum";}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
+input,select{font:inherit;color:inherit}
+::selection{background:color-mix(in srgb,var(--accent) 30%,transparent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.mono{font-family:var(--mono);font-feature-settings:"tnum";letter-spacing:-.01em}
+.wrap{width:100%;max-width:1240px;margin-inline:auto;padding-inline:clamp(18px,4.5vw,40px)}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);
+  backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{display:flex;align-items:center;gap:16px;height:56px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:-.02em;font-size:15px}
+.brand .spark{width:9px;height:9px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+.brand b{font-weight:800}
+.brand .sub{color:var(--tx-faint);font-weight:500;font-family:var(--mono);font-size:11px;letter-spacing:.02em}
+.nav{display:flex;gap:2px;margin-left:auto}
+.nav a{padding:7px 12px;border-radius:var(--r-sm);color:var(--tx-dim);font-size:13.5px;font-weight:500;transition:.15s}
+.nav a:hover{color:var(--tx);background:var(--surface-2)}
+.icons{display:flex;gap:6px;margin-left:auto}
+.nav + .icons{margin-left:8px}
+.iconbtn{width:36px;height:36px;display:grid;place-items:center;border-radius:var(--r-sm);
+  color:var(--tx-dim);border:1px solid transparent;transition:.15s}
+.iconbtn:hover{color:var(--tx);background:var(--surface-2);border-color:var(--line)}
+.iconbtn svg{width:18px;height:18px}
+
+/* ---------- hero ---------- */
+.hero{border-bottom:1px solid var(--line);
+  background:radial-gradient(120% 140% at 12% -10%,color-mix(in srgb,var(--accent) 7%,transparent),transparent 55%)}
+.hero-in{padding-block:clamp(40px,7vw,72px)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:26px;height:1px;background:currentColor;opacity:.6}
+h1.title{font-size:clamp(2.1rem,5.6vw,3.4rem);line-height:1.06;letter-spacing:-.035em;font-weight:800;margin:0 0 18px;text-wrap:balance}
+.lead{font-size:clamp(1rem,2.1vw,1.15rem);color:var(--tx-dim);max-width:60ch;line-height:1.6}
+.stats{display:flex;flex-wrap:wrap;gap:clamp(20px,5vw,52px);margin-top:clamp(30px,5vw,44px)}
+.stat .n{font-family:var(--mono);font-size:clamp(1.7rem,4vw,2.5rem);font-weight:600;letter-spacing:-.03em;line-height:1}
+.stat .n small{font-size:.5em;color:var(--tx-faint);font-weight:500;margin-left:2px}
+.stat .l{margin-top:9px;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--tx-faint);font-weight:600}
+.stat.split .n{font-size:clamp(1.15rem,2.4vw,1.5rem)}
+.stat.split .n b{font-weight:700}
+.stat.split .n .dv{color:var(--tx-faint);margin-inline:8px;font-weight:400}
+
+/* ---------- controls ---------- */
+.controls{position:sticky;top:var(--stick-top);z-index:40;background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);
+  border-bottom:1px solid var(--line)}
+.controls-in{padding-block:14px;display:flex;flex-direction:column;gap:12px}
+.crow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search{flex:1;min-width:200px;display:flex;align-items:center;gap:9px;background:var(--surface);
+  border:1px solid var(--line-2);border-radius:10px;padding:0 12px;height:40px;transition:.15s}
+.search:focus-within{border-color:color-mix(in srgb,var(--accent) 55%,var(--line-2));
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 14%,transparent)}
+.search svg{width:17px;height:17px;color:var(--tx-faint);flex:none}
+.search input{flex:1;min-width:0;background:none;border:none;height:100%;font-size:14.5px}
+.search input::placeholder{color:var(--tx-faint)}
+.search input:focus{outline:none}
+.seg{display:inline-flex;background:var(--surface);border:1px solid var(--line-2);border-radius:10px;padding:3px;gap:2px}
+.seg button{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:7px;font-size:13px;
+  font-weight:600;color:var(--tx-dim);transition:.15s}
+.seg button svg{width:14px;height:14px}
+.seg button[aria-pressed="true"]{background:var(--surface-2);color:var(--tx);box-shadow:var(--shadow)}
+.selwrap{position:relative;display:inline-flex}
+.selwrap svg{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:14px;height:14px;
+  color:var(--tx-faint);pointer-events:none}
+select.sort{appearance:none;-webkit-appearance:none;background:var(--surface);border:1px solid var(--line-2);
+  border-radius:10px;height:40px;padding:0 32px 0 12px;font-size:13.5px;font-weight:500;color:var(--tx);cursor:pointer}
+.fbtn{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 14px;border-radius:10px;
+  border:1px solid var(--line-2);background:var(--surface);font-size:13.5px;font-weight:600;color:var(--tx-dim);transition:.15s}
+.fbtn:hover{color:var(--tx);border-color:var(--line-3)}
+.fbtn svg{width:15px;height:15px}
+.fbtn .fcount{font-family:var(--mono);font-size:11px;background:var(--accent);color:var(--accent-ink);
+  border-radius:99px;padding:1px 7px;font-weight:700}
+.fbtn[aria-expanded="true"]{color:var(--tx);border-color:var(--line-3);background:var(--surface-2)}
+/* quick filters (origin + segment) */
+.quick{display:flex;gap:8px;align-items:center;overflow-x:auto;scrollbar-width:none;padding-bottom:1px}
+.quick::-webkit-scrollbar{display:none}
+.quick .qdiv{width:1px;height:18px;background:var(--line-2);flex:none;margin-inline:2px}
+.tog{flex:none;padding:6px 13px;border-radius:99px;font-size:12.5px;font-weight:600;color:var(--tx-dim);
+  border:1px solid var(--line-2);background:transparent;transition:.15s;white-space:nowrap}
+.tog:hover{color:var(--tx);border-color:var(--line-3)}
+.tog[aria-pressed="true"]{color:var(--tx);background:var(--surface-2);border-color:var(--line-3)}
+.tog.qk[aria-pressed="true"]{border-color:transparent;background:color-mix(in srgb,var(--accent) 18%,transparent);
+  color:color-mix(in srgb,var(--accent) 92%,var(--tx))}
+
+/* ---------- filter drawer ---------- */
+.drawer{border-bottom:1px solid var(--line);background:var(--bg-elev);overflow:hidden;
+  max-height:0;transition:max-height .28s ease}
+.drawer.open{max-height:720px}
+.drawer-in{padding-block:22px;display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.fgroup .flabel{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--tx-faint);
+  font-weight:600;margin-bottom:11px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.date{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.date input{background:var(--surface);border:1px solid var(--line-2);border-radius:8px;height:34px;padding:0 10px;
+  font-family:var(--mono);font-size:12.5px;color-scheme:dark}
+:root[data-theme="light"] .date input{color-scheme:light}
+.date .til{color:var(--tx-faint)}
+.chk{display:inline-flex;align-items:center;gap:8px;margin-top:11px;font-size:12.5px;color:var(--tx-dim);cursor:pointer}
+.chk input{accent-color:var(--accent);width:15px;height:15px}
+.drawer-foot{grid-column:1/-1;display:flex;justify-content:flex-end;border-top:1px solid var(--line);padding-top:16px}
+.reset{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--tx-dim);font-weight:500}
+.reset:hover{color:var(--tx)}
+.reset svg{width:13px;height:13px}
+
+/* ---------- results meta ---------- */
+.rmeta{display:flex;align-items:baseline;gap:14px;padding-block:20px 14px;flex-wrap:wrap}
+.rmeta .c{font-family:var(--mono);font-size:13px;color:var(--tx-dim)}
+.rmeta .c b{color:var(--tx);font-weight:600}
+.rmeta .hint{margin-left:auto;font-size:12px;color:var(--tx-faint)}
+
+/* country code + origin dot */
+.cc{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12px;
+  font-weight:600;color:var(--tx-dim);letter-spacing:.02em}
+.dot{width:7px;height:7px;border-radius:50%;flex:none}
+.dot.kr{background:var(--kr)} .dot.gl{background:var(--gl)}
+.mgram{width:30px;height:30px;flex:none;border-radius:8px;display:grid;place-items:center;
+  background:var(--surface-2);border:1px solid var(--line);font-family:var(--mono);font-size:11px;
+  font-weight:700;letter-spacing:-.02em;color:var(--tx-dim)}
+.tag{display:inline-block;font-size:11.5px;font-family:var(--mono);color:var(--tx-dim);
+  background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:2px 7px;line-height:1.5}
+.intg{color:var(--warn)}
+
+/* ---------- cards ---------- */
+#grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));padding-bottom:56px}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:20px;display:flex;flex-direction:column;transition:border-color .18s,transform .18s,box-shadow .18s;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--gl);opacity:.85}
+.card[data-origin="kr"]::before{background:var(--kr)}
+.card:hover{border-color:var(--line-3);transform:translateY(-3px);box-shadow:var(--shadow)}
+.card-h{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.card-h .vd{font-size:12.5px;color:var(--tx-dim);font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pname{display:inline-flex;align-items:center;gap:7px;font-size:1.18rem;font-weight:700;letter-spacing:-.02em;
+  line-height:1.2;margin-bottom:12px}
+.pname svg{width:14px;height:14px;color:var(--tx-faint);flex:none;opacity:0;transform:translate(-2px,2px);transition:.15s}
+.pname:hover{color:var(--accent)} .pname:hover svg{opacity:1;transform:none}
+.pmeta{font-family:var(--mono);font-size:11.5px;color:var(--tx-faint);margin-bottom:16px;display:flex;flex-wrap:wrap;gap:6px}
+.pmeta .d{opacity:.5}
+.figure{display:flex;gap:18px;padding:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fig{display:flex;flex-direction:column;gap:5px;min-width:0}
+.fig .fl{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--tx-faint);font-weight:600}
+.fig .fv{font-family:var(--mono);font-weight:600;letter-spacing:-.01em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fig.perf .fv{font-size:1.32rem;line-height:1}
+.fig.perf .fv .u{font-size:.62rem;color:var(--tx-faint);margin-left:3px;font-weight:500}
+.fig .fv.dim{color:var(--tx-faint)}
+.fig .fv.acc{color:var(--tx)}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:11px 16px;padding-top:15px}
+.spec{display:flex;flex-direction:column;gap:3px;min-width:0}
+.spec .k{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--tx-faint);font-weight:600}
+.spec .v{font-family:var(--mono);font-size:12.5px;color:var(--tx);line-height:1.35;word-break:break-word}
+.tags{display:flex;flex-wrap:wrap;gap:6px;padding-top:15px}
+.note{font-size:12.5px;color:var(--tx-dim);line-height:1.62;padding-top:14px}
+.warnline{display:flex;gap:7px;align-items:flex-start;font-size:11.5px;color:var(--warn);padding-top:12px}
+.warnline svg{width:13px;height:13px;flex:none;margin-top:2px}
+
+/* ---------- table ---------- */
+.tscroll{overflow-x:auto;padding-bottom:56px;margin-inline:calc(-1*clamp(18px,4.5vw,40px));
+  padding-inline:clamp(18px,4.5vw,40px)}
+table.grid{width:100%;border-collapse:collapse;min-width:920px;font-size:13.5px}
+table.grid thead th{position:sticky;top:calc(var(--stick-top) + var(--stick-controls));z-index:5;
+  background:var(--bg);text-align:left;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--tx-faint);font-weight:600;padding:11px 14px;border-bottom:1px solid var(--line-2);white-space:nowrap}
+table.grid thead th.r{text-align:right}
+table.grid tbody td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:middle;white-space:nowrap}
+table.grid tbody tr{transition:background .12s}
+table.grid tbody tr:hover{background:color-mix(in srgb,var(--surface-2) 60%,transparent)}
+td.prod{min-width:230px;white-space:normal}
+td.prod .pl{display:flex;align-items:center;gap:11px}
+td.prod .pn{display:inline-flex;align-items:center;gap:6px;font-weight:650;letter-spacing:-.01em}
+td.prod .pn svg{width:12px;height:12px;color:var(--tx-faint);opacity:0;transition:.15s}
+td.prod .pn:hover{color:var(--accent)} td.prod .pn:hover svg{opacity:1}
+td.prod .ch{font-family:var(--mono);font-size:11px;color:var(--tx-faint);margin-top:2px}
+td .num{font-family:var(--mono);font-weight:600;letter-spacing:-.01em}
+td.r{text-align:right}
+.cellmuted{color:var(--tx-faint)}
+.segtag{font-family:var(--mono);font-size:11px;color:var(--tx-dim);text-transform:uppercase;letter-spacing:.04em}
+
+#empty{text-align:center;color:var(--tx-faint);padding:80px 0;font-size:14px}
+
+/* ---------- doc / about ---------- */
+.section{border-top:1px solid var(--line)}
+.about{background:var(--bg-elev)}
+.about-in,.docs-in{padding-block:clamp(40px,6vw,64px)}
+.shead{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+  font-weight:600;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.shead::before{content:"";width:24px;height:1px;background:currentColor;opacity:.6}
+.doc{max-width:none}
+.doc a{color:var(--accent);border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent);transition:.15s}
+.doc a:hover{border-color:var(--accent)}
+.doc h2{font-size:clamp(1.35rem,3vw,1.7rem);font-weight:750;letter-spacing:-.02em;margin:56px 0 18px;
+  padding-top:10px;scroll-margin-top:calc(var(--stick-top) + 20px)}
+.doc h2:first-child{margin-top:0}
+.doc h3{font-size:1.02rem;font-weight:650;margin:34px 0 12px;color:var(--tx);
+  scroll-margin-top:calc(var(--stick-top) + 20px)}
+.doc p{color:var(--tx-dim);margin:12px 0;max-width:78ch;line-height:1.72}
+.doc ul{margin:12px 0;padding-left:4px;list-style:none;max-width:82ch}
+.doc li{position:relative;padding-left:20px;margin:8px 0;color:var(--tx-dim);line-height:1.65}
+.doc li::before{content:"";position:absolute;left:3px;top:11px;width:5px;height:5px;border-radius:1px;
+  background:var(--line-3)}
+.doc strong{color:var(--tx);font-weight:650}
+.doc code{font-family:var(--mono);font-size:.82em;background:var(--surface-2);border:1px solid var(--line);
+  padding:.1em .4em;border-radius:5px;color:var(--tx)}
+.doc .tbl-wrap{overflow-x:auto;margin:22px 0;border:1px solid var(--line);border-radius:var(--r)}
+.doc table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+.doc thead th{text-align:left;padding:11px 14px;background:var(--surface);border-bottom:1px solid var(--line-2);
+  font-weight:600;white-space:nowrap;font-size:12px;letter-spacing:.02em}
+.doc tbody td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--tx-dim)}
+.doc tbody tr:last-child td{border-bottom:0}
+.doc tbody td:first-child{color:var(--tx)}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);background:var(--bg-elev)}
+.foot-in{padding-block:34px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot-in .fl{font-size:12.5px;color:var(--tx-faint);line-height:1.7}
+.foot-in a{color:var(--tx-dim);border-bottom:1px solid var(--line-2)}
+.foot-in a:hover{color:var(--tx)}
+
+/* ---------- responsive ---------- */
+@media (max-width:820px){ .nav{display:none} }
+@media (max-width:640px){
+  body{font-size:14.5px}
+  .topbar-in{gap:10px}
+  .crow{gap:8px}
+  .seg button span{display:none} .seg button{padding:7px 10px}
+  .figure{gap:14px}
+  .rmeta .hint{display:none}
+}
 </style>
 </head>
-<body class="bg-base-100 text-base-content min-h-screen">
+<body>
 
-<header class="border-b border-base-300 bg-base-200/80 backdrop-blur sticky top-0 z-30">
-  <div class="max-w-[1320px] mx-auto px-4 sm:px-5 py-3 flex items-center justify-between gap-3">
-    <a href="#top" class="flex items-center gap-2 min-w-0">
-      <iconify-icon icon="ph:cpu-bold" width="22" class="text-primary shrink-0"></iconify-icon>
-      <span class="text-lg sm:text-xl font-bold tracking-tight truncate">Awesome NPU<span class="text-primary">.</span></span>
-    </a>
-    <nav class="hidden md:flex items-center gap-1 text-sm ml-auto mr-1">
-      <a href="#explorer" class="btn btn-ghost btn-sm">제품 목록</a>
-      <a href="#raspberry-pi-accelerators" class="btn btn-ghost btn-sm">라즈베리파이</a>
-      <a href="#software" class="btn btn-ghost btn-sm">소프트웨어</a>
-      <a href="#glossary" class="btn btn-ghost btn-sm">용어</a>
+<header class="topbar" id="topbar">
+  <div class="wrap topbar-in">
+    <a href="#top" class="brand"><span class="spark"></span>Awesome&nbsp;<b>NPU</b><span class="sub">/ 카탈로그</span></a>
+    <nav class="nav">
+      <a href="#explorer">제품</a>
+      <a href="#raspberry-pi-accelerators">라즈베리파이</a>
+      <a href="#software">소프트웨어</a>
+      <a href="#glossary">용어</a>
     </nav>
-    <a id="repoLink" href="#" target="_blank" rel="noopener" class="btn btn-ghost btn-sm btn-square" title="GitHub 저장소">
-      <iconify-icon icon="ph:github-logo-bold" width="20"></iconify-icon>
-    </a>
-    <button id="themeBtn" class="btn btn-square btn-sm btn-outline" title="테마 전환">
-      <iconify-icon id="themeIcon" icon="ph:moon-bold" width="18"></iconify-icon>
-    </button>
+    <div class="icons">
+      <a id="repoLink" class="iconbtn" href="#" target="_blank" rel="noopener" aria-label="GitHub 저장소">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.34 9.34 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+      </a>
+      <button id="themeBtn" class="iconbtn" aria-label="테마 전환"></button>
+    </div>
   </div>
 </header>
 
 <a id="top"></a>
 
-<!-- 히어로 / 소개 (README 인트로에서 생성) -->
-<section class="border-b border-base-300 bg-base-200/40">
-  <div class="max-w-[1320px] mx-auto px-4 sm:px-5 py-8 sm:py-10">
-    <h1 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">국내외 NPU 제품 목록</h1>
-    <div id="intro" class="doc max-w-3xl"></div>
-    <div id="stats" class="flex flex-wrap gap-2.5 mt-5"></div>
+<section class="hero">
+  <div class="wrap hero-in">
+    <div class="eyebrow">NPU · AI Inference Accelerators</div>
+    <h1 class="title">국내외 NPU 제품 카탈로그</h1>
+    <p class="lead">MCU급 온디바이스 칩부터 데이터센터 추론 카드까지 — 제조사 공식 자료 기반으로 정리한 인터랙티브 데이터시트. <code style="font-family:var(--mono);font-size:.85em;color:var(--warn)">⚠</code> 는 호스트 시스템에 통합해야 하는 내장형 제품입니다.</p>
+    <div class="stats" id="stats"></div>
   </div>
 </section>
 
 <a id="explorer"></a>
 
-<!-- 필터 -->
-<div class="border-b border-base-300 bg-base-100">
-  <div class="max-w-[1320px] mx-auto px-4 sm:px-5 py-4">
-    <div class="bg-base-200 border border-base-300 rounded-xl p-3.5 sm:p-4 flex flex-col gap-4">
-      <div class="flex items-center justify-between md:hidden">
-        <span class="text-sm font-semibold flex items-center gap-1.5"><iconify-icon icon="ph:funnel" width="16"></iconify-icon>필터</span>
-        <button id="filterToggle" class="btn btn-xs btn-ghost gap-1" aria-expanded="false" aria-controls="filterBody">
-          <span id="filterToggleLabel">펼치기</span><iconify-icon id="filterToggleIcon" icon="ph:caret-down-bold" width="12"></iconify-icon>
-        </button>
-      </div>
-      <div id="filterBody" class="hidden md:flex flex-col gap-4">
-        <div class="flex flex-wrap gap-x-6 sm:gap-x-8 gap-y-4">
-          <div class="flex flex-col gap-2"><span class="text-xs uppercase tracking-wider font-semibold text-base-content/55">제품 유형</span><div class="flex flex-wrap gap-1.5" id="f-origin"></div></div>
-          <div class="flex flex-col gap-2"><span class="text-xs uppercase tracking-wider font-semibold text-base-content/55">국가</span><div class="flex flex-wrap gap-1.5" id="f-country"></div></div>
-          <div class="flex flex-col gap-2"><span class="text-xs uppercase tracking-wider font-semibold text-base-content/55">체급</span><div class="flex flex-wrap gap-1.5" id="f-segment"></div></div>
-          <div class="flex flex-col gap-2"><span class="text-xs uppercase tracking-wider font-semibold text-base-content/55">폼팩터</span><div class="flex flex-wrap gap-1.5" id="f-form"></div></div>
-          <div class="flex flex-col gap-2">
-            <span class="text-xs uppercase tracking-wider font-semibold text-base-content/55">출시일 (범위)</span>
-            <div class="flex gap-2 items-center flex-wrap">
-              <input type="month" id="dateFrom" class="input input-sm input-bordered mono" title="시작일">
-              <span class="text-base-content/55">~</span>
-              <input type="month" id="dateTo" class="input input-sm input-bordered mono" title="종료일">
-            </div>
-            <label class="label cursor-pointer justify-start gap-2 py-0"><input type="checkbox" id="includeNoDate" class="checkbox checkbox-xs checkbox-primary" checked><span class="label-text text-xs">출시일 미상 포함</span></label>
-          </div>
-        </div>
-        <div class="flex flex-col gap-2 border-t border-base-300 pt-3.5"><span class="text-xs uppercase tracking-wider font-semibold text-base-content/55">벤더</span><div class="flex flex-wrap gap-1.5" id="f-vendor"></div></div>
-        <button class="btn btn-xs btn-ghost self-start gap-1 text-base-content/60" id="resetBtn"><iconify-icon icon="ph:arrow-counter-clockwise" width="13"></iconify-icon>필터 초기화</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 검색 / 보기 전환 -->
-<div class="sticky top-[3.25rem] z-20 bg-base-100/95 backdrop-blur border-b border-base-300">
-  <div class="max-w-[1320px] mx-auto px-4 sm:px-5 py-3">
-    <div class="flex gap-2.5 items-center flex-wrap">
-      <label class="input input-bordered input-sm flex items-center gap-2 flex-1 min-w-0 basis-56">
-        <iconify-icon icon="ph:magnifying-glass" width="18" class="opacity-50"></iconify-icon>
-        <input type="search" id="search" class="grow min-w-0" placeholder="제품·벤더·키워드 검색 (예: Rebellions, M.2, LLM)">
+<div class="controls" id="controls">
+  <div class="wrap controls-in">
+    <div class="crow">
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" id="search" placeholder="제품·벤더·키워드 검색 (예: Rebellions, M.2, LLM)" autocomplete="off">
       </label>
-      <div class="join">
-        <button id="viewList" class="btn btn-sm join-item btn-active gap-1"><iconify-icon icon="ph:list-bold" width="14"></iconify-icon>목록</button>
-        <button id="viewCard" class="btn btn-sm join-item btn-outline gap-1"><iconify-icon icon="ph:squares-four-bold" width="14"></iconify-icon>카드</button>
+      <div class="seg" role="group" aria-label="보기 전환">
+        <button id="viewTable" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M3 12h18M3 19h18"/></svg><span>표</span></button>
+        <button id="viewCard" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>카드</span></button>
       </div>
+      <div class="selwrap">
+        <select class="sort" id="sortSel" aria-label="정렬">
+          <option value="default">기본 정렬 (README 순서)</option>
+          <option value="tops-desc">성능(TOPS) 높은순</option>
+          <option value="tops-asc">성능(TOPS) 낮은순</option>
+          <option value="price-asc">가격 낮은순</option>
+          <option value="price-desc">가격 높은순</option>
+          <option value="date-desc">출시일 최신순</option>
+          <option value="date-asc">출시일 오래된순</option>
+          <option value="vendor">벤더명순</option>
+        </select>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <button class="fbtn" id="filterToggle" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h18M6 12h12M10 19h4"/></svg>
+        필터<span class="fcount" id="fcount" hidden>0</span>
+      </button>
+    </div>
+    <div class="quick" id="quick">
+      <div id="q-origin" style="display:flex;gap:8px"></div>
+      <span class="qdiv"></span>
+      <div id="q-segment" style="display:flex;gap:8px"></div>
     </div>
   </div>
 </div>
 
-<div class="max-w-[1320px] mx-auto px-4 sm:px-5">
-  <div class="flex gap-3 items-center py-3.5 text-xs text-base-content/55 mono flex-wrap">
-    <span id="count"></span>
-    <select id="sortSel" class="select select-xs select-bordered ml-auto">
-      <option value="default">정렬: 기본 (README 순서)</option>
-      <option value="tops-desc">성능(TOPS) 높은순</option>
-      <option value="tops-asc">성능(TOPS) 낮은순</option>
-      <option value="price-asc">가격 낮은순</option>
-      <option value="price-desc">가격 높은순</option>
-      <option value="date-desc">출시일 최신순</option>
-      <option value="date-asc">출시일 오래된순</option>
-      <option value="vendor">벤더명순</option>
-    </select>
+<div class="drawer" id="drawer">
+  <div class="wrap drawer-in">
+    <div class="fgroup"><div class="flabel">국가</div><div class="chips" id="f-country"></div></div>
+    <div class="fgroup"><div class="flabel">폼팩터</div><div class="chips" id="f-form"></div></div>
+    <div class="fgroup" style="grid-column:span 2;min-width:0"><div class="flabel">벤더</div><div class="chips" id="f-vendor"></div></div>
+    <div class="fgroup">
+      <div class="flabel">출시일 범위</div>
+      <div class="date">
+        <input type="month" id="dateFrom" aria-label="시작일"><span class="til">–</span><input type="month" id="dateTo" aria-label="종료일">
+      </div>
+      <label class="chk"><input type="checkbox" id="includeNoDate" checked>출시일 미상 포함</label>
+    </div>
+    <div class="drawer-foot">
+      <button class="reset" id="resetBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>필터 초기화</button>
+    </div>
   </div>
-  <div id="grid" class="hidden grid gap-4 pb-12" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr))"></div>
-  <div id="listwrap" class="pb-12 overflow-x-auto"></div>
-  <div id="empty" class="hidden text-center text-base-content/55 py-16">조건에 맞는 제품이 없습니다.</div>
 </div>
 
-<!-- README 문서 영역 (라즈베리파이 / 소프트웨어 / 학습자료 / 용어 / 기여) -->
-<section class="border-t border-base-300 bg-base-200/30">
-  <div class="max-w-[1320px] mx-auto px-4 sm:px-5 py-10">
+<main class="wrap">
+  <div class="rmeta">
+    <span class="c" id="count"></span>
+    <span class="hint">제품명 클릭 시 제조사 공식 페이지로 이동</span>
+  </div>
+  <div class="tscroll" id="tablewrap"></div>
+  <div id="grid" hidden></div>
+  <div id="empty" hidden>조건에 맞는 제품이 없습니다.</div>
+</main>
+
+<section class="section about">
+  <div class="wrap about-in">
+    <div class="shead">데이터 안내 · About</div>
+    <div id="about" class="doc"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap docs-in">
     <div id="docs" class="doc"></div>
   </div>
 </section>
 
-<footer class="border-t border-base-300 py-6 text-xs text-base-content/55 leading-relaxed">
-  <div class="max-w-[1320px] mx-auto px-4 sm:px-5 space-y-1.5">
-    <p class="font-semibold text-base-content/70">안내</p>
-    <ul class="list-disc pl-4 space-y-1">
-      <li>본 자료는 각 제조사 공식 자료 및 공개 보도(2025–2026)를 바탕으로 정리한 참고용 정보이며, 실제 사양·출시일·가격은 제품 리비전, 판매 지역, 구성, 환율 등에 따라 달라질 수 있습니다.</li>
-      <li>가격은 공식적으로 공개된 경우에만 표기하며, 그 외에는 "미공개"로 표시됩니다. 도입 전 반드시 제조사 공식 데이터시트와 견적을 확인하시기 바랍니다.</li>
-      <li><span class="text-warning font-semibold">⚠</span> 표시는 단독으로 판매되는 완제품이 아니라, 호스트 SoC나 시스템에 통합해야 동작하는 내장형(SoC 통합/IP) 제품을 의미합니다.</li>
-      <li>제품명을 클릭하면 제조사 공식 페이지로 이동합니다. 이 페이지의 데이터는 저장소의 <code class="mono">README.md</code>에서 생성되어 항상 동일하게 유지됩니다.</li>
-    </ul>
-    <p id="genstamp" class="pt-2 text-base-content/40"></p>
+<footer>
+  <div class="wrap foot-in">
+    <p class="fl">
+      데이터는 저장소의 <a id="readmeLink" href="#" target="_blank" rel="noopener"><code>README.md</code></a>에서 자동 생성됩니다 — 페이지와 목록은 항상 동일하게 유지됩니다.<br>
+      <span id="genstamp"></span>
+    </p>
+    <p class="fl"><a id="repoLink2" href="#" target="_blank" rel="noopener">github.com/pleahmacaka/awesome-npu ↗</a></p>
   </div>
 </footer>
 
-<script>window.DATA={"products":[{"vendor":"Syntiant","product":"NDP120","url":"https://www.syntiant.com/hardware","standalone":false,"country":"US","origin":"global","form":"SoC","formGroup":"SoC","compute":null,"computeDisplay":"—","tops":null,"memory":"on-chip","useCase":"Always-on audio / sensor","release":"2021-09","releaseDate":"2021-09-01","releaseDisplay":"2021.09","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"mcu","chip":"","tags":["MCU급","상시구동","오디오"],"specs":{"성능":"—","메모리":"on-chip","용도":"Always-on audio / sensor","출시":"2021.09"},"note":""},{"vendor":"BrainChip","product":"Akida (AKD1000)","url":"https://brainchip.com/akida-generations/","standalone":false,"country":"US","origin":"global","form":"M.2 / PCIe","formGroup":"M.2","compute":null,"computeDisplay":"—","tops":null,"memory":"on-chip SRAM","useCase":"Neuromorphic event-based","release":"2021-01","releaseDate":"2021-01-01","releaseDisplay":"2021.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["Neuromorphic event-based"],"specs":{"성능":"—","메모리":"on-chip SRAM","용도":"Neuromorphic event-based","출시":"2021.01"},"note":""},{"vendor":"Rebellions","product":"ION","url":"https://rebellions.ai/","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"on-card","useCase":"Finance inference","release":"2021-11","releaseDate":"2021-11-01","releaseDisplay":"2021.11","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"ION","tags":["금융 특화","추론","1세대"],"specs":{"타입":"추론 NPU","용도":"금융 특화","출시":"2021","세대":"1세대"},"note":"리벨리온 첫 칩. 금융 워크로드에 특화된 AI 반도체."},{"vendor":"Rebellions","product":"ATOM","url":"https://rebellions.ai/rebellions-product/atom/","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"GDDR6 (on-card)","useCase":"Datacenter inference","release":"2023-02","releaseDate":"2023-02-01","releaseDisplay":"2023.02","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"ATOM","tags":["데이터센터","추론","클라우드"],"specs":{"타입":"추론 NPU","용도":"데이터센터","상용화":"KT클라우드","공정":"삼성 7nm급"},"note":"국산 AI 반도체 최초로 KT클라우드에 대규모 상용화. NPUaaS 형태로 서비스 제공."},{"vendor":"Rebellions","product":"ATOM Max","url":"https://rebellions.ai/rebellions-product/atom-max/","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"on-card","useCase":"Datacenter inference","release":"2023-12","releaseDate":"2023-12-01","releaseDisplay":"2023.12","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"ATOM-Max","tags":["데이터센터","추론","양산"],"specs":{"타입":"추론 NPU","용도":"데이터센터","상태":"양산·운영 중","에코":"vLLM 등"},"note":"ATOM 후속 고성능 버전. 실제 고객사에서 양산·운영 중."},{"vendor":"Rebellions","product":"REBEL / Rebel 100","url":"https://rebellions.ai/rebellions-product/rebel/","standalone":true,"country":"KR","origin":"kr","form":"Server/Rack","formGroup":"Server/System","compute":null,"computeDisplay":"—","tops":null,"memory":"HBM3E (on-package)","useCase":"LLM & multimodal","release":"2025-08","releaseDate":"2025-08-01","releaseDisplay":"2025.08","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"REBEL","tags":["데이터센터","LLM","HBM3E","칩렛"],"specs":{"타입":"차세대 AI 칩","메모리":"HBM3E","대상":"LLM·멀티모달","구성":"Card/Server/Rack"},"note":"REBEL 칩 4개를 칩렛으로 결합한 REBEL-Quad. vLLM·Triton 지원. H200급 성능 목표. 서버·랙 단위 판매."},{"vendor":"FuriosaAI","product":"WARBOY","url":"https://www.furiosa.ai/warboy","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"on-card","useCase":"Vision inference","release":"2021-06","releaseDate":"2021-06-01","releaseDisplay":"2021.06","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"Warboy","tags":["비전","추론","1세대"],"specs":{"타입":"Vision NPU","용도":"영상 인식","벤치":"T4 대비 4배(영상)","SDK":"C/Python"},"note":"1세대 비전 특화 NPU. MLPerf에서 NVIDIA T4 대비 4배 영상 인식 성능. Model Zoo 제공."},{"vendor":"FuriosaAI","product":"RNGD","url":"https://www.furiosa.ai/rngd","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"HBM3 (48 GB)","useCase":"LLM inference","release":"2024-08","releaseDate":"2024-08-01","releaseDisplay":"2024.08","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"RNGD","tags":["데이터센터","LLM","HBM3","2세대"],"specs":{"타입":"추론 NPU","메모리":"HBM3","대상":"LLM·일반","에코":"K8s·vLLM"},"note":"2세대 NPU. BF16/FP8/INT8 양자화 지원. Kubernetes 네이티브 통합, OpenAI 호환 API 서버 제공."},{"vendor":"DEEPX","product":"DX-H1","url":"https://deepx.ai/products/dx-h1-v-npu/","standalone":true,"country":"KR","origin":"kr","form":"Server/Rack","formGroup":"Server/System","compute":null,"computeDisplay":"—","tops":null,"memory":"on-card","useCase":"Multi-camera inference server","release":null,"releaseDate":null,"releaseDisplay":"미상","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"DX-H1 V-NPU","tags":["서버","고성능","다중 카메라"],"specs":{"성능":"~28 POPS/서버","전력":"~40 W","용도":"추론 서버","규모":"1만 카메라급"},"note":"대규모 AI 연산용 서버 솔루션. 수만 대 카메라·센서 동시 처리."},{"vendor":"DEEPX","product":"DX-M2","url":"https://deepx.ai/","standalone":true,"country":"KR","origin":"kr","form":"M.2","formGroup":"M.2","compute":null,"computeDisplay":"—","tops":null,"memory":"on-module","useCase":"Robotics / physical AI","release":null,"releaseDate":null,"releaseDisplay":"미상","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"DX-M2","tags":["엣지","차세대","휴머노이드","2nm"],"specs":{"공정":"삼성 2nm 목표","대상":"피지컬 AI·로봇","상태":"개발 중","전략":"초저가"},"note":"CES 2026에서 방향성 공개. 로봇·휴머노이드용 차세대 칩. 초저가(수십 달러대) 목표 언급."},{"vendor":"HyperAccel","product":"Orion","url":"https://hyperaccel.ai/","standalone":true,"country":"KR","origin":"kr","form":"Server/Rack","formGroup":"Server/System","compute":null,"computeDisplay":"—","tops":null,"memory":"HBM / LPDDR","useCase":"LLM inference (FPGA)","release":"2023-11","releaseDate":"2023-11-01","releaseDisplay":"2023.11","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"LPU (FPGA)","tags":["LLM 전용","LPU","FPGA","데이터센터"],"specs":{"타입":"LLM 추론(LPU)","구현":"FPGA 기반","벤치":"GPT GPU 대비 ~5.6배","메모리":"HBM/LPDDR"},"note":"LLM 추론 특화 LPU(NPU 하위범주). FPGA로 구현한 초기 서버 제품. AWS EC2 F2 마켓플레이스 제공."},{"vendor":"HyperAccel","product":"Bertha","url":"https://hyperaccel.ai/","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"LPDDR5X (on-card)","useCase":"LLM inference (ASIC)","release":"2026-01","releaseDate":"2026-01-01","releaseDisplay":"2026.01","price":"~₩5M (target)","priceDisplay":"~₩5M (target)","priceUSD":3500,"segment":"datacenter","chip":"Bertha","tags":["LLM 전용","LPU","ASIC","삼성 4nm"],"specs":{"타입":"LLM 추론 ASIC","메모리":"LPDDR5X","공정":"삼성 4nm","효율":"가격효율 GPU ~10배"},"note":"세계 최초 LPDDR5X 기반 LLM 전용 칩. 서버에 그대로 장착하는 PCIe 폼팩터. 가격은 대표 발언 기준 목표가."},{"vendor":"Telechips","product":"N-Dolphin","url":"https://www.telechips.com/","standalone":false,"country":"KR","origin":"kr","form":"SoC","formGroup":"SoC","compute":null,"computeDisplay":"—","tops":null,"memory":"shared (host)","useCase":"Automotive vision (ADAS)","release":"2023-12","releaseDate":"2023-12-01","releaseDisplay":"2023.12","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["Automotive vision (ADAS)"],"specs":{"성능":"—","메모리":"shared (host)","용도":"Automotive vision (ADAS)","출시":"2023.12"},"note":""},{"vendor":"Apple","product":"Neural Engine (A / M series)","url":"https://www.apple.com/","standalone":false,"country":"US","origin":"global","form":"SoC","formGroup":"SoC","compute":null,"computeDisplay":"—","tops":null,"memory":"unified (shared)","useCase":"Mobile / desktop on-device","release":"2017-09","releaseDate":"2017-09-01","releaseDisplay":"2017.09","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["Mobile / desktop on-device"],"specs":{"성능":"—","메모리":"unified (shared)","용도":"Mobile / desktop on-device","출시":"2017.09"},"note":""},{"vendor":"MediaTek","product":"APU (NeuroPilot / Dimensity)","url":"https://www.mediatek.com/","standalone":false,"country":"JP","origin":"global","form":"SoC","formGroup":"SoC","compute":null,"computeDisplay":"—","tops":null,"memory":"shared (host)","useCase":"Mobile on-device","release":"2018-01","releaseDate":"2018-01-01","releaseDisplay":"2018.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["Mobile on-device"],"specs":{"성능":"—","메모리":"shared (host)","용도":"Mobile on-device","출시":"2018.01"},"note":""},{"vendor":"Ambarella","product":"CV72S","url":"https://www.ambarella.com/","standalone":false,"country":"US","origin":"global","form":"SoC","formGroup":"SoC","compute":null,"computeDisplay":"—","tops":null,"memory":"shared (host)","useCase":"Camera / edge vision","release":"2023-01","releaseDate":"2023-01-01","releaseDisplay":"2023.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["Camera / edge vision"],"specs":{"성능":"—","메모리":"shared (host)","용도":"Camera / edge vision","출시":"2023.01"},"note":""},{"vendor":"NXP","product":"Ara-1 DNPU","url":"https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/discrete-neural-processing-units:DNPU","standalone":true,"country":"NL","origin":"global","form":"M.2","formGroup":"M.2","compute":null,"computeDisplay":"—","tops":null,"memory":"on-module","useCase":"Camera / edge server","release":"2025-04","releaseDate":"2025-04-01","releaseDisplay":"2025.04","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"Ara-1","tags":["엣지","비전","저전력","DNPU"],"specs":{"타입":"Discrete NPU","용도":"카메라·엣지서버","에코":"eIQ SW","강점":"에너지 효율"},"note":"NXP 1세대 디스크리트 NPU. 칩 또는 모듈 형태. 비전·음성·제스처 멀티모달 추론."},{"vendor":"Nordic Semiconductor","product":"Axon NPU (nRF54LM20B)","url":"https://www.nordicsemi.com/Products/Technologies/Edge-AI/Axon-NPU","standalone":false,"country":"NO","origin":"global","form":"SoC","formGroup":"SoC","compute":null,"computeDisplay":"—","tops":null,"memory":"512 KB RAM / 2 MB NVM","useCase":"MCU-class TinyML","release":"2026-04","releaseDate":"2026-04-01","releaseDisplay":"2026.04","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"mcu","chip":"Axon","tags":["MCU급","초저전력","TinyML","무선"],"specs":{"성능":"CPU 대비 최대 15배","효율":"경쟁 대비 8배","RAM":"512KB / 2MB NVM","코어":"Cortex-M33 + RISC-V"},"note":"nRF54L 시리즈 내장 NPU. BLE·Thread·Matter 무선 SoC. 키워드 스포팅·음향 분류 등 초저전력 엣지 AI. 2026 Q2 양산."},{"vendor":"Qualcomm","product":"Hexagon NPU","url":"https://www.qualcomm.com/products/technology/processors/hexagon","standalone":false,"country":"US","origin":"global","form":"SoC","formGroup":"SoC","compute":null,"computeDisplay":"—","tops":null,"memory":"shared (host)","useCase":"Mobile / on-device","release":null,"releaseDate":null,"releaseDisplay":"미상","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"Hexagon","tags":["SoC","모바일","온디바이스"],"specs":{"타입":"SoC 내장 NPU","용도":"비전·음성·분석","강점":"전력 효율","에코":"LiteRT/AI Pack"},"note":"Snapdragon SoC 내장. 모바일·키오스크·디지털 사이니지용. Google LiteRT NPU 가속 지원(AOT 컴파일)."},{"vendor":"Intel","product":"Movidius NCS (1st gen)","url":"https://www.intel.com/content/www/us/en/developer/tools/neural-compute-stick/overview.html","standalone":true,"country":"US","origin":"global","form":"USB","formGroup":"USB","compute":null,"computeDisplay":"—","tops":null,"memory":"on-stick","useCase":"Prototyping (Myriad 2)","release":"2017-07","releaseDate":"2017-07-01","releaseDisplay":"2017.07","price":"EOL","priceDisplay":"EOL","priceUSD":null,"segment":"edge","chip":"","tags":["Prototyping (Myriad 2)"],"specs":{"성능":"—","메모리":"on-stick","용도":"Prototyping (Myriad 2)","출시":"2017.07"},"note":""},{"vendor":"NXP","product":"i.MX 8M Plus NPU","url":"https://www.nxp.com/products/i.MX8MPLUS","standalone":false,"country":"NL","origin":"global","form":"SoC","formGroup":"SoC","compute":"2.3","computeDisplay":"2.3 TOPS","tops":2.3,"memory":"shared (host)","useCase":"Industrial IoT","release":"2021-01","releaseDate":"2021-01-01","releaseDisplay":"2021.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"i.MX 8M Plus","tags":["산업IoT","통합형","장기공급"],"specs":{"성능":"2.3 TOPS","타입":"통합 NPU","용도":"산업 IoT","강점":"신뢰성·장기수급"},"note":"산업용 IoT 특화. 최대 성능보다 신뢰성·보안·장기 공급성 우선."},{"vendor":"Rockchip","product":"RK1808","url":"https://t.rock-chips.com/en/","standalone":false,"country":"CN","origin":"global","form":"SoC / USB","formGroup":"USB","compute":"3","computeDisplay":"3 TOPS","tops":3,"memory":"shared (host)","useCase":"Early edge NPU stick","release":"2019-01","releaseDate":"2019-01-01","releaseDisplay":"2019.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["Early edge NPU stick"],"specs":{"성능":"3 TOPS","메모리":"shared (host)","용도":"Early edge NPU stick","출시":"2019.01"},"note":""},{"vendor":"Google","product":"Coral USB Accelerator","url":"https://coral.ai/products/accelerator/","standalone":true,"country":"US","origin":"global","form":"USB","formGroup":"USB","compute":"4","computeDisplay":"4 TOPS","tops":4,"memory":"8 MB SRAM (on-chip)","useCase":"Edge (TFLite)","release":"2019-03","releaseDate":"2019-03-01","releaseDisplay":"2019.03","price":"$59.99","priceDisplay":"$59.99","priceUSD":59.99,"segment":"edge","chip":"Edge TPU","tags":["엣지","TFLite","USB","플러그앤플레이"],"specs":{"성능":"4 TOPS","전력":"~2 W","I/F":"USB 3.0","프레임워크":"TensorFlow Lite"},"note":"USB로 기존 호스트(RPi 등)에 Edge TPU 추가. TFLite 전용. 개발·프로토타입에 간편."},{"vendor":"Google","product":"Coral M.2 / Mini PCIe (single)","url":"https://coral.ai/products/m2-accelerator-ae/","standalone":true,"country":"US","origin":"global","form":"M.2 / mPCIe","formGroup":"M.2","compute":"4","computeDisplay":"4 TOPS","tops":4,"memory":"8 MB SRAM (on-chip)","useCase":"Edge (TFLite)","release":"2019-11","releaseDate":"2019-11-01","releaseDisplay":"2019.11","price":"$24.99","priceDisplay":"$24.99","priceUSD":24.99,"segment":"edge","chip":"","tags":["Edge (TFLite)"],"specs":{"성능":"4 TOPS","메모리":"8 MB SRAM (on-chip)","용도":"Edge (TFLite)","출시":"2019.11"},"note":""},{"vendor":"Intel","product":"Neural Compute Stick 2","url":"https://www.intel.com/content/www/us/en/developer/tools/neural-compute-stick/overview.html","standalone":true,"country":"US","origin":"global","form":"USB","formGroup":"USB","compute":"4","computeDisplay":"4 TOPS","tops":4,"memory":"on-stick","useCase":"Prototyping (OpenVINO)","release":"2018-11","releaseDate":"2018-11-01","releaseDisplay":"2018.11","price":"~$70 (EOL)","priceDisplay":"~$70 (EOL)","priceUSD":70,"segment":"edge","chip":"Movidius Myriad X","tags":["엣지","USB","VPU","프로토타입"],"specs":{"성능":"4 TOPS","타입":"VPU","I/F":"USB 3.0","툴킷":"OpenVINO"},"note":"USB 형태로 기존 시스템에 AI 추론 추가. OpenVINO 최적화. 현재 단종 단계, 재고 기준 가격."},{"vendor":"MemryX","product":"MX3","url":"https://memryx.com/products/","standalone":true,"country":"US","origin":"global","form":"M.2","formGroup":"M.2","compute":"5 (TFLOPS)","computeDisplay":"5 (TFLOPS)","tops":5,"memory":"on-chip SRAM","useCase":"Vision / CNN","release":"2024-06","releaseDate":"2024-06-01","releaseDisplay":"2024.06","price":"~$149","priceDisplay":"~$149","priceUSD":149,"segment":"edge","chip":"","tags":["Vision / CNN"],"specs":{"성능":"5 (TFLOPS)","메모리":"on-chip SRAM","용도":"Vision / CNN","출시":"2024.06"},"note":""},{"vendor":"Rockchip","product":"RK3588 NPU","url":"https://www.rock-chips.com/a/en/products/RK35_Series/2022/0926/1660.html","standalone":false,"country":"CN","origin":"global","form":"SoC","formGroup":"SoC","compute":"6","computeDisplay":"6 TOPS","tops":6,"memory":"shared (host)","useCase":"General edge (SBC)","release":"2022-01","releaseDate":"2022-01-01","releaseDisplay":"2022.01","price":"$100+ (board)","priceDisplay":"$100+ (board)","priceUSD":100,"segment":"edge","chip":"RK3588","tags":["SoC","통합형","범용","SBC"],"specs":{"성능":"6 TOPS","타입":"SoC 내장 NPU","용도":"비전·NLP·오디오","강점":"범용 컴퓨팅"},"note":"범용 SoC 내장 NPU. 보통 SBC(Orange Pi 5 등)에 탑재되어 유통(가격은 보드 기준)."},{"vendor":"Rockchip","product":"RK3576 NPU","url":"https://www.rock-chips.com/","standalone":false,"country":"CN","origin":"global","form":"SoC","formGroup":"SoC","compute":"6","computeDisplay":"6 TOPS","tops":6,"memory":"shared (host)","useCase":"Mid-range edge (SBC)","release":"2024-05","releaseDate":"2024-05-01","releaseDisplay":"2024.05","price":"board","priceDisplay":"board","priceUSD":null,"segment":"edge","chip":"","tags":["Mid-range edge (SBC)"],"specs":{"성능":"6 TOPS","메모리":"shared (host)","용도":"Mid-range edge (SBC)","출시":"2024.05"},"note":""},{"vendor":"DEEPX","product":"DX-L1 / DX-L2","url":"https://deepx.ai/","standalone":false,"country":"KR","origin":"kr","form":"SoC","formGroup":"SoC","compute":"6.4","computeDisplay":"6.4 TOPS","tops":6.4,"memory":"shared (host)","useCase":"Smart appliances / sensors","release":null,"releaseDate":null,"releaseDisplay":"미상","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"DX-L1/L2","tags":["초소형","센서","가전"],"specs":{"DX-L1":"2.4 TOPS","DX-L2":"6.4 TOPS","공정":"삼성 14/28nm","용도":"AI 스마트가전"},"note":"초소형 센서~가전용 저체급 라인. 단일/3채널 카메라 영상 처리."},{"vendor":"Google","product":"Coral M.2 Dual Edge TPU","url":"https://coral.ai/products/m2-accelerator-dual-edgetpu/","standalone":true,"country":"US","origin":"global","form":"M.2","formGroup":"M.2","compute":"8","computeDisplay":"8 TOPS","tops":8,"memory":"8 MB SRAM x2","useCase":"Edge (TFLite)","release":"2020-01","releaseDate":"2020-01-01","releaseDisplay":"2020.01","price":"$39.99","priceDisplay":"$39.99","priceUSD":39.99,"segment":"edge","chip":"Edge TPU x2","tags":["엣지","TFLite","M.2","ASIC"],"specs":{"성능":"8 TOPS (4x2)","전력":"~4 W","I/F":"M.2 E-key","프레임워크":"TensorFlow Lite"},"note":"Edge TPU 2개 탑재 M.2 모듈. M.2 E-key PCIe x1 2레인 필요(보드 호환 주의)."},{"vendor":"Kneron","product":"KL530","url":"https://www.kneron.com/en/product/ai_solution/","standalone":false,"country":"US","origin":"global","form":"SoC","formGroup":"SoC","compute":"8","computeDisplay":"8 TOPS","tops":8,"memory":"on-chip","useCase":"Entry on-device vision","release":"2022-05","releaseDate":"2022-05-01","releaseDisplay":"2022.05","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["Entry on-device vision"],"specs":{"성능":"8 TOPS","메모리":"on-chip","용도":"Entry on-device vision","출시":"2022.05"},"note":""},{"vendor":"Mobilint","product":"REGULUS","url":"https://www.mobilint.com/regulus","standalone":false,"country":"KR","origin":"kr","form":"SoC","formGroup":"SoC","compute":"10","computeDisplay":"10 TOPS","tops":10,"memory":"~8 GB LPDDR4X","useCase":"Drones / AI cameras","release":"2025-01","releaseDate":"2025-01-01","releaseDisplay":"2025.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"REGULUS","tags":["온디바이스","SoC","드론","AI카메라","CES 수상"],"specs":{"성능":"10 TOPS","전력":"3 W (TDP)","통합":"CPU + ISP + Codec","I/F":"Ethernet·USB·MIPI","대상":"소형 엣지 기기","수상":"CES Innovation Award 2025"},"note":"CPU·ISP·코덱을 통합한 초저전력 온디바이스 AI SoC. 크기·비용·전력 제약이 큰 소형 기기용으로, AI 로봇·드론·스마트 가전·스마트 토이·AI CCTV 등에 최적. 2024년 CES Innovation Award 2025 수상."},{"vendor":"Hailo","product":"Hailo-8L M.2","url":"https://hailo.ai/products/ai-accelerators/hailo-8l-entry-level-ai-acceleration-module/","standalone":true,"country":"IL","origin":"global","form":"M.2","formGroup":"M.2","compute":"13","computeDisplay":"13 TOPS","tops":13,"memory":"on-chip","useCase":"Entry edge vision (Pi AI Kit)","release":"2024-06","releaseDate":"2024-06-01","releaseDisplay":"2024.06","price":"~$70","priceDisplay":"~$70","priceUSD":70,"segment":"edge","chip":"","tags":["Entry edge vision (Pi AI Kit)"],"specs":{"성능":"13 TOPS","메모리":"on-chip","용도":"Entry edge vision (Pi AI Kit)","출시":"2024.06"},"note":""},{"vendor":"Blaize","product":"1600 SoC","url":"https://www.blaize.com/products/","standalone":true,"country":"US","origin":"global","form":"SoC / PCIe","formGroup":"PCIe","compute":"16","computeDisplay":"16 TOPS","tops":16,"memory":"up to 4 GB LPDDR4","useCase":"Edge vision / gateway","release":"2023-01","releaseDate":"2023-01-01","releaseDisplay":"2023.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["Edge vision / gateway"],"specs":{"성능":"16 TOPS","메모리":"up to 4 GB LPDDR4","용도":"Edge vision / gateway","출시":"2023.01"},"note":""},{"vendor":"Huawei","product":"Ascend 310 (Atlas 200)","url":"https://www.hiascend.com/","standalone":false,"country":"CN","origin":"global","form":"SoC / module","formGroup":"SoC","compute":"16","computeDisplay":"16 TOPS","tops":16,"memory":"LPDDR4X (on-module)","useCase":"Edge inference","release":"2018-10","releaseDate":"2018-10-01","releaseDisplay":"2018.10","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["Edge inference"],"specs":{"성능":"16 TOPS","메모리":"LPDDR4X (on-module)","용도":"Edge inference","출시":"2018.10"},"note":""},{"vendor":"Kneron","product":"KL730","url":"https://www.kneron.com/en/product/ai_solution/","standalone":false,"country":"US","origin":"global","form":"SoC","formGroup":"SoC","compute":"25","computeDisplay":"25 TOPS","tops":25,"memory":"on-chip","useCase":"On-device vision","release":"2023-08","releaseDate":"2023-08-01","releaseDisplay":"2023.08","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["On-device vision"],"specs":{"성능":"25 TOPS","메모리":"on-chip","용도":"On-device vision","출시":"2023.08"},"note":""},{"vendor":"DEEPX","product":"DX-M1","url":"https://deepx.ai/products/dx-m1/","standalone":true,"country":"KR","origin":"kr","form":"M.2","formGroup":"M.2","compute":"25","computeDisplay":"25 TOPS","tops":25,"memory":"4 GB LPDDR5 (on-card)","useCase":"Edge (industrial, RPi5)","release":"2025-09","releaseDate":"2025-09-01","releaseDisplay":"2025.09","price":"~$100s","priceDisplay":"~$100s","priceUSD":120,"segment":"edge","chip":"DX-M1","tags":["엣지","M.2","산업용","RPi5"],"specs":{"성능":"25 TOPS (INT8)","전력":"1–5 W","메모리":"4GB LPDDR5","I/F":"M.2 PCIe Gen3 x4"},"note":"라즈베리파이5·x86/ARM 호환. -25~85°C 산업용. DXNN SDK로 PyTorch/ONNX/TF 지원. Digi-Key 정식 유통."},{"vendor":"DEEPX","product":"DX-M1M","url":"https://deepx.ai/products/dx-m1m/","standalone":true,"country":"KR","origin":"kr","form":"M.2","formGroup":"M.2","compute":"25","computeDisplay":"25 TOPS","tops":25,"memory":"on-module","useCase":"On-device (low power)","release":"2025-12","releaseDate":"2025-12-01","releaseDisplay":"2025.12","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"DX-M1M","tags":["엣지","온디바이스","저전력"],"specs":{"성능":"25 TOPS","전력":"3 W (typ)","용도":"비전·오디오","SDK":"PyTorch/ONNX"},"note":"온디바이스 AI용. IPS/Watt 효율 중심 설계."},{"vendor":"Hailo","product":"Hailo-8 M.2","url":"https://hailo.ai/products/ai-accelerators/hailo-8-m2-ai-acceleration-module/","standalone":true,"country":"IL","origin":"global","form":"M.2","formGroup":"M.2","compute":"26","computeDisplay":"26 TOPS","tops":26,"memory":"on-chip","useCase":"Edge vision (RPi5)","release":"2021-01","releaseDate":"2021-01-01","releaseDisplay":"2021.01","price":"$120–150","priceDisplay":"$120–150","priceUSD":135,"segment":"edge","chip":"Hailo-8","tags":["엣지","M.2","고효율","비전"],"specs":{"성능":"26 TOPS","전력":"~2.5 W","I/F":"M.2 PCIe Gen3 x4","SDK":"Dataflow Compiler"},"note":"고효율 비전 엣지 NPU. RPi5 등과 널리 사용. Hailo-8L(13 TOPS) 저가형도 존재."},{"vendor":"Rockchip","product":"RK1820","url":"https://www.rock-chips.com/","standalone":false,"country":"CN","origin":"global","form":"SoC","formGroup":"SoC","compute":"30","computeDisplay":"30 TOPS","tops":30,"memory":"stacked DRAM","useCase":"Local LLM / vision","release":"2025-11","releaseDate":"2025-11-01","releaseDisplay":"2025.11","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["Local LLM / vision"],"specs":{"성능":"30 TOPS","메모리":"stacked DRAM","용도":"Local LLM / vision","출시":"2025.11"},"note":""},{"vendor":"NXP","product":"Ara240 DNPU","url":"https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/discrete-neural-processing-units:DNPU","standalone":true,"country":"NL","origin":"global","form":"M.2","formGroup":"M.2","compute":"40","computeDisplay":"40 TOPS","tops":40,"memory":"16 GB (on-module)","useCase":"GenAI / LLM & VLM","release":"2026-06","releaseDate":"2026-06-01","releaseDisplay":"2026.06","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"Ara240","tags":["엣지","GenAI","M.2","LLM/VLM"],"specs":{"성능":"최대 40 eTOPS","타입":"Discrete NPU(2세대)","메모리":"16GB","출시":"2026.06"},"note":"실시간 GenAI 최적화. 16GB M.2 모듈로 i.MX 95/8M Plus의 코프로세서 활용. LLM·VLM·멀티모달."},{"vendor":"Hailo","product":"Hailo-10H M.2","url":"https://hailo.ai/products/ai-accelerators/hailo-10h-m2-generative-ai-acceleration-module/","standalone":true,"country":"IL","origin":"global","form":"M.2","formGroup":"M.2","compute":"40","computeDisplay":"40 TOPS","tops":40,"memory":"LPDDR4 (on-module)","useCase":"Generative AI on edge","release":"2025-01","releaseDate":"2025-01-01","releaseDisplay":"2025.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["Generative AI on edge"],"specs":{"성능":"40 TOPS","메모리":"LPDDR4 (on-module)","용도":"Generative AI on edge","출시":"2025.01"},"note":""},{"vendor":"SiMa.ai","product":"MLSoC","url":"https://sima.ai/products/","standalone":true,"country":"US","origin":"global","form":"M.2 / module","formGroup":"M.2","compute":"50","computeDisplay":"50 TOPS","tops":50,"memory":"LPDDR4 (on-module)","useCase":"Automotive / robotics","release":"2023-05","releaseDate":"2023-05-01","releaseDisplay":"2023.05","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["Automotive / robotics"],"specs":{"성능":"50 TOPS","메모리":"LPDDR4 (on-module)","용도":"Automotive / robotics","출시":"2023.05"},"note":""},{"vendor":"Mobilint","product":"MLA100 PCIe Card","url":"https://www.mobilint.com/aries/mla100","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":"80","computeDisplay":"80 TOPS","tops":80,"memory":"16 / 32 GB LPDDR4X","useCase":"Edge / AI workstation","release":"2024-01","releaseDate":"2024-01-01","releaseDisplay":"2024.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"ARIES","tags":["엣지","PCIe","LLM/VLM","8코어","GPU 대체"],"specs":{"성능":"64 TOPS (부스트 80)","전력":"25 W","메모리":"16 / 32GB LPDDR4X","I/F":"PCIe Gen4 8-lane","코어":"ARIES 8코어","SDK":"qb (모델 컴파일러)","모델":"200+ (SOTA 포함)","카메라":"최대 10채널 실시간"},"note":"ARIES 8코어 기반 엣지 PCIe 카드. 경쟁 제품 대비 약 4배 성능·1/10 전력을 표방하며 온프레미스 서버 GPU 대체를 겨냥. 스마트팩토리·시티·AI CCTV·로봇에 활용. MobileNetV2 11,551 FPS, ResNet-50 3,082 FPS. AWS Greengrass 연동."},{"vendor":"Mobilint","product":"MLA100 MXM","url":"https://www.mobilint.com/aries","standalone":true,"country":"KR","origin":"kr","form":"MXM","formGroup":"MXM","compute":"80","computeDisplay":"80 TOPS","tops":80,"memory":"LPDDR4X (on-module)","useCase":"Embedded robotics","release":"2025-04","releaseDate":"2025-04-01","releaseDisplay":"2025.04","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"ARIES","tags":["임베디드","MXM","로보틱스","러기드"],"specs":{"성능":"80 TOPS","전력":"25 W","폼팩터":"MXM 표준 모듈","코어":"ARIES 8코어","대상":"러기드 AI 박스","SDK":"qb"},"note":"표준 MXM(Mobile PCIe Module) 인터페이스 기반 임베디드 NPU 모듈. 공간·전력·발열이 중요한 로보틱스·산업 자동화용. 서버급 추론을 엣지 기기로 이식하는 것이 목표. 2025.04 정식 출시, 샘플·주문 가능."},{"vendor":"Mobilint","product":"MLX-A1 Edge AI Box","url":"https://www.mobilint.com/aries/mlx-a1","standalone":true,"country":"KR","origin":"kr","form":"Box","formGroup":"Box","compute":"80","computeDisplay":"80 TOPS","tops":80,"memory":"LPDDR4X (on-board)","useCase":"All-in-one edge box","release":"2025-06","releaseDate":"2025-06-01","releaseDisplay":"2025.06","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"ARIES","tags":["엣지박스","올인원","오프라인","다중 카메라"],"specs":{"성능":"64 TOPS (부스트 80)","전력":"35 W","I/O":"USB·MIPI·Ethernet·PCIe","비디오":"4K@120fps 인코더","카메라":"최대 10채널","OS":"소프트웨어 프리로드"},"note":"소프트웨어와 I/O가 통합된 완제품 AI 박스(데스크·산업 겸용). 외부 컴퓨터·서버 없이 온디바이스로 AI 실행해 저지연·보안 강화. 스마트시티·AMR·드론용. ARIES 탑재."},{"vendor":"Qualcomm","product":"Snapdragon X2 Elite NPU","url":"https://www.qualcomm.com/products/mobile/snapdragon/pcs-and-tablets","standalone":false,"country":"US","origin":"global","form":"SoC","formGroup":"SoC","compute":"80","computeDisplay":"80 TOPS","tops":80,"memory":"unified LPDDR5x","useCase":"PC / on-device","release":"2025-09","releaseDate":"2025-09-01","releaseDisplay":"2025.09","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["PC / on-device"],"specs":{"성능":"80 TOPS","메모리":"unified LPDDR5x","용도":"PC / on-device","출시":"2025.09"},"note":""},{"vendor":"Axelera AI","product":"Metis M.2","url":"https://axelera.ai/ai-accelerators","standalone":true,"country":"NL","origin":"global","form":"M.2","formGroup":"M.2","compute":"214","computeDisplay":"214 TOPS","tops":214,"memory":"1 GB (on-card)","useCase":"Vision / local LLM","release":"2023-11","releaseDate":"2023-11-01","releaseDisplay":"2023.11","price":"~$199","priceDisplay":"~$199","priceUSD":199,"segment":"edge","chip":"","tags":["Vision / local LLM"],"specs":{"성능":"214 TOPS","메모리":"1 GB (on-card)","용도":"Vision / local LLM","출시":"2023.11"},"note":""},{"vendor":"Mobilint","product":"MLA400 PCIe Card","url":"https://www.mobilint.com/aries/mla400","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":"~320","computeDisplay":"~320 TOPS","tops":320,"memory":"LPDDR4X (on-card)","useCase":"On-prem multi-LLM / vision","release":"2026-01","releaseDate":"2026-01-01","releaseDisplay":"2026.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"Quad-ARIES","tags":["서버","고밀도","Quad-ARIES","Multi-LLM"],"specs":{"성능":"~256 TOPS (부스트 ~320)","구조":"ARIES 4-chip","용도":"Multi-LLM·다중 카메라 비전","강점":"TOPS/Watt 효율","SDK":"qb + 보일러플레이트"},"note":"ARIES 4개를 한 카드에 집적한 고밀도 PCIe 카드. 온프레미스 다중 LLM 추론과 대규모 다중 카메라 비전용. CES 2026·Embedded World 2026 전시, Multi-LLM 데모 및 오픈소스 보일러플레이트 공개."},{"vendor":"Axelera AI","product":"Europa","url":"https://axelera.ai/","standalone":true,"country":"NL","origin":"global","form":"PCIe","formGroup":"PCIe","compute":"629","computeDisplay":"629 TOPS","tops":629,"memory":"on-card","useCase":"Datacenter-class edge","release":"2026","releaseDate":"2026-01-01","releaseDisplay":"2026","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["Datacenter-class edge"],"specs":{"성능":"629 TOPS","메모리":"on-card","용도":"Datacenter-class edge","출시":"2026"},"note":""},{"vendor":"Axelera AI","product":"Metis PCIe (4-core)","url":"https://axelera.ai/ai-accelerators","standalone":true,"country":"NL","origin":"global","form":"PCIe","formGroup":"PCIe","compute":"856","computeDisplay":"856 TOPS","tops":856,"memory":"up to 8 GB (on-card)","useCase":"Multi-stream edge server","release":"2026-01","releaseDate":"2026-01-01","releaseDisplay":"2026.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":["Multi-stream edge server"],"specs":{"성능":"856 TOPS","메모리":"up to 8 GB (on-card)","용도":"Multi-stream edge server","출시":"2026.01"},"note":""},{"vendor":"Tenstorrent","product":"Wormhole n150s","url":"https://tenstorrent.com/hardware/wormhole","standalone":true,"country":"US","origin":"global","form":"PCIe","formGroup":"PCIe","compute":"262 TFLOPS FP8","computeDisplay":"262 TFLOPS FP8","tops":262,"memory":"12 GB GDDR6","useCase":"","release":"2024-07","releaseDate":"2024-07-01","releaseDisplay":"2024.07","price":"$999","priceDisplay":"$999","priceUSD":999,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"262 TFLOPS FP8","메모리":"12 GB GDDR6","출시":"2024.07"},"note":""},{"vendor":"Tenstorrent","product":"Wormhole n300s","url":"https://tenstorrent.com/hardware/wormhole","standalone":true,"country":"US","origin":"global","form":"PCIe","formGroup":"PCIe","compute":"524 TFLOPS FP8","computeDisplay":"524 TFLOPS FP8","tops":524,"memory":"24 GB GDDR6","useCase":"","release":"2024-07","releaseDate":"2024-07-01","releaseDisplay":"2024.07","price":"$1,399","priceDisplay":"$1,399","priceUSD":1399,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"524 TFLOPS FP8","메모리":"24 GB GDDR6","출시":"2024.07"},"note":""},{"vendor":"Tenstorrent","product":"Blackhole p100a","url":"https://tenstorrent.com/hardware/blackhole","standalone":true,"country":"US","origin":"global","form":"PCIe","formGroup":"PCIe","compute":"~670 TFLOPS FP8","computeDisplay":"~670 TFLOPS FP8","tops":670,"memory":"28 GB GDDR6","useCase":"","release":"2025-04","releaseDate":"2025-04-01","releaseDisplay":"2025.04","price":"$999","priceDisplay":"$999","priceUSD":999,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"~670 TFLOPS FP8","메모리":"28 GB GDDR6","출시":"2025.04"},"note":""},{"vendor":"Tenstorrent","product":"Blackhole p150a","url":"https://tenstorrent.com/hardware/blackhole","standalone":true,"country":"US","origin":"global","form":"PCIe","formGroup":"PCIe","compute":"745 TFLOPS FP8","computeDisplay":"745 TFLOPS FP8","tops":745,"memory":"32 GB GDDR6","useCase":"","release":"2025-04","releaseDate":"2025-04-01","releaseDisplay":"2025.04","price":"$1,399","priceDisplay":"$1,399","priceUSD":1399,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"745 TFLOPS FP8","메모리":"32 GB GDDR6","출시":"2025.04"},"note":""},{"vendor":"Graphcore","product":"Bow IPU (Bow-2000)","url":"https://www.graphcore.ai/products/ipu","standalone":true,"country":"US","origin":"global","form":"Blade / system","formGroup":"Server/System","compute":"350 TFLOPS FP16","computeDisplay":"350 TFLOPS FP16","tops":350,"memory":"900 MB SRAM","useCase":"","release":"2022-03","releaseDate":"2022-03-01","releaseDisplay":"2022.03","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"350 TFLOPS FP16","메모리":"900 MB SRAM","출시":"2022.03"},"note":""},{"vendor":"SambaNova","product":"SN40L","url":"https://sambanova.ai/technology/sn40l-rdu","standalone":true,"country":"US","origin":"global","form":"System (RDU)","formGroup":"Server/System","compute":null,"computeDisplay":"—","tops":null,"memory":"HBM3 + DDR","useCase":"","release":"2023-09","releaseDate":"2023-09-01","releaseDisplay":"2023.09","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"HBM3 + DDR","출시":"2023.09"},"note":""},{"vendor":"Cerebras","product":"WSE-3 (CS-3)","url":"https://www.cerebras.ai/product-chip","standalone":true,"country":"US","origin":"global","form":"Wafer-scale system","formGroup":"Server/System","compute":null,"computeDisplay":"—","tops":null,"memory":"44 GB on-chip","useCase":"","release":"2024-03","releaseDate":"2024-03-01","releaseDisplay":"2024.03","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"44 GB on-chip","출시":"2024.03"},"note":""},{"vendor":"Groq","product":"LPU (GroqCard)","url":"https://groq.com/","standalone":true,"country":"US","origin":"global","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"230 MB SRAM","useCase":"","release":"2023-01","releaseDate":"2023-01-01","releaseDisplay":"2023.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"230 MB SRAM","출시":"2023.01"},"note":""},{"vendor":"d-Matrix","product":"Corsair","url":"https://www.d-matrix.ai/product/","standalone":true,"country":"US","origin":"global","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"digital in-memory","useCase":"","release":"2025-01","releaseDate":"2025-01-01","releaseDisplay":"2025.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"digital in-memory","출시":"2025.01"},"note":""},{"vendor":"Untether AI","product":"speedAI240","url":"https://www.untether.ai/","standalone":true,"country":"US","origin":"global","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"at-memory compute","useCase":"","release":"2024-01","releaseDate":"2024-01-01","releaseDisplay":"2024.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"at-memory compute","출시":"2024.01"},"note":""},{"vendor":"Etched","product":"Sohu","url":"https://www.etched.com/","standalone":true,"country":"US","origin":"global","form":"System","formGroup":"Server/System","compute":null,"computeDisplay":"—","tops":null,"memory":"transformer-only ASIC","useCase":"","release":"2025","releaseDate":"2025-01-01","releaseDisplay":"2025","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"transformer-only ASIC","출시":"2025"},"note":""},{"vendor":"Huawei","product":"Ascend 910C","url":"https://www.hiascend.com/","standalone":true,"country":"CN","origin":"global","form":"System (OAM)","formGroup":"Server/System","compute":null,"computeDisplay":"—","tops":null,"memory":"HBM","useCase":"","release":"2025-01","releaseDate":"2025-01-01","releaseDisplay":"2025.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"HBM","출시":"2025.01"},"note":""},{"vendor":"Cambricon","product":"Siyuan 590","url":"https://www.cambricon.com/","standalone":true,"country":"CN","origin":"global","form":"PCIe / system","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"HBM","useCase":"","release":"2023-01","releaseDate":"2023-01-01","releaseDisplay":"2023.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"HBM","출시":"2023.01"},"note":""}],"introHTML":"\u003cp>Commercial NPUs and AI inference accelerators, from MCU-class parts to datacenter cards.\u003c/p>\u003cp>Data is compiled from vendor pages and public reporting (2025–2026) and may lag product revisions. Compute figures are vendor-stated peak TOPS at INT8 unless noted; datacenter parts often publish throughput/memory specs instead of a single TOPS number, shown as \u003ccode>-\u003c/code>. Prices are listed only where officially disclosed. Sorted by compute, ascending.\u003c/p>\u003cp>\u003ccode>⚠\u003c/code> marks parts that are not standalone products — SoC-integrated or IP that must be built into a host system.\u003c/p>\u003cp>The \u003cstrong>Memory\u003c/strong> column shows dedicated on-board/on-chip memory where a part carries its own; \u003ccode>shared (host)\u003c/code> or \u003ccode>unified\u003c/code> means it uses the host system&#39;s RAM instead. This matters for LLM/VLM work, where model size is bound by available memory.\u003c/p>\u003cp>Flags: 🇰🇷 Korea, 🇺🇸 USA, 🇳🇱 Netherlands, 🇨🇳 China, 🇳🇴 Norway, 🇮🇱 Israel, 🇩🇪 Germany, 🇫🇷 France, 🇯🇵 Japan.\u003c/p>","docsHTML":"\u003ch2 id=\"raspberry-pi-accelerators\">Raspberry Pi accelerators\u003c/h2>\u003cp>Which accelerator fits depends on the Pi generation. Pi 5 exposes a PCIe lane (via M.2 HAT+), so it takes M.2 modules. Pi 4 / Pi 3 have no PCIe, so they rely on USB accelerators.\u003c/p>\u003ch3 id=\"pi-5-m2-hat\">Pi 5 (M.2 HAT+)\u003c/h3>\u003cdiv class=\"tbl-wrap\">\u003ctable>\u003cthead>\u003ctr>\u003cth>Module\u003c/th>\u003cth>Compute\u003c/th>\u003cth>Interface\u003c/th>\u003cth>PyTorch/ONNX\u003c/th>\u003cth>Notes\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>\u003ca href=\"https://hailo.ai/\" target=\"_blank\" rel=\"noopener\">Hailo-8\u003c/a>\u003c/td>\u003ctd>26 TOPS\u003c/td>\u003ctd>M.2 (Pi AI HAT+)\u003c/td>\u003ctd>yes\u003c/td>\u003ctd>Higher-end AI HAT+ option\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://hailo.ai/\" target=\"_blank\" rel=\"noopener\">Hailo-8L\u003c/a>\u003c/td>\u003ctd>13 TOPS\u003c/td>\u003ctd>M.2 (Pi AI Kit)\u003c/td>\u003ctd>yes\u003c/td>\u003ctd>Official Pi 5 AI Kit chip; ~$70\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://axelera.ai/ai-accelerators\" target=\"_blank\" rel=\"noopener\">Axelera Metis M.2\u003c/a>\u003c/td>\u003ctd>214 TOPS\u003c/td>\u003ctd>M.2\u003c/td>\u003ctd>yes (Voyager SDK)\u003c/td>\u003ctd>Highest compute; model zoo still limited\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://deepx.ai/products/dx-m1/\" target=\"_blank\" rel=\"noopener\">DEEPX DX-M1\u003c/a>\u003c/td>\u003ctd>25 TOPS\u003c/td>\u003ctd>M.2\u003c/td>\u003ctd>yes (DXNN SDK)\u003c/td>\u003ctd>Digi-Key stock, industrial temp range\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://coral.ai/products/m2-accelerator-dual-edgetpu/\" target=\"_blank\" rel=\"noopener\">Coral M.2 Dual Edge TPU\u003c/a>\u003c/td>\u003ctd>8 TOPS\u003c/td>\u003ctd>M.2 E-key\u003c/td>\u003ctd>TFLite only\u003c/td>\u003ctd>Cheapest; needs dual-lane E-key slot\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://coral.ai/products/m2-accelerator-ae/\" target=\"_blank\" rel=\"noopener\">Coral M.2 Edge TPU\u003c/a>\u003c/td>\u003ctd>4 TOPS\u003c/td>\u003ctd>M.2 A+E-key\u003c/td>\u003ctd>TFLite only\u003c/td>\u003ctd>Single-TPU variant\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003ch3 id=\"pi-4--pi-3-and-older-usb\">Pi 4 / Pi 3 and older (USB)\u003c/h3>\u003cp>No PCIe on these boards — USB accelerators only. Works on Pi 4, Pi 3B+, and most Linux SBCs.\u003c/p>\u003cdiv class=\"tbl-wrap\">\u003ctable>\u003cthead>\u003ctr>\u003cth>Module\u003c/th>\u003cth>Compute\u003c/th>\u003cth>Interface\u003c/th>\u003cth>PyTorch/ONNX\u003c/th>\u003cth>Notes\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>\u003ca href=\"https://hailo.ai/\" target=\"_blank\" rel=\"noopener\">Hailo-8 USB stick\u003c/a>\u003c/td>\u003ctd>26 TOPS\u003c/td>\u003ctd>USB 3.0\u003c/td>\u003ctd>yes\u003c/td>\u003ctd>Fastest USB option; ~5W peak\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://coral.ai/products/accelerator/\" target=\"_blank\" rel=\"noopener\">Coral USB Accelerator\u003c/a>\u003c/td>\u003ctd>4 TOPS\u003c/td>\u003ctd>USB 3.0\u003c/td>\u003ctd>TFLite only\u003c/td>\u003ctd>Works on Pi 3B+/4; driver updates stalled\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://www.intel.com/content/www/us/en/developer/tools/neural-compute-stick/overview.html\" target=\"_blank\" rel=\"noopener\">Intel NCS2 (Myriad X)\u003c/a>\u003c/td>\u003ctd>4 TOPS\u003c/td>\u003ctd>USB 3.0\u003c/td>\u003ctd>OpenVINO\u003c/td>\u003ctd>EOL, no driver updates since ~2021\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"http://www.orangepi.org/\" target=\"_blank\" rel=\"noopener\">Orange Pi AI Stick (Lyeffe)\u003c/a>\u003c/td>\u003ctd>~2.8 TOPS\u003c/td>\u003ctd>USB\u003c/td>\u003ctd>limited\u003c/td>\u003ctd>Myriad-class; sparse support\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://t.rock-chips.com/en/\" target=\"_blank\" rel=\"noopener\">Toybrick RK1808 (TB-RK1808S0)\u003c/a>\u003c/td>\u003ctd>~3 TOPS\u003c/td>\u003ctd>USB\u003c/td>\u003ctd>RKNN toolkit\u003c/td>\u003ctd>Rockchip RK1808 USB compute stick\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003ch3 id=\"notes-on-pi-compatibility\">Notes on Pi compatibility\u003c/h3>\u003cul>\u003cli>\u003cstrong>Coral\u003c/strong> hasn&#39;t seen meaningful driver/runtime updates in years; expect friction with recent Python/OS releases. Still fine for TFLite vision.\u003c/li>\u003cli>\u003cstrong>NCS2\u003c/strong> is discontinued (EOL); usable only on legacy OpenVINO. Buy only from remaining stock.\u003c/li>\u003cli>\u003cstrong>Multi-accelerator rigs\u003c/strong> (e.g. several Coral + Hailo behind a PCIe switch on Pi 5) work but need driver/overlay hacks and offer limited multi-chip software support.\u003c/li>\u003cli>\u003cstrong>Mobilint / Rebellions / FuriosaAI\u003c/strong> make no M.2 or USB part and cannot attach to a Pi.\u003c/li>\u003c/ul>\u003ch2 id=\"software\">Software\u003c/h2>\u003cp>The tooling that turns a trained model into something an NPU can run: vendor SDKs, cross-vendor compilers, runtimes, and the optimization steps (quantization especially) that edge deployment depends on.\u003c/p>\u003ch3 id=\"vendor-sdks--toolchains\">Vendor SDKs &amp; toolchains\u003c/h3>\u003cp>Each NPU vendor ships its own compiler/quantizer. Most take ONNX or a framework graph and emit a device-specific binary.\u003c/p>\u003cdiv class=\"tbl-wrap\">\u003ctable>\u003cthead>\u003ctr>\u003cth>SDK\u003c/th>\u003cth>Vendor\u003c/th>\u003cth>Input\u003c/th>\u003cth>Notes\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>\u003ca href=\"https://deepx.ai/\" target=\"_blank\" rel=\"noopener\">DXNN\u003c/a>\u003c/td>\u003ctd>DEEPX\u003c/td>\u003ctd>PyTorch / ONNX / TF\u003c/td>\u003ctd>Compiler + runtime for DX-M1/M2\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://www.mobilint.com/\" target=\"_blank\" rel=\"noopener\">qb SDK\u003c/a>\u003c/td>\u003ctd>Mobilint\u003c/td>\u003ctd>ONNX\u003c/td>\u003ctd>Model compiler + tools for ARIES/REGULUS\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://hailo.ai/developer-zone/\" target=\"_blank\" rel=\"noopener\">Dataflow Compiler (DFC)\u003c/a>\u003c/td>\u003ctd>Hailo\u003c/td>\u003ctd>ONNX / TFLite\u003c/td>\u003ctd>Compiles to Hailo-8/10H; PyTorch via ONNX\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://axelera.ai/\" target=\"_blank\" rel=\"noopener\">Voyager SDK\u003c/a>\u003c/td>\u003ctd>Axelera\u003c/td>\u003ctd>ONNX / PyTorch\u003c/td>\u003ctd>Metis toolchain; 100+ model zoo\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://github.com/openvinotoolkit/openvino\" target=\"_blank\" rel=\"noopener\">OpenVINO\u003c/a>\u003c/td>\u003ctd>Intel\u003c/td>\u003ctd>ONNX / IR\u003c/td>\u003ctd>Optimizes for Intel CPU/GPU/NPU + Myriad\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://coral.ai/docs/edgetpu/compiler/\" target=\"_blank\" rel=\"noopener\">Edge TPU Compiler\u003c/a>\u003c/td>\u003ctd>Google\u003c/td>\u003ctd>TFLite (INT8)\u003c/td>\u003ctd>Compiles quantized TFLite for Coral\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://github.com/airockchip/rknn-toolkit2\" target=\"_blank\" rel=\"noopener\">RKNN-Toolkit2\u003c/a>\u003c/td>\u003ctd>Rockchip\u003c/td>\u003ctd>ONNX / TF / others\u003c/td>\u003ctd>For RK3588/RK1808 NPU\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://sima.ai/\" target=\"_blank\" rel=\"noopener\">SiMa Palette\u003c/a>\u003c/td>\u003ctd>SiMa.ai\u003c/td>\u003ctd>ONNX\u003c/td>\u003ctd>MLSoC compiler + SDK\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://developer.memryx.com/\" target=\"_blank\" rel=\"noopener\">MemryX SDK\u003c/a>\u003c/td>\u003ctd>MemryX\u003c/td>\u003ctd>ONNX / TFLite / PyTorch\u003c/td>\u003ctd>Dataflow compiler for MX3\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://github.com/furiosa-ai\" target=\"_blank\" rel=\"noopener\">Furiosa SDK\u003c/a>\u003c/td>\u003ctd>FuriosaAI\u003c/td>\u003ctd>ONNX\u003c/td>\u003ctd>Compiler, runtime, K8s integration for RNGD\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://www.nxp.com/design/design-center/software/eiq-ml-development-environment:EIQ\" target=\"_blank\" rel=\"noopener\">eIQ\u003c/a>\u003c/td>\u003ctd>NXP\u003c/td>\u003ctd>ONNX / TFLite\u003c/td>\u003ctd>ML toolkit spanning MCU → i.MX → Ara DNPU\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003ch3 id=\"compilers--ir\">Compilers &amp; IR\u003c/h3>\u003cp>Vendor-neutral compiler stacks that lower a model through an intermediate representation to hardware-specific code.\u003c/p>\u003cul>\u003cli>\u003ca href=\"https://github.com/apache/tvm\" target=\"_blank\" rel=\"noopener\">Apache TVM\u003c/a> — deep-learning compiler with auto-scheduling; microTVM targets MCUs/NPUs\u003c/li>\u003cli>\u003ca href=\"https://github.com/iree-org/iree\" target=\"_blank\" rel=\"noopener\">IREE\u003c/a> — MLIR-based compiler + runtime for edge to datacenter\u003c/li>\u003cli>\u003ca href=\"https://github.com/llvm/llvm-project/tree/main/mlir\" target=\"_blank\" rel=\"noopener\">MLIR\u003c/a> — LLVM compiler infrastructure underlying many NPU stacks\u003c/li>\u003cli>\u003ca href=\"https://github.com/pytorch/glow\" target=\"_blank\" rel=\"noopener\">Glow\u003c/a> — Meta&#39;s ML graph compiler for accelerators\u003c/li>\u003cli>\u003ca href=\"https://github.com/openxla/xla\" target=\"_blank\" rel=\"noopener\">XLA\u003c/a> — operation-fusion compiler (TF/JAX), influences edge compiler design\u003c/li>\u003cli>\u003ca href=\"https://github.com/openxla/stablehlo\" target=\"_blank\" rel=\"noopener\">OpenXLA / StableHLO\u003c/a> — portable HLO dialect across compilers\u003c/li>\u003c/ul>\u003ch3 id=\"runtimes--inference-engines\">Runtimes &amp; inference engines\u003c/h3>\u003cp>Cross-vendor runtimes that dispatch to CPU/GPU/NPU back-ends.\u003c/p>\u003cul>\u003cli>\u003ca href=\"https://github.com/microsoft/onnxruntime\" target=\"_blank\" rel=\"noopener\">ONNX Runtime\u003c/a> — execution-provider interface binds graphs to NPU back-ends (NNAPI, OpenVINO, TensorRT, QNN)\u003c/li>\u003cli>\u003ca href=\"https://github.com/pytorch/executorch\" target=\"_blank\" rel=\"noopener\">ExecuTorch\u003c/a> — PyTorch Edge runtime for mobile/embedded/MCU with NPU delegation\u003c/li>\u003cli>\u003ca href=\"https://github.com/google-ai-edge/LiteRT\" target=\"_blank\" rel=\"noopener\">TensorFlow Lite / LiteRT\u003c/a> — on-device runtime; NNAPI/GPU/NPU delegates\u003c/li>\u003cli>\u003ca href=\"https://github.com/google-ai-edge/LiteRT-LM\" target=\"_blank\" rel=\"noopener\">LiteRT-LM\u003c/a> — LiteRT extension for on-device LLMs\u003c/li>\u003cli>\u003ca href=\"https://github.com/Tencent/ncnn\" target=\"_blank\" rel=\"noopener\">NCNN\u003c/a> — Tencent&#39;s mobile-first inference framework\u003c/li>\u003cli>\u003ca href=\"https://github.com/alibaba/MNN\" target=\"_blank\" rel=\"noopener\">MNN\u003c/a> — Alibaba&#39;s lightweight edge inference engine\u003c/li>\u003cli>\u003ca href=\"https://github.com/XiaoMi/mace\" target=\"_blank\" rel=\"noopener\">MACE\u003c/a> — Xiaomi&#39;s mobile NN accelerator\u003c/li>\u003cli>\u003ca href=\"https://github.com/Tencent/TNN\" target=\"_blank\" rel=\"noopener\">TNN\u003c/a> — Tencent cross-platform inference framework\u003c/li>\u003cli>\u003ca href=\"https://developer.android.com/ndk/guides/neuralnetworks\" target=\"_blank\" rel=\"noopener\">NNAPI\u003c/a> — Android&#39;s neural networks hardware abstraction (legacy; superseded by LiteRT delegates)\u003c/li>\u003cli>\u003ca href=\"https://www.qualcomm.com/developer/software/qualcomm-ai-engine-direct-sdk\" target=\"_blank\" rel=\"noopener\">QNN (Qualcomm AI Engine Direct)\u003c/a> — low-level Hexagon NPU access\u003c/li>\u003c/ul>\u003ch3 id=\"llm-on-edge\">LLM on edge\u003c/h3>\u003cp>Running local language models on constrained hardware.\u003c/p>\u003cul>\u003cli>\u003ca href=\"https://github.com/ggml-org/llama.cpp\" target=\"_blank\" rel=\"noopener\">llama.cpp\u003c/a> — CPU-first GGUF inference, minimal setup\u003c/li>\u003cli>\u003ca href=\"https://github.com/ollama/ollama\" target=\"_blank\" rel=\"noopener\">Ollama\u003c/a> — local LLM runner built on llama.cpp\u003c/li>\u003cli>\u003ca href=\"https://github.com/mlc-ai/mlc-llm\" target=\"_blank\" rel=\"noopener\">MLC LLM\u003c/a> — TVM-based LLM deployment across GPU/NPU/mobile\u003c/li>\u003cli>\u003ca href=\"https://github.com/pytorch/torchchat\" target=\"_blank\" rel=\"noopener\">torchchat\u003c/a> — PyTorch local LLM inference (server/desktop/mobile)\u003c/li>\u003c/ul>\u003ch3 id=\"model-optimization-quantization--pruning\">Model optimization (quantization / pruning)\u003c/h3>\u003cp>The step that makes models fit an NPU — usually INT8 quantization.\u003c/p>\u003cul>\u003cli>\u003ca href=\"https://github.com/openvinotoolkit/nncf\" target=\"_blank\" rel=\"noopener\">Neural Network Compression Framework (NNCF)\u003c/a> — Intel quantization/pruning for OpenVINO\u003c/li>\u003cli>\u003ca href=\"https://pytorch.org/docs/stable/quantization.html\" target=\"_blank\" rel=\"noopener\">PyTorch Quantization\u003c/a> — native PTQ/QAT (eager + FX + export)\u003c/li>\u003cli>\u003ca href=\"https://github.com/tensorflow/model-optimization\" target=\"_blank\" rel=\"noopener\">TensorFlow Model Optimization Toolkit\u003c/a> — quantization, pruning, clustering\u003c/li>\u003cli>\u003ca href=\"https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html\" target=\"_blank\" rel=\"noopener\">ONNX Runtime quantization\u003c/a> — post-training INT8 for ONNX\u003c/li>\u003cli>\u003ca href=\"https://github.com/quic/aimet\" target=\"_blank\" rel=\"noopener\">AIMET\u003c/a> — Qualcomm&#39;s model-efficiency toolkit (quant + compression)\u003c/li>\u003cli>\u003ca href=\"https://github.com/Xilinx/brevitas\" target=\"_blank\" rel=\"noopener\">Brevitas\u003c/a> — AMD/Xilinx quantization-aware training in PyTorch\u003c/li>\u003c/ul>\u003ch3 id=\"benchmarks\">Benchmarks\u003c/h3>\u003cul>\u003cli>\u003ca href=\"https://github.com/mlcommons/inference\" target=\"_blank\" rel=\"noopener\">MLPerf Inference\u003c/a> — MLCommons standard inference benchmark (edge + datacenter suites)\u003c/li>\u003cli>\u003ca href=\"https://github.com/mlcommons/tiny\" target=\"_blank\" rel=\"noopener\">MLPerf Tiny\u003c/a> — benchmark for MCU-class TinyML\u003c/li>\u003cli>\u003ca href=\"https://ai-benchmark.com/\" target=\"_blank\" rel=\"noopener\">ai-benchmark\u003c/a> — mobile SoC / NPU benchmark\u003c/li>\u003cli>\u003ca href=\"https://www.eembc.org/mlmark/\" target=\"_blank\" rel=\"noopener\">EEMBC MLMark\u003c/a> — embedded ML benchmark\u003c/li>\u003c/ul>\u003ch3 id=\"model-zoos\">Model zoos\u003c/h3>\u003cul>\u003cli>\u003ca href=\"https://github.com/onnx/models\" target=\"_blank\" rel=\"noopener\">ONNX Model Zoo\u003c/a> — pre-trained models in ONNX\u003c/li>\u003cli>\u003ca href=\"https://github.com/hailo-ai/hailo_model_zoo\" target=\"_blank\" rel=\"noopener\">Hailo Model Zoo\u003c/a> — models pre-compiled for Hailo\u003c/li>\u003cli>\u003ca href=\"https://github.com/openvinotoolkit/open_model_zoo\" target=\"_blank\" rel=\"noopener\">OpenVINO Open Model Zoo\u003c/a> — Intel pre-trained models + demos\u003c/li>\u003cli>\u003ca href=\"https://coral.ai/models/\" target=\"_blank\" rel=\"noopener\">Coral Models\u003c/a> — Edge TPU-compiled TFLite models\u003c/li>\u003cli>\u003ca href=\"https://github.com/huggingface/pytorch-image-models\" target=\"_blank\" rel=\"noopener\">timm\u003c/a> — PyTorch image models, common export source\u003c/li>\u003c/ul>\u003ch2 id=\"learning-resources\">Learning resources\u003c/h2>\u003cul>\u003cli>\u003ca href=\"https://github.com/Bisonai/awesome-edge-machine-learning\" target=\"_blank\" rel=\"noopener\">Awesome Edge Machine Learning\u003c/a> — curated edge ML list\u003c/li>\u003cli>\u003ca href=\"https://github.com/htqin/awesome-model-quantization\" target=\"_blank\" rel=\"noopener\">Awesome Model Quantization\u003c/a> — quantization papers and methods\u003c/li>\u003cli>\u003ca href=\"https://github.com/gigwegbe/tinyml-papers-and-projects\" target=\"_blank\" rel=\"noopener\">Awesome Embedded / TinyML\u003c/a> — TinyML papers and projects\u003c/li>\u003cli>\u003ca href=\"https://github.com/Yulv-git/Model-Inference-Deployment\" target=\"_blank\" rel=\"noopener\">Model-Inference-Deployment\u003c/a> — inference framework comparison (OpenVINO, TVM, NCNN, MNN, …)\u003c/li>\u003cli>\u003ca href=\"https://www.jeffgeerling.com/blog\" target=\"_blank\" rel=\"noopener\">Jeff Geerling – Raspberry Pi AI\u003c/a> — hands-on Pi + NPU experiments\u003c/li>\u003c/ul>\u003ch2 id=\"glossary\">Glossary\u003c/h2>\u003cul>\u003cli>NPU — Neural Processing Unit\u003c/li>\u003cli>LPU — LLM Processing Unit; NPU subclass for LLM inference\u003c/li>\u003cli>VPU — Vision Processing Unit\u003c/li>\u003cli>DNPU — Discrete NPU (standalone, not SoC-integrated)\u003c/li>\u003cli>TOPS / POPS — Tera / Peta Operations Per Second (precision-dependent)\u003c/li>\u003cli>SoM — System on Module\u003c/li>\u003cli>IR — Intermediate Representation; the mid-level form a compiler lowers a model into\u003c/li>\u003cli>PTQ / QAT — Post-Training Quantization / Quantization-Aware Training\u003c/li>\u003cli>Delegate / Execution Provider — runtime plugin that offloads a subgraph to a specific accelerator\u003c/li>\u003cli>GGUF — quantized model file format used by llama.cpp\u003c/li>\u003c/ul>\u003ch2 id=\"contributing\">Contributing\u003c/h2>\u003cp>PRs welcome. Cite the source, state precision and whether a figure is a boost value, list price only when officially disclosed, and mark non-standalone parts with \u003ccode>⚠\u003c/code>.\u003c/p>","generatedAt":"2026-07-22","repo":"https://github.com/pleahmacaka/awesome-npu"};</script>
+<script>window.DATA={"products":[{"enriched":true,"vendor":"Syntiant","product":"NDP120","url":"https://www.syntiant.com/hardware","standalone":false,"country":"US","origin":"global","form":"SoC","formGroup":"SoC","compute":null,"computeDisplay":"—","tops":null,"memory":"on-chip","useCase":"Always-on audio / sensor","release":"2021-09","releaseDate":"2021-09-01","releaseDisplay":"2021.09","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"mcu","chip":"","tags":["MCU급","상시구동","오디오"],"specs":{"성능":"—","메모리":"on-chip","용도":"Always-on audio / sensor","출시":"2021.09"},"note":""},{"enriched":false,"vendor":"BrainChip","product":"Akida (AKD1000)","url":"https://brainchip.com/akida-generations/","standalone":false,"country":"US","origin":"global","form":"M.2 / PCIe","formGroup":"M.2","compute":null,"computeDisplay":"—","tops":null,"memory":"on-chip SRAM","useCase":"Neuromorphic event-based","release":"2021-01","releaseDate":"2021-01-01","releaseDisplay":"2021.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"—","메모리":"on-chip SRAM","용도":"Neuromorphic event-based","출시":"2021.01"},"note":""},{"enriched":true,"vendor":"Rebellions","product":"ION","url":"https://rebellions.ai/","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"on-card","useCase":"Finance inference","release":"2021-11","releaseDate":"2021-11-01","releaseDisplay":"2021.11","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"ION","tags":["금융 특화","추론","1세대"],"specs":{"타입":"추론 NPU","용도":"금융 특화","출시":"2021","세대":"1세대"},"note":"리벨리온 첫 칩. 금융 워크로드에 특화된 AI 반도체."},{"enriched":true,"vendor":"Rebellions","product":"ATOM","url":"https://rebellions.ai/rebellions-product/atom/","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"GDDR6 (on-card)","useCase":"Datacenter inference","release":"2023-02","releaseDate":"2023-02-01","releaseDisplay":"2023.02","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"ATOM","tags":["데이터센터","추론","클라우드"],"specs":{"타입":"추론 NPU","용도":"데이터센터","상용화":"KT클라우드","공정":"삼성 7nm급"},"note":"국산 AI 반도체 최초로 KT클라우드에 대규모 상용화. NPUaaS 형태로 서비스 제공."},{"enriched":true,"vendor":"Rebellions","product":"ATOM Max","url":"https://rebellions.ai/rebellions-product/atom-max/","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"on-card","useCase":"Datacenter inference","release":"2023-12","releaseDate":"2023-12-01","releaseDisplay":"2023.12","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"ATOM-Max","tags":["데이터센터","추론","양산"],"specs":{"타입":"추론 NPU","용도":"데이터센터","상태":"양산·운영 중","에코":"vLLM 등"},"note":"ATOM 후속 고성능 버전. 실제 고객사에서 양산·운영 중."},{"enriched":true,"vendor":"Rebellions","product":"REBEL / Rebel 100","url":"https://rebellions.ai/rebellions-product/rebel/","standalone":true,"country":"KR","origin":"kr","form":"Server/Rack","formGroup":"Server/System","compute":null,"computeDisplay":"—","tops":null,"memory":"HBM3E (on-package)","useCase":"LLM & multimodal","release":"2025-08","releaseDate":"2025-08-01","releaseDisplay":"2025.08","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"REBEL","tags":["데이터센터","LLM","HBM3E","칩렛"],"specs":{"타입":"차세대 AI 칩","메모리":"HBM3E","대상":"LLM·멀티모달","구성":"Card/Server/Rack"},"note":"REBEL 칩 4개를 칩렛으로 결합한 REBEL-Quad. vLLM·Triton 지원. H200급 성능 목표. 서버·랙 단위 판매."},{"enriched":true,"vendor":"FuriosaAI","product":"WARBOY","url":"https://www.furiosa.ai/warboy","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"on-card","useCase":"Vision inference","release":"2021-06","releaseDate":"2021-06-01","releaseDisplay":"2021.06","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"Warboy","tags":["비전","추론","1세대"],"specs":{"타입":"Vision NPU","용도":"영상 인식","벤치":"T4 대비 4배(영상)","SDK":"C/Python"},"note":"1세대 비전 특화 NPU. MLPerf에서 NVIDIA T4 대비 4배 영상 인식 성능. Model Zoo 제공."},{"enriched":true,"vendor":"FuriosaAI","product":"RNGD","url":"https://www.furiosa.ai/rngd","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"HBM3 (48 GB)","useCase":"LLM inference","release":"2024-08","releaseDate":"2024-08-01","releaseDisplay":"2024.08","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"RNGD","tags":["데이터센터","LLM","HBM3","2세대"],"specs":{"타입":"추론 NPU","메모리":"HBM3","대상":"LLM·일반","에코":"K8s·vLLM"},"note":"2세대 NPU. BF16/FP8/INT8 양자화 지원. Kubernetes 네이티브 통합, OpenAI 호환 API 서버 제공."},{"enriched":true,"vendor":"DEEPX","product":"DX-H1","url":"https://deepx.ai/products/dx-h1-v-npu/","standalone":true,"country":"KR","origin":"kr","form":"Server/Rack","formGroup":"Server/System","compute":null,"computeDisplay":"—","tops":null,"memory":"on-card","useCase":"Multi-camera inference server","release":null,"releaseDate":null,"releaseDisplay":"미상","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"DX-H1 V-NPU","tags":["서버","고성능","다중 카메라"],"specs":{"성능":"~28 POPS/서버","전력":"~40 W","용도":"추론 서버","규모":"1만 카메라급"},"note":"대규모 AI 연산용 서버 솔루션. 수만 대 카메라·센서 동시 처리."},{"enriched":true,"vendor":"DEEPX","product":"DX-M2","url":"https://deepx.ai/","standalone":true,"country":"KR","origin":"kr","form":"M.2","formGroup":"M.2","compute":null,"computeDisplay":"—","tops":null,"memory":"on-module","useCase":"Robotics / physical AI","release":null,"releaseDate":null,"releaseDisplay":"미상","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"DX-M2","tags":["엣지","차세대","휴머노이드","2nm"],"specs":{"공정":"삼성 2nm 목표","대상":"피지컬 AI·로봇","상태":"개발 중","전략":"초저가"},"note":"CES 2026에서 방향성 공개. 로봇·휴머노이드용 차세대 칩. 초저가(수십 달러대) 목표 언급."},{"enriched":true,"vendor":"HyperAccel","product":"Orion","url":"https://hyperaccel.ai/","standalone":true,"country":"KR","origin":"kr","form":"Server/Rack","formGroup":"Server/System","compute":null,"computeDisplay":"—","tops":null,"memory":"HBM / LPDDR","useCase":"LLM inference (FPGA)","release":"2023-11","releaseDate":"2023-11-01","releaseDisplay":"2023.11","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"LPU (FPGA)","tags":["LLM 전용","LPU","FPGA","데이터센터"],"specs":{"타입":"LLM 추론(LPU)","구현":"FPGA 기반","벤치":"GPT GPU 대비 ~5.6배","메모리":"HBM/LPDDR"},"note":"LLM 추론 특화 LPU(NPU 하위범주). FPGA로 구현한 초기 서버 제품. AWS EC2 F2 마켓플레이스 제공."},{"enriched":true,"vendor":"HyperAccel","product":"Bertha","url":"https://hyperaccel.ai/","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"LPDDR5X (on-card)","useCase":"LLM inference (ASIC)","release":"2026-01","releaseDate":"2026-01-01","releaseDisplay":"2026.01","price":"~₩5M (target)","priceDisplay":"~₩5M (target)","priceUSD":3500,"segment":"datacenter","chip":"Bertha","tags":["LLM 전용","LPU","ASIC","삼성 4nm"],"specs":{"타입":"LLM 추론 ASIC","메모리":"LPDDR5X","공정":"삼성 4nm","효율":"가격효율 GPU ~10배"},"note":"세계 최초 LPDDR5X 기반 LLM 전용 칩. 서버에 그대로 장착하는 PCIe 폼팩터. 가격은 대표 발언 기준 목표가."},{"enriched":false,"vendor":"Telechips","product":"N-Dolphin","url":"https://www.telechips.com/","standalone":false,"country":"KR","origin":"kr","form":"SoC","formGroup":"SoC","compute":null,"computeDisplay":"—","tops":null,"memory":"shared (host)","useCase":"Automotive vision (ADAS)","release":"2023-12","releaseDate":"2023-12-01","releaseDisplay":"2023.12","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"—","메모리":"shared (host)","용도":"Automotive vision (ADAS)","출시":"2023.12"},"note":""},{"enriched":false,"vendor":"Apple","product":"Neural Engine (A / M series)","url":"https://www.apple.com/","standalone":false,"country":"US","origin":"global","form":"SoC","formGroup":"SoC","compute":null,"computeDisplay":"—","tops":null,"memory":"unified (shared)","useCase":"Mobile / desktop on-device","release":"2017-09","releaseDate":"2017-09-01","releaseDisplay":"2017.09","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"—","메모리":"unified (shared)","용도":"Mobile / desktop on-device","출시":"2017.09"},"note":""},{"enriched":false,"vendor":"MediaTek","product":"APU (NeuroPilot / Dimensity)","url":"https://www.mediatek.com/","standalone":false,"country":"JP","origin":"global","form":"SoC","formGroup":"SoC","compute":null,"computeDisplay":"—","tops":null,"memory":"shared (host)","useCase":"Mobile on-device","release":"2018-01","releaseDate":"2018-01-01","releaseDisplay":"2018.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"—","메모리":"shared (host)","용도":"Mobile on-device","출시":"2018.01"},"note":""},{"enriched":false,"vendor":"Ambarella","product":"CV72S","url":"https://www.ambarella.com/","standalone":false,"country":"US","origin":"global","form":"SoC","formGroup":"SoC","compute":null,"computeDisplay":"—","tops":null,"memory":"shared (host)","useCase":"Camera / edge vision","release":"2023-01","releaseDate":"2023-01-01","releaseDisplay":"2023.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"—","메모리":"shared (host)","용도":"Camera / edge vision","출시":"2023.01"},"note":""},{"enriched":true,"vendor":"NXP","product":"Ara-1 DNPU","url":"https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/discrete-neural-processing-units:DNPU","standalone":true,"country":"NL","origin":"global","form":"M.2","formGroup":"M.2","compute":null,"computeDisplay":"—","tops":null,"memory":"on-module","useCase":"Camera / edge server","release":"2025-04","releaseDate":"2025-04-01","releaseDisplay":"2025.04","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"Ara-1","tags":["엣지","비전","저전력","DNPU"],"specs":{"타입":"Discrete NPU","용도":"카메라·엣지서버","에코":"eIQ SW","강점":"에너지 효율"},"note":"NXP 1세대 디스크리트 NPU. 칩 또는 모듈 형태. 비전·음성·제스처 멀티모달 추론."},{"enriched":true,"vendor":"Nordic Semiconductor","product":"Axon NPU (nRF54LM20B)","url":"https://www.nordicsemi.com/Products/Technologies/Edge-AI/Axon-NPU","standalone":false,"country":"NO","origin":"global","form":"SoC","formGroup":"SoC","compute":null,"computeDisplay":"—","tops":null,"memory":"512 KB RAM / 2 MB NVM","useCase":"MCU-class TinyML","release":"2026-04","releaseDate":"2026-04-01","releaseDisplay":"2026.04","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"mcu","chip":"Axon","tags":["MCU급","초저전력","TinyML","무선"],"specs":{"성능":"CPU 대비 최대 15배","효율":"경쟁 대비 8배","RAM":"512KB / 2MB NVM","코어":"Cortex-M33 + RISC-V"},"note":"nRF54L 시리즈 내장 NPU. BLE·Thread·Matter 무선 SoC. 키워드 스포팅·음향 분류 등 초저전력 엣지 AI. 2026 Q2 양산."},{"enriched":true,"vendor":"Qualcomm","product":"Hexagon NPU","url":"https://www.qualcomm.com/products/technology/processors/hexagon","standalone":false,"country":"US","origin":"global","form":"SoC","formGroup":"SoC","compute":null,"computeDisplay":"—","tops":null,"memory":"shared (host)","useCase":"Mobile / on-device","release":null,"releaseDate":null,"releaseDisplay":"미상","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"Hexagon","tags":["SoC","모바일","온디바이스"],"specs":{"타입":"SoC 내장 NPU","용도":"비전·음성·분석","강점":"전력 효율","에코":"LiteRT/AI Pack"},"note":"Snapdragon SoC 내장. 모바일·키오스크·디지털 사이니지용. Google LiteRT NPU 가속 지원(AOT 컴파일)."},{"enriched":false,"vendor":"Intel","product":"Movidius NCS (1st gen)","url":"https://www.intel.com/content/www/us/en/developer/tools/neural-compute-stick/overview.html","standalone":true,"country":"US","origin":"global","form":"USB","formGroup":"USB","compute":null,"computeDisplay":"—","tops":null,"memory":"on-stick","useCase":"Prototyping (Myriad 2)","release":"2017-07","releaseDate":"2017-07-01","releaseDisplay":"2017.07","price":"EOL","priceDisplay":"EOL","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"—","메모리":"on-stick","용도":"Prototyping (Myriad 2)","출시":"2017.07"},"note":""},{"enriched":true,"vendor":"NXP","product":"i.MX 8M Plus NPU","url":"https://www.nxp.com/products/i.MX8MPLUS","standalone":false,"country":"NL","origin":"global","form":"SoC","formGroup":"SoC","compute":"2.3","computeDisplay":"2.3 TOPS","tops":2.3,"memory":"shared (host)","useCase":"Industrial IoT","release":"2021-01","releaseDate":"2021-01-01","releaseDisplay":"2021.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"i.MX 8M Plus","tags":["산업IoT","통합형","장기공급"],"specs":{"성능":"2.3 TOPS","타입":"통합 NPU","용도":"산업 IoT","강점":"신뢰성·장기수급"},"note":"산업용 IoT 특화. 최대 성능보다 신뢰성·보안·장기 공급성 우선."},{"enriched":false,"vendor":"Rockchip","product":"RK1808","url":"https://t.rock-chips.com/en/","standalone":false,"country":"CN","origin":"global","form":"SoC / USB","formGroup":"USB","compute":"3","computeDisplay":"3 TOPS","tops":3,"memory":"shared (host)","useCase":"Early edge NPU stick","release":"2019-01","releaseDate":"2019-01-01","releaseDisplay":"2019.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"3 TOPS","메모리":"shared (host)","용도":"Early edge NPU stick","출시":"2019.01"},"note":""},{"enriched":true,"vendor":"Google","product":"Coral USB Accelerator","url":"https://coral.ai/products/accelerator/","standalone":true,"country":"US","origin":"global","form":"USB","formGroup":"USB","compute":"4","computeDisplay":"4 TOPS","tops":4,"memory":"8 MB SRAM (on-chip)","useCase":"Edge (TFLite)","release":"2019-03","releaseDate":"2019-03-01","releaseDisplay":"2019.03","price":"$59.99","priceDisplay":"$59.99","priceUSD":59.99,"segment":"edge","chip":"Edge TPU","tags":["엣지","TFLite","USB","플러그앤플레이"],"specs":{"성능":"4 TOPS","전력":"~2 W","I/F":"USB 3.0","프레임워크":"TensorFlow Lite"},"note":"USB로 기존 호스트(RPi 등)에 Edge TPU 추가. TFLite 전용. 개발·프로토타입에 간편."},{"enriched":false,"vendor":"Google","product":"Coral M.2 / Mini PCIe (single)","url":"https://coral.ai/products/m2-accelerator-ae/","standalone":true,"country":"US","origin":"global","form":"M.2 / mPCIe","formGroup":"M.2","compute":"4","computeDisplay":"4 TOPS","tops":4,"memory":"8 MB SRAM (on-chip)","useCase":"Edge (TFLite)","release":"2019-11","releaseDate":"2019-11-01","releaseDisplay":"2019.11","price":"$24.99","priceDisplay":"$24.99","priceUSD":24.99,"segment":"edge","chip":"","tags":[],"specs":{"성능":"4 TOPS","메모리":"8 MB SRAM (on-chip)","용도":"Edge (TFLite)","출시":"2019.11"},"note":""},{"enriched":true,"vendor":"Intel","product":"Neural Compute Stick 2","url":"https://www.intel.com/content/www/us/en/developer/tools/neural-compute-stick/overview.html","standalone":true,"country":"US","origin":"global","form":"USB","formGroup":"USB","compute":"4","computeDisplay":"4 TOPS","tops":4,"memory":"on-stick","useCase":"Prototyping (OpenVINO)","release":"2018-11","releaseDate":"2018-11-01","releaseDisplay":"2018.11","price":"~$70 (EOL)","priceDisplay":"~$70 (EOL)","priceUSD":70,"segment":"edge","chip":"Movidius Myriad X","tags":["엣지","USB","VPU","프로토타입"],"specs":{"성능":"4 TOPS","타입":"VPU","I/F":"USB 3.0","툴킷":"OpenVINO"},"note":"USB 형태로 기존 시스템에 AI 추론 추가. OpenVINO 최적화. 현재 단종 단계, 재고 기준 가격."},{"enriched":false,"vendor":"MemryX","product":"MX3","url":"https://memryx.com/products/","standalone":true,"country":"US","origin":"global","form":"M.2","formGroup":"M.2","compute":"5 (TFLOPS)","computeDisplay":"5 (TFLOPS)","tops":5,"memory":"on-chip SRAM","useCase":"Vision / CNN","release":"2024-06","releaseDate":"2024-06-01","releaseDisplay":"2024.06","price":"~$149","priceDisplay":"~$149","priceUSD":149,"segment":"edge","chip":"","tags":[],"specs":{"성능":"5 (TFLOPS)","메모리":"on-chip SRAM","용도":"Vision / CNN","출시":"2024.06"},"note":""},{"enriched":true,"vendor":"Rockchip","product":"RK3588 NPU","url":"https://www.rock-chips.com/a/en/products/RK35_Series/2022/0926/1660.html","standalone":false,"country":"CN","origin":"global","form":"SoC","formGroup":"SoC","compute":"6","computeDisplay":"6 TOPS","tops":6,"memory":"shared (host)","useCase":"General edge (SBC)","release":"2022-01","releaseDate":"2022-01-01","releaseDisplay":"2022.01","price":"$100+ (board)","priceDisplay":"$100+ (board)","priceUSD":100,"segment":"edge","chip":"RK3588","tags":["SoC","통합형","범용","SBC"],"specs":{"성능":"6 TOPS","타입":"SoC 내장 NPU","용도":"비전·NLP·오디오","강점":"범용 컴퓨팅"},"note":"범용 SoC 내장 NPU. 보통 SBC(Orange Pi 5 등)에 탑재되어 유통(가격은 보드 기준)."},{"enriched":false,"vendor":"Rockchip","product":"RK3576 NPU","url":"https://www.rock-chips.com/","standalone":false,"country":"CN","origin":"global","form":"SoC","formGroup":"SoC","compute":"6","computeDisplay":"6 TOPS","tops":6,"memory":"shared (host)","useCase":"Mid-range edge (SBC)","release":"2024-05","releaseDate":"2024-05-01","releaseDisplay":"2024.05","price":"board","priceDisplay":"board","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"6 TOPS","메모리":"shared (host)","용도":"Mid-range edge (SBC)","출시":"2024.05"},"note":""},{"enriched":true,"vendor":"DEEPX","product":"DX-L1 / DX-L2","url":"https://deepx.ai/","standalone":false,"country":"KR","origin":"kr","form":"SoC","formGroup":"SoC","compute":"6.4","computeDisplay":"6.4 TOPS","tops":6.4,"memory":"shared (host)","useCase":"Smart appliances / sensors","release":null,"releaseDate":null,"releaseDisplay":"미상","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"DX-L1/L2","tags":["초소형","센서","가전"],"specs":{"DX-L1":"2.4 TOPS","DX-L2":"6.4 TOPS","공정":"삼성 14/28nm","용도":"AI 스마트가전"},"note":"초소형 센서~가전용 저체급 라인. 단일/3채널 카메라 영상 처리."},{"enriched":true,"vendor":"Google","product":"Coral M.2 Dual Edge TPU","url":"https://coral.ai/products/m2-accelerator-dual-edgetpu/","standalone":true,"country":"US","origin":"global","form":"M.2","formGroup":"M.2","compute":"8","computeDisplay":"8 TOPS","tops":8,"memory":"8 MB SRAM x2","useCase":"Edge (TFLite)","release":"2020-01","releaseDate":"2020-01-01","releaseDisplay":"2020.01","price":"$39.99","priceDisplay":"$39.99","priceUSD":39.99,"segment":"edge","chip":"Edge TPU x2","tags":["엣지","TFLite","M.2","ASIC"],"specs":{"성능":"8 TOPS (4x2)","전력":"~4 W","I/F":"M.2 E-key","프레임워크":"TensorFlow Lite"},"note":"Edge TPU 2개 탑재 M.2 모듈. M.2 E-key PCIe x1 2레인 필요(보드 호환 주의)."},{"enriched":false,"vendor":"Kneron","product":"KL530","url":"https://www.kneron.com/en/product/ai_solution/","standalone":false,"country":"US","origin":"global","form":"SoC","formGroup":"SoC","compute":"8","computeDisplay":"8 TOPS","tops":8,"memory":"on-chip","useCase":"Entry on-device vision","release":"2022-05","releaseDate":"2022-05-01","releaseDisplay":"2022.05","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"8 TOPS","메모리":"on-chip","용도":"Entry on-device vision","출시":"2022.05"},"note":""},{"enriched":true,"vendor":"Mobilint","product":"REGULUS","url":"https://www.mobilint.com/regulus","standalone":false,"country":"KR","origin":"kr","form":"SoC","formGroup":"SoC","compute":"10","computeDisplay":"10 TOPS","tops":10,"memory":"~8 GB LPDDR4X","useCase":"Drones / AI cameras","release":"2025-01","releaseDate":"2025-01-01","releaseDisplay":"2025.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"REGULUS","tags":["온디바이스","SoC","드론","AI카메라","CES 수상"],"specs":{"성능":"10 TOPS","전력":"3 W (TDP)","통합":"CPU + ISP + Codec","I/F":"Ethernet·USB·MIPI","대상":"소형 엣지 기기","수상":"CES Innovation Award 2025"},"note":"CPU·ISP·코덱을 통합한 초저전력 온디바이스 AI SoC. 크기·비용·전력 제약이 큰 소형 기기용으로, AI 로봇·드론·스마트 가전·스마트 토이·AI CCTV 등에 최적. 2024년 CES Innovation Award 2025 수상."},{"enriched":false,"vendor":"Hailo","product":"Hailo-8L M.2","url":"https://hailo.ai/products/ai-accelerators/hailo-8l-entry-level-ai-acceleration-module/","standalone":true,"country":"IL","origin":"global","form":"M.2","formGroup":"M.2","compute":"13","computeDisplay":"13 TOPS","tops":13,"memory":"on-chip","useCase":"Entry edge vision (Pi AI Kit)","release":"2024-06","releaseDate":"2024-06-01","releaseDisplay":"2024.06","price":"~$70","priceDisplay":"~$70","priceUSD":70,"segment":"edge","chip":"","tags":[],"specs":{"성능":"13 TOPS","메모리":"on-chip","용도":"Entry edge vision (Pi AI Kit)","출시":"2024.06"},"note":""},{"enriched":false,"vendor":"Blaize","product":"1600 SoC","url":"https://www.blaize.com/products/","standalone":true,"country":"US","origin":"global","form":"SoC / PCIe","formGroup":"PCIe","compute":"16","computeDisplay":"16 TOPS","tops":16,"memory":"up to 4 GB LPDDR4","useCase":"Edge vision / gateway","release":"2023-01","releaseDate":"2023-01-01","releaseDisplay":"2023.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"16 TOPS","메모리":"up to 4 GB LPDDR4","용도":"Edge vision / gateway","출시":"2023.01"},"note":""},{"enriched":false,"vendor":"Huawei","product":"Ascend 310 (Atlas 200)","url":"https://www.hiascend.com/","standalone":false,"country":"CN","origin":"global","form":"SoC / module","formGroup":"SoC","compute":"16","computeDisplay":"16 TOPS","tops":16,"memory":"LPDDR4X (on-module)","useCase":"Edge inference","release":"2018-10","releaseDate":"2018-10-01","releaseDisplay":"2018.10","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"16 TOPS","메모리":"LPDDR4X (on-module)","용도":"Edge inference","출시":"2018.10"},"note":""},{"enriched":false,"vendor":"Kneron","product":"KL730","url":"https://www.kneron.com/en/product/ai_solution/","standalone":false,"country":"US","origin":"global","form":"SoC","formGroup":"SoC","compute":"25","computeDisplay":"25 TOPS","tops":25,"memory":"on-chip","useCase":"On-device vision","release":"2023-08","releaseDate":"2023-08-01","releaseDisplay":"2023.08","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"25 TOPS","메모리":"on-chip","용도":"On-device vision","출시":"2023.08"},"note":""},{"enriched":true,"vendor":"DEEPX","product":"DX-M1","url":"https://deepx.ai/products/dx-m1/","standalone":true,"country":"KR","origin":"kr","form":"M.2","formGroup":"M.2","compute":"25","computeDisplay":"25 TOPS","tops":25,"memory":"4 GB LPDDR5 (on-card)","useCase":"Edge (industrial, RPi5)","release":"2025-09","releaseDate":"2025-09-01","releaseDisplay":"2025.09","price":"~$100s","priceDisplay":"~$100s","priceUSD":120,"segment":"edge","chip":"DX-M1","tags":["엣지","M.2","산업용","RPi5"],"specs":{"성능":"25 TOPS (INT8)","전력":"1–5 W","메모리":"4GB LPDDR5","I/F":"M.2 PCIe Gen3 x4"},"note":"라즈베리파이5·x86/ARM 호환. -25~85°C 산업용. DXNN SDK로 PyTorch/ONNX/TF 지원. Digi-Key 정식 유통."},{"enriched":true,"vendor":"DEEPX","product":"DX-M1M","url":"https://deepx.ai/products/dx-m1m/","standalone":true,"country":"KR","origin":"kr","form":"M.2","formGroup":"M.2","compute":"25","computeDisplay":"25 TOPS","tops":25,"memory":"on-module","useCase":"On-device (low power)","release":"2025-12","releaseDate":"2025-12-01","releaseDisplay":"2025.12","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"DX-M1M","tags":["엣지","온디바이스","저전력"],"specs":{"성능":"25 TOPS","전력":"3 W (typ)","용도":"비전·오디오","SDK":"PyTorch/ONNX"},"note":"온디바이스 AI용. IPS/Watt 효율 중심 설계."},{"enriched":true,"vendor":"Hailo","product":"Hailo-8 M.2","url":"https://hailo.ai/products/ai-accelerators/hailo-8-m2-ai-acceleration-module/","standalone":true,"country":"IL","origin":"global","form":"M.2","formGroup":"M.2","compute":"26","computeDisplay":"26 TOPS","tops":26,"memory":"on-chip","useCase":"Edge vision (RPi5)","release":"2021-01","releaseDate":"2021-01-01","releaseDisplay":"2021.01","price":"$120–150","priceDisplay":"$120–150","priceUSD":135,"segment":"edge","chip":"Hailo-8","tags":["엣지","M.2","고효율","비전"],"specs":{"성능":"26 TOPS","전력":"~2.5 W","I/F":"M.2 PCIe Gen3 x4","SDK":"Dataflow Compiler"},"note":"고효율 비전 엣지 NPU. RPi5 등과 널리 사용. Hailo-8L(13 TOPS) 저가형도 존재."},{"enriched":false,"vendor":"Rockchip","product":"RK1820","url":"https://www.rock-chips.com/","standalone":false,"country":"CN","origin":"global","form":"SoC","formGroup":"SoC","compute":"30","computeDisplay":"30 TOPS","tops":30,"memory":"stacked DRAM","useCase":"Local LLM / vision","release":"2025-11","releaseDate":"2025-11-01","releaseDisplay":"2025.11","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"30 TOPS","메모리":"stacked DRAM","용도":"Local LLM / vision","출시":"2025.11"},"note":""},{"enriched":true,"vendor":"NXP","product":"Ara240 DNPU","url":"https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/discrete-neural-processing-units:DNPU","standalone":true,"country":"NL","origin":"global","form":"M.2","formGroup":"M.2","compute":"40","computeDisplay":"40 TOPS","tops":40,"memory":"16 GB (on-module)","useCase":"GenAI / LLM & VLM","release":"2026-06","releaseDate":"2026-06-01","releaseDisplay":"2026.06","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"Ara240","tags":["엣지","GenAI","M.2","LLM/VLM"],"specs":{"성능":"최대 40 eTOPS","타입":"Discrete NPU(2세대)","메모리":"16GB","출시":"2026.06"},"note":"실시간 GenAI 최적화. 16GB M.2 모듈로 i.MX 95/8M Plus의 코프로세서 활용. LLM·VLM·멀티모달."},{"enriched":false,"vendor":"Hailo","product":"Hailo-10H M.2","url":"https://hailo.ai/products/ai-accelerators/hailo-10h-m2-generative-ai-acceleration-module/","standalone":true,"country":"IL","origin":"global","form":"M.2","formGroup":"M.2","compute":"40","computeDisplay":"40 TOPS","tops":40,"memory":"LPDDR4 (on-module)","useCase":"Generative AI on edge","release":"2025-01","releaseDate":"2025-01-01","releaseDisplay":"2025.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"40 TOPS","메모리":"LPDDR4 (on-module)","용도":"Generative AI on edge","출시":"2025.01"},"note":""},{"enriched":false,"vendor":"SiMa.ai","product":"MLSoC","url":"https://sima.ai/products/","standalone":true,"country":"US","origin":"global","form":"M.2 / module","formGroup":"M.2","compute":"50","computeDisplay":"50 TOPS","tops":50,"memory":"LPDDR4 (on-module)","useCase":"Automotive / robotics","release":"2023-05","releaseDate":"2023-05-01","releaseDisplay":"2023.05","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"50 TOPS","메모리":"LPDDR4 (on-module)","용도":"Automotive / robotics","출시":"2023.05"},"note":""},{"enriched":true,"vendor":"Mobilint","product":"MLA100 PCIe Card","url":"https://www.mobilint.com/aries/mla100","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":"80","computeDisplay":"80 TOPS","tops":80,"memory":"16 / 32 GB LPDDR4X","useCase":"Edge / AI workstation","release":"2024-01","releaseDate":"2024-01-01","releaseDisplay":"2024.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"ARIES","tags":["엣지","PCIe","LLM/VLM","8코어","GPU 대체"],"specs":{"성능":"64 TOPS (부스트 80)","전력":"25 W","메모리":"16 / 32GB LPDDR4X","I/F":"PCIe Gen4 8-lane","코어":"ARIES 8코어","SDK":"qb (모델 컴파일러)","모델":"200+ (SOTA 포함)","카메라":"최대 10채널 실시간"},"note":"ARIES 8코어 기반 엣지 PCIe 카드. 경쟁 제품 대비 약 4배 성능·1/10 전력을 표방하며 온프레미스 서버 GPU 대체를 겨냥. 스마트팩토리·시티·AI CCTV·로봇에 활용. MobileNetV2 11,551 FPS, ResNet-50 3,082 FPS. AWS Greengrass 연동."},{"enriched":true,"vendor":"Mobilint","product":"MLA100 MXM","url":"https://www.mobilint.com/aries","standalone":true,"country":"KR","origin":"kr","form":"MXM","formGroup":"MXM","compute":"80","computeDisplay":"80 TOPS","tops":80,"memory":"LPDDR4X (on-module)","useCase":"Embedded robotics","release":"2025-04","releaseDate":"2025-04-01","releaseDisplay":"2025.04","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"ARIES","tags":["임베디드","MXM","로보틱스","러기드"],"specs":{"성능":"80 TOPS","전력":"25 W","폼팩터":"MXM 표준 모듈","코어":"ARIES 8코어","대상":"러기드 AI 박스","SDK":"qb"},"note":"표준 MXM(Mobile PCIe Module) 인터페이스 기반 임베디드 NPU 모듈. 공간·전력·발열이 중요한 로보틱스·산업 자동화용. 서버급 추론을 엣지 기기로 이식하는 것이 목표. 2025.04 정식 출시, 샘플·주문 가능."},{"enriched":true,"vendor":"Mobilint","product":"MLX-A1 Edge AI Box","url":"https://www.mobilint.com/aries/mlx-a1","standalone":true,"country":"KR","origin":"kr","form":"Box","formGroup":"Box","compute":"80","computeDisplay":"80 TOPS","tops":80,"memory":"LPDDR4X (on-board)","useCase":"All-in-one edge box","release":"2025-06","releaseDate":"2025-06-01","releaseDisplay":"2025.06","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"ARIES","tags":["엣지박스","올인원","오프라인","다중 카메라"],"specs":{"성능":"64 TOPS (부스트 80)","전력":"35 W","I/O":"USB·MIPI·Ethernet·PCIe","비디오":"4K@120fps 인코더","카메라":"최대 10채널","OS":"소프트웨어 프리로드"},"note":"소프트웨어와 I/O가 통합된 완제품 AI 박스(데스크·산업 겸용). 외부 컴퓨터·서버 없이 온디바이스로 AI 실행해 저지연·보안 강화. 스마트시티·AMR·드론용. ARIES 탑재."},{"enriched":false,"vendor":"Qualcomm","product":"Snapdragon X2 Elite NPU","url":"https://www.qualcomm.com/products/mobile/snapdragon/pcs-and-tablets","standalone":false,"country":"US","origin":"global","form":"SoC","formGroup":"SoC","compute":"80","computeDisplay":"80 TOPS","tops":80,"memory":"unified LPDDR5x","useCase":"PC / on-device","release":"2025-09","releaseDate":"2025-09-01","releaseDisplay":"2025.09","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"80 TOPS","메모리":"unified LPDDR5x","용도":"PC / on-device","출시":"2025.09"},"note":""},{"enriched":false,"vendor":"Axelera AI","product":"Metis M.2","url":"https://axelera.ai/ai-accelerators","standalone":true,"country":"NL","origin":"global","form":"M.2","formGroup":"M.2","compute":"214","computeDisplay":"214 TOPS","tops":214,"memory":"1 GB (on-card)","useCase":"Vision / local LLM","release":"2023-11","releaseDate":"2023-11-01","releaseDisplay":"2023.11","price":"~$199","priceDisplay":"~$199","priceUSD":199,"segment":"edge","chip":"","tags":[],"specs":{"성능":"214 TOPS","메모리":"1 GB (on-card)","용도":"Vision / local LLM","출시":"2023.11"},"note":""},{"enriched":true,"vendor":"Mobilint","product":"MLA400 PCIe Card","url":"https://www.mobilint.com/aries/mla400","standalone":true,"country":"KR","origin":"kr","form":"PCIe","formGroup":"PCIe","compute":"~320","computeDisplay":"~320 TOPS","tops":320,"memory":"LPDDR4X (on-card)","useCase":"On-prem multi-LLM / vision","release":"2026-01","releaseDate":"2026-01-01","releaseDisplay":"2026.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"Quad-ARIES","tags":["서버","고밀도","Quad-ARIES","Multi-LLM"],"specs":{"성능":"~256 TOPS (부스트 ~320)","구조":"ARIES 4-chip","용도":"Multi-LLM·다중 카메라 비전","강점":"TOPS/Watt 효율","SDK":"qb + 보일러플레이트"},"note":"ARIES 4개를 한 카드에 집적한 고밀도 PCIe 카드. 온프레미스 다중 LLM 추론과 대규모 다중 카메라 비전용. CES 2026·Embedded World 2026 전시, Multi-LLM 데모 및 오픈소스 보일러플레이트 공개."},{"enriched":false,"vendor":"Axelera AI","product":"Europa","url":"https://axelera.ai/","standalone":true,"country":"NL","origin":"global","form":"PCIe","formGroup":"PCIe","compute":"629","computeDisplay":"629 TOPS","tops":629,"memory":"on-card","useCase":"Datacenter-class edge","release":"2026","releaseDate":"2026-01-01","releaseDisplay":"2026","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"629 TOPS","메모리":"on-card","용도":"Datacenter-class edge","출시":"2026"},"note":""},{"enriched":false,"vendor":"Axelera AI","product":"Metis PCIe (4-core)","url":"https://axelera.ai/ai-accelerators","standalone":true,"country":"NL","origin":"global","form":"PCIe","formGroup":"PCIe","compute":"856","computeDisplay":"856 TOPS","tops":856,"memory":"up to 8 GB (on-card)","useCase":"Multi-stream edge server","release":"2026-01","releaseDate":"2026-01-01","releaseDisplay":"2026.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"edge","chip":"","tags":[],"specs":{"성능":"856 TOPS","메모리":"up to 8 GB (on-card)","용도":"Multi-stream edge server","출시":"2026.01"},"note":""},{"enriched":false,"vendor":"Tenstorrent","product":"Wormhole n150s","url":"https://tenstorrent.com/hardware/wormhole","standalone":true,"country":"US","origin":"global","form":"PCIe","formGroup":"PCIe","compute":"262 TFLOPS FP8","computeDisplay":"262 TFLOPS FP8","tops":262,"memory":"12 GB GDDR6","useCase":"","release":"2024-07","releaseDate":"2024-07-01","releaseDisplay":"2024.07","price":"$999","priceDisplay":"$999","priceUSD":999,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"262 TFLOPS FP8","메모리":"12 GB GDDR6","출시":"2024.07"},"note":""},{"enriched":false,"vendor":"Tenstorrent","product":"Wormhole n300s","url":"https://tenstorrent.com/hardware/wormhole","standalone":true,"country":"US","origin":"global","form":"PCIe","formGroup":"PCIe","compute":"524 TFLOPS FP8","computeDisplay":"524 TFLOPS FP8","tops":524,"memory":"24 GB GDDR6","useCase":"","release":"2024-07","releaseDate":"2024-07-01","releaseDisplay":"2024.07","price":"$1,399","priceDisplay":"$1,399","priceUSD":1399,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"524 TFLOPS FP8","메모리":"24 GB GDDR6","출시":"2024.07"},"note":""},{"enriched":false,"vendor":"Tenstorrent","product":"Blackhole p100a","url":"https://tenstorrent.com/hardware/blackhole","standalone":true,"country":"US","origin":"global","form":"PCIe","formGroup":"PCIe","compute":"~670 TFLOPS FP8","computeDisplay":"~670 TFLOPS FP8","tops":670,"memory":"28 GB GDDR6","useCase":"","release":"2025-04","releaseDate":"2025-04-01","releaseDisplay":"2025.04","price":"$999","priceDisplay":"$999","priceUSD":999,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"~670 TFLOPS FP8","메모리":"28 GB GDDR6","출시":"2025.04"},"note":""},{"enriched":false,"vendor":"Tenstorrent","product":"Blackhole p150a","url":"https://tenstorrent.com/hardware/blackhole","standalone":true,"country":"US","origin":"global","form":"PCIe","formGroup":"PCIe","compute":"745 TFLOPS FP8","computeDisplay":"745 TFLOPS FP8","tops":745,"memory":"32 GB GDDR6","useCase":"","release":"2025-04","releaseDate":"2025-04-01","releaseDisplay":"2025.04","price":"$1,399","priceDisplay":"$1,399","priceUSD":1399,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"745 TFLOPS FP8","메모리":"32 GB GDDR6","출시":"2025.04"},"note":""},{"enriched":false,"vendor":"Graphcore","product":"Bow IPU (Bow-2000)","url":"https://www.graphcore.ai/products/ipu","standalone":true,"country":"US","origin":"global","form":"Blade / system","formGroup":"Server/System","compute":"350 TFLOPS FP16","computeDisplay":"350 TFLOPS FP16","tops":350,"memory":"900 MB SRAM","useCase":"","release":"2022-03","releaseDate":"2022-03-01","releaseDisplay":"2022.03","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"350 TFLOPS FP16","메모리":"900 MB SRAM","출시":"2022.03"},"note":""},{"enriched":false,"vendor":"SambaNova","product":"SN40L","url":"https://sambanova.ai/technology/sn40l-rdu","standalone":true,"country":"US","origin":"global","form":"System (RDU)","formGroup":"Server/System","compute":null,"computeDisplay":"—","tops":null,"memory":"HBM3 + DDR","useCase":"","release":"2023-09","releaseDate":"2023-09-01","releaseDisplay":"2023.09","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"HBM3 + DDR","출시":"2023.09"},"note":""},{"enriched":false,"vendor":"Cerebras","product":"WSE-3 (CS-3)","url":"https://www.cerebras.ai/product-chip","standalone":true,"country":"US","origin":"global","form":"Wafer-scale system","formGroup":"Server/System","compute":null,"computeDisplay":"—","tops":null,"memory":"44 GB on-chip","useCase":"","release":"2024-03","releaseDate":"2024-03-01","releaseDisplay":"2024.03","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"44 GB on-chip","출시":"2024.03"},"note":""},{"enriched":false,"vendor":"Groq","product":"LPU (GroqCard)","url":"https://groq.com/","standalone":true,"country":"US","origin":"global","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"230 MB SRAM","useCase":"","release":"2023-01","releaseDate":"2023-01-01","releaseDisplay":"2023.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"230 MB SRAM","출시":"2023.01"},"note":""},{"enriched":false,"vendor":"d-Matrix","product":"Corsair","url":"https://www.d-matrix.ai/product/","standalone":true,"country":"US","origin":"global","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"digital in-memory","useCase":"","release":"2025-01","releaseDate":"2025-01-01","releaseDisplay":"2025.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"digital in-memory","출시":"2025.01"},"note":""},{"enriched":false,"vendor":"Untether AI","product":"speedAI240","url":"https://www.untether.ai/","standalone":true,"country":"US","origin":"global","form":"PCIe","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"at-memory compute","useCase":"","release":"2024-01","releaseDate":"2024-01-01","releaseDisplay":"2024.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"at-memory compute","출시":"2024.01"},"note":""},{"enriched":false,"vendor":"Etched","product":"Sohu","url":"https://www.etched.com/","standalone":true,"country":"US","origin":"global","form":"System","formGroup":"Server/System","compute":null,"computeDisplay":"—","tops":null,"memory":"transformer-only ASIC","useCase":"","release":"2025","releaseDate":"2025-01-01","releaseDisplay":"2025","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"transformer-only ASIC","출시":"2025"},"note":""},{"enriched":false,"vendor":"Huawei","product":"Ascend 910C","url":"https://www.hiascend.com/","standalone":true,"country":"CN","origin":"global","form":"System (OAM)","formGroup":"Server/System","compute":null,"computeDisplay":"—","tops":null,"memory":"HBM","useCase":"","release":"2025-01","releaseDate":"2025-01-01","releaseDisplay":"2025.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"HBM","출시":"2025.01"},"note":""},{"enriched":false,"vendor":"Cambricon","product":"Siyuan 590","url":"https://www.cambricon.com/","standalone":true,"country":"CN","origin":"global","form":"PCIe / system","formGroup":"PCIe","compute":null,"computeDisplay":"—","tops":null,"memory":"HBM","useCase":"","release":"2023-01","releaseDate":"2023-01-01","releaseDisplay":"2023.01","price":"-","priceDisplay":"미공개","priceUSD":null,"segment":"datacenter","chip":"","tags":[],"specs":{"성능":"—","메모리":"HBM","출시":"2023.01"},"note":""}],"introHTML":"\u003cp>Commercial NPUs and AI inference accelerators, from MCU-class parts to datacenter cards.\u003c/p>\u003cp>Data is compiled from vendor pages and public reporting (2025–2026) and may lag product revisions. Compute figures are vendor-stated peak TOPS at INT8 unless noted; datacenter parts often publish throughput/memory specs instead of a single TOPS number, shown as \u003ccode>-\u003c/code>. Prices are listed only where officially disclosed. Sorted by compute, ascending.\u003c/p>\u003cp>\u003ccode>⚠\u003c/code> marks parts that are not standalone products — SoC-integrated or IP that must be built into a host system.\u003c/p>\u003cp>The \u003cstrong>Memory\u003c/strong> column shows dedicated on-board/on-chip memory where a part carries its own; \u003ccode>shared (host)\u003c/code> or \u003ccode>unified\u003c/code> means it uses the host system&#39;s RAM instead. This matters for LLM/VLM work, where model size is bound by available memory.\u003c/p>\u003cp>Flags: 🇰🇷 Korea, 🇺🇸 USA, 🇳🇱 Netherlands, 🇨🇳 China, 🇳🇴 Norway, 🇮🇱 Israel, 🇩🇪 Germany, 🇫🇷 France, 🇯🇵 Japan.\u003c/p>","docsHTML":"\u003ch2 id=\"raspberry-pi-accelerators\">Raspberry Pi accelerators\u003c/h2>\u003cp>Which accelerator fits depends on the Pi generation. Pi 5 exposes a PCIe lane (via M.2 HAT+), so it takes M.2 modules. Pi 4 / Pi 3 have no PCIe, so they rely on USB accelerators.\u003c/p>\u003ch3 id=\"pi-5-m2-hat\">Pi 5 (M.2 HAT+)\u003c/h3>\u003cdiv class=\"tbl-wrap\">\u003ctable>\u003cthead>\u003ctr>\u003cth>Module\u003c/th>\u003cth>Compute\u003c/th>\u003cth>Interface\u003c/th>\u003cth>PyTorch/ONNX\u003c/th>\u003cth>Notes\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>\u003ca href=\"https://hailo.ai/\" target=\"_blank\" rel=\"noopener\">Hailo-8\u003c/a>\u003c/td>\u003ctd>26 TOPS\u003c/td>\u003ctd>M.2 (Pi AI HAT+)\u003c/td>\u003ctd>yes\u003c/td>\u003ctd>Higher-end AI HAT+ option\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://hailo.ai/\" target=\"_blank\" rel=\"noopener\">Hailo-8L\u003c/a>\u003c/td>\u003ctd>13 TOPS\u003c/td>\u003ctd>M.2 (Pi AI Kit)\u003c/td>\u003ctd>yes\u003c/td>\u003ctd>Official Pi 5 AI Kit chip; ~$70\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://axelera.ai/ai-accelerators\" target=\"_blank\" rel=\"noopener\">Axelera Metis M.2\u003c/a>\u003c/td>\u003ctd>214 TOPS\u003c/td>\u003ctd>M.2\u003c/td>\u003ctd>yes (Voyager SDK)\u003c/td>\u003ctd>Highest compute; model zoo still limited\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://deepx.ai/products/dx-m1/\" target=\"_blank\" rel=\"noopener\">DEEPX DX-M1\u003c/a>\u003c/td>\u003ctd>25 TOPS\u003c/td>\u003ctd>M.2\u003c/td>\u003ctd>yes (DXNN SDK)\u003c/td>\u003ctd>Digi-Key stock, industrial temp range\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://coral.ai/products/m2-accelerator-dual-edgetpu/\" target=\"_blank\" rel=\"noopener\">Coral M.2 Dual Edge TPU\u003c/a>\u003c/td>\u003ctd>8 TOPS\u003c/td>\u003ctd>M.2 E-key\u003c/td>\u003ctd>TFLite only\u003c/td>\u003ctd>Cheapest; needs dual-lane E-key slot\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://coral.ai/products/m2-accelerator-ae/\" target=\"_blank\" rel=\"noopener\">Coral M.2 Edge TPU\u003c/a>\u003c/td>\u003ctd>4 TOPS\u003c/td>\u003ctd>M.2 A+E-key\u003c/td>\u003ctd>TFLite only\u003c/td>\u003ctd>Single-TPU variant\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003ch3 id=\"pi-4--pi-3-and-older-usb\">Pi 4 / Pi 3 and older (USB)\u003c/h3>\u003cp>No PCIe on these boards — USB accelerators only. Works on Pi 4, Pi 3B+, and most Linux SBCs.\u003c/p>\u003cdiv class=\"tbl-wrap\">\u003ctable>\u003cthead>\u003ctr>\u003cth>Module\u003c/th>\u003cth>Compute\u003c/th>\u003cth>Interface\u003c/th>\u003cth>PyTorch/ONNX\u003c/th>\u003cth>Notes\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>\u003ca href=\"https://hailo.ai/\" target=\"_blank\" rel=\"noopener\">Hailo-8 USB stick\u003c/a>\u003c/td>\u003ctd>26 TOPS\u003c/td>\u003ctd>USB 3.0\u003c/td>\u003ctd>yes\u003c/td>\u003ctd>Fastest USB option; ~5W peak\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://coral.ai/products/accelerator/\" target=\"_blank\" rel=\"noopener\">Coral USB Accelerator\u003c/a>\u003c/td>\u003ctd>4 TOPS\u003c/td>\u003ctd>USB 3.0\u003c/td>\u003ctd>TFLite only\u003c/td>\u003ctd>Works on Pi 3B+/4; driver updates stalled\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://www.intel.com/content/www/us/en/developer/tools/neural-compute-stick/overview.html\" target=\"_blank\" rel=\"noopener\">Intel NCS2 (Myriad X)\u003c/a>\u003c/td>\u003ctd>4 TOPS\u003c/td>\u003ctd>USB 3.0\u003c/td>\u003ctd>OpenVINO\u003c/td>\u003ctd>EOL, no driver updates since ~2021\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"http://www.orangepi.org/\" target=\"_blank\" rel=\"noopener\">Orange Pi AI Stick (Lyeffe)\u003c/a>\u003c/td>\u003ctd>~2.8 TOPS\u003c/td>\u003ctd>USB\u003c/td>\u003ctd>limited\u003c/td>\u003ctd>Myriad-class; sparse support\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://t.rock-chips.com/en/\" target=\"_blank\" rel=\"noopener\">Toybrick RK1808 (TB-RK1808S0)\u003c/a>\u003c/td>\u003ctd>~3 TOPS\u003c/td>\u003ctd>USB\u003c/td>\u003ctd>RKNN toolkit\u003c/td>\u003ctd>Rockchip RK1808 USB compute stick\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003ch3 id=\"notes-on-pi-compatibility\">Notes on Pi compatibility\u003c/h3>\u003cul>\u003cli>\u003cstrong>Coral\u003c/strong> hasn&#39;t seen meaningful driver/runtime updates in years; expect friction with recent Python/OS releases. Still fine for TFLite vision.\u003c/li>\u003cli>\u003cstrong>NCS2\u003c/strong> is discontinued (EOL); usable only on legacy OpenVINO. Buy only from remaining stock.\u003c/li>\u003cli>\u003cstrong>Multi-accelerator rigs\u003c/strong> (e.g. several Coral + Hailo behind a PCIe switch on Pi 5) work but need driver/overlay hacks and offer limited multi-chip software support.\u003c/li>\u003cli>\u003cstrong>Mobilint / Rebellions / FuriosaAI\u003c/strong> make no M.2 or USB part and cannot attach to a Pi.\u003c/li>\u003c/ul>\u003ch2 id=\"software\">Software\u003c/h2>\u003cp>The tooling that turns a trained model into something an NPU can run: vendor SDKs, cross-vendor compilers, runtimes, and the optimization steps (quantization especially) that edge deployment depends on.\u003c/p>\u003ch3 id=\"vendor-sdks--toolchains\">Vendor SDKs &amp; toolchains\u003c/h3>\u003cp>Each NPU vendor ships its own compiler/quantizer. Most take ONNX or a framework graph and emit a device-specific binary.\u003c/p>\u003cdiv class=\"tbl-wrap\">\u003ctable>\u003cthead>\u003ctr>\u003cth>SDK\u003c/th>\u003cth>Vendor\u003c/th>\u003cth>Input\u003c/th>\u003cth>Notes\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>\u003ca href=\"https://deepx.ai/\" target=\"_blank\" rel=\"noopener\">DXNN\u003c/a>\u003c/td>\u003ctd>DEEPX\u003c/td>\u003ctd>PyTorch / ONNX / TF\u003c/td>\u003ctd>Compiler + runtime for DX-M1/M2\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://www.mobilint.com/\" target=\"_blank\" rel=\"noopener\">qb SDK\u003c/a>\u003c/td>\u003ctd>Mobilint\u003c/td>\u003ctd>ONNX\u003c/td>\u003ctd>Model compiler + tools for ARIES/REGULUS\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://hailo.ai/developer-zone/\" target=\"_blank\" rel=\"noopener\">Dataflow Compiler (DFC)\u003c/a>\u003c/td>\u003ctd>Hailo\u003c/td>\u003ctd>ONNX / TFLite\u003c/td>\u003ctd>Compiles to Hailo-8/10H; PyTorch via ONNX\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://axelera.ai/\" target=\"_blank\" rel=\"noopener\">Voyager SDK\u003c/a>\u003c/td>\u003ctd>Axelera\u003c/td>\u003ctd>ONNX / PyTorch\u003c/td>\u003ctd>Metis toolchain; 100+ model zoo\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://github.com/openvinotoolkit/openvino\" target=\"_blank\" rel=\"noopener\">OpenVINO\u003c/a>\u003c/td>\u003ctd>Intel\u003c/td>\u003ctd>ONNX / IR\u003c/td>\u003ctd>Optimizes for Intel CPU/GPU/NPU + Myriad\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://coral.ai/docs/edgetpu/compiler/\" target=\"_blank\" rel=\"noopener\">Edge TPU Compiler\u003c/a>\u003c/td>\u003ctd>Google\u003c/td>\u003ctd>TFLite (INT8)\u003c/td>\u003ctd>Compiles quantized TFLite for Coral\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://github.com/airockchip/rknn-toolkit2\" target=\"_blank\" rel=\"noopener\">RKNN-Toolkit2\u003c/a>\u003c/td>\u003ctd>Rockchip\u003c/td>\u003ctd>ONNX / TF / others\u003c/td>\u003ctd>For RK3588/RK1808 NPU\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://sima.ai/\" target=\"_blank\" rel=\"noopener\">SiMa Palette\u003c/a>\u003c/td>\u003ctd>SiMa.ai\u003c/td>\u003ctd>ONNX\u003c/td>\u003ctd>MLSoC compiler + SDK\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://developer.memryx.com/\" target=\"_blank\" rel=\"noopener\">MemryX SDK\u003c/a>\u003c/td>\u003ctd>MemryX\u003c/td>\u003ctd>ONNX / TFLite / PyTorch\u003c/td>\u003ctd>Dataflow compiler for MX3\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://github.com/furiosa-ai\" target=\"_blank\" rel=\"noopener\">Furiosa SDK\u003c/a>\u003c/td>\u003ctd>FuriosaAI\u003c/td>\u003ctd>ONNX\u003c/td>\u003ctd>Compiler, runtime, K8s integration for RNGD\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003ca href=\"https://www.nxp.com/design/design-center/software/eiq-ml-development-environment:EIQ\" target=\"_blank\" rel=\"noopener\">eIQ\u003c/a>\u003c/td>\u003ctd>NXP\u003c/td>\u003ctd>ONNX / TFLite\u003c/td>\u003ctd>ML toolkit spanning MCU → i.MX → Ara DNPU\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003ch3 id=\"compilers--ir\">Compilers &amp; IR\u003c/h3>\u003cp>Vendor-neutral compiler stacks that lower a model through an intermediate representation to hardware-specific code.\u003c/p>\u003cul>\u003cli>\u003ca href=\"https://github.com/apache/tvm\" target=\"_blank\" rel=\"noopener\">Apache TVM\u003c/a> — deep-learning compiler with auto-scheduling; microTVM targets MCUs/NPUs\u003c/li>\u003cli>\u003ca href=\"https://github.com/iree-org/iree\" target=\"_blank\" rel=\"noopener\">IREE\u003c/a> — MLIR-based compiler + runtime for edge to datacenter\u003c/li>\u003cli>\u003ca href=\"https://github.com/llvm/llvm-project/tree/main/mlir\" target=\"_blank\" rel=\"noopener\">MLIR\u003c/a> — LLVM compiler infrastructure underlying many NPU stacks\u003c/li>\u003cli>\u003ca href=\"https://github.com/pytorch/glow\" target=\"_blank\" rel=\"noopener\">Glow\u003c/a> — Meta&#39;s ML graph compiler for accelerators\u003c/li>\u003cli>\u003ca href=\"https://github.com/openxla/xla\" target=\"_blank\" rel=\"noopener\">XLA\u003c/a> — operation-fusion compiler (TF/JAX), influences edge compiler design\u003c/li>\u003cli>\u003ca href=\"https://github.com/openxla/stablehlo\" target=\"_blank\" rel=\"noopener\">OpenXLA / StableHLO\u003c/a> — portable HLO dialect across compilers\u003c/li>\u003c/ul>\u003ch3 id=\"runtimes--inference-engines\">Runtimes &amp; inference engines\u003c/h3>\u003cp>Cross-vendor runtimes that dispatch to CPU/GPU/NPU back-ends.\u003c/p>\u003cul>\u003cli>\u003ca href=\"https://github.com/microsoft/onnxruntime\" target=\"_blank\" rel=\"noopener\">ONNX Runtime\u003c/a> — execution-provider interface binds graphs to NPU back-ends (NNAPI, OpenVINO, TensorRT, QNN)\u003c/li>\u003cli>\u003ca href=\"https://github.com/pytorch/executorch\" target=\"_blank\" rel=\"noopener\">ExecuTorch\u003c/a> — PyTorch Edge runtime for mobile/embedded/MCU with NPU delegation\u003c/li>\u003cli>\u003ca href=\"https://github.com/google-ai-edge/LiteRT\" target=\"_blank\" rel=\"noopener\">TensorFlow Lite / LiteRT\u003c/a> — on-device runtime; NNAPI/GPU/NPU delegates\u003c/li>\u003cli>\u003ca href=\"https://github.com/google-ai-edge/LiteRT-LM\" target=\"_blank\" rel=\"noopener\">LiteRT-LM\u003c/a> — LiteRT extension for on-device LLMs\u003c/li>\u003cli>\u003ca href=\"https://github.com/Tencent/ncnn\" target=\"_blank\" rel=\"noopener\">NCNN\u003c/a> — Tencent&#39;s mobile-first inference framework\u003c/li>\u003cli>\u003ca href=\"https://github.com/alibaba/MNN\" target=\"_blank\" rel=\"noopener\">MNN\u003c/a> — Alibaba&#39;s lightweight edge inference engine\u003c/li>\u003cli>\u003ca href=\"https://github.com/XiaoMi/mace\" target=\"_blank\" rel=\"noopener\">MACE\u003c/a> — Xiaomi&#39;s mobile NN accelerator\u003c/li>\u003cli>\u003ca href=\"https://github.com/Tencent/TNN\" target=\"_blank\" rel=\"noopener\">TNN\u003c/a> — Tencent cross-platform inference framework\u003c/li>\u003cli>\u003ca href=\"https://developer.android.com/ndk/guides/neuralnetworks\" target=\"_blank\" rel=\"noopener\">NNAPI\u003c/a> — Android&#39;s neural networks hardware abstraction (legacy; superseded by LiteRT delegates)\u003c/li>\u003cli>\u003ca href=\"https://www.qualcomm.com/developer/software/qualcomm-ai-engine-direct-sdk\" target=\"_blank\" rel=\"noopener\">QNN (Qualcomm AI Engine Direct)\u003c/a> — low-level Hexagon NPU access\u003c/li>\u003c/ul>\u003ch3 id=\"llm-on-edge\">LLM on edge\u003c/h3>\u003cp>Running local language models on constrained hardware.\u003c/p>\u003cul>\u003cli>\u003ca href=\"https://github.com/ggml-org/llama.cpp\" target=\"_blank\" rel=\"noopener\">llama.cpp\u003c/a> — CPU-first GGUF inference, minimal setup\u003c/li>\u003cli>\u003ca href=\"https://github.com/ollama/ollama\" target=\"_blank\" rel=\"noopener\">Ollama\u003c/a> — local LLM runner built on llama.cpp\u003c/li>\u003cli>\u003ca href=\"https://github.com/mlc-ai/mlc-llm\" target=\"_blank\" rel=\"noopener\">MLC LLM\u003c/a> — TVM-based LLM deployment across GPU/NPU/mobile\u003c/li>\u003cli>\u003ca href=\"https://github.com/pytorch/torchchat\" target=\"_blank\" rel=\"noopener\">torchchat\u003c/a> — PyTorch local LLM inference (server/desktop/mobile)\u003c/li>\u003c/ul>\u003ch3 id=\"model-optimization-quantization--pruning\">Model optimization (quantization / pruning)\u003c/h3>\u003cp>The step that makes models fit an NPU — usually INT8 quantization.\u003c/p>\u003cul>\u003cli>\u003ca href=\"https://github.com/openvinotoolkit/nncf\" target=\"_blank\" rel=\"noopener\">Neural Network Compression Framework (NNCF)\u003c/a> — Intel quantization/pruning for OpenVINO\u003c/li>\u003cli>\u003ca href=\"https://pytorch.org/docs/stable/quantization.html\" target=\"_blank\" rel=\"noopener\">PyTorch Quantization\u003c/a> — native PTQ/QAT (eager + FX + export)\u003c/li>\u003cli>\u003ca href=\"https://github.com/tensorflow/model-optimization\" target=\"_blank\" rel=\"noopener\">TensorFlow Model Optimization Toolkit\u003c/a> — quantization, pruning, clustering\u003c/li>\u003cli>\u003ca href=\"https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html\" target=\"_blank\" rel=\"noopener\">ONNX Runtime quantization\u003c/a> — post-training INT8 for ONNX\u003c/li>\u003cli>\u003ca href=\"https://github.com/quic/aimet\" target=\"_blank\" rel=\"noopener\">AIMET\u003c/a> — Qualcomm&#39;s model-efficiency toolkit (quant + compression)\u003c/li>\u003cli>\u003ca href=\"https://github.com/Xilinx/brevitas\" target=\"_blank\" rel=\"noopener\">Brevitas\u003c/a> — AMD/Xilinx quantization-aware training in PyTorch\u003c/li>\u003c/ul>\u003ch3 id=\"benchmarks\">Benchmarks\u003c/h3>\u003cul>\u003cli>\u003ca href=\"https://github.com/mlcommons/inference\" target=\"_blank\" rel=\"noopener\">MLPerf Inference\u003c/a> — MLCommons standard inference benchmark (edge + datacenter suites)\u003c/li>\u003cli>\u003ca href=\"https://github.com/mlcommons/tiny\" target=\"_blank\" rel=\"noopener\">MLPerf Tiny\u003c/a> — benchmark for MCU-class TinyML\u003c/li>\u003cli>\u003ca href=\"https://ai-benchmark.com/\" target=\"_blank\" rel=\"noopener\">ai-benchmark\u003c/a> — mobile SoC / NPU benchmark\u003c/li>\u003cli>\u003ca href=\"https://www.eembc.org/mlmark/\" target=\"_blank\" rel=\"noopener\">EEMBC MLMark\u003c/a> — embedded ML benchmark\u003c/li>\u003c/ul>\u003ch3 id=\"model-zoos\">Model zoos\u003c/h3>\u003cul>\u003cli>\u003ca href=\"https://github.com/onnx/models\" target=\"_blank\" rel=\"noopener\">ONNX Model Zoo\u003c/a> — pre-trained models in ONNX\u003c/li>\u003cli>\u003ca href=\"https://github.com/hailo-ai/hailo_model_zoo\" target=\"_blank\" rel=\"noopener\">Hailo Model Zoo\u003c/a> — models pre-compiled for Hailo\u003c/li>\u003cli>\u003ca href=\"https://github.com/openvinotoolkit/open_model_zoo\" target=\"_blank\" rel=\"noopener\">OpenVINO Open Model Zoo\u003c/a> — Intel pre-trained models + demos\u003c/li>\u003cli>\u003ca href=\"https://coral.ai/models/\" target=\"_blank\" rel=\"noopener\">Coral Models\u003c/a> — Edge TPU-compiled TFLite models\u003c/li>\u003cli>\u003ca href=\"https://github.com/huggingface/pytorch-image-models\" target=\"_blank\" rel=\"noopener\">timm\u003c/a> — PyTorch image models, common export source\u003c/li>\u003c/ul>\u003ch2 id=\"learning-resources\">Learning resources\u003c/h2>\u003cul>\u003cli>\u003ca href=\"https://github.com/Bisonai/awesome-edge-machine-learning\" target=\"_blank\" rel=\"noopener\">Awesome Edge Machine Learning\u003c/a> — curated edge ML list\u003c/li>\u003cli>\u003ca href=\"https://github.com/htqin/awesome-model-quantization\" target=\"_blank\" rel=\"noopener\">Awesome Model Quantization\u003c/a> — quantization papers and methods\u003c/li>\u003cli>\u003ca href=\"https://github.com/gigwegbe/tinyml-papers-and-projects\" target=\"_blank\" rel=\"noopener\">Awesome Embedded / TinyML\u003c/a> — TinyML papers and projects\u003c/li>\u003cli>\u003ca href=\"https://github.com/Yulv-git/Model-Inference-Deployment\" target=\"_blank\" rel=\"noopener\">Model-Inference-Deployment\u003c/a> — inference framework comparison (OpenVINO, TVM, NCNN, MNN, …)\u003c/li>\u003cli>\u003ca href=\"https://www.jeffgeerling.com/blog\" target=\"_blank\" rel=\"noopener\">Jeff Geerling – Raspberry Pi AI\u003c/a> — hands-on Pi + NPU experiments\u003c/li>\u003c/ul>\u003ch2 id=\"glossary\">Glossary\u003c/h2>\u003cul>\u003cli>NPU — Neural Processing Unit\u003c/li>\u003cli>LPU — LLM Processing Unit; NPU subclass for LLM inference\u003c/li>\u003cli>VPU — Vision Processing Unit\u003c/li>\u003cli>DNPU — Discrete NPU (standalone, not SoC-integrated)\u003c/li>\u003cli>TOPS / POPS — Tera / Peta Operations Per Second (precision-dependent)\u003c/li>\u003cli>SoM — System on Module\u003c/li>\u003cli>IR — Intermediate Representation; the mid-level form a compiler lowers a model into\u003c/li>\u003cli>PTQ / QAT — Post-Training Quantization / Quantization-Aware Training\u003c/li>\u003cli>Delegate / Execution Provider — runtime plugin that offloads a subgraph to a specific accelerator\u003c/li>\u003cli>GGUF — quantized model file format used by llama.cpp\u003c/li>\u003c/ul>\u003ch2 id=\"contributing\">Contributing\u003c/h2>\u003cp>PRs welcome. Cite the source, state precision and whether a figure is a boost value, list price only when officially disclosed, and mark non-standalone parts with \u003ccode>⚠\u003c/code>.\u003c/p>","generatedAt":"2026-07-22","repo":"https://github.com/pleahmacaka/awesome-npu"};</script>
 
 <script>
 (function(){
-  const DATA = window.DATA || { products: [], introHTML: "", docsHTML: "", generatedAt: "", repo: "" };
+  const DATA = window.DATA || { products:[], introHTML:"", docsHTML:"", generatedAt:"", repo:"" };
   const products = DATA.products;
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
-  const FLAG = { KR:"🇰🇷", US:"🇺🇸", NL:"🇳🇱", CN:"🇨🇳", NO:"🇳🇴", IL:"🇮🇱", JP:"🇯🇵", DE:"🇩🇪", FR:"🇫🇷", TW:"🇹🇼" };
   const CNAME = { KR:"대한민국", US:"미국", NL:"네덜란드", CN:"중국", NO:"노르웨이", IL:"이스라엘", JP:"일본", DE:"독일", FR:"프랑스", TW:"대만" };
-  const DOMAIN = {
-    "Rebellions":"rebellions.ai","FuriosaAI":"furiosa.ai","DEEPX":"deepx.ai","Mobilint":"mobilint.com","HyperAccel":"hyperaccel.ai",
-    "Google":"google.com","Hailo":"hailo.ai","NXP":"nxp.com","Intel":"intel.com","Rockchip":"rock-chips.com",
-    "Nordic Semiconductor":"nordicsemi.com","Qualcomm":"qualcomm.com","Syntiant":"syntiant.com","BrainChip":"brainchip.com",
-    "Telechips":"telechips.com","Apple":"apple.com","MediaTek":"mediatek.com","Ambarella":"ambarella.com","MemryX":"memryx.com",
-    "Kneron":"kneron.com","Blaize":"blaize.com","Huawei":"huawei.com","SiMa.ai":"sima.ai","Axelera AI":"axelera.ai",
-    "Tenstorrent":"tenstorrent.com","Graphcore":"graphcore.ai","SambaNova":"sambanova.ai","Cerebras":"cerebras.ai","Groq":"groq.com",
-    "d-Matrix":"d-matrix.ai","Untether AI":"untether.ai","Etched":"etched.com","Cambricon":"cambricon.com"
-  };
-  const FORM_ICON = { "PCIe":"ph:circuitry", "Server/System":"ph:hard-drives", "M.2":"ph:memory", "MXM":"ph:memory", "USB":"ph:usb", "Box":"ph:package", "SoC":"ph:cpu" };
-  const logoURL = v => DOMAIN[v] ? `https://logo.clearbit.com/${DOMAIN[v]}` : "";
-  const formIcon = f => FORM_ICON[f] || "ph:cpu";
-  const esc = s => String(s==null?"":s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-
-  const FILTERS = {
-    origin:{el:"f-origin",multi:false,opts:[{key:"all",label:"전체"},{key:"kr",label:"🇰🇷 국내"},{key:"global",label:"🌐 해외"}]},
-    country:{el:"f-country",multi:true,opts:[]},
-    segment:{el:"f-segment",multi:true,opts:[{key:"mcu",label:"MCU급"},{key:"edge",label:"엣지/온디바이스"},{key:"datacenter",label:"데이터센터/서버"}]},
-    form:{el:"f-form",multi:true,opts:[]},
-    vendor:{el:"f-vendor",multi:true,opts:[]}
-  };
+  const SEG = { mcu:"MCU급", edge:"엣지", datacenter:"데이터센터" };
   const FORM_ORDER = ["M.2","PCIe","USB","MXM","Box","SoC","Server/System"];
-  FILTERS.country.opts=[...new Set(products.map(p=>p.country))].sort().map(c=>({key:c,label:`${FLAG[c]||"🏳️"} ${CNAME[c]||c}`}));
-  FILTERS.form.opts=[...new Set(products.map(p=>p.formGroup))].sort((a,b)=>FORM_ORDER.indexOf(a)-FORM_ORDER.indexOf(b)).map(f=>({key:f,label:f}));
-  FILTERS.vendor.opts=[...new Set(products.map(p=>p.vendor))].sort().map(v=>({key:v,label:v}));
+  const EXT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>';
+  const WARN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>';
+  const SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+  const MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>';
 
-  const state={search:"",view:"list",sort:"default",origin:"all",country:new Set(),segment:new Set(),form:new Set(),vendor:new Set(),dateFrom:null,dateTo:null,includeNoDate:true};
+  const monogram = v => {
+    const p = v.split(/[\s.\-]+/).filter(Boolean);
+    return (p.length>1 ? p[0][0]+p[1][0] : v.slice(0,2)).toUpperCase();
+  };
+  const cc = p => `<span class="cc" title="${CNAME[p.country]||p.country}"><i class="dot ${p.origin==='kr'?'kr':'gl'}"></i>${esc(p.country)}</span>`;
+  const metricParts = p => {
+    const d = p.computeDisplay || "—";
+    if(d==="—") return {num:"—",unit:"",dim:true};
+    const i = d.indexOf(" ");
+    return { num: i<0?d:d.slice(0,i), unit: i<0?"":d.slice(i+1), dim:false };
+  };
 
-  function buildChips(conf,key){
-    const host=document.getElementById(conf.el); host.innerHTML="";
-    const OFF="btn btn-xs rounded-full bg-base-100 border border-base-300 text-base-content/70 hover:border-base-content/40";
-    const ON="btn btn-xs rounded-full btn-primary";
-    conf.opts.forEach(o=>{
+  // ---------- filters ----------
+  const FILTERS = {
+    country:{el:"f-country", opts:[...new Set(products.map(p=>p.country))].sort().map(c=>({key:c,label:`${c} · ${CNAME[c]||c}`}))},
+    form:{el:"f-form", opts:[...new Set(products.map(p=>p.formGroup))].sort((a,b)=>FORM_ORDER.indexOf(a)-FORM_ORDER.indexOf(b)).map(f=>({key:f,label:f}))},
+    vendor:{el:"f-vendor", opts:[...new Set(products.map(p=>p.vendor))].sort().map(v=>({key:v,label:v}))},
+  };
+  const ORIGIN = [{key:"all",label:"전체"},{key:"kr",label:"국내"},{key:"global",label:"해외"}];
+  const SEGS = [{key:"mcu",label:"MCU급"},{key:"edge",label:"엣지"},{key:"datacenter",label:"데이터센터"}];
+
+  const state = { search:"", view:"table", sort:"default", origin:"all",
+    country:new Set(), segment:new Set(), form:new Set(), vendor:new Set(),
+    dateFrom:null, dateTo:null, includeNoDate:true };
+
+  function buildMulti(hostId, opts, set){
+    const host=$(hostId); host.innerHTML="";
+    opts.forEach(o=>{
       const b=document.createElement("button");
-      const isOn=(!conf.multi&&o.key==="all");
-      b.className=isOn?ON:OFF;
-      b.textContent=o.label;
-      b.onclick=()=>{
-        if(conf.multi){const s=state[key];
-          if(s.has(o.key)){s.delete(o.key);b.className=OFF;}
-          else{s.add(o.key);b.className=ON;}
-        }else{state[key]=o.key;host.querySelectorAll("button").forEach(x=>x.className=OFF);b.className=ON;}
-        render();
-      };
+      b.className="tog"; b.type="button"; b.textContent=o.label;
+      b.setAttribute("aria-pressed", set.has(o.key)?"true":"false");
+      b.onclick=()=>{ if(set.has(o.key)){set.delete(o.key);b.setAttribute("aria-pressed","false");}
+        else{set.add(o.key);b.setAttribute("aria-pressed","true");} render(); updateFcount(); };
       host.appendChild(b);
     });
   }
-  Object.entries(FILTERS).forEach(([k,c])=>buildChips(c,k));
-
-  const $=id=>document.getElementById(id);
-  $("search").oninput=e=>{state.search=e.target.value.toLowerCase().trim();render();};
-  $("sortSel").onchange=e=>{state.sort=e.target.value;render();};
-  $("dateFrom").onchange=e=>{state.dateFrom=e.target.value||null;render();};
-  $("dateTo").onchange=e=>{state.dateTo=e.target.value||null;render();};
-  $("includeNoDate").onchange=e=>{state.includeNoDate=e.target.checked;render();};
-
-  function setView(v){
-    state.view=v;
-    $("viewList").className="btn btn-sm join-item "+(v==="list"?"btn-active":"btn-outline");
-    $("viewCard").className="btn btn-sm join-item "+(v==="card"?"btn-active":"btn-outline");
-    render();
+  function buildOrigin(){
+    const host=$("q-origin"); host.innerHTML="";
+    ORIGIN.forEach(o=>{
+      const b=document.createElement("button");
+      b.className="tog qk"; b.type="button"; b.textContent=o.label;
+      b.setAttribute("aria-pressed", state.origin===o.key?"true":"false");
+      b.onclick=()=>{ state.origin=o.key; host.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed","false"));
+        b.setAttribute("aria-pressed","true"); render(); };
+      host.appendChild(b);
+    });
   }
-  $("viewList").onclick=()=>setView("list");
-  $("viewCard").onclick=()=>setView("card");
-
-  $("resetBtn").onclick=()=>{
-    Object.assign(state,{search:"",origin:"all",dateFrom:null,dateTo:null,includeNoDate:true,sort:"default"});
-    state.country.clear();state.segment.clear();state.form.clear();state.vendor.clear();
-    $("search").value="";$("dateFrom").value="";$("dateTo").value="";$("includeNoDate").checked=true;$("sortSel").value="default";
-    Object.entries(FILTERS).forEach(([k,c])=>buildChips(c,k));
-    render();
-  };
-
-  // 모바일 필터 접기/펼치기
-  const filterToggle=$("filterToggle"), filterBody=$("filterBody");
-  function syncFilterToggle(){
-    const expanded = !filterBody.classList.contains("hidden");
-    filterToggle.setAttribute("aria-expanded", String(expanded));
-    $("filterToggleLabel").textContent = expanded ? "접기" : "펼치기";
-    $("filterToggleIcon").setAttribute("icon", expanded ? "ph:caret-up-bold" : "ph:caret-down-bold");
+  function buildSegQuick(){
+    const host=$("q-segment"); host.innerHTML="";
+    SEGS.forEach(o=>{
+      const b=document.createElement("button");
+      b.className="tog qk"; b.type="button"; b.textContent=o.label;
+      b.setAttribute("aria-pressed", state.segment.has(o.key)?"true":"false");
+      b.onclick=()=>{ if(state.segment.has(o.key)){state.segment.delete(o.key);b.setAttribute("aria-pressed","false");}
+        else{state.segment.add(o.key);b.setAttribute("aria-pressed","true");} render(); };
+      host.appendChild(b);
+    });
   }
-  filterToggle.onclick=()=>{ filterBody.classList.toggle("hidden"); syncFilterToggle(); };
-
-  // 테마
-  function setTheme(next){
-    document.documentElement.setAttribute("data-theme",next);
-    $("themeIcon").setAttribute("icon",next==="dark"?"ph:moon-bold":"ph:sun-bold");
-    try{ localStorage.setItem("npu-theme",next); }catch(e){}
+  function buildAll(){
+    buildOrigin(); buildSegQuick();
+    buildMulti("f-country", FILTERS.country.opts, state.country);
+    buildMulti("f-form", FILTERS.form.opts, state.form);
+    buildMulti("f-vendor", FILTERS.vendor.opts, state.vendor);
   }
-  $("themeBtn").onclick=()=>{
-    const cur=document.documentElement.getAttribute("data-theme");
-    setTheme(cur==="dark"?"light":"dark");
-  };
-  (function initTheme(){
-    let saved=null; try{ saved=localStorage.getItem("npu-theme"); }catch(e){}
-    if(saved){ setTheme(saved); }
-    else if(window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches){ setTheme("light"); }
-  })();
 
+  function updateFcount(){
+    const n = state.country.size + state.form.size + state.vendor.size + (state.dateFrom||state.dateTo?1:0) + (state.includeNoDate?0:1);
+    const el=$("fcount"); if(n>0){el.hidden=false;el.textContent=n;} else el.hidden=true;
+  }
+
+  // ---------- filtering / sorting ----------
   function matches(p){
     if(state.origin!=="all"&&p.origin!==state.origin)return false;
     if(state.country.size&&!state.country.has(p.country))return false;
@@ -284,21 +488,19 @@ tailwind.config = { theme: { extend: { fontFamily: { sans: ['Pretendard','sans-s
     if(state.form.size&&!state.form.has(p.formGroup))return false;
     if(state.vendor.size&&!state.vendor.has(p.vendor))return false;
     if(state.dateFrom||state.dateTo){
-      if(!p.releaseDate){if(!state.includeNoDate)return false;}
-      else{
-        const rf=state.dateFrom?state.dateFrom+"-01":null, rt=state.dateTo?state.dateTo+"-31":null;
-        if(rf&&p.releaseDate<rf)return false;if(rt&&p.releaseDate>rt)return false;
-      }
+      if(!p.releaseDate){ if(!state.includeNoDate)return false; }
+      else{ const rf=state.dateFrom?state.dateFrom+"-01":null, rt=state.dateTo?state.dateTo+"-31":null;
+        if(rf&&p.releaseDate<rf)return false; if(rt&&p.releaseDate>rt)return false; }
     }else if(!p.releaseDate&&!state.includeNoDate)return false;
     if(state.search){
-      const hay=[p.vendor,p.product,p.chip,CNAME[p.country],p.country,p.form,p.price,p.memory,p.useCase,...(p.tags||[]),...Object.values(p.specs||{}),p.note].join(" ").toLowerCase();
+      const hay=[p.vendor,p.product,p.chip,CNAME[p.country],p.country,p.form,p.priceDisplay,p.memory,p.useCase,...(p.tags||[]),...Object.values(p.specs||{}),p.note].join(" ").toLowerCase();
       if(!hay.includes(state.search))return false;
     }
     return true;
   }
   function sortList(list){
     const s=state.sort,a=[...list];
-    if(s==="default")return a; // README 문서 순서 유지
+    if(s==="default")return a;
     if(s==="tops-desc")a.sort((x,y)=>(y.tops??-1)-(x.tops??-1));
     else if(s==="tops-asc")a.sort((x,y)=>(x.tops??Infinity)-(y.tops??Infinity));
     else if(s==="price-asc")a.sort((x,y)=>(x.priceUSD??Infinity)-(y.priceUSD??Infinity));
@@ -309,102 +511,131 @@ tailwind.config = { theme: { extend: { fontFamily: { sans: ['Pretendard','sans-s
     return a;
   }
 
-  const segLabel=s=>({mcu:"MCU급",edge:"엣지",datacenter:"데이터센터"}[s]||s);
-  const warnText=p=>"단독 제품 아님 — 호스트 SoC/보드/시스템에 통합 필요";
-
+  // ---------- renderers ----------
   function card(p){
-    const isKr=p.origin==="kr", col=isKr?"text-kr":"text-gl";
-    const specs=Object.entries(p.specs||{}).map(([k,v])=>`<div class="flex flex-col"><span class="text-xs uppercase tracking-wide text-base-content/55">${esc(k)}</span><span class="text-sm mono break-words">${esc(v)}</span></div>`).join("");
-    const tags=(p.tags||[]).map(t=>`<span class="badge badge-sm badge-ghost text-xs">${esc(t)}</span>`).join("");
-    const warn=p.standalone?"":`<div class="text-xs text-warning mt-2.5 flex gap-1.5 items-start"><iconify-icon icon="ph:warning-fill" width="13" class="mt-0.5 shrink-0"></iconify-icon><span>${warnText(p)}</span></div>`;
-    const warnPill=p.standalone?"":`<span class="badge badge-sm badge-warning badge-outline gap-1 text-xs"><iconify-icon icon="ph:warning-fill" width="11"></iconify-icon>통합형</span>`;
-    const chipTag=p.chip?`<span class="absolute bottom-2 right-3 text-xs mono text-base-content/55">${esc(p.chip)}</span>`:"";
-    const logo=logoURL(p.vendor);
-    const noteHTML=p.note?`<div class="text-xs text-base-content/60 mt-3 leading-relaxed">${esc(p.note)}</div>`:"";
-    return `<div class="card bg-base-200 border border-base-300 hover:border-base-content/30 transition relative overflow-hidden">
-      <div class="absolute left-0 inset-y-0 w-1 z-[2] ${isKr?'bg-kr':'bg-gl'}"></div>
-      <div class="aspect-[16/7] bg-base-300/40 thumb-pattern border-b border-base-300 flex items-center justify-center gap-3 relative px-4">
-        ${logo?`<img src="${logo}" alt="${esc(p.vendor)}" loading="lazy" class="h-9 w-9 object-contain rounded bg-base-100 p-1 shadow-sm" onerror="this.style.display='none'">`:""}
-        <iconify-icon icon="${formIcon(p.formGroup)}" width="34" class="${col} opacity-70"></iconify-icon>
-        ${chipTag}
+    const m=metricParts(p);
+    // 성능·메모리·출시는 상단 figure에서 이미 보여주므로 상세 그리드에서는 제외해 중복을 없앤다
+    let detail = Object.entries(p.specs||{}).filter(([k])=>!["성능","메모리","출시"].includes(k));
+    if(!detail.length && p.useCase && !(p.tags&&p.tags.length)) detail=[["용도",p.useCase]];
+    const specs = detail.map(([k,v])=>`<div class="spec"><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span></div>`).join("");
+    const tags = (p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("");
+    const note = p.note?`<p class="note">${esc(p.note)}</p>`:"";
+    const warn = p.standalone?"":`<div class="warnline">${WARN}<span>단독 제품 아님 — 호스트 SoC·보드·시스템에 통합 필요</span></div>`;
+    const priceCls = p.priceUSD!=null?"acc":"dim";
+    return `<article class="card" data-origin="${p.origin}">
+      <div class="card-h"><span class="mgram">${esc(monogram(p.vendor))}</span><span class="vd">${esc(p.vendor)}</span>${cc(p)}</div>
+      <a class="pname" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a>
+      <div class="pmeta"><span>${SEG[p.segment]||p.segment}</span><span class="d">/</span><span>${esc(p.form)}</span>${p.standalone?"":'<span class="d">/</span><span class="intg">통합형</span>'}<span class="d">/</span><span>출시 ${esc(p.releaseDisplay)}</span></div>
+      <div class="figure">
+        <div class="fig perf"><span class="fl">연산 성능</span><span class="fv ${m.dim?'dim':''}">${esc(m.num)}${m.unit?`<span class="u">${esc(m.unit)}</span>`:""}</span></div>
+        <div class="fig"><span class="fl">메모리</span><span class="fv" title="${esc(p.memory)}">${esc(p.memory||"—")}</span></div>
+        <div class="fig"><span class="fl">가격</span><span class="fv ${priceCls}">${esc(p.priceDisplay)}</span></div>
       </div>
-      <div class="card-body p-4 sm:p-5 gap-0">
-        <div class="flex justify-between items-start gap-2.5 mb-1"><span class="text-xs text-base-content/60 font-medium">${esc(p.vendor)}</span><span class="badge badge-sm ${isKr?'text-kr':'text-gl'} bg-base-300/50 border-0">${FLAG[p.country]||"🏳️"} ${CNAME[p.country]||p.country}</span></div>
-        <a href="${esc(p.url)}" target="_blank" rel="noopener" class="text-lg font-bold tracking-tight mb-2 link link-hover inline-flex items-center gap-1">${esc(p.product)}<iconify-icon icon="ph:arrow-square-out" width="14" class="opacity-50"></iconify-icon></a>
-        <div class="text-xs mono text-base-content/55 mb-2 flex gap-2 flex-wrap items-center">
-          <span>${segLabel(p.segment)}</span><span class="badge badge-sm badge-ghost text-xs">${esc(p.form)}</span>${warnPill}<span>출시 ${esc(p.releaseDisplay)}</span>
-        </div>
-        <div class="mono text-sm mb-3"><iconify-icon icon="ph:tag" width="13" class="opacity-60"></iconify-icon> <span class="${p.priceUSD!=null?'text-success font-semibold':'text-base-content/55'}">${esc(p.priceDisplay)}</span></div>
-        ${tags?`<div class="flex flex-wrap gap-1.5 mb-4">${tags}</div>`:'<div class="mb-2"></div>'}
-        <div class="grid grid-cols-2 gap-x-4 gap-y-2.5 pt-3 border-t border-base-300">${specs}</div>
-        ${noteHTML}
-        ${warn}
-      </div></div>`;
+      ${specs?`<div class="specs">${specs}</div>`:""}
+      ${tags?`<div class="tags">${tags}</div>`:""}
+      ${note}
+      ${warn}
+    </article>`;
   }
-  function listView(list){
-    const rows=list.map(p=>{
-      const isKr=p.origin==="kr";
-      const perf=(p.specs&&(p.specs["성능"]||p.specs["DX-L2"]))||p.computeDisplay||"—";
-      const power=(p.specs&&(p.specs["전력"]||p.specs["효율"]))||"—";
-      const logo=logoURL(p.vendor);
-      const formCell=p.standalone?esc(p.form):`<span class="inline-flex items-center gap-1.5">${esc(p.form)}<iconify-icon icon="ph:warning-fill" width="13" class="text-warning" title="${warnText(p)}"></iconify-icon></span>`;
-      const chipLine=p.chip?`<div class="text-xs mono text-base-content/50">${esc(p.chip)}</div>`:"";
-      return `<tr class="hover">
-        <td class="align-middle"><div class="w-12 h-9 rounded-md bg-base-300/40 border border-base-300 flex items-center justify-center gap-1 ${isKr?'text-kr':'text-gl'}">${logo?`<img src="${logo}" alt="" loading="lazy" class="h-5 w-5 object-contain rounded-sm" onerror="this.style.display='none'">`:""}<iconify-icon icon="${formIcon(p.formGroup)}" width="16" class="opacity-50"></iconify-icon></div></td>
-        <td class="align-middle min-w-44"><a href="${esc(p.url)}" target="_blank" rel="noopener" class="font-semibold link link-hover inline-flex items-center gap-1">${esc(p.product)}<iconify-icon icon="ph:arrow-square-out" width="12" class="opacity-50"></iconify-icon></a>${chipLine}</td>
-        <td class="align-middle whitespace-nowrap text-base-content/80">${esc(p.vendor)}</td>
-        <td class="align-middle text-center"><span class="text-lg" title="${CNAME[p.country]||p.country}">${FLAG[p.country]||"🏳️"}</span></td>
-        <td class="align-middle whitespace-nowrap text-xs text-base-content/80">${segLabel(p.segment)}</td>
-        <td class="align-middle whitespace-nowrap text-xs text-base-content/80">${formCell}</td>
-        <td class="align-middle whitespace-nowrap mono">${esc(perf)}</td>
-        <td class="align-middle whitespace-nowrap text-xs text-base-content/75">${esc(p.memory||"—")}</td>
-        <td class="align-middle whitespace-nowrap mono">${esc(power)}</td>
-        <td class="align-middle min-w-36 mono text-xs ${p.priceUSD!=null?'text-success font-semibold':'text-base-content/50'}">${esc(p.priceDisplay)}</td>
-        <td class="align-middle whitespace-nowrap mono ${p.releaseDate?'text-base-content/80':'text-base-content/50'}">${esc(p.releaseDisplay)}</td>
-      </tr>`;
-    }).join("");
-    return `<table class="table table-sm align-middle prod-table" style="min-width:900px">
-      <thead><tr class="text-xs uppercase tracking-wide text-base-content/60">
-        <th></th><th>제품 / 칩</th><th>벤더</th><th class="text-center">국가</th><th>체급</th><th>폼팩터</th><th>성능</th><th>메모리</th><th>전력/효율</th><th>가격</th><th>출시일</th>
-      </tr></thead><tbody>${rows}</tbody></table>`;
+
+  function row(p){
+    const power=(p.specs&&(p.specs["전력"]||p.specs["효율"]))||"—";
+    const perf=(p.specs&&(p.specs["성능"]||p.specs["DX-L2"]))||p.computeDisplay||"—";
+    const intg=p.standalone?"":' <span class="intg" title="호스트에 통합 필요">⚠</span>';
+    return `<tr>
+      <td class="prod"><div class="pl"><span class="mgram">${esc(monogram(p.vendor))}</span><div>
+        <a class="pn" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a>
+        ${p.chip?`<div class="ch">${esc(p.chip)}</div>`:""}
+      </div></div></td>
+      <td class="cellmuted">${esc(p.vendor)}</td>
+      <td>${cc(p)}</td>
+      <td><span class="segtag">${SEG[p.segment]||p.segment}</span></td>
+      <td>${esc(p.form)}${intg}</td>
+      <td class="r"><span class="num">${esc(perf)}</span></td>
+      <td class="cellmuted">${esc(p.memory||"—")}</td>
+      <td><span class="num">${esc(power)}</span></td>
+      <td class="r"><span class="num ${p.priceUSD!=null?'':'cellmuted'}">${esc(p.priceDisplay)}</span></td>
+      <td class="r"><span class="num ${p.releaseDate?'':'cellmuted'}">${esc(p.releaseDisplay)}</span></td>
+    </tr>`;
+  }
+  function table(list){
+    return `<table class="grid"><thead><tr>
+      <th>제품 / 칩</th><th>벤더</th><th>국가</th><th>체급</th><th>폼팩터</th>
+      <th class="r">성능</th><th>메모리</th><th>전력/효율</th><th class="r">가격</th><th class="r">출시</th>
+    </tr></thead><tbody>${list.map(row).join("")}</tbody></table>`;
   }
 
   function render(){
     const list=sortList(products.filter(matches));
-    const grid=$("grid"),lw=$("listwrap"),empty=$("empty");
-    if(!list.length){grid.classList.add("hidden");lw.classList.add("hidden");empty.classList.remove("hidden");}
-    else{
-      empty.classList.add("hidden");
-      if(state.view==="card"){grid.classList.remove("hidden");lw.classList.add("hidden");grid.innerHTML=list.map(card).join("");}
-      else{grid.classList.add("hidden");lw.classList.remove("hidden");lw.innerHTML=listView(list);}
-    }
+    const tw=$("tablewrap"), grid=$("grid"), empty=$("empty");
+    if(!list.length){ tw.hidden=true; grid.hidden=true; empty.hidden=false; }
+    else if(state.view==="card"){ empty.hidden=true; tw.hidden=true; grid.hidden=false; grid.innerHTML=list.map(card).join(""); }
+    else{ empty.hidden=true; grid.hidden=true; tw.hidden=false; tw.innerHTML=table(list); }
     const kr=list.filter(p=>p.origin==="kr").length;
-    $("count").textContent=`${list.length}개 제품  ·  국내 ${kr}  ·  해외 ${list.length-kr}`;
+    $("count").innerHTML=`<b>${list.length}</b>개 제품 · 국내 <b>${kr}</b> · 해외 <b>${list.length-kr}</b>`;
   }
 
-  // 통계 배지 (히어로)
+  function setView(v){
+    state.view=v;
+    $("viewTable").setAttribute("aria-pressed", v==="table"?"true":"false");
+    $("viewCard").setAttribute("aria-pressed", v==="card"?"true":"false");
+    render();
+  }
+
+  // ---------- stats ----------
   function renderStats(){
     const kr=products.filter(p=>p.origin==="kr").length;
     const seg=k=>products.filter(p=>p.segment===k).length;
-    const items=[
-      ["ph:stack-bold", `전체 ${products.length}종`],
-      ["ph:flag-bold", `국내 ${kr} · 해외 ${products.length-kr}`],
-      ["ph:cpu-bold", `데이터센터 ${seg("datacenter")} · 엣지 ${seg("edge")} · MCU ${seg("mcu")}`],
-    ];
-    $("stats").innerHTML=items.map(([ic,t])=>`<span class="badge badge-lg gap-1.5 bg-base-100 border-base-300 text-base-content/75 font-medium"><iconify-icon icon="${ic}" width="14" class="text-primary"></iconify-icon>${esc(t)}</span>`).join("");
+    $("stats").innerHTML=`
+      <div class="stat"><div class="n">${products.length}<small>종</small></div><div class="l">전체 제품</div></div>
+      <div class="stat"><div class="n">${kr}<small>종</small></div><div class="l">국내 벤더</div></div>
+      <div class="stat"><div class="n">${products.length-kr}<small>종</small></div><div class="l">해외 벤더</div></div>
+      <div class="stat split"><div class="n"><b>${seg("datacenter")}</b><span class="dv">/</span><b>${seg("edge")}</b><span class="dv">/</span><b>${seg("mcu")}</b></div><div class="l">데이터센터 / 엣지 / MCU</div></div>`;
   }
 
-  // 초기화: 문서/인트로 주입, 반응형 기본 보기
-  $("intro").innerHTML=DATA.introHTML||"";
-  $("docs").innerHTML=DATA.docsHTML||"";
-  if(DATA.repo){ $("repoLink").href=DATA.repo; }
-  if(DATA.generatedAt){ $("genstamp").textContent=`README.md 기준 자동 생성 · ${DATA.generatedAt}`; }
-  renderStats();
+  // ---------- theme ----------
+  function setTheme(t){
+    document.documentElement.setAttribute("data-theme",t);
+    $("themeBtn").innerHTML = t==="dark"?MOON:SUN;
+    try{ localStorage.setItem("npu-theme",t); }catch(e){}
+  }
+  $("themeBtn").onclick=()=>setTheme(document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark");
+  (function(){ let s=null; try{s=localStorage.getItem("npu-theme");}catch(e){}
+    setTheme(s|| (window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")); })();
 
-  // 모바일에서는 카드 보기를 기본값으로
-  if(window.matchMedia && window.matchMedia("(max-width: 767px)").matches){ state.view="card"; }
+  // ---------- sticky offsets ----------
+  function setSticky(){
+    document.documentElement.style.setProperty("--stick-top", $("topbar").offsetHeight+"px");
+    document.documentElement.style.setProperty("--stick-controls", $("controls").offsetHeight+"px");
+  }
+
+  // ---------- events ----------
+  $("search").oninput=e=>{state.search=e.target.value.toLowerCase().trim();render();};
+  $("sortSel").onchange=e=>{state.sort=e.target.value;render();};
+  $("dateFrom").onchange=e=>{state.dateFrom=e.target.value||null;render();updateFcount();};
+  $("dateTo").onchange=e=>{state.dateTo=e.target.value||null;render();updateFcount();};
+  $("includeNoDate").onchange=e=>{state.includeNoDate=e.target.checked;render();updateFcount();};
+  $("viewTable").onclick=()=>setView("table");
+  $("viewCard").onclick=()=>setView("card");
+  $("filterToggle").onclick=()=>{ const d=$("drawer"); const open=d.classList.toggle("open");
+    $("filterToggle").setAttribute("aria-expanded",String(open)); setTimeout(setSticky,300); };
+  $("resetBtn").onclick=()=>{
+    Object.assign(state,{search:"",origin:"all",sort:"default",dateFrom:null,dateTo:null,includeNoDate:true});
+    state.country.clear();state.segment.clear();state.form.clear();state.vendor.clear();
+    $("search").value="";$("dateFrom").value="";$("dateTo").value="";$("includeNoDate").checked=true;$("sortSel").value="default";
+    buildAll(); updateFcount(); render();
+  };
+  let rt; addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(setSticky,150);});
+
+  // ---------- init ----------
+  $("about").innerHTML=DATA.introHTML||"";
+  $("docs").innerHTML=DATA.docsHTML||"";
+  if(DATA.repo){ $("repoLink").href=DATA.repo; $("repoLink2").href=DATA.repo; $("readmeLink").href=DATA.repo.replace(/\/$/,"")+"/blob/main/README.md"; }
+  if(DATA.generatedAt){ $("genstamp").textContent=`README.md 기준 자동 생성 · ${DATA.generatedAt}`; }
+  buildAll(); renderStats(); updateFcount();
+  if(window.matchMedia&&window.matchMedia("(max-width: 767px)").matches) state.view="card";
   setView(state.view);
-  syncFilterToggle();
+  setSticky(); setTimeout(setSticky,200);
 })();
 </script>
 </body>

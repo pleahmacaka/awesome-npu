@@ -258,9 +258,11 @@ function parseTableUnder(lines, headingText, isDatacenter, usedKeys){
     let specs;
     if (enrich && enrich.specs) specs = enrich.specs;
     else { specs = {}; specs['성능'] = comp.display; specs['메모리'] = memory || '—'; if (useCase) specs['용도'] = useCase; specs['출시'] = rel.display; }
-    const tags = (enrich && enrich.tags) || (useCase ? [useCase] : []);
+    const tags = (enrich && enrich.tags) ? enrich.tags : [];
+    const enriched = !!(enrich && (enrich.specs || enrich.note || (enrich.tags && enrich.tags.length)));
 
     out.push({
+      enriched,
       vendor, product:name, url, standalone,
       country, origin: country === 'KR' ? 'kr' : 'global',
       form, formGroup: formGroup(form),
