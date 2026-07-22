@@ -1,27 +1,31 @@
-name: Sync site from README
+name: Deploy to GitHub Pages
 
-# README.md 가 바뀌면 index.html 을 다시 생성해 커밋한다.
-# GitHub Pages 는 Settings > Pages > Source = "Deploy from a branch" (main / root)
-# 로 두면 커밋된 index.html 이 그대로 서빙된다. (별도 Pages 권한 불필요)
+# README.md 를 소스로 index.html 을 생성해 GitHub Pages 로 배포한다.
+# Settings > Pages > Source = "GitHub Actions" 상태에서 main push 시 자동 배포.
 
 on:
   push:
     branches: [main]
     paths:
       - 'README.md'
+      - 'index.html'
       - 'scripts/**'
+      - '.nojekyll'
       - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
+# 진행 중인 배포를 취소하지 않고 큐잉
 concurrency:
-  group: sync-site
+  group: pages
   cancel-in-progress: false
 
 jobs:
-  sync:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,17 +36,24 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Regenerate index.html from README.md
+      - name: Generate index.html from README.md
         run: node scripts/generate.mjs
 
-      - name: Commit if changed
-        run: |
-          if [ -n "$(git status --porcelain index.html)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add index.html
-            git commit -m "chore: sync index.html from README.md [skip ci]"
-            git push
-          else
-            echo "index.html already up to date — nothing to commit."
-          fi
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
