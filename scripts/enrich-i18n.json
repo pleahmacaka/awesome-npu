@@ -1145,6 +1145,310 @@
       "es": "Familia de SoC inalámbricos con un acelerador de hardware Matrix Vector Processor (MVP) que descarga la inferencia de TinyML del Cortex-M33, ejecutando operaciones de ML hasta 8 veces más rápido con cerca de una sexta parte de la energía. Orientada a Matter y a IoT alimentado por batería.",
       "he": "משפחת SoC אלחוטיים עם מאיץ חומרה מסוג Matrix Vector Processor (MVP) המעביר את הסקת ה-TinyML מה-Cortex-M33, ומריץ פעולות ML מהר עד פי 8 בכשישית מהאנרגיה. מכוונת ל-Matter ול-IoT בהפעלת סוללה.",
       "ko": "Cortex-M33에서 TinyML 추론을 오프로드하는 Matrix Vector Processor(MVP) 하드웨어 가속기를 갖춘 무선 SoC 제품군으로, ML 연산을 최대 8배 빠르게 약 6분의 1의 에너지로 실행한다. Matter 및 배터리 구동 IoT를 겨냥한다."
+    },
+    "Rockchip||RK3568 NPU": {
+      "en": "General-purpose quad Cortex-A55 SoC (22nm) with a built-in 0.8 TOPS NPU supporting INT8/INT16/FP16/BFP16. Widely used in SBCs, NVRs and IoT gateways for lightweight AI.",
+      "ja": "0.8 TOPSのNPUを内蔵した汎用クアッドCortex-A55 SoC(22nm)で、INT8/INT16/FP16/BFP16に対応する。軽量AI向けにSBC、NVR、IoTゲートウェイで広く使われている。",
+      "zh": "内置0.8 TOPS NPU的通用四核Cortex-A55 SoC(22nm)，支持INT8/INT16/FP16/BFP16。广泛用于SBC、NVR和IoT网关的轻量级AI。",
+      "es": "SoC de propósito general con cuatro núcleos Cortex-A55 (22nm) y una NPU integrada de 0,8 TOPS compatible con INT8/INT16/FP16/BFP16. Muy utilizado en SBC, NVR y pasarelas IoT para IA ligera.",
+      "he": "SoC כללי עם ארבעה ליבות Cortex-A55 (22nm) ובו NPU מובנה של 0.8 TOPS התומך ב-INT8/INT16/FP16/BFP16. נמצא בשימוש נרחב ב-SBC, ב-NVR ובשערי IoT עבור AI קל משקל.",
+      "ko": "0.8 TOPS NPU를 내장한 범용 쿼드 Cortex-A55 SoC(22nm)로, INT8/INT16/FP16/BFP16을 지원한다. 경량 AI를 위해 SBC, NVR, IoT 게이트웨이에 널리 사용된다."
+    },
+    "Rockchip||RK3562 NPU": {
+      "en": "22nm quad Cortex-A53 SoC with a 1 TOPS INT8 NPU aimed at tablets, IoT and entry edge-AI. The industrial RK3562J variant omits the NPU.",
+      "ja": "1 TOPS INT8 NPUを搭載した22nmクアッドCortex-A53 SoCで、タブレット、IoT、エントリー向けエッジAIを狙う。産業用のRK3562JバリアントはNPUを省いている。",
+      "zh": "搭载1 TOPS INT8 NPU的22nm四核Cortex-A53 SoC，面向平板电脑、IoT和入门级边缘AI。工业级RK3562J型号则不含NPU。",
+      "es": "SoC de 22nm con cuatro núcleos Cortex-A53 y una NPU INT8 de 1 TOPS orientado a tabletas, IoT e IA de borde de gama de entrada. La variante industrial RK3562J prescinde de la NPU.",
+      "he": "SoC בגודל 22nm עם ארבעה ליבות Cortex-A53 ו-NPU של 1 TOPS INT8, המיועד לטאבלטים, ל-IoT ול-edge-AI בסיסי. הגרסה התעשייתית RK3562J אינה כוללת את ה-NPU.",
+      "ko": "1 TOPS INT8 NPU를 탑재한 22nm 쿼드 Cortex-A53 SoC로, 태블릿, IoT, 엔트리 엣지 AI를 겨냥한다. 산업용 RK3562J 버전은 NPU를 제외한다."
+    },
+    "Rockchip||RK3399Pro NPU": {
+      "en": "Rockchip's first AI SoC, a big.LITTLE A72/A53 chip pairing the CPU with an embedded NPU rated up to 3.0 TOPS (2.4 TOPS cited at launch). Popular on Toybrick and Rock Pi N10 dev boards.",
+      "ja": "Rockchip初のAI SoCで、CPUに最大3.0 TOPS(発表時は2.4 TOPSと表記)の組み込みNPUを組み合わせたbig.LITTLE A72/A53チップである。ToybrickやRock Pi N10開発ボードで人気がある。",
+      "zh": "Rockchip首款AI SoC，是一款big.LITTLE A72/A53芯片，将CPU与最高3.0 TOPS(发布时称2.4 TOPS)的嵌入式NPU相结合。在Toybrick和Rock Pi N10开发板上颇受欢迎。",
+      "es": "El primer SoC de IA de Rockchip, un chip big.LITTLE A72/A53 que combina la CPU con una NPU integrada de hasta 3,0 TOPS (2,4 TOPS citados en su lanzamiento). Popular en las placas de desarrollo Toybrick y Rock Pi N10.",
+      "he": "ה-SoC הראשון של Rockchip לתחום ה-AI, שבב big.LITTLE A72/A53 המשלב את ה-CPU עם NPU מובנה של עד 3.0 TOPS (2.4 TOPS צוינו בהשקה). פופולרי בלוחות הפיתוח Toybrick ו-Rock Pi N10.",
+      "ko": "Rockchip의 첫 AI SoC로, CPU에 최대 3.0 TOPS(출시 당시에는 2.4 TOPS로 언급)의 임베디드 NPU를 결합한 big.LITTLE A72/A53 칩이다. Toybrick과 Rock Pi N10 개발 보드에서 인기가 많다."
+    },
+    "Rockchip||RV1126 NPU": {
+      "en": "14nm quad Cortex-A7 AI camera SoC with a 2.0 TOPS INT8/INT16 NPU and a 14MP ISP, aimed at smart IP cameras and CVR systems.",
+      "ja": "2.0 TOPS INT8/INT16 NPUと14MP ISPを搭載した14nmクアッドCortex-A7 AIカメラSoCで、スマートIPカメラやCVRシステムを狙う。",
+      "zh": "搭载2.0 TOPS INT8/INT16 NPU和14MP ISP的14nm四核Cortex-A7 AI相机SoC，面向智能IP摄像机和CVR系统。",
+      "es": "SoC de cámara con IA de 14nm y cuatro núcleos Cortex-A7, con una NPU INT8/INT16 de 2,0 TOPS y un ISP de 14MP, orientado a cámaras IP inteligentes y sistemas CVR.",
+      "he": "SoC למצלמות AI בגודל 14nm עם ארבעה ליבות Cortex-A7, ובו NPU של 2.0 TOPS INT8/INT16 ו-ISP של 14MP, המיועד למצלמות IP חכמות ולמערכות CVR.",
+      "ko": "2.0 TOPS INT8/INT16 NPU와 14MP ISP를 탑재한 14nm 쿼드 Cortex-A7 AI 카메라 SoC로, 스마트 IP 카메라와 CVR 시스템을 겨냥한다."
+    },
+    "Kneron||KL630": {
+      "en": "Kneron edge-AI SoC (Cortex-A5) delivering up to 3.6 TOPS INT8 / 7.2 TOPS INT4. Kneron says it is the first edge chip to support INT4 quantization and transformer networks.",
+      "ja": "最大3.6 TOPS INT8 / 7.2 TOPS INT4を実現するKneronのエッジAI SoC(Cortex-A5)である。KneronはINT4量子化とトランスフォーマーネットワークに対応する初のエッジチップだとしている。",
+      "zh": "提供最高3.6 TOPS INT8 / 7.2 TOPS INT4的Kneron边缘AI SoC(Cortex-A5)。Kneron称其为首款支持INT4量化和Transformer网络的边缘芯片。",
+      "es": "SoC de IA de borde de Kneron (Cortex-A5) que ofrece hasta 3,6 TOPS INT8 / 7,2 TOPS INT4. Kneron afirma que es el primer chip de borde compatible con la cuantización INT4 y las redes transformer.",
+      "he": "SoC של Kneron ל-edge-AI (Cortex-A5) המספק עד 3.6 TOPS INT8 / 7.2 TOPS INT4. לדברי Kneron, זהו שבב ה-edge הראשון התומך בקוונטיזציית INT4 וברשתות transformer.",
+      "ko": "최대 3.6 TOPS INT8 / 7.2 TOPS INT4를 제공하는 Kneron 엣지 AI SoC(Cortex-A5)이다. Kneron은 INT4 양자화와 트랜스포머 네트워크를 지원하는 최초의 엣지 칩이라고 밝혔다."
+    },
+    "Kneron||KL720": {
+      "en": "Higher-performance Kneron SoC (Cortex-M4 plus DSP) whose NPU peaks at 1.4 TOPS, rated about 0.9 TOPS/W for the whole chip, targeting 4K AI cameras, smart TVs and edge devices.",
+      "ja": "NPUが最大1.4 TOPSに達する高性能なKneron SoC(Cortex-M4とDSP)で、チップ全体で約0.9 TOPS/Wとされ、4K AIカメラやスマートTV、エッジ機器を狙う。",
+      "zh": "NPU峰值达1.4 TOPS的高性能Kneron SoC(Cortex-M4加DSP)，整颗芯片约0.9 TOPS/W，面向4K AI相机、智能电视和边缘设备。",
+      "es": "SoC de Kneron de mayor rendimiento (Cortex-M4 más DSP) cuya NPU alcanza un máximo de 1,4 TOPS, con unos 0,9 TOPS/W para todo el chip, orientado a cámaras de IA 4K, televisores inteligentes y dispositivos de borde.",
+      "he": "SoC בעל ביצועים גבוהים יותר של Kneron (Cortex-M4 בתוספת DSP), שה-NPU שלו מגיע לשיא של 1.4 TOPS, ומדורג בכ-0.9 TOPS/W עבור השבב כולו, המיועד למצלמות AI ברזולוציית 4K, לטלוויזיות חכמות ולמכשירי edge.",
+      "ko": "NPU가 최대 1.4 TOPS에 이르는 고성능 Kneron SoC(Cortex-M4 및 DSP)로, 칩 전체 기준 약 0.9 TOPS/W 수준이며 4K AI 카메라, 스마트 TV, 엣지 기기를 겨냥한다."
+    },
+    "NXP||i.MX 93": {
+      "en": "Applications processor pairing dual Cortex-A55 with an Arm Ethos-U65 microNPU rated up to 0.5 TOPS at 1GHz. NXP calls it the industry's first Ethos-U65 implementation.",
+      "ja": "デュアルCortex-A55に、1GHzで最大0.5 TOPSのArm Ethos-U65 microNPUを組み合わせたアプリケーションプロセッサである。NXPはこれを業界初のEthos-U65実装と称している。",
+      "zh": "将双核Cortex-A55与Arm Ethos-U65 microNPU相结合的应用处理器，在1GHz下最高可达0.5 TOPS。NXP称其为业界首款Ethos-U65实现。",
+      "es": "Procesador de aplicaciones que combina dos núcleos Cortex-A55 con una microNPU Arm Ethos-U65 de hasta 0,5 TOPS a 1GHz. NXP la considera la primera implementación de Ethos-U65 del sector.",
+      "he": "מעבד יישומים המשלב שני ליבות Cortex-A55 עם microNPU מסוג Arm Ethos-U65 המדורג עד 0.5 TOPS בתדר 1GHz. NXP מכנה אותו המימוש הראשון בתעשייה של Ethos-U65.",
+      "ko": "듀얼 Cortex-A55에 1GHz에서 최대 0.5 TOPS의 Arm Ethos-U65 microNPU를 결합한 애플리케이션 프로세서이다. NXP는 이를 업계 최초의 Ethos-U65 구현이라고 부른다."
+    },
+    "NXP||MCX N94x": {
+      "en": "Microcontroller family with dual Cortex-M33 and an integrated eIQ Neutron N1-16 NPU that NXP says runs machine learning up to about 42x faster than the CPU core. No peak-TOPS figure is published.",
+      "ja": "デュアルCortex-M33と統合eIQ Neutron N1-16 NPUを備えたマイコンファミリで、NXPによれば機械学習をCPUコアより最大約42倍高速に実行する。ピークTOPS値は公表されていない。",
+      "zh": "配备双核Cortex-M33和集成eIQ Neutron N1-16 NPU的微控制器系列，NXP称其运行机器学习的速度比CPU内核最高快约42倍。官方未公布峰值TOPS数据。",
+      "es": "Familia de microcontroladores con dos núcleos Cortex-M33 y una NPU eIQ Neutron N1-16 integrada que, según NXP, ejecuta el aprendizaje automático hasta unas 42 veces más rápido que el núcleo de CPU. No se publica una cifra de TOPS máximos.",
+      "he": "משפחת מיקרו-בקרים עם שני ליבות Cortex-M33 ו-NPU משולב מסוג eIQ Neutron N1-16 אשר, לדברי NXP, מריץ למידת מכונה מהר עד פי 42 בערך מליבת ה-CPU. לא פורסם ערך TOPS שיא.",
+      "ko": "듀얼 Cortex-M33과 통합 eIQ Neutron N1-16 NPU를 갖춘 마이크로컨트롤러 제품군으로, NXP에 따르면 머신러닝을 CPU 코어보다 최대 약 42배 빠르게 실행한다. 최대 TOPS 수치는 공개되지 않았다."
+    },
+    "Intel||Gaudi 2": {
+      "en": "Intel/Habana training-and-inference accelerator (7nm) with 24 Tensor Processor Cores and 2 matrix engines, 96GB HBM2E at 2.46TB/s and 24 on-chip 100GbE ports, delivering over 400 TFLOPS BF16.",
+      "ja": "24基のTensor Processor Coreと2基のマトリックスエンジン、2.46TB/sの96GB HBM2E、24基のオンチップ100GbEポートを備えたIntel/Habanaの学習・推論アクセラレータ(7nm)で、400 TFLOPS BF16超を実現する。",
+      "zh": "配备24个Tensor Processor Core和2个矩阵引擎、2.46TB/s的96GB HBM2E以及24个片上100GbE端口的Intel/Habana训练与推理加速器(7nm)，可提供超过400 TFLOPS BF16的性能。",
+      "es": "Acelerador de entrenamiento e inferencia de Intel/Habana (7nm) con 24 Tensor Processor Cores y 2 motores matriciales, 96GB de HBM2E a 2,46TB/s y 24 puertos 100GbE en chip, que ofrece más de 400 TFLOPS BF16.",
+      "he": "מאיץ אימון והסקה של Intel/Habana (7nm) עם 24 יחידות Tensor Processor Core ו-2 מנועי מטריצה, 96GB HBM2E במהירות 2.46TB/s ו-24 יציאות 100GbE על השבב, המספק מעל 400 TFLOPS BF16.",
+      "ko": "24개의 Tensor Processor Core와 2개의 매트릭스 엔진, 2.46TB/s의 96GB HBM2E, 24개의 온칩 100GbE 포트를 갖춘 Intel/Habana 학습 및 추론 가속기(7nm)로, 400 TFLOPS BF16 이상을 제공한다."
+    },
+    "Intel||Core Ultra NPU (AI Boost, Meteor Lake)": {
+      "en": "First Intel Core client NPU (AI Boost) in the Meteor Lake chiplet SoC. The NPU peaks at about 11 INT8 TOPS, with the combined CPU, GPU and NPU platform rated up to 34 TOPS.",
+      "ja": "Meteor LakeチップレットSoCに搭載されたIntel Core初のクライアントNPU(AI Boost)である。NPUは約11 INT8 TOPSに達し、CPU、GPU、NPUを合わせたプラットフォームは最大34 TOPSとされる。",
+      "zh": "Meteor Lake芯粒SoC中首款Intel Core客户端NPU(AI Boost)。该NPU峰值约11 INT8 TOPS，CPU、GPU与NPU组合平台最高可达34 TOPS。",
+      "es": "La primera NPU cliente de Intel Core (AI Boost) en el SoC de chiplets Meteor Lake. La NPU alcanza unos 11 INT8 TOPS, y el conjunto de plataforma con CPU, GPU y NPU llega hasta 34 TOPS.",
+      "he": "ה-NPU הראשון ללקוח מבית Intel Core (AI Boost) בתוך ה-SoC מבוסס chiplet של Meteor Lake. ה-NPU מגיע לשיא של כ-11 INT8 TOPS, ואילו הפלטפורמה המשולבת של CPU, GPU ו-NPU מדורגת עד 34 TOPS.",
+      "ko": "Meteor Lake 칩렛 SoC에 탑재된 Intel Core 최초의 클라이언트 NPU(AI Boost)이다. NPU는 약 11 INT8 TOPS에 이르며, CPU, GPU, NPU를 합친 플랫폼은 최대 34 TOPS로 평가된다."
+    },
+    "NVIDIA||Jetson Orin NX 16GB": {
+      "en": "Ampere-GPU Jetson module (1024 CUDA plus 32 Tensor cores) rated 100 INT8 TOPS (up to 157 sparse TOPS in Super mode) at 10-25W with 16GB LPDDR5, for small robots and smart cameras.",
+      "ja": "1024基のCUDAコアと32基のTensorコアを備えたAmpere GPUベースのJetsonモジュールで、16GB LPDDR5とともに10~25Wで100 INT8 TOPS(Superモードで最大157 sparse TOPS)を実現し、小型ロボットやスマートカメラ向けである。",
+      "zh": "基于Ampere GPU的Jetson模组(1024个CUDA核心加32个Tensor核心)，在10-25W下提供100 INT8 TOPS(Super模式下最高157 sparse TOPS)，配备16GB LPDDR5，面向小型机器人和智能相机。",
+      "es": "Módulo Jetson con GPU Ampere (1024 núcleos CUDA más 32 núcleos Tensor) que ofrece 100 INT8 TOPS (hasta 157 TOPS dispersos en modo Super) a 10-25W con 16GB de LPDDR5, para robots pequeños y cámaras inteligentes.",
+      "he": "מודול Jetson מבוסס GPU מסוג Ampere (1024 ליבות CUDA בתוספת 32 ליבות Tensor) המדורג ב-100 INT8 TOPS (עד 157 sparse TOPS במצב Super) בהספק 10-25W עם 16GB LPDDR5, עבור רובוטים קטנים ומצלמות חכמות.",
+      "ko": "1024개의 CUDA 코어와 32개의 Tensor 코어를 갖춘 Ampere GPU 기반 Jetson 모듈로, 16GB LPDDR5와 함께 10-25W에서 100 INT8 TOPS(Super 모드에서 최대 157 sparse TOPS)를 제공하며 소형 로봇과 스마트 카메라를 겨냥한다."
+    },
+    "NVIDIA||Jetson AGX Xavier": {
+      "en": "Volta-GPU Jetson module (512 CUDA plus 64 Tensor cores) delivering up to 32 INT8 TOPS under 30W, with an 8-core Carmel CPU and 16 to 32GB LPDDR4x.",
+      "ja": "512基のCUDAコアと64基のTensorコアを備えたVolta GPUベースのJetsonモジュールで、30W以下で最大32 INT8 TOPSを実現し、8コアのCarmel CPUと16~32GB LPDDR4xを備える。",
+      "zh": "基于Volta GPU的Jetson模组(512个CUDA核心加64个Tensor核心)，在30W以内提供最高32 INT8 TOPS，配备8核Carmel CPU和16至32GB LPDDR4x。",
+      "es": "Módulo Jetson con GPU Volta (512 núcleos CUDA más 64 núcleos Tensor) que ofrece hasta 32 INT8 TOPS por debajo de 30W, con una CPU Carmel de 8 núcleos y de 16 a 32GB de LPDDR4x.",
+      "he": "מודול Jetson מבוסס GPU מסוג Volta (512 ליבות CUDA בתוספת 64 ליבות Tensor) המספק עד 32 INT8 TOPS בהספק נמוך מ-30W, עם CPU מסוג Carmel בעל 8 ליבות ו-16 עד 32GB LPDDR4x.",
+      "ko": "512개의 CUDA 코어와 64개의 Tensor 코어를 갖춘 Volta GPU 기반 Jetson 모듈로, 30W 이하에서 최대 32 INT8 TOPS를 제공하며 8코어 Carmel CPU와 16~32GB LPDDR4x를 갖춘다."
+    },
+    "NVIDIA||DRIVE AGX Thor": {
+      "en": "Blackwell-architecture automotive and robotics compute platform delivering up to 1,000 INT8 TOPS (2,000 FP4 TFLOPS) with ASIL-D functional safety. DRIVE AGX Thor developer kits shipped from September 2025.",
+      "ja": "Blackwellアーキテクチャの車載・ロボティクス向けコンピューティングプラットフォームで、ASIL-D機能安全とともに最大1,000 INT8 TOPS(2,000 FP4 TFLOPS)を実現する。DRIVE AGX Thorの開発者キットは2025年9月から出荷された。",
+      "zh": "基于Blackwell架构的汽车与机器人计算平台，提供最高1,000 INT8 TOPS(2,000 FP4 TFLOPS)，并具备ASIL-D功能安全。DRIVE AGX Thor开发者套件已于2025年9月起出货。",
+      "es": "Plataforma de computación para automoción y robótica con arquitectura Blackwell que ofrece hasta 1.000 INT8 TOPS (2.000 FP4 TFLOPS) con seguridad funcional ASIL-D. Los kits de desarrollo DRIVE AGX Thor se distribuyen desde septiembre de 2025.",
+      "he": "פלטפורמת מחשוב לרכב ולרובוטיקה בארכיטקטורת Blackwell המספקת עד 1,000 INT8 TOPS (2,000 FP4 TFLOPS) עם בטיחות תפקודית ASIL-D. ערכות הפיתוח של DRIVE AGX Thor נשלחות החל מספטמבר 2025.",
+      "ko": "Blackwell 아키텍처 기반의 자동차 및 로보틱스 컴퓨팅 플랫폼으로, ASIL-D 기능 안전과 함께 최대 1,000 INT8 TOPS(2,000 FP4 TFLOPS)를 제공한다. DRIVE AGX Thor 개발자 키트는 2025년 9월부터 출하되었다."
+    },
+    "Google||TPU v4": {
+      "en": "Google's 4th-gen Cloud TPU: 275 TFLOPS BF16/INT8 per chip with 32GB HBM2 at 1.2TB/s, scaling to 4,096-chip pods (about 1.1 exaflops) over a reconfigurable 3D-torus optical interconnect.",
+      "ja": "Googleの第4世代Cloud TPUで、チップあたり1.2TB/sの32GB HBM2とともに275 TFLOPS BF16/INT8を提供し、再構成可能な3Dトーラス光インターコネクトを介して4,096チップのポッド(約1.1エクサフロップス)まで拡張する。",
+      "zh": "Google第四代Cloud TPU：每颗芯片提供275 TFLOPS BF16/INT8，配备1.2TB/s的32GB HBM2，可通过可重构的3D环面光互连扩展至4,096芯片的Pod(约1.1 exaflops)。",
+      "es": "TPU en la nube de 4.ª generación de Google: 275 TFLOPS BF16/INT8 por chip con 32GB de HBM2 a 1,2TB/s, escalable a pods de 4.096 chips (unos 1,1 exaflops) mediante una interconexión óptica de toro 3D reconfigurable.",
+      "he": "ה-Cloud TPU מדור 4 של Google: 275 TFLOPS BF16/INT8 לכל שבב עם 32GB HBM2 במהירות 1.2TB/s, המתרחב עד pods של 4,096 שבבים (כ-1.1 exaflops) דרך חיבור אופטי מסוג 3D-torus הניתן לתצורה מחדש.",
+      "ko": "Google의 4세대 Cloud TPU로, 칩당 1.2TB/s의 32GB HBM2와 함께 275 TFLOPS BF16/INT8을 제공하며, 재구성 가능한 3D 토러스 광 인터커넥트를 통해 4,096칩 파드(약 1.1 엑사플롭스)까지 확장된다."
+    },
+    "Google||TPU v5p": {
+      "en": "Google's performance-tier 5th-gen TPU: 459 TFLOPS BF16 and 95GB HBM2e (2.76TB/s) per chip, in pods of 8,960 chips, offering roughly 2x the FLOPs and 3x the HBM of TPU v4.",
+      "ja": "Googleの第5世代・高性能ティアのTPUで、チップあたり459 TFLOPS BF16と95GB HBM2e(2.76TB/s)を提供し、8,960チップのポッドを構成して、TPU v4のおよそ2倍のFLOPと3倍のHBMを実現する。",
+      "zh": "Google第五代高性能TPU：每颗芯片提供459 TFLOPS BF16和95GB HBM2e(2.76TB/s)，构成8,960芯片的Pod，FLOP约为TPU v4的2倍、HBM约为其3倍。",
+      "es": "TPU de 5.ª generación de gama de rendimiento de Google: 459 TFLOPS BF16 y 95GB de HBM2e (2,76TB/s) por chip, en pods de 8.960 chips, con aproximadamente el doble de FLOPs y el triple de HBM que la TPU v4.",
+      "he": "ה-TPU מדור 5 בשכבת הביצועים של Google: 459 TFLOPS BF16 ו-95GB HBM2e (2.76TB/s) לכל שבב, ב-pods של 8,960 שבבים, המספק בערך פי 2 FLOPs ופי 3 HBM לעומת TPU v4.",
+      "ko": "Google의 5세대 고성능 TPU로, 칩당 459 TFLOPS BF16과 95GB HBM2e(2.76TB/s)를 제공하며 8,960칩 파드로 구성되어 TPU v4 대비 약 2배의 FLOP과 3배의 HBM을 제공한다."
+    },
+    "AWS||Inferentia1": {
+      "en": "AWS's first inference chip, powering EC2 Inf1 instances: four first-gen NeuronCores delivering up to 128 TOPS across INT8, FP16 and BF16, with 8GB of on-chip-accessible DRAM.",
+      "ja": "EC2 Inf1インスタンスを支えるAWS初の推論チップで、4基の第1世代NeuronCoreがINT8、FP16、BF16にわたり最大128 TOPSを提供し、オンチップでアクセス可能な8GBのDRAMを備える。",
+      "zh": "AWS首款推理芯片，为EC2 Inf1实例提供算力：4个第一代NeuronCore在INT8、FP16和BF16下提供最高128 TOPS，并配备8GB片上可访问DRAM。",
+      "es": "El primer chip de inferencia de AWS, que impulsa las instancias EC2 Inf1: cuatro NeuronCores de primera generación que ofrecen hasta 128 TOPS en INT8, FP16 y BF16, con 8GB de DRAM accesible en chip.",
+      "he": "שבב ההסקה הראשון של AWS, המניע את מופעי EC2 Inf1: ארבעה NeuronCores מהדור הראשון המספקים עד 128 TOPS על פני INT8, FP16 ו-BF16, עם 8GB DRAM נגיש על השבב.",
+      "ko": "EC2 Inf1 인스턴스를 구동하는 AWS의 첫 추론 칩으로, 4개의 1세대 NeuronCore가 INT8, FP16, BF16에 걸쳐 최대 128 TOPS를 제공하며 온칩에서 접근 가능한 8GB DRAM을 갖춘다."
+    },
+    "AWS||Trainium1": {
+      "en": "AWS's first training chip, powering EC2 Trn1 instances: two NeuronCore-v2 cores rated 190 TFLOPS FP16/BF16, 32GB HBM at 820GB/s, with NeuronLink for scale-out training.",
+      "ja": "EC2 Trn1インスタンスを支えるAWS初の学習チップで、2基のNeuronCore-v2コアが190 TFLOPS FP16/BF16を提供し、820GB/sの32GB HBMと、スケールアウト学習向けのNeuronLinkを備える。",
+      "zh": "AWS首款训练芯片，为EC2 Trn1实例提供算力：2个NeuronCore-v2内核提供190 TFLOPS FP16/BF16，配备820GB/s的32GB HBM，并通过NeuronLink实现横向扩展训练。",
+      "es": "El primer chip de entrenamiento de AWS, que impulsa las instancias EC2 Trn1: dos núcleos NeuronCore-v2 con 190 TFLOPS FP16/BF16, 32GB de HBM a 820GB/s, con NeuronLink para el entrenamiento escalable.",
+      "he": "שבב האימון הראשון של AWS, המניע את מופעי EC2 Trn1: שני ליבות NeuronCore-v2 המדורגים ב-190 TFLOPS FP16/BF16, 32GB HBM במהירות 820GB/s, עם NeuronLink לאימון בהתרחבות.",
+      "ko": "EC2 Trn1 인스턴스를 구동하는 AWS의 첫 학습 칩으로, 2개의 NeuronCore-v2 코어가 190 TFLOPS FP16/BF16을 제공하며 820GB/s의 32GB HBM과 스케일아웃 학습을 위한 NeuronLink를 갖춘다."
+    },
+    "Huawei||Ascend 910B": {
+      "en": "Huawei's flagship datacenter AI trainer and China's main alternative to NVIDIA A100/H100. Huawei does not publish full specs; reported figures are around 320 TFLOPS FP16 (about 640 INT8 TOPS) with 64GB HBM2e. Used to train models such as DeepSeek.",
+      "ja": "Huaweiのフラッグシップ・データセンター向けAIトレーナーで、NVIDIA A100/H100の中国における主要な代替品である。Huaweiは全仕様を公表しておらず、報じられている数値は64GB HBM2eとともに約320 TFLOPS FP16(約640 INT8 TOPS)である。DeepSeekなどのモデルの学習に使われている。",
+      "zh": "华为旗舰级数据中心AI训练芯片，是NVIDIA A100/H100在中国的主要替代品。华为未公布完整规格，据报道约为320 TFLOPS FP16(约640 INT8 TOPS)，配备64GB HBM2e。曾用于训练DeepSeek等模型。",
+      "es": "El entrenador de IA para centros de datos insignia de Huawei y la principal alternativa china a la NVIDIA A100/H100. Huawei no publica las especificaciones completas; las cifras reportadas rondan los 320 TFLOPS FP16 (unos 640 INT8 TOPS) con 64GB de HBM2e. Se ha usado para entrenar modelos como DeepSeek.",
+      "he": "מאיץ ה-AI המוביל של Huawei למרכזי נתונים והחלופה הסינית העיקרית ל-NVIDIA A100/H100. Huawei אינה מפרסמת מפרט מלא; הנתונים המדווחים הם כ-320 TFLOPS FP16 (כ-640 INT8 TOPS) עם 64GB HBM2e. שימש לאימון מודלים כגון DeepSeek.",
+      "ko": "Huawei의 플래그십 데이터센터 AI 트레이너로, NVIDIA A100/H100의 주요 중국 대안이다. Huawei는 전체 사양을 공개하지 않으며, 보고된 수치는 64GB HBM2e와 함께 약 320 TFLOPS FP16(약 640 INT8 TOPS) 수준이다. DeepSeek 같은 모델을 학습하는 데 사용되었다."
+    },
+    "Huawei||Atlas 300I Duo": {
+      "en": "Dual Ascend 310B inference card delivering 280 INT8 TOPS / 140 FP16 TFLOPS with 96GB LPDDR4X (408GB/s) in a 150W PCIe Gen4 card. A popular low-cost 96GB card for on-prem LLM inference in China.",
+      "ja": "デュアルAscend 310B推論カードで、150WのPCIe Gen4カードにおいて96GB LPDDR4X(408GB/s)とともに280 INT8 TOPS / 140 FP16 TFLOPSを提供する。中国でオンプレミスのLLM推論向けに人気の低価格な96GBカードである。",
+      "zh": "双Ascend 310B推理卡，在150W PCIe Gen4卡中提供280 INT8 TOPS / 140 FP16 TFLOPS，配备96GB LPDDR4X(408GB/s)。是中国本地部署LLM推理中颇受欢迎的低成本96GB卡。",
+      "es": "Tarjeta de inferencia con doble Ascend 310B que ofrece 280 INT8 TOPS / 140 FP16 TFLOPS con 96GB de LPDDR4X (408GB/s) en una tarjeta PCIe Gen4 de 150W. Una popular tarjeta de 96GB y bajo coste para la inferencia local de LLM en China.",
+      "he": "כרטיס הסקה עם Ascend 310B כפול המספק 280 INT8 TOPS / 140 FP16 TFLOPS עם 96GB LPDDR4X (408GB/s) בכרטיס PCIe Gen4 של 150W. כרטיס 96GB פופולרי ובעלות נמוכה עבור הסקת LLM מקומית בסין.",
+      "ko": "듀얼 Ascend 310B 추론 카드로, 150W PCIe Gen4 카드에서 96GB LPDDR4X(408GB/s)와 함께 280 INT8 TOPS / 140 FP16 TFLOPS를 제공한다. 중국에서 온프레미스 LLM 추론용으로 인기 있는 저가 96GB 카드이다."
+    },
+    "Cambricon||MLU370-X8": {
+      "en": "Dual-chip Siyuan 370 training and inference card (7nm, MLUarch03) rated up to 256 INT8 TOPS and 96 TFLOPS FP16/BF16, with 48GB LPDDR5 at 614GB/s, 250W, and MLU-Link interconnect.",
+      "ja": "デュアルチップのSiyuan 370学習・推論カード(7nm、MLUarch03)で、最大256 INT8 TOPSと96 TFLOPS FP16/BF16を提供し、614GB/sの48GB LPDDR5、250W、MLU-Linkインターコネクトを備える。",
+      "zh": "双芯思元370训练与推理卡(7nm，MLUarch03)，提供最高256 INT8 TOPS和96 TFLOPS FP16/BF16，配备614GB/s的48GB LPDDR5、250W功耗和MLU-Link互连。",
+      "es": "Tarjeta de entrenamiento e inferencia Siyuan 370 de doble chip (7nm, MLUarch03) con hasta 256 INT8 TOPS y 96 TFLOPS FP16/BF16, con 48GB de LPDDR5 a 614GB/s, 250W e interconexión MLU-Link.",
+      "he": "כרטיס אימון והסקה דו-שבבי מסוג Siyuan 370 (7nm, MLUarch03) המדורג עד 256 INT8 TOPS ו-96 TFLOPS FP16/BF16, עם 48GB LPDDR5 במהירות 614GB/s, 250W וחיבור MLU-Link.",
+      "ko": "듀얼 칩 Siyuan 370 학습 및 추론 카드(7nm, MLUarch03)로, 최대 256 INT8 TOPS와 96 TFLOPS FP16/BF16을 제공하며 614GB/s의 48GB LPDDR5, 250W, MLU-Link 인터커넥트를 갖춘다."
+    },
+    "Tenstorrent||Grayskull e150": {
+      "en": "RISC-V Tensix inference card and Tenstorrent's first retail Grayskull dev kit: 120 Tensix cores, 332 TFLOPS FP8 / 83 TFLOPS FP16, 120MB SRAM plus 8GB LPDDR4, 200W PCIe Gen4.",
+      "ja": "RISC-V Tensix推論カードであり、Tenstorrent初の一般販売向けGrayskull開発キットで、120基のTensixコア、332 TFLOPS FP8 / 83 TFLOPS FP16、120MB SRAMと8GB LPDDR4、200W PCIe Gen4を備える。",
+      "zh": "RISC-V Tensix推理卡，也是Tenstorrent首款零售版Grayskull开发套件：120个Tensix核心、332 TFLOPS FP8 / 83 TFLOPS FP16、120MB SRAM加8GB LPDDR4、200W PCIe Gen4。",
+      "es": "Tarjeta de inferencia Tensix RISC-V y primer kit de desarrollo Grayskull minorista de Tenstorrent: 120 núcleos Tensix, 332 TFLOPS FP8 / 83 TFLOPS FP16, 120MB de SRAM más 8GB de LPDDR4, PCIe Gen4 de 200W.",
+      "he": "כרטיס הסקה מסוג RISC-V Tensix וערכת הפיתוח הקמעונאית הראשונה של Tenstorrent מדגם Grayskull: 120 ליבות Tensix, 332 TFLOPS FP8 / 83 TFLOPS FP16, 120MB SRAM בתוספת 8GB LPDDR4, PCIe Gen4 של 200W.",
+      "ko": "RISC-V Tensix 추론 카드이자 Tenstorrent의 첫 소매용 Grayskull 개발 키트로, 120개의 Tensix 코어, 332 TFLOPS FP8 / 83 TFLOPS FP16, 120MB SRAM과 8GB LPDDR4, 200W PCIe Gen4를 갖춘다."
+    },
+    "Hailo||Hailo-15L": {
+      "en": "Entry member of the Hailo-15 AI vision-processor SoC family at 7 TOPS, integrating Hailo's NPU with a CPU and ISP for on-camera analytics and light generative AI.",
+      "ja": "Hailo-15 AIビジョンプロセッサSoCファミリのエントリーモデルで7 TOPSを提供し、HailoのNPUをCPUおよびISPと統合して、カメラ上での分析と軽量な生成AIに対応する。",
+      "zh": "Hailo-15 AI视觉处理器SoC系列的入门级成员，性能为7 TOPS，将Hailo的NPU与CPU和ISP集成，用于相机端分析和轻量生成式AI。",
+      "es": "Miembro de gama de entrada de la familia de SoC procesadores de visión con IA Hailo-15, con 7 TOPS, que integra la NPU de Hailo con una CPU y un ISP para análisis en cámara e IA generativa ligera.",
+      "he": "הדגם הבסיסי במשפחת ה-SoC מעבדי הראייה החכמה Hailo-15, בביצועים של 7 TOPS, המשלב את ה-NPU של Hailo עם CPU ו-ISP עבור ניתוח במצלמה ו-AI גנרטיבי קל.",
+      "ko": "Hailo-15 AI 비전 프로세서 SoC 제품군의 엔트리 모델로 7 TOPS를 제공하며, Hailo의 NPU를 CPU 및 ISP와 통합해 온카메라 분석과 경량 생성형 AI를 지원한다."
+    },
+    "Hailo||Hailo-15M": {
+      "en": "Mid-tier Hailo-15 AI vision processor SoC at 11 TOPS, aimed at smart-camera makers needing on-device analytics and AI-ISP within a camera power budget.",
+      "ja": "11 TOPSを提供するミッドレンジのHailo-15 AIビジョンプロセッサSoCで、カメラの電力枠内でオンデバイス分析とAI-ISPを必要とするスマートカメラメーカーを狙う。",
+      "zh": "中端Hailo-15 AI视觉处理器SoC，性能为11 TOPS，面向需要在相机功耗预算内实现端侧分析和AI-ISP的智能相机厂商。",
+      "es": "SoC procesador de visión con IA Hailo-15 de gama media con 11 TOPS, orientado a fabricantes de cámaras inteligentes que necesitan análisis en el dispositivo y AI-ISP dentro del presupuesto energético de una cámara.",
+      "he": "SoC מעבד ראייה חכמה מסוג Hailo-15 בדרג הביניים בביצועים של 11 TOPS, המיועד ליצרני מצלמות חכמות הזקוקים לניתוח על המכשיר ו-AI-ISP בתוך תקציב ההספק של המצלמה.",
+      "ko": "11 TOPS를 제공하는 중급 Hailo-15 AI 비전 프로세서 SoC로, 카메라 전력 예산 내에서 온디바이스 분석과 AI-ISP가 필요한 스마트 카메라 제조사를 겨냥한다."
+    },
+    "Qualcomm||Cloud AI 100": {
+      "en": "Qualcomm's purpose-built inference accelerator: 16 AI cores delivering up to 400 INT8 TOPS / 200 FP16 TOPS, 144MB on-die SRAM and up to 32GB DRAM, in a 75W PCIe (also M.2 and DM.2) form factor.",
+      "ja": "Qualcommの専用推論アクセラレータで、16基のAIコアが最大400 INT8 TOPS / 200 FP16 TOPSを提供し、144MBのオンダイSRAMと最大32GBのDRAMを、75WのPCIe(M.2およびDM.2にも対応)フォームファクタに収めている。",
+      "zh": "Qualcomm专用推理加速器：16个AI核心提供最高400 INT8 TOPS / 200 FP16 TOPS，配备144MB片内SRAM和最高32GB DRAM，采用75W PCIe(亦支持M.2和DM.2)外形规格。",
+      "es": "Acelerador de inferencia específico de Qualcomm: 16 núcleos de IA que ofrecen hasta 400 INT8 TOPS / 200 FP16 TOPS, 144MB de SRAM en el chip y hasta 32GB de DRAM, en un formato PCIe de 75W (también M.2 y DM.2).",
+      "he": "מאיץ ההסקה הייעודי של Qualcomm: 16 ליבות AI המספקות עד 400 INT8 TOPS / 200 FP16 TOPS, 144MB SRAM על השבב ועד 32GB DRAM, במארז PCIe של 75W (וגם M.2 ו-DM.2).",
+      "ko": "Qualcomm의 전용 추론 가속기로, 16개의 AI 코어가 최대 400 INT8 TOPS / 200 FP16 TOPS를 제공하며 144MB 온다이 SRAM과 최대 32GB DRAM을 75W PCIe(M.2 및 DM.2도 지원) 폼팩터에 담았다."
+    },
+    "MediaTek||Genio 1200": {
+      "en": "Premium 6nm edge-AI IoT SoC (4x Cortex-A78 plus 4x A55, Mali-G57 MC5) with a MediaTek APU rated 4.8 TOPS, dual VP6 vision DSPs and triple-4K display support.",
+      "ja": "プレミアムな6nmエッジAI向けIoT SoC(4x Cortex-A78と4x A55、Mali-G57 MC5)で、4.8 TOPSのMediaTek APU、デュアルVP6ビジョンDSP、トリプル4Kディスプレイ対応を備える。",
+      "zh": "高端6nm边缘AI物联网SoC(4个Cortex-A78加4个A55，Mali-G57 MC5)，配备4.8 TOPS的MediaTek APU、双VP6视觉DSP，并支持三路4K显示。",
+      "es": "SoC IoT de IA de borde premium de 6nm (4x Cortex-A78 más 4x A55, Mali-G57 MC5) con una APU de MediaTek de 4,8 TOPS, dos DSP de visión VP6 y compatibilidad con triple pantalla 4K.",
+      "he": "SoC פרימיום ל-IoT ו-edge-AI בגודל 6nm (4x Cortex-A78 בתוספת 4x A55, Mali-G57 MC5) עם APU של MediaTek המדורג ב-4.8 TOPS, שני DSP ראייה מסוג VP6 ותמיכה בשלוש תצוגות 4K.",
+      "ko": "프리미엄 6nm 엣지 AI IoT SoC(4x Cortex-A78 및 4x A55, Mali-G57 MC5)로, 4.8 TOPS의 MediaTek APU, 듀얼 VP6 비전 DSP, 트리플 4K 디스플레이 지원을 갖춘다."
+    },
+    "Sophgo||BM1688": {
+      "en": "Octa-core Cortex-A53 edge SoC with Sophgo's TPU at 16 INT8 TOPS (32 INT4 TOPS, 4 FP16 TFLOPS) and mixed-precision INT4 to FP32, targeting edge LLM/VLM and multi-camera analytics.",
+      "ja": "オクタコアCortex-A53のエッジSoCで、SophgoのTPUが16 INT8 TOPS(32 INT4 TOPS、4 FP16 TFLOPS)とINT4からFP32までの混合精度を提供し、エッジのLLM/VLMやマルチカメラ分析を狙う。",
+      "zh": "八核Cortex-A53边缘SoC，搭载Sophgo的TPU，提供16 INT8 TOPS(32 INT4 TOPS，4 FP16 TFLOPS)及INT4至FP32的混合精度，面向边缘LLM/VLM和多路相机分析。",
+      "es": "SoC de borde de ocho núcleos Cortex-A53 con la TPU de Sophgo de 16 INT8 TOPS (32 INT4 TOPS, 4 FP16 TFLOPS) y precisión mixta de INT4 a FP32, orientado a LLM/VLM de borde y análisis multicámara.",
+      "he": "SoC ל-edge עם שמונה ליבות Cortex-A53 ובו TPU של Sophgo בביצועים של 16 INT8 TOPS (32 INT4 TOPS, 4 FP16 TFLOPS) ודיוק מעורב מ-INT4 עד FP32, המיועד ל-LLM/VLM בקצה ולניתוח מרובה מצלמות.",
+      "ko": "옥타코어 Cortex-A53 엣지 SoC로, Sophgo의 TPU가 16 INT8 TOPS(32 INT4 TOPS, 4 FP16 TFLOPS)와 INT4에서 FP32까지의 혼합 정밀도를 제공하며 엣지 LLM/VLM과 멀티 카메라 분석을 겨냥한다."
+    },
+    "BrainChip||Akida AKD1500": {
+      "en": "Second-generation neuromorphic Akida co-processor (22nm FDSOI) delivering about 800 GOPS under 300mW via PCIe or low-power SPI, with on-device incremental learning. It pairs with any host CPU or MCU.",
+      "ja": "第2世代のニューロモーフィックAkidaコプロセッサ(22nm FDSOI)で、PCIeまたは低消費電力SPIを介して300mW以下で約800 GOPSを提供し、オンデバイスでの逐次学習に対応する。あらゆるホストCPUやMCUと組み合わせられる。",
+      "zh": "第二代神经形态Akida协处理器(22nm FDSOI)，通过PCIe或低功耗SPI在300mW以内提供约800 GOPS，支持端侧增量学习。可与任意主机CPU或MCU搭配。",
+      "es": "Coprocesador neuromórfico Akida de segunda generación (22nm FDSOI) que ofrece unos 800 GOPS por debajo de 300mW a través de PCIe o SPI de bajo consumo, con aprendizaje incremental en el dispositivo. Se combina con cualquier CPU o MCU anfitrión.",
+      "he": "מעבד-עזר נוירומורפי מסוג Akida מהדור השני (22nm FDSOI) המספק כ-800 GOPS בהספק נמוך מ-300mW דרך PCIe או SPI חסכוני, עם למידה מצטברת על המכשיר. משתלב עם כל CPU או MCU מארח.",
+      "ko": "2세대 뉴로모픽 Akida 코프로세서(22nm FDSOI)로, PCIe 또는 저전력 SPI를 통해 300mW 이하에서 약 800 GOPS를 제공하며 온디바이스 점진적 학습을 지원한다. 모든 호스트 CPU나 MCU와 결합할 수 있다."
+    },
+    "Syntiant||NDP250": {
+      "en": "Third-gen Neural Decision Processor (Syntiant Core 3) delivering about 30 GOPS for always-on speech, audio and vision at very low power. It runs DNNs of up to 6 million parameters on-chip.",
+      "ja": "第3世代のNeural Decision Processor(Syntiant Core 3)で、非常に低い消費電力で常時オンの音声・オーディオ・ビジョン向けに約30 GOPSを提供する。最大600万パラメータのDNNをオンチップで実行する。",
+      "zh": "第三代神经决策处理器(Syntiant Core 3)，以极低功耗为常开语音、音频和视觉提供约30 GOPS。可在片上运行最多600万参数的DNN。",
+      "es": "Procesador de decisión neuronal de tercera generación (Syntiant Core 3) que ofrece unos 30 GOPS para voz, audio y visión siempre activos con muy bajo consumo. Ejecuta DNN de hasta 6 millones de parámetros en el chip.",
+      "he": "מעבד החלטה נוירוני מהדור השלישי (Syntiant Core 3) המספק כ-30 GOPS עבור דיבור, אודיו וראייה בפעולה מתמדת בהספק נמוך מאוד. מריץ רשתות DNN של עד 6 מיליון פרמטרים על השבב.",
+      "ko": "3세대 Neural Decision Processor(Syntiant Core 3)로, 매우 낮은 전력에서 상시 구동 음성, 오디오, 비전을 위해 약 30 GOPS를 제공한다. 최대 600만 파라미터의 DNN을 온칩에서 실행한다."
+    },
+    "Renesas||RZ/V2L": {
+      "en": "Entry vision-AI microprocessor (dual Cortex-A55) with Renesas' DRP-AI accelerator at 1 TOPS/W-class efficiency, for example running Tiny-YOLOv2 at 28 fps. Renesas publishes efficiency rather than a peak-TOPS figure.",
+      "ja": "デュアルCortex-A55のエントリー向けビジョンAIマイクロプロセッサで、RenesasのDRP-AIアクセラレータが1 TOPS/W級の効率を提供し、たとえばTiny-YOLOv2を28 fpsで実行する。RenesasはピークTOPS値ではなく効率を公表している。",
+      "zh": "入门级视觉AI微处理器(双核Cortex-A55)，搭载Renesas的DRP-AI加速器，达到1 TOPS/W级别的能效，例如可以28 fps运行Tiny-YOLOv2。Renesas公布的是能效而非峰值TOPS数据。",
+      "es": "Microprocesador de visión con IA de gama de entrada (doble Cortex-A55) con el acelerador DRP-AI de Renesas de una eficiencia de clase 1 TOPS/W, capaz por ejemplo de ejecutar Tiny-YOLOv2 a 28 fps. Renesas publica la eficiencia en lugar de una cifra de TOPS máximos.",
+      "he": "מיקרו-מעבד ראייה חכמה בסיסי (Cortex-A55 כפול) עם מאיץ DRP-AI של Renesas ביעילות ברמת 1 TOPS/W, למשל הרצת Tiny-YOLOv2 בקצב 28 fps. Renesas מפרסמת יעילות ולא ערך TOPS שיא.",
+      "ko": "듀얼 Cortex-A55 기반 엔트리 비전 AI 마이크로프로세서로, Renesas의 DRP-AI 가속기가 1 TOPS/W급 효율을 제공하며 예를 들어 Tiny-YOLOv2를 28 fps로 실행한다. Renesas는 최대 TOPS 수치 대신 효율을 공개한다."
+    },
+    "Renesas||RZ/V2N": {
+      "en": "Mid-class vision-AI MPU (quad Cortex-A55) with the DRP-AI3 accelerator rated up to 15 TOPS (pruned INT8, about 4 TOPS dense) at a claimed 10 TOPS/W, with a Mali-C55 ISP and dual MIPI cameras and no active cooling.",
+      "ja": "クアッドCortex-A55のミッドクラス向けビジョンAI MPUで、DRP-AI3アクセラレータが10 TOPS/Wとされる効率で最大15 TOPS(プルーニング済みINT8、密なら約4 TOPS)を提供し、Mali-C55 ISPとデュアルMIPIカメラを備え、能動冷却を必要としない。",
+      "zh": "中端视觉AI MPU(四核Cortex-A55)，搭载DRP-AI3加速器，以宣称的10 TOPS/W能效提供最高15 TOPS(剪枝INT8，稠密约4 TOPS)，配备Mali-C55 ISP和双MIPI相机，且无需主动散热。",
+      "es": "MPU de visión con IA de gama media (cuatro núcleos Cortex-A55) con el acelerador DRP-AI3 de hasta 15 TOPS (INT8 podado, unos 4 TOPS densos) con una eficiencia declarada de 10 TOPS/W, con un ISP Mali-C55 y dos cámaras MIPI, sin refrigeración activa.",
+      "he": "MPU ראייה חכמה בדרג הביניים (Cortex-A55 מרובע) עם מאיץ DRP-AI3 המדורג עד 15 TOPS (INT8 גזום, כ-4 TOPS צפוף) ביעילות מוצהרת של 10 TOPS/W, עם ISP מסוג Mali-C55 ושתי מצלמות MIPI, ללא קירור אקטיבי.",
+      "ko": "쿼드 Cortex-A55 기반 중급 비전 AI MPU로, DRP-AI3 가속기가 10 TOPS/W라고 주장되는 효율로 최대 15 TOPS(프루닝된 INT8, 밀집 기준 약 4 TOPS)를 제공하며 Mali-C55 ISP, 듀얼 MIPI 카메라를 갖추고 능동 냉각이 필요 없다."
+    },
+    "Texas Instruments||AM62A": {
+      "en": "Arm Cortex-A53 vision processor with a 2 TOPS C7x-DSP plus MMA deep-learning accelerator and a 5MP ISP at under 2W typical, for video doorbells, machine vision and robotics.",
+      "ja": "Arm Cortex-A53のビジョンプロセッサで、2 TOPSのC7x-DSPとMMAディープラーニングアクセラレータ、5MP ISPを標準2W以下で提供し、ビデオドアベルやマシンビジョン、ロボティクス向けである。",
+      "zh": "Arm Cortex-A53视觉处理器，配备2 TOPS的C7x-DSP及MMA深度学习加速器和5MP ISP，典型功耗低于2W，面向视频门铃、机器视觉和机器人。",
+      "es": "Procesador de visión Arm Cortex-A53 con un C7x-DSP de 2 TOPS más un acelerador de aprendizaje profundo MMA y un ISP de 5MP con menos de 2W típicos, para videoporteros, visión artificial y robótica.",
+      "he": "מעבד ראייה מסוג Arm Cortex-A53 עם C7x-DSP של 2 TOPS בתוספת מאיץ למידה עמוקה מסוג MMA ו-ISP של 5MP בהספק טיפוסי נמוך מ-2W, עבור פעמוני דלת עם וידאו, ראייה ממוחשבת ורובוטיקה.",
+      "ko": "Arm Cortex-A53 비전 프로세서로, 2 TOPS C7x-DSP와 MMA 딥러닝 가속기, 5MP ISP를 일반적으로 2W 이하에서 제공하며 비디오 초인종, 머신 비전, 로보틱스를 겨냥한다."
+    },
+    "Analog Devices||MAX78000": {
+      "en": "Ultra-low-power AI microcontroller combining a Cortex-M4, a RISC-V core and a dedicated hardware CNN accelerator with 442KB of weight SRAM, running inference at under 1 microjoule per operation.",
+      "ja": "超低消費電力のAIマイコンで、Cortex-M4、RISC-Vコア、442KBの重み用SRAMを備えた専用ハードウェアCNNアクセラレータを組み合わせ、1演算あたり1マイクロジュール未満で推論を実行する。",
+      "zh": "超低功耗AI微控制器，将Cortex-M4、RISC-V内核与配备442KB权重SRAM的专用硬件CNN加速器相结合，每次运算以低于1微焦耳的能耗执行推理。",
+      "es": "Microcontrolador de IA de consumo ultrabajo que combina un Cortex-M4, un núcleo RISC-V y un acelerador CNN por hardware dedicado con 442KB de SRAM de pesos, ejecutando la inferencia con menos de 1 microjulio por operación.",
+      "he": "מיקרו-בקר AI בהספק נמוך במיוחד המשלב ליבת Cortex-M4, ליבת RISC-V ומאיץ CNN חומרתי ייעודי עם 442KB SRAM למשקלים, המריץ הסקה בפחות ממיקרו-ג'אול אחד לפעולה.",
+      "ko": "초저전력 AI 마이크로컨트롤러로, Cortex-M4, RISC-V 코어, 442KB 가중치 SRAM을 갖춘 전용 하드웨어 CNN 가속기를 결합해 연산당 1 마이크로줄 이하로 추론을 실행한다."
+    },
+    "Graphcore||C600": {
+      "en": "PCIe accelerator built on Graphcore's Mk2 IPU with FP8 support: up to 560 TFLOPS FP8 / 280 TFLOPS FP16, 1,472 cores and 900MB in-processor SRAM, in a 185W dual-slot Gen4 card with IPU-Link scale-out.",
+      "ja": "GraphcoreのMk2 IPUをベースにFP8に対応したPCIeアクセラレータで、最大560 TFLOPS FP8 / 280 TFLOPS FP16、1,472コア、900MBのインプロセッサSRAMを、185Wのデュアルスロット Gen4カードに搭載し、IPU-Linkによるスケールアウトに対応する。",
+      "zh": "基于Graphcore Mk2 IPU并支持FP8的PCIe加速器：最高560 TFLOPS FP8 / 280 TFLOPS FP16、1,472个核心和900MB处理器内SRAM，采用185W双槽Gen4卡，支持IPU-Link横向扩展。",
+      "es": "Acelerador PCIe basado en la IPU Mk2 de Graphcore con soporte FP8: hasta 560 TFLOPS FP8 / 280 TFLOPS FP16, 1.472 núcleos y 900MB de SRAM en el procesador, en una tarjeta Gen4 de doble ranura y 185W con escalado IPU-Link.",
+      "he": "מאיץ PCIe המבוסס על ה-IPU מסוג Mk2 של Graphcore עם תמיכה ב-FP8: עד 560 TFLOPS FP8 / 280 TFLOPS FP16, 1,472 ליבות ו-900MB SRAM בתוך המעבד, בכרטיס Gen4 דו-חריצי של 185W עם התרחבות IPU-Link.",
+      "ko": "Graphcore의 Mk2 IPU를 기반으로 FP8을 지원하는 PCIe 가속기로, 최대 560 TFLOPS FP8 / 280 TFLOPS FP16, 1,472개의 코어, 900MB 인프로세서 SRAM을 185W 듀얼 슬롯 Gen4 카드에 담았으며 IPU-Link 스케일아웃을 지원한다."
+    },
+    "Untether AI||tsunAImi tsn200": {
+      "en": "At-memory-compute inference card built on the runAI200 device: 500 INT8 TOPS with 204MB on-chip SRAM in a 75W PCIe card (about 40W typical). Untether AI wound down chip sales after AMD hired its engineering team in 2025.",
+      "ja": "runAI200デバイスをベースにしたアットメモリ・コンピュート推論カードで、75WのPCIeカード(標準で約40W)において204MBのオンチップSRAMとともに500 INT8 TOPSを提供する。Untether AIは2025年にAMDがエンジニアリングチームを採用した後、チップ販売を終了した。",
+      "zh": "基于runAI200器件的存内计算推理卡：在75W PCIe卡(典型约40W)中提供500 INT8 TOPS，配备204MB片上SRAM。2025年AMD招揽其工程团队后，Untether AI已终止芯片销售。",
+      "es": "Tarjeta de inferencia de cómputo en memoria basada en el dispositivo runAI200: 500 INT8 TOPS con 204MB de SRAM en chip en una tarjeta PCIe de 75W (unos 40W típicos). Untether AI cesó la venta de chips después de que AMD contratara a su equipo de ingeniería en 2025.",
+      "he": "כרטיס הסקה מסוג at-memory-compute המבוסס על התקן runAI200: 500 INT8 TOPS עם 204MB SRAM על השבב בכרטיס PCIe של 75W (כ-40W טיפוסי). Untether AI סגרה את מכירות השבבים לאחר ש-AMD גייסה את צוות ההנדסה שלה ב-2025.",
+      "ko": "runAI200 디바이스를 기반으로 한 앳메모리 컴퓨트 추론 카드로, 75W PCIe 카드(일반적으로 약 40W)에서 204MB 온칩 SRAM과 함께 500 INT8 TOPS를 제공한다. Untether AI는 2025년 AMD가 엔지니어링 팀을 영입한 뒤 칩 판매를 종료했다."
+    },
+    "SambaNova||SN30": {
+      "en": "Second-gen Reconfigurable Dataflow Unit (Cardinal SN30, 7nm, 86B transistors): 688 TFLOPS BF16 with 640MB on-chip SRAM and up to 1TB of addressable DDR per RDU, sold in DataScale systems for large-model workloads.",
+      "ja": "第2世代のReconfigurable Dataflow Unit(Cardinal SN30、7nm、トランジスタ860億個)で、640MBのオンチップSRAMとRDUあたり最大1TBのアドレス指定可能なDDRとともに688 TFLOPS BF16を提供し、大規模モデルのワークロード向けにDataScaleシステムで販売される。",
+      "zh": "第二代可重构数据流单元(Cardinal SN30，7nm，860亿晶体管)：提供688 TFLOPS BF16，配备640MB片上SRAM及每个RDU最高1TB可寻址DDR，随DataScale系统销售，面向大模型工作负载。",
+      "es": "Unidad de flujo de datos reconfigurable de segunda generación (Cardinal SN30, 7nm, 86.000 millones de transistores): 688 TFLOPS BF16 con 640MB de SRAM en chip y hasta 1TB de DDR direccionable por RDU, vendida en sistemas DataScale para cargas de trabajo de grandes modelos.",
+      "he": "יחידת זרימת נתונים ניתנת לתצורה מחדש מהדור השני (Cardinal SN30, 7nm, 86 מיליארד טרנזיסטורים): 688 TFLOPS BF16 עם 640MB SRAM על השבב ועד 1TB DDR בר-מיעון לכל RDU, הנמכרת במערכות DataScale עבור עומסי עבודה של מודלים גדולים.",
+      "ko": "2세대 Reconfigurable Dataflow Unit(Cardinal SN30, 7nm, 트랜지스터 860억 개)로, 640MB 온칩 SRAM과 RDU당 최대 1TB의 주소 지정 가능 DDR과 함께 688 TFLOPS BF16을 제공하며, 대형 모델 워크로드를 위한 DataScale 시스템에 탑재되어 판매된다."
+    },
+    "Meta||MTIA v1": {
+      "en": "Meta's first in-house inference accelerator (7nm, 800MHz, 25W): a grid of processing elements delivering 102.4 INT8 TOPS / 51.2 FP16 TFLOPS with up to 128GB LPDDR5, built for deep-learning recommendation models.",
+      "ja": "Meta初の自社製推論アクセラレータ(7nm、800MHz、25W)で、処理エレメントのグリッドが最大128GB LPDDR5とともに102.4 INT8 TOPS / 51.2 FP16 TFLOPSを提供し、ディープラーニングのレコメンデーションモデル向けに設計されている。",
+      "zh": "Meta首款自研推理加速器(7nm，800MHz，25W)：由处理单元阵列提供102.4 INT8 TOPS / 51.2 FP16 TFLOPS，最高配备128GB LPDDR5，专为深度学习推荐模型打造。",
+      "es": "El primer acelerador de inferencia propio de Meta (7nm, 800MHz, 25W): una malla de elementos de procesamiento que ofrece 102,4 INT8 TOPS / 51,2 FP16 TFLOPS con hasta 128GB de LPDDR5, diseñado para modelos de recomendación de aprendizaje profundo.",
+      "he": "מאיץ ההסקה הפנימי הראשון של Meta (7nm, 800MHz, 25W): מערך של יחידות עיבוד המספק 102.4 INT8 TOPS / 51.2 FP16 TFLOPS עם עד 128GB LPDDR5, שנבנה עבור מודלי המלצה מבוססי למידה עמוקה.",
+      "ko": "Meta의 첫 자체 추론 가속기(7nm, 800MHz, 25W)로, 프로세싱 엘리먼트 그리드가 최대 128GB LPDDR5와 함께 102.4 INT8 TOPS / 51.2 FP16 TFLOPS를 제공하며 딥러닝 추천 모델을 위해 설계되었다."
+    },
+    "SiMa.ai||Modalix": {
+      "en": "Second-gen MLSoC (Modalix) purpose-built for multimodal and generative AI at the edge. The production 50 TOPS device runs LLMs, transformers and CNNs under 10W, in a family scaling from 25 to 200 TOPS and software-compatible with SiMa's first-gen MLSoC.",
+      "ja": "エッジでのマルチモーダルおよび生成AI向けに設計された第2世代MLSoC(Modalix)である。量産される50 TOPSデバイスは10W以下でLLM、トランスフォーマー、CNNを実行し、25~200 TOPSまで拡張するファミリを構成し、SiMaの第1世代MLSoCとソフトウェア互換である。",
+      "zh": "第二代MLSoC(Modalix)，专为边缘端的多模态与生成式AI打造。量产的50 TOPS器件可在10W以内运行LLM、Transformer和CNN，构成从25到200 TOPS的产品系列，并与SiMa第一代MLSoC软件兼容。",
+      "es": "MLSoC de segunda generación (Modalix) diseñado específicamente para IA multimodal y generativa en el borde. El dispositivo de producción de 50 TOPS ejecuta LLM, transformers y CNN por debajo de 10W, dentro de una familia que escala de 25 a 200 TOPS y compatible a nivel de software con el MLSoC de primera generación de SiMa.",
+      "he": "MLSoC מהדור השני (Modalix) שתוכנן במיוחד עבור AI רב-מודלי וגנרטיבי בקצה. התקן הייצור בביצועים של 50 TOPS מריץ מודלי LLM, transformers ו-CNN בהספק נמוך מ-10W, כחלק ממשפחה המתרחבת מ-25 עד 200 TOPS ותואמת תוכנה ל-MLSoC מהדור הראשון של SiMa.",
+      "ko": "엣지에서의 멀티모달 및 생성형 AI를 위해 설계된 2세대 MLSoC(Modalix)이다. 양산되는 50 TOPS 디바이스는 10W 이하에서 LLM, 트랜스포머, CNN을 실행하며, 25에서 200 TOPS까지 확장되는 제품군을 이루고 SiMa의 1세대 MLSoC와 소프트웨어 호환된다."
+    },
+    "Ambarella||CV5": {
+      "en": "5nm AI vision SoC (dual Cortex-A76) with the CVflow engine rated 6 eTOPS, Ambarella's GPU-equivalent TOPS metric, able to encode 8K30 video under 2W for 8K and multi-imager cameras, drones and robotics.",
+      "ja": "デュアルCortex-A76の5nm AIビジョンSoCで、CVflowエンジンがAmbarella独自のGPU相当TOPS指標である6 eTOPSを提供し、2W以下で8K30映像をエンコードでき、8Kおよびマルチイメージャーカメラやドローン、ロボティクス向けである。",
+      "zh": "5nm AI视觉SoC(双核Cortex-A76)，搭载CVflow引擎，性能为6 eTOPS(Ambarella的GPU等效TOPS指标)，能在2W以内编码8K30视频，面向8K及多图像传感器相机、无人机和机器人。",
+      "es": "SoC de visión con IA de 5nm (doble Cortex-A76) con el motor CVflow de 6 eTOPS, la métrica de TOPS equivalente a GPU de Ambarella, capaz de codificar vídeo 8K30 con menos de 2W para cámaras 8K y multisensor, drones y robótica.",
+      "he": "SoC ראייה חכמה בגודל 5nm (Cortex-A76 כפול) עם מנוע CVflow המדורג ב-6 eTOPS, מדד ה-TOPS שווה-הערך ל-GPU של Ambarella, המסוגל לקודד וידאו 8K30 בהספק נמוך מ-2W עבור מצלמות 8K ורב-חיישן, רחפנים ורובוטיקה.",
+      "ko": "듀얼 Cortex-A76 기반 5nm AI 비전 SoC로, CVflow 엔진이 Ambarella의 GPU 등가 TOPS 지표인 6 eTOPS를 제공하며 2W 이하에서 8K30 비디오를 인코딩할 수 있어 8K 및 멀티 이미저 카메라, 드론, 로보틱스를 겨냥한다."
     }
   }
 }
