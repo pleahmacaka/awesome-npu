@@ -68,7 +68,8 @@
     "clear": "해제",
     "col_note": "비고",
     "a_selectall": "전체 선택",
-    "a_close": "닫기"
+    "a_close": "닫기",
+    "arch": "아키텍처"
   },
   "en": {
     "_name": "English",
@@ -139,7 +140,8 @@
     "clear": "Clear",
     "col_note": "Notes",
     "a_selectall": "Select all",
-    "a_close": "Close"
+    "a_close": "Close",
+    "arch": "Architectures"
   },
   "ja": {
     "_name": "日本語",
@@ -210,7 +212,8 @@
     "clear": "クリア",
     "col_note": "備考",
     "a_selectall": "すべて選択",
-    "a_close": "閉じる"
+    "a_close": "閉じる",
+    "arch": "アーキテクチャ"
   },
   "zh": {
     "_name": "中文",
@@ -281,7 +284,8 @@
     "clear": "清除",
     "col_note": "备注",
     "a_selectall": "全选",
-    "a_close": "关闭"
+    "a_close": "关闭",
+    "arch": "架构"
   },
   "es": {
     "_name": "Español",
@@ -352,7 +356,8 @@
     "clear": "Limpiar",
     "col_note": "Notas",
     "a_selectall": "Seleccionar todo",
-    "a_close": "Cerrar"
+    "a_close": "Cerrar",
+    "arch": "Arquitecturas"
   },
   "he": {
     "_name": "עברית",
@@ -423,6 +428,7 @@
     "clear": "נקה",
     "col_note": "הערות",
     "a_selectall": "בחר הכול",
-    "a_close": "סגירה"
+    "a_close": "סגירה",
+    "arch": "ארכיטקטורות"
   }
 }

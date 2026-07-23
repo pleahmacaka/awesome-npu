@@ -171,6 +171,7 @@ td.prod{white-space:normal;min-width:210px}
 .pn svg{width:11px;height:11px;color:var(--ink-3);align-self:center;opacity:0;transition:.12s}
 .pn:hover{color:var(--spot)} .pn:hover svg{opacity:1;color:var(--spot)}
 .pchip{font-size:11px;color:var(--ink-3);margin-top:3px}
+.parch{font-size:10.5px;color:var(--ink-3);margin-top:3px;letter-spacing:.02em}
 td .num{letter-spacing:-.01em}
 td.r{text-align:end}
 .muted{color:var(--ink-3)}
@@ -198,6 +199,9 @@ td.r{text-align:end}
 .e-specs dt{color:var(--ink-3)}
 .e-specs dd{margin:0;color:var(--ink);word-break:keep-all}
 .e-note{font-size:12.5px;color:var(--ink-2);line-height:1.62;margin:16px 0 0}
+.e-arch{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--rule)}
+.e-arch i{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-style:normal;margin-inline-end:2px}
+.at{font-size:11px;color:var(--ink-2);border:1px solid var(--rule-2);padding:2px 8px;letter-spacing:.02em;white-space:nowrap}
 
 /* by-chip view */
 #chipwrap{padding-bottom:64px}
@@ -394,6 +398,7 @@ table.cmp .dim{color:var(--ink-3)}
   <div class="wrap drawer-in">
     <div><div class="flabel" data-i18n="country">Country</div><div class="chips" id="f-country"></div></div>
     <div><div class="flabel" data-i18n="form">Form factor</div><div class="chips" id="f-form"></div></div>
+    <div><div class="flabel" data-i18n="arch">Architectures</div><div class="chips" id="f-arch"></div></div>
     <div style="grid-column:span 2;min-width:0"><div class="flabel" data-i18n="vendor">Vendor</div><div class="chips" id="f-vendor"></div></div>
     <div>
       <div class="flabel" data-i18n="release_range">Release date</div>
@@ -493,8 +498,9 @@ table.cmp .dim{color:var(--ink-3)}
   const VENDORS = [...new Set(products.map(p=>p.vendor))].sort();
   const SEGS = ["mcu","edge","datacenter"];
 
+  const ARCHS = [...new Set(products.flatMap(p=>p.arch||[]))].sort((a,b)=>["CNN","RNN","Transformer","ViT","LLM","VLM","Diffusion","SNN"].indexOf(a)-["CNN","RNN","Transformer","ViT","LLM","VLM","Diffusion","SNN"].indexOf(b));
   const state = { search:"", view:"table", sort:"default",
-    segment:new Set(), country:new Set(), form:new Set(), vendor:new Set(),
+    segment:new Set(), country:new Set(), form:new Set(), vendor:new Set(), arch:new Set(),
     dateFrom:null, dateTo:null, includeNoDate:true, compare:new Set() };
 
   function chipBtn(label, pressed, onclick){
@@ -516,9 +522,11 @@ table.cmp .dim{color:var(--ink-3)}
     })));
     multi("f-country", [...new Set(products.map(p=>p.country))].sort().map(c=>({key:c,label:regionOf(c)})), state.country);
     multi("f-form", FORMS.map(f=>({key:f,label:f})), state.form);
+    multi("f-arch", ARCHS.map(a=>({key:a,label:a})), state.arch);
+    $("f-arch").parentElement.hidden = ARCHS.length===0;
     multi("f-vendor", VENDORS.map(v=>({key:v,label:v})), state.vendor);
   }
-  function fcount(){ const n=state.country.size+state.form.size+state.vendor.size+((state.dateFrom||state.dateTo)?1:0)+(state.includeNoDate?0:1);
+  function fcount(){ const n=state.country.size+state.form.size+state.vendor.size+state.arch.size+((state.dateFrom||state.dateTo)?1:0)+(state.includeNoDate?0:1);
     const e=$("fcount"); if(n){e.hidden=false;e.textContent=n;}else e.hidden=true; }
 
   function matches(p){
@@ -526,11 +534,12 @@ table.cmp .dim{color:var(--ink-3)}
     if(state.country.size&&!state.country.has(p.country))return false;
     if(state.form.size&&!state.form.has(p.formGroup))return false;
     if(state.vendor.size&&!state.vendor.has(p.vendor))return false;
+    if(state.arch.size&&!(p.arch||[]).some(a=>state.arch.has(a)))return false;
     if(state.dateFrom||state.dateTo){ if(!p.releaseDate){if(!state.includeNoDate)return false;}
       else{const rf=state.dateFrom?state.dateFrom+"-01":null,rt=state.dateTo?state.dateTo+"-31":null;
         if(rf&&p.releaseDate<rf)return false;if(rt&&p.releaseDate>rt)return false;} }
     else if(!p.releaseDate&&!state.includeNoDate)return false;
-    if(state.search){ const hay=[p.vendor,p.product,p.chip,regionOf(p.country),p.country,p.form,p.memory,p.useCase,powerOf(p),...(p.tags||[]),...specsOf(p).map(x=>x[1]),noteOf(p)].join(" ").toLowerCase();
+    if(state.search){ const hay=[p.vendor,p.product,p.chip,regionOf(p.country),p.country,p.form,p.memory,p.useCase,powerOf(p),...(p.arch||[]),...(p.tags||[]),...specsOf(p).map(x=>x[1]),noteOf(p)].join(" ").toLowerCase();
       if(!hay.includes(state.search))return false; }
     return true;
   }
@@ -555,7 +564,7 @@ table.cmp .dim{color:var(--ink-3)}
     return `<tr data-id="${esc(p.id)}"${cls?` class="${cls}"`:""}${st}>
       <td class="sel"><input type="checkbox" class="rowchk" data-id="${esc(p.id)}" aria-label="${esc(p.product)}"${picked?" checked":""}></td>
       <td class="idx">${String(i+1).padStart(2,"0")}</td>
-      <td class="prod"><a class="pn" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a>${p.chip?`<div class="pchip">${esc(p.chip)}</div>`:""}</td>
+      <td class="prod"><a class="pn" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a>${p.chip?`<div class="pchip">${esc(p.chip)}</div>`:""}${p.arch&&p.arch.length?`<div class="parch">${p.arch.map(esc).join(" · ")}</div>`:""}</td>
       <td class="muted">${esc(p.vendor)}</td>
       <td>${cc(p)}</td>
       <td><span class="seg">${esc(segLabel(p.segment))}</span></td>
@@ -576,6 +585,7 @@ table.cmp .dim{color:var(--ink-3)}
     const specs=specsOf(p).map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
     const nt=noteOf(p);
     const note=nt?`<p class="e-note">${esc(nt)}</p>`:"";
+    const arch=(p.arch&&p.arch.length)?`<div class="e-arch"><i>${esc(L.arch)}</i>${p.arch.map(a=>`<span class="at">${esc(a)}</span>`).join("")}</div>`:"";
     const w=warnBtn(p);
     const picked=state.compare.has(p.id);
     const cls=["entry", animate?"ri":""].filter(Boolean).join(" ");
@@ -592,7 +602,7 @@ table.cmp .dim{color:var(--ink-3)}
         <div><i>${esc(L.col_price)}</i><b class="${p.priceUSD!=null?'':'dim'}">${esc(priceOf(p))}</b></div>
       </div>
       ${specs?`<dl class="e-specs">${specs}</dl>`:""}
-      ${note}
+      ${note}${arch}
     </article>`;
   }
 
@@ -679,6 +689,7 @@ table.cmp .dim{color:var(--ink-3)}
       ["col_vendor", p=>esc(p.vendor)],
       ["col_country", p=>esc(regionOf(p.country))],
       ["col_class", p=>esc(segLabel(p.segment))],
+      ["arch", p=>(p.arch&&p.arch.length)?p.arch.map(esc).join(", "):'<span class="dim">-</span>'],
       ["col_form", p=>{ const w=warnBtn(p); return esc(p.form||"-")+(w?" "+w:""); }],
       ["col_perf", p=>esc(p.computeDisplay||"-")],
       ["col_memory", p=>esc(p.memory||"-")],
@@ -764,7 +775,7 @@ table.cmp .dim{color:var(--ink-3)}
   $("viewTable").onclick=()=>setView("table"); $("viewCard").onclick=()=>setView("card"); $("viewChip").onclick=()=>setView("chip");
   $("filterToggle").onclick=()=>{const d=$("drawer");const o=d.classList.toggle("open");$("filterToggle").setAttribute("aria-expanded",String(o));setTimeout(setSticky,280);};
   $("resetBtn").onclick=()=>{Object.assign(state,{search:"",sort:"default",dateFrom:null,dateTo:null,includeNoDate:true});
-    state.segment.clear();state.country.clear();state.form.clear();state.vendor.clear();
+    state.segment.clear();state.country.clear();state.form.clear();state.vendor.clear();state.arch.clear();
     $("search").value="";$("dateFrom").value="";$("dateTo").value="";$("includeNoDate").checked=true;$("sortSel").value="default";
     buildFilters();fcount();render();};
   let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(setSticky,150);});

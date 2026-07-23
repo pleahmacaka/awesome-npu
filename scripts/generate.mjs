@@ -20,6 +20,12 @@ const REPO_URL = 'https://github.com/pleahmacaka/awesome-npu';
 const PAGES_URL = 'https://pleahmacaka.github.io/awesome-npu/';
 const I18N = JSON.parse(fs.readFileSync(path.join(__dir, 'i18n.json'), 'utf8'));
 const EI18N = JSON.parse(fs.readFileSync(path.join(__dir, 'enrich-i18n.json'), 'utf8'));
+/* 지원 신경망 아키텍처 (CNN/RNN/Transformer/LLM 등) — 제품별 분류. 키: `벤더||제품명` */
+let ARCH = {};
+try { ARCH = JSON.parse(fs.readFileSync(path.join(__dir, 'arch-map.json'), 'utf8')); }
+catch (e) { console.warn('[warn] arch-map.json 없음 — 아키텍처 필드 생략'); }
+const ARCH_ORDER = ['CNN','RNN','Transformer','ViT','LLM','VLM','Diffusion','SNN'];
+const sortArch = a => [...(a||[])].sort((x,y)=>{ const i=ARCH_ORDER.indexOf(x), j=ARCH_ORDER.indexOf(y); return (i<0?99:i)-(j<0?99:j); });
 
 /* 상세 사양 번역 유틸 — 한국어 원본을 6개 언어로 옮긴다.
    이미 표/카드에 별도로 표시되는 항목(성능·메모리·전력·출시)은 상세 그리드에서 제외한다. */
@@ -316,7 +322,7 @@ function parseTableUnder(lines, headingText, isDatacenter, usedKeys){
       memory, useCase, power,
       release: rel.date ? (cells[col.released]||'').trim() : null, releaseDate: rel.date, releaseDisplay: rel.display,
       price: (cells[col.price]||'').trim(), priceDisplay: pr.display, priceUSD: pr.priceUSD,
-      segment, tags,
+      segment, tags, arch: sortArch(ARCH[key]),
       specsI18n: buildSpecsI18n(specs), noteI18n: buildNoteI18n(key, koNote),
     });
   }
@@ -402,7 +408,7 @@ function ssrFor(lang){
     const rel=p.releaseDisplay||T.unknown;
     return `<tr data-id="${escHtml(p.id)}"><td class="sel"><input type="checkbox" class="rowchk" data-id="${escHtml(p.id)}" aria-label="${escHtml(p.product)}"></td>`+
       `<td class="idx">${String(i+1).padStart(2,'0')}</td>`+
-      `<td class="prod"><a class="pn" href="${escHtml(p.url)}" target="_blank" rel="noopener">${escHtml(p.product)}${EXT_SVG}</a>${p.chip?`<div class="pchip">${escHtml(p.chip)}</div>`:''}</td>`+
+      `<td class="prod"><a class="pn" href="${escHtml(p.url)}" target="_blank" rel="noopener">${escHtml(p.product)}${EXT_SVG}</a>${p.chip?`<div class="pchip">${escHtml(p.chip)}</div>`:''}${p.arch&&p.arch.length?`<div class="parch">${p.arch.map(escHtml).join(' · ')}</div>`:''}</td>`+
       `<td class="muted">${escHtml(p.vendor)}</td><td>${ccS(p)}</td>`+
       `<td><span class="seg">${escHtml(SEG_T[p.segment]||p.segment)}</span></td>`+
       `<td>${escHtml(p.form)}${intg}</td>`+
