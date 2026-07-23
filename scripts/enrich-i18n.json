@@ -938,22 +938,6 @@
       "he": "SoC מעבד לראיית AI המשלב את הליבה הנוירונית של Hailo (עד 20 TOPS) עם מנועי עיבוד תמונה עבור מצלמות חכמות מהדור הבא. מריץ ResNet-50 בכ-700 FPS.",
       "ko": "Hailo의 뉴럴 코어(최대 20 TOPS)와 이미지 처리 엔진을 통합한 AI 비전 프로세서 SoC로, 차세대 지능형 카메라를 위한 것이다. ResNet-50을 약 700 FPS로 실행한다."
     },
-    "NVIDIA||Jetson AGX Orin 64GB": {
-      "en": "Flagship edge AI module with an Ampere GPU plus deep-learning accelerators delivering up to 275 sparse INT8 TOPS (about 170 dense) and 64 GB of unified LPDDR5. Used for autonomous machines and robotics.",
-      "ja": "Ampere GPUとディープラーニングアクセラレータを備えたフラッグシップのエッジAIモジュールで、最大275のスパースINT8 TOPS（密で約170）と64 GBのユニファイドLPDDR5を提供する。自律機械やロボティクスに使われる。",
-      "zh": "旗舰级边缘AI模块，配备Ampere GPU及深度学习加速器，提供最高275稀疏INT8 TOPS（稠密约170）与64 GB统一LPDDR5。用于自主机器与机器人。",
-      "es": "Módulo de IA de borde insignia con una GPU Ampere y aceleradores de aprendizaje profundo que ofrecen hasta 275 TOPS INT8 dispersos (unos 170 densos) y 64 GB de LPDDR5 unificada. Se emplea en máquinas autónomas y robótica.",
-      "he": "מודול AI מוביל לקצה עם GPU מסוג Ampere ומאיצי למידה עמוקה המספקים עד 275 sparse INT8 TOPS (כ-170 צפופים) ו-64 GB של LPDDR5 מאוחד. משמש למכונות אוטונומיות ולרובוטיקה.",
-      "ko": "Ampere GPU와 딥러닝 가속기를 갖춘 플래그십 엣지 AI 모듈로, 최대 275 희소 INT8 TOPS(밀집 기준 약 170)와 64 GB 통합 LPDDR5를 제공한다. 자율 기계 및 로보틱스에 사용된다."
-    },
-    "NVIDIA||Jetson Orin Nano Super": {
-      "en": "Entry-level edge AI developer kit delivering 67 sparse INT8 TOPS with 8 GB unified LPDDR5 and 102 GB/s bandwidth. Launched at a $249 price point as a low-cost generative-AI platform.",
-      "ja": "エントリークラスのエッジAI開発者キットで、8 GBのユニファイドLPDDR5と102 GB/sの帯域幅で67のスパースINT8 TOPSを提供する。低コストの生成AIプラットフォームとして$249の価格で発売された。",
-      "zh": "入门级边缘AI开发者套件，配备8 GB统一LPDDR5与102 GB/s带宽，提供67稀疏INT8 TOPS。以$249的价位推出，定位为低成本生成式AI平台。",
-      "es": "Kit de desarrollo de IA de borde de nivel de entrada que ofrece 67 TOPS INT8 dispersos con 8 GB de LPDDR5 unificada y 102 GB/s de ancho de banda. Se lanzó a un precio de 249 USD como plataforma de IA generativa de bajo costo.",
-      "he": "ערכת מפתחים ל-AI בקצה ברמת כניסה, המספקת 67 sparse INT8 TOPS עם 8 GB של LPDDR5 מאוחד ורוחב פס של 102 GB/s. הושקה במחיר של 249 דולר כפלטפורמת AI גנרטיבי בעלות נמוכה.",
-      "ko": "엔트리급 엣지 AI 개발자 키트로, 8 GB 통합 LPDDR5와 102 GB/s 대역폭으로 67 희소 INT8 TOPS를 제공한다. 저비용 생성형 AI 플랫폼으로 $249 가격에 출시되었다."
-    },
     "AWS||Trainium2": {
       "en": "AWS's second-generation training accelerator delivering about 667 dense BF16 TFLOPS (roughly 1.3 PFLOPS FP8) per chip with 96 GB HBM3e. Deployed in Trn2 instances and UltraServers, available only via AWS cloud.",
       "ja": "AWSの第2世代トレーニングアクセラレータで、チップあたり約667の密なBF16 TFLOPS（FP8で約1.3 PFLOPS）を96 GBのHBM3eとともに提供する。Trn2インスタンスおよびUltraServerに導入され、AWSクラウド経由でのみ利用できる。",
@@ -1225,30 +1209,6 @@
       "es": "La primera NPU cliente de Intel Core (AI Boost) en el SoC de chiplets Meteor Lake. La NPU alcanza unos 11 INT8 TOPS, y el conjunto de plataforma con CPU, GPU y NPU llega hasta 34 TOPS.",
       "he": "ה-NPU הראשון ללקוח מבית Intel Core (AI Boost) בתוך ה-SoC מבוסס chiplet של Meteor Lake. ה-NPU מגיע לשיא של כ-11 INT8 TOPS, ואילו הפלטפורמה המשולבת של CPU, GPU ו-NPU מדורגת עד 34 TOPS.",
       "ko": "Meteor Lake 칩렛 SoC에 탑재된 Intel Core 최초의 클라이언트 NPU(AI Boost)이다. NPU는 약 11 INT8 TOPS에 이르며, CPU, GPU, NPU를 합친 플랫폼은 최대 34 TOPS로 평가된다."
-    },
-    "NVIDIA||Jetson Orin NX 16GB": {
-      "en": "Ampere-GPU Jetson module (1024 CUDA plus 32 Tensor cores) rated 100 INT8 TOPS (up to 157 sparse TOPS in Super mode) at 10-25W with 16GB LPDDR5, for small robots and smart cameras.",
-      "ja": "1024基のCUDAコアと32基のTensorコアを備えたAmpere GPUベースのJetsonモジュールで、16GB LPDDR5とともに10~25Wで100 INT8 TOPS(Superモードで最大157 sparse TOPS)を実現し、小型ロボットやスマートカメラ向けである。",
-      "zh": "基于Ampere GPU的Jetson模组(1024个CUDA核心加32个Tensor核心)，在10-25W下提供100 INT8 TOPS(Super模式下最高157 sparse TOPS)，配备16GB LPDDR5，面向小型机器人和智能相机。",
-      "es": "Módulo Jetson con GPU Ampere (1024 núcleos CUDA más 32 núcleos Tensor) que ofrece 100 INT8 TOPS (hasta 157 TOPS dispersos en modo Super) a 10-25W con 16GB de LPDDR5, para robots pequeños y cámaras inteligentes.",
-      "he": "מודול Jetson מבוסס GPU מסוג Ampere (1024 ליבות CUDA בתוספת 32 ליבות Tensor) המדורג ב-100 INT8 TOPS (עד 157 sparse TOPS במצב Super) בהספק 10-25W עם 16GB LPDDR5, עבור רובוטים קטנים ומצלמות חכמות.",
-      "ko": "1024개의 CUDA 코어와 32개의 Tensor 코어를 갖춘 Ampere GPU 기반 Jetson 모듈로, 16GB LPDDR5와 함께 10-25W에서 100 INT8 TOPS(Super 모드에서 최대 157 sparse TOPS)를 제공하며 소형 로봇과 스마트 카메라를 겨냥한다."
-    },
-    "NVIDIA||Jetson AGX Xavier": {
-      "en": "Volta-GPU Jetson module (512 CUDA plus 64 Tensor cores) delivering up to 32 INT8 TOPS under 30W, with an 8-core Carmel CPU and 16 to 32GB LPDDR4x.",
-      "ja": "512基のCUDAコアと64基のTensorコアを備えたVolta GPUベースのJetsonモジュールで、30W以下で最大32 INT8 TOPSを実現し、8コアのCarmel CPUと16~32GB LPDDR4xを備える。",
-      "zh": "基于Volta GPU的Jetson模组(512个CUDA核心加64个Tensor核心)，在30W以内提供最高32 INT8 TOPS，配备8核Carmel CPU和16至32GB LPDDR4x。",
-      "es": "Módulo Jetson con GPU Volta (512 núcleos CUDA más 64 núcleos Tensor) que ofrece hasta 32 INT8 TOPS por debajo de 30W, con una CPU Carmel de 8 núcleos y de 16 a 32GB de LPDDR4x.",
-      "he": "מודול Jetson מבוסס GPU מסוג Volta (512 ליבות CUDA בתוספת 64 ליבות Tensor) המספק עד 32 INT8 TOPS בהספק נמוך מ-30W, עם CPU מסוג Carmel בעל 8 ליבות ו-16 עד 32GB LPDDR4x.",
-      "ko": "512개의 CUDA 코어와 64개의 Tensor 코어를 갖춘 Volta GPU 기반 Jetson 모듈로, 30W 이하에서 최대 32 INT8 TOPS를 제공하며 8코어 Carmel CPU와 16~32GB LPDDR4x를 갖춘다."
-    },
-    "NVIDIA||DRIVE AGX Thor": {
-      "en": "Blackwell-architecture automotive and robotics compute platform delivering up to 1,000 INT8 TOPS (2,000 FP4 TFLOPS) with ASIL-D functional safety. DRIVE AGX Thor developer kits shipped from September 2025.",
-      "ja": "Blackwellアーキテクチャの車載・ロボティクス向けコンピューティングプラットフォームで、ASIL-D機能安全とともに最大1,000 INT8 TOPS(2,000 FP4 TFLOPS)を実現する。DRIVE AGX Thorの開発者キットは2025年9月から出荷された。",
-      "zh": "基于Blackwell架构的汽车与机器人计算平台，提供最高1,000 INT8 TOPS(2,000 FP4 TFLOPS)，并具备ASIL-D功能安全。DRIVE AGX Thor开发者套件已于2025年9月起出货。",
-      "es": "Plataforma de computación para automoción y robótica con arquitectura Blackwell que ofrece hasta 1.000 INT8 TOPS (2.000 FP4 TFLOPS) con seguridad funcional ASIL-D. Los kits de desarrollo DRIVE AGX Thor se distribuyen desde septiembre de 2025.",
-      "he": "פלטפורמת מחשוב לרכב ולרובוטיקה בארכיטקטורת Blackwell המספקת עד 1,000 INT8 TOPS (2,000 FP4 TFLOPS) עם בטיחות תפקודית ASIL-D. ערכות הפיתוח של DRIVE AGX Thor נשלחות החל מספטמבר 2025.",
-      "ko": "Blackwell 아키텍처 기반의 자동차 및 로보틱스 컴퓨팅 플랫폼으로, ASIL-D 기능 안전과 함께 최대 1,000 INT8 TOPS(2,000 FP4 TFLOPS)를 제공한다. DRIVE AGX Thor 개발자 키트는 2025년 9월부터 출하되었다."
     },
     "Google||TPU v4": {
       "en": "Google's 4th-gen Cloud TPU: 275 TFLOPS BF16/INT8 per chip with 32GB HBM2 at 1.2TB/s, scaling to 4,096-chip pods (about 1.1 exaflops) over a reconfigurable 3D-torus optical interconnect.",

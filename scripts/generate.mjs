@@ -392,7 +392,7 @@ const seoDesc = lang => { const n=products.length; return ({
   he:`ספר נתונים אינטראקטיבי של ${n} מעבדי NPU ומאיצי הסקת AI, משבבי MCU ועד כרטיסי מרכזי נתונים. סינון, מיון והשוואה לפי TOPS, זיכרון, צריכה ומחיר.`,
 })[lang]; };
 const seoKw = lang => {
-  const base='NPU, AI accelerator, AI inference accelerator, edge AI, on-device AI, TinyML, TOPS, datacenter inference, LPU, Rebellions, FuriosaAI, DEEPX, Mobilint, Hailo, Coral, Jetson, TPU, Gaudi';
+  const base='NPU, AI accelerator, AI inference accelerator, edge AI, on-device AI, TinyML, TOPS, datacenter inference, LPU, Rebellions, FuriosaAI, DEEPX, Mobilint, Hailo, Coral, Ascend, TPU, Gaudi';
   const loc={ ko:'NPU 목록, NPU 비교, AI 가속기, NPU 종류, ', ja:'NPU 一覧, NPU 比較, AIアクセラレータ, ', zh:'NPU 列表, NPU 对比, AI 加速器, ', es:'lista de NPU, comparación de NPU, acelerador de IA, ', he:'רשימת NPU, השוואת NPU, מאיץ AI, ' }[lang]||'';
   return loc+base;
 };
