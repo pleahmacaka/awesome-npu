@@ -46,7 +46,7 @@
     "w_products": "제품",
     "w_vendors": "벤더",
     "w_countries": "개국",
-    "hint": "제품명 클릭 시 제조사 공식 페이지로 이동",
+    "hint": "제품명을 누르면 상세 사양과 공식 출처로 이동",
     "undisclosed": "미공개",
     "unknown": "미상",
     "integrated": "통합형",
@@ -71,7 +71,9 @@
     "a_close": "닫기",
     "arch": "아키텍처",
     "sort_asc": "오름차순",
-    "sort_desc": "내림차순"
+    "sort_desc": "내림차순",
+    "official_page": "공식 페이지 방문",
+    "back_catalog": "카탈로그로 돌아가기"
   },
   "en": {
     "_name": "English",
@@ -120,7 +122,7 @@
     "w_products": "products",
     "w_vendors": "vendors",
     "w_countries": "countries",
-    "hint": "Click a product to open the vendor's official page",
+    "hint": "Click a product for full specs and the official source",
     "undisclosed": "Undisclosed",
     "unknown": "Unknown",
     "integrated": "Integrated",
@@ -145,7 +147,9 @@
     "a_close": "Close",
     "arch": "Architectures",
     "sort_asc": "Ascending",
-    "sort_desc": "Descending"
+    "sort_desc": "Descending",
+    "official_page": "Visit the official page",
+    "back_catalog": "Back to the catalog"
   },
   "ja": {
     "_name": "日本語",
@@ -194,7 +198,7 @@
     "w_products": "製品",
     "w_vendors": "ベンダー",
     "w_countries": "カ国",
-    "hint": "製品名をクリックするとメーカー公式ページへ",
+    "hint": "製品名をクリックすると詳細仕様と公式ソースへ",
     "undisclosed": "非公開",
     "unknown": "不明",
     "integrated": "組み込み",
@@ -219,7 +223,9 @@
     "a_close": "閉じる",
     "arch": "アーキテクチャ",
     "sort_asc": "昇順",
-    "sort_desc": "降順"
+    "sort_desc": "降順",
+    "official_page": "公式ページを開く",
+    "back_catalog": "カタログに戻る"
   },
   "zh": {
     "_name": "中文",
@@ -268,7 +274,7 @@
     "w_products": "款产品",
     "w_vendors": "家厂商",
     "w_countries": "个国家",
-    "hint": "点击产品名进入厂商官方页面",
+    "hint": "点击产品名查看详细规格与官方来源",
     "undisclosed": "未公开",
     "unknown": "未知",
     "integrated": "集成型",
@@ -293,7 +299,9 @@
     "a_close": "关闭",
     "arch": "架构",
     "sort_asc": "升序",
-    "sort_desc": "降序"
+    "sort_desc": "降序",
+    "official_page": "访问官方页面",
+    "back_catalog": "返回目录"
   },
   "es": {
     "_name": "Español",
@@ -342,7 +350,7 @@
     "w_products": "productos",
     "w_vendors": "fabricantes",
     "w_countries": "países",
-    "hint": "Haz clic en un producto para abrir su página oficial",
+    "hint": "Haz clic en un producto para ver las especificaciones y la fuente oficial",
     "undisclosed": "No revelado",
     "unknown": "Desconocido",
     "integrated": "Integrado",
@@ -367,7 +375,9 @@
     "a_close": "Cerrar",
     "arch": "Arquitecturas",
     "sort_asc": "Ascendente",
-    "sort_desc": "Descendente"
+    "sort_desc": "Descendente",
+    "official_page": "Visitar la página oficial",
+    "back_catalog": "Volver al catálogo"
   },
   "he": {
     "_name": "עברית",
@@ -416,7 +426,7 @@
     "w_products": "מוצרים",
     "w_vendors": "יצרנים",
     "w_countries": "מדינות",
-    "hint": "לחצו על מוצר כדי לפתוח את עמוד היצרן הרשמי",
+    "hint": "לחצו על מוצר לצפייה במפרט המלא ובמקור הרשמי",
     "undisclosed": "לא ידוע",
     "unknown": "לא ידוע",
     "integrated": "משולב",
@@ -441,6 +451,8 @@
     "a_close": "סגירה",
     "arch": "ארכיטקטורות",
     "sort_asc": "עולה",
-    "sort_desc": "יורד"
+    "sort_desc": "יורד",
+    "official_page": "מעבר לעמוד הרשמי",
+    "back_catalog": "חזרה לקטלוג"
   }
 }

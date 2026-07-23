@@ -167,9 +167,10 @@ table.db tbody tr{transition:background .1s}
 table.db tbody tr:hover{background:var(--wash)}
 td.idx{font-size:11px;color:var(--ink-3);width:1%;padding-inline-end:0}
 td.prod{white-space:normal;min-width:210px}
-.pn{display:inline-flex;align-items:baseline;gap:6px;font-weight:650;letter-spacing:-.01em;font-size:14.5px}
-.pn svg{width:11px;height:11px;color:var(--ink-3);align-self:center;opacity:0;transition:.12s}
-.pn:hover{color:var(--spot)} .pn:hover svg{opacity:1;color:var(--spot)}
+.pn{font-weight:650;letter-spacing:-.01em;font-size:14.5px;transition:color .12s}
+.pn:hover{color:var(--spot)}
+.vn{color:inherit;transition:color .12s}.vn:hover{color:var(--spot)}
+td.muted .vn{color:var(--ink-2)}td.muted .vn:hover{color:var(--spot)}
 .pchip{font-size:11px;color:var(--ink-3);margin-top:3px}
 td.arch{font-size:12px;color:var(--ink-2);white-space:nowrap}
 /* interactive column headers */
@@ -207,7 +208,7 @@ td.r{text-align:end}
   border-block-start:1px solid var(--rule);border-inline-start:1px solid var(--rule);padding-bottom:64px}
 .entry{border-inline-end:1px solid var(--rule);border-block-end:1px solid var(--rule);padding:22px 22px 24px;display:flex;flex-direction:column}
 .e-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:9px}
-.e-vendor{font-size:12.5px;color:var(--ink-2)}
+.e-vendor{font-size:12.5px;color:var(--ink-2);transition:color .12s}.e-vendor:hover{color:var(--spot)}
 .e-name{display:inline-flex;align-items:baseline;gap:7px;font-size:1.34rem;font-weight:750;letter-spacing:-.025em;line-height:1.12}
 .e-name svg{width:12px;height:12px;color:var(--ink-3);align-self:center;opacity:0;transition:.12s}
 .e-name:hover{color:var(--spot)} .e-name:hover svg{opacity:1;color:var(--spot)}
@@ -335,8 +336,8 @@ table.cmp th,table.cmp td{text-align:start;vertical-align:top;padding:12px 16px;
 table.cmp thead th{position:sticky;top:0;background:var(--paper);border-bottom:1.5px solid var(--rule-3);z-index:1}
 table.cmp .rl{color:var(--ink-3);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;
   white-space:normal;position:sticky;inset-inline-start:0;background:var(--paper);width:138px}
-table.cmp .pname{font-weight:750;font-size:1.02rem;letter-spacing:-.02em;display:inline-flex;align-items:baseline;gap:6px}
-table.cmp .pname svg{width:11px;height:11px;color:var(--ink-3);align-self:center}
+table.cmp .pname{font-weight:750;font-size:1.02rem;letter-spacing:-.02em;transition:color .12s}
+table.cmp .pname:hover{color:var(--spot)}
 table.cmp .pv{font-size:11.5px;color:var(--ink-3);margin-top:3px}
 table.cmp .dim{color:var(--ink-3)}
 
@@ -501,7 +502,6 @@ table.cmp .dim{color:var(--ink-3)}
   const regionOf = code => { try{ return (regionDN && regionDN.of(code)) || code; }catch(e){ return code; } };
   const segLabel = s => L["seg_"+s] || s;
 
-  const EXT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>';
   const SUN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
   const MOON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>';
 
@@ -592,8 +592,8 @@ table.cmp .dim{color:var(--ink-3)}
     return `<tr data-id="${esc(p.id)}"${cls?` class="${cls}"`:""}${st}>
       <td class="sel"><input type="checkbox" class="rowchk" data-id="${esc(p.id)}" aria-label="${esc(p.product)}"${picked?" checked":""}></td>
       <td class="idx">${String(i+1).padStart(2,"0")}</td>
-      <td class="prod"><a class="pn" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a>${p.chip?`<div class="pchip">${esc(p.chip)}</div>`:""}</td>
-      <td class="muted">${esc(p.vendor)}</td>
+      <td class="prod"><a class="pn" href="${esc(p.page)}">${esc(p.product)}</a>${p.chip?`<div class="pchip">${esc(p.chip)}</div>`:""}</td>
+      <td class="muted"><a class="vn" href="${esc(p.vpage)}">${esc(p.vendor)}</a></td>
       <td>${cc(p)}</td>
       <td><span class="seg">${esc(segLabel(p.segment))}</span></td>
       <td class="arch">${p.arch&&p.arch.length?esc(p.arch.join(" · ")):'<span class="muted">-</span>'}</td>
@@ -632,8 +632,8 @@ table.cmp .dim{color:var(--ink-3)}
     const st=animate?` style="--i:${Math.min(i,14)}"`:"";
     const sub=[p.chip, segLabel(p.segment), p.form, (p.standalone?null:L.integrated), relOf(p)].filter(Boolean).map(esc).join(" / ");
     return `<article class="${cls}"${st}>
-      <div class="e-top"><span class="e-vendor">${esc(p.vendor)}</span><span class="e-topr">${cc(p)}<label class="e-chk"><input type="checkbox" class="rowchk" data-id="${esc(p.id)}" aria-label="${esc(p.product)}"${picked?" checked":""}></label></span></div>
-      <a class="e-name" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a>
+      <div class="e-top"><a class="e-vendor" href="${esc(p.vpage)}">${esc(p.vendor)}</a><span class="e-topr">${cc(p)}<label class="e-chk"><input type="checkbox" class="rowchk" data-id="${esc(p.id)}" aria-label="${esc(p.product)}"${picked?" checked":""}></label></span></div>
+      <a class="e-name" href="${esc(p.page)}">${esc(p.product)}</a>
       <div class="e-sub">${sub}${w?" "+w:""}</div>
       <div class="e-figs">
         <div><i>${esc(L.col_perf)}</i><b class="perf ${m.dim?'dim':''}">${esc(m.num)}${m.unit?`<span class="u">${esc(m.unit)}</span>`:""}</b></div>
@@ -658,7 +658,7 @@ table.cmp .dim{color:var(--ink-3)}
         const perf=p.computeDisplay||"-";
         const w=warnBtn(p);
         const spec=[p.country,p.form,perf,priceOf(p)].filter(Boolean).map(esc).join(" / ");
-        return `<a class="chip-item" href="${esc(p.url)}" target="_blank" rel="noopener"><span class="ci-name"><b>${esc(p.product)}</b>${w?" "+w:""}<span class="ci-vd">${esc(p.vendor)}</span></span><span class="ci-spec">${spec}</span></a>`;
+        return `<a class="chip-item" href="${esc(p.page)}"><span class="ci-name"><b>${esc(p.product)}</b>${w?" "+w:""}<span class="ci-vd">${esc(p.vendor)}</span></span><span class="ci-spec">${spec}</span></a>`;
       }).join("");
       const cls=["chipgrp", animate?"ri":""].filter(Boolean).join(" ");
       const st=animate?` style="--i:${Math.min(gi,14)}"`:"";
@@ -779,7 +779,7 @@ table.cmp .dim{color:var(--ink-3)}
     ];
     const labels=[], seen=new Set();
     items.forEach(p=>specsOf(p).forEach(([k])=>{ if(!seen.has(k)){seen.add(k);labels.push(k);} }));
-    const head=`<thead><tr><th class="rl"></th>${items.map(p=>`<th><a class="pname" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a><div class="pv">${esc(p.vendor)}</div></th>`).join("")}</tr></thead>`;
+    const head=`<thead><tr><th class="rl"></th>${items.map(p=>`<th><a class="pname" href="${esc(p.page)}">${esc(p.product)}</a><div class="pv"><a class="vn" href="${esc(p.vpage)}">${esc(p.vendor)}</a></div></th>`).join("")}</tr></thead>`;
     let body="";
     rowsDef.forEach(([k,fn])=>{ body+=`<tr><td class="rl">${esc(L[k])}</td>${items.map(p=>`<td>${fn(p)}</td>`).join("")}</tr>`; });
     labels.forEach(lab=>{ body+=`<tr><td class="rl">${esc(lab)}</td>${items.map(p=>{ const m=specsOf(p).find(x=>x[0]===lab); return `<td>${m?esc(m[1]):'<span class="dim">-</span>'}</td>`; }).join("")}</tr>`; });
