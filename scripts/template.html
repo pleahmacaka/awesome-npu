@@ -171,7 +171,31 @@ td.prod{white-space:normal;min-width:210px}
 .pn svg{width:11px;height:11px;color:var(--ink-3);align-self:center;opacity:0;transition:.12s}
 .pn:hover{color:var(--spot)} .pn:hover svg{opacity:1;color:var(--spot)}
 .pchip{font-size:11px;color:var(--ink-3);margin-top:3px}
-.parch{font-size:10.5px;color:var(--ink-3);margin-top:3px;letter-spacing:.02em}
+td.arch{font-size:12px;color:var(--ink-2);white-space:nowrap}
+/* interactive column headers */
+th.thx{cursor:pointer;user-select:none}
+th.thx .thl{border-bottom:1px dotted transparent;padding-bottom:1px}
+th.thx:hover{color:var(--ink)}
+th.thx:hover .thl{border-bottom-color:var(--rule-3)}
+.thc{width:10px;height:10px;vertical-align:middle;margin-inline-start:4px;opacity:.5}
+th.thx.active,th.thx.active .thl{color:var(--spot)}
+th.thx.active .thc{opacity:1}
+th.thx.r .thc{margin-inline:4px 0}
+/* column menu popover */
+.colmenu{position:fixed;z-index:210;background:var(--paper-2);border:1px solid var(--rule-3);min-width:158px;max-height:342px;
+  overflow:auto;box-shadow:0 8px 30px rgba(0,0,0,.28);padding:5px;text-transform:none;letter-spacing:normal}
+.cm-sec{display:flex;flex-direction:column;gap:1px;padding:3px}
+.cm-sec.cm-filter{border-top:1px solid var(--rule);max-height:214px;overflow:auto}
+.cm-b{display:flex;align-items:center;gap:8px;padding:7px 8px;font-size:12.5px;color:var(--ink-2);text-align:start;width:100%}
+.cm-b svg{width:12px;height:12px;flex:none}
+.cm-b:hover{background:var(--wash);color:var(--ink)}
+.cm-b.on{color:var(--spot)}
+.cm-chk{display:flex;align-items:center;gap:8px;padding:6px 8px;font-size:12.5px;color:var(--ink-2);cursor:pointer;white-space:nowrap}
+.cm-chk:hover{background:var(--wash);color:var(--ink)}
+.cm-chk input{accent-color:var(--spot);width:14px;height:14px;margin:0;flex:none}
+.cm-foot{border-top:1px solid var(--rule);padding:3px;display:flex;justify-content:flex-end}
+.cm-clear{font-size:12px;color:var(--ink-3);padding:5px 8px}
+.cm-clear:hover{color:var(--spot)}
 td .num{letter-spacing:-.01em}
 td.r{text-align:end}
 .muted{color:var(--ink-3)}
@@ -270,9 +294,9 @@ body.cmp-pad{padding-bottom:62px}
 .e-figs>div{flex:none}
 
 /* slide-in: content gently enters from the right */
-@keyframes slin{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
-@keyframes slinR{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:none}}
-.ri{animation:slin .46s cubic-bezier(.22,.61,.36,1) both;animation-delay:calc(var(--i,0)*22ms)}
+@keyframes slin{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+@keyframes slinR{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
+.ri{animation:slin .5s cubic-bezier(.22,.61,.36,1) both;animation-delay:calc(var(--i,0)*24ms)}
 [dir="rtl"] .ri{animation-name:slinR}
 .reveal{opacity:0;transform:translateX(24px)}
 [dir="rtl"] .reveal{transform:translateX(-24px)}
@@ -305,11 +329,12 @@ body.cmp-pad{padding-bottom:62px}
 .cmpx:hover{color:var(--ink)}
 .cmpx svg{width:18px;height:18px}
 .cmpscroll{overflow:auto;padding:0 clamp(16px,4vw,44px) 34px}
-table.cmp{border-collapse:collapse;font-size:13px}
-table.cmp th,table.cmp td{text-align:start;vertical-align:top;padding:12px 16px;border-bottom:1px solid var(--rule);white-space:normal;min-width:160px}
+table.cmp{border-collapse:collapse;font-size:13px;table-layout:fixed}
+table.cmp th,table.cmp td{text-align:start;vertical-align:top;padding:12px 16px;border-bottom:1px solid var(--rule);
+  white-space:normal;width:210px;overflow-wrap:break-word}
 table.cmp thead th{position:sticky;top:0;background:var(--paper);border-bottom:1.5px solid var(--rule-3);z-index:1}
 table.cmp .rl{color:var(--ink-3);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;
-  white-space:nowrap;position:sticky;inset-inline-start:0;background:var(--paper);min-width:0}
+  white-space:normal;position:sticky;inset-inline-start:0;background:var(--paper);width:138px}
 table.cmp .pname{font-weight:750;font-size:1.02rem;letter-spacing:-.02em;display:inline-flex;align-items:baseline;gap:6px}
 table.cmp .pname svg{width:11px;height:11px;color:var(--ink-3);align-self:center}
 table.cmp .pv{font-size:11.5px;color:var(--ink-3);margin-top:3px}
@@ -551,7 +576,10 @@ table.cmp .dim{color:var(--ink-3)}
     else if(s==="price-desc")a.sort((x,y)=>(y.priceUSD??-1)-(x.priceUSD??-1));
     else if(s==="date-desc")a.sort((x,y)=>(y.releaseDate||"").localeCompare(x.releaseDate||""));
     else if(s==="date-asc")a.sort((x,y)=>{if(!x.releaseDate)return 1;if(!y.releaseDate)return -1;return x.releaseDate.localeCompare(y.releaseDate);});
-    else if(s==="vendor")a.sort((x,y)=>x.vendor.localeCompare(y.vendor));
+    else if(s==="vendor"||s==="vendor-asc")a.sort((x,y)=>x.vendor.localeCompare(y.vendor)||x.product.localeCompare(y.product));
+    else if(s==="vendor-desc")a.sort((x,y)=>y.vendor.localeCompare(x.vendor)||x.product.localeCompare(y.product));
+    else if(s==="name-asc")a.sort((x,y)=>x.product.localeCompare(y.product));
+    else if(s==="name-desc")a.sort((x,y)=>y.product.localeCompare(x.product));
     return a;
   }
 
@@ -564,10 +592,11 @@ table.cmp .dim{color:var(--ink-3)}
     return `<tr data-id="${esc(p.id)}"${cls?` class="${cls}"`:""}${st}>
       <td class="sel"><input type="checkbox" class="rowchk" data-id="${esc(p.id)}" aria-label="${esc(p.product)}"${picked?" checked":""}></td>
       <td class="idx">${String(i+1).padStart(2,"0")}</td>
-      <td class="prod"><a class="pn" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a>${p.chip?`<div class="pchip">${esc(p.chip)}</div>`:""}${p.arch&&p.arch.length?`<div class="parch">${p.arch.map(esc).join(" · ")}</div>`:""}</td>
+      <td class="prod"><a class="pn" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.product)}${EXT}</a>${p.chip?`<div class="pchip">${esc(p.chip)}</div>`:""}</td>
       <td class="muted">${esc(p.vendor)}</td>
       <td>${cc(p)}</td>
       <td><span class="seg">${esc(segLabel(p.segment))}</span></td>
+      <td class="arch">${p.arch&&p.arch.length?esc(p.arch.join(" · ")):'<span class="muted">-</span>'}</td>
       <td>${esc(p.form)}${w?" "+w:""}</td>
       <td class="r"><span class="num">${esc(perf)}</span></td>
       <td class="muted">${esc(p.memory||"-")}</td>
@@ -576,8 +605,19 @@ table.cmp .dim{color:var(--ink-3)}
       <td class="r"><span class="num ${p.releaseDate?'':'muted'}">${esc(relOf(p))}</span></td>
     </tr>`;
   }
-  function buildThead(){ const th=(k,r)=>`<th scope="col"${r?' class="r"':''}>${esc(L[k])}</th>`;
-    return `<thead><tr><th class="sel"><input type="checkbox" class="selall" aria-label="${esc(L.a_selectall)}"></th><th scope="col"><span class="sr">#</span></th>${th('col_product')}${th('col_vendor')}${th('col_country')}${th('col_class')}${th('col_form')}${th('col_perf',1)}${th('col_memory')}${th('col_power')}${th('col_price',1)}${th('col_release',1)}</tr></thead>`; }
+  function buildThead(){
+    const hc=(col,k,o)=>{ o=o||{}; const inter=o.sort||o.filter;
+      const fset={vendor:state.vendor,country:state.country,class:state.segment,arch:state.arch,form:state.form}[col];
+      const sk={product:'name',vendor:'vendor',perf:'tops',price:'price',release:'date'}[col];
+      const active=(o.filter&&fset&&fset.size>0)||(o.sort&&sk&&(state.sort===sk+'-asc'||state.sort===sk+'-desc'||(sk==='vendor'&&state.sort==='vendor')));
+      const cls=[o.r?'r':'',inter?'thx':'',active?'active':''].filter(Boolean).join(' ');
+      const caret=inter?'<svg class="thc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>':'';
+      return `<th scope="col" data-col="${col}"${cls?` class="${cls}"`:''}><span class="thl">${esc(L[k])}</span>${caret}</th>`; };
+    return `<thead><tr><th class="sel"><input type="checkbox" class="selall" aria-label="${esc(L.a_selectall)}"></th><th scope="col"><span class="sr">#</span></th>`+
+      hc('product','col_product',{sort:1})+hc('vendor','col_vendor',{sort:1,filter:1})+hc('country','col_country',{filter:1})+
+      hc('class','col_class',{filter:1})+hc('arch','arch',{filter:1})+hc('form','col_form',{filter:1})+
+      hc('perf','col_perf',{r:1,sort:1})+hc('memory','col_memory',{})+hc('power','col_power',{})+
+      hc('price','col_price',{r:1,sort:1})+hc('release','col_release',{r:1,sort:1})+`</tr></thead>`; }
   function table(list){ return `<table class="db">${buildThead()}<tbody>${list.map(row).join("")}</tbody></table>`; }
 
   function entry(p,i){
@@ -671,6 +711,46 @@ table.cmp .dim{color:var(--ink-3)}
     if(el){ e.preventDefault(); e.stopPropagation(); showTip(el); }
     else if(tipFor && !(e.target.closest&&e.target.closest("[data-tip]"))) hideTip(); });
   addEventListener("scroll",()=>{ if(tipFor) hideTip(); }, true);
+
+  // ---- column header menu (click header -> sort / filter) ----
+  const SORTKEY={product:'name',vendor:'vendor',perf:'tops',price:'price',release:'date'};
+  const FILTERSET={vendor:()=>state.vendor,country:()=>state.country,class:()=>state.segment,arch:()=>state.arch,form:()=>state.form};
+  const FILTEROPTS={
+    vendor:()=>VENDORS.map(v=>({k:v,label:v})),
+    country:()=>[...new Set(products.map(p=>p.country))].sort().map(c=>({k:c,label:regionOf(c)})),
+    class:()=>SEGS.map(s=>({k:s,label:segLabel(s)})),
+    arch:()=>ARCHS.map(a=>({k:a,label:a})),
+    form:()=>FORMS.map(f=>({k:f,label:f})),
+  };
+  const CARETUP='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 15 6-6 6 6"/></svg>';
+  const CARETDN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>';
+  const colMenu=document.createElement("div"); colMenu.className="colmenu"; colMenu.hidden=true; document.body.appendChild(colMenu);
+  let menuCol=null;
+  function closeColMenu(){ colMenu.hidden=true; menuCol=null; }
+  function openColMenu(col, th){
+    menuCol=col; let html=""; const sk=SORTKEY[col];
+    if(sk){ const asc=sk+"-asc", desc=sk+"-desc";
+      html+=`<div class="cm-sec"><button class="cm-b${(state.sort===asc||(sk==='vendor'&&state.sort==='vendor'))?' on':''}" data-sort="${asc}">${CARETUP}<span>${esc(L.sort_asc)}</span></button>`+
+        `<button class="cm-b${state.sort===desc?' on':''}" data-sort="${desc}">${CARETDN}<span>${esc(L.sort_desc)}</span></button></div>`; }
+    if(FILTERSET[col]){ const set=FILTERSET[col](); const opts=FILTEROPTS[col]();
+      html+=`<div class="cm-sec cm-filter">`+opts.map(o=>`<label class="cm-chk"><input type="checkbox" data-fval="${esc(String(o.k))}"${set.has(o.k)?" checked":""}><span>${esc(o.label)}</span></label>`).join("")+`</div>`+
+        `<div class="cm-foot"><button class="cm-clear" data-clearcol>${esc(L.reset)}</button></div>`; }
+    colMenu.innerHTML=html; colMenu.hidden=false;
+    const r=th.getBoundingClientRect(); colMenu.style.left="0px"; colMenu.style.top="0px";
+    const mw=colMenu.offsetWidth, pad=8; let left=(L._dir==="rtl")?(r.right-mw):r.left;
+    left=Math.max(pad,Math.min(left,innerWidth-mw-pad)); colMenu.style.left=left+"px"; colMenu.style.top=(r.bottom+4)+"px";
+  }
+  colMenu.addEventListener("click", e=>{ e.stopPropagation();
+    const sb=e.target.closest("[data-sort]");
+    if(sb){ state.sort=sb.getAttribute("data-sort"); const sel=$("sortSel"); if([...sel.options].some(o=>o.value===state.sort)) sel.value=state.sort; closeColMenu(); render(); return; }
+    if(e.target.closest("[data-clearcol]")){ const s=FILTERSET[menuCol]&&FILTERSET[menuCol](); if(s){ s.clear(); buildFilters(); fcount(); render(); } closeColMenu(); } });
+  colMenu.addEventListener("change", e=>{ const cb=e.target.closest("[data-fval]"); if(!cb)return;
+    const s=FILTERSET[menuCol]&&FILTERSET[menuCol](); if(!s)return; const v=cb.getAttribute("data-fval");
+    cb.checked?s.add(v):s.delete(v); buildFilters(); fcount(); render(); });
+  document.addEventListener("click", e=>{ const th=e.target.closest&&e.target.closest("th.thx");
+    if(th){ e.stopPropagation(); const c=th.getAttribute("data-col"); (menuCol===c&&!colMenu.hidden)?closeColMenu():openColMenu(c,th); }
+    else if(!(e.target.closest&&e.target.closest(".colmenu"))) closeColMenu(); });
+  addEventListener("scroll",()=>{ if(!colMenu.hidden) closeColMenu(); }, true);
 
   // ---- compare / selection ----
   function updateCmp(){
@@ -785,7 +865,7 @@ table.cmp .dim{color:var(--ink-3)}
   $("cmpOpen").onclick=openCompare;
   $("cmpClose").onclick=closeCompare;
   $("cmpOv").onclick=closeCompare;
-  addEventListener("keydown",e=>{ if(e.key==="Escape"){ if($("cmpmodal").classList.contains("open"))closeCompare(); else if(tipFor)hideTip(); } });
+  addEventListener("keydown",e=>{ if(e.key==="Escape"){ if($("cmpmodal").classList.contains("open"))closeCompare(); else if(!colMenu.hidden)closeColMenu(); else if(tipFor)hideTip(); } });
 
   // ---- init ----
   if(DATA.repo){$("repoLink").href=DATA.repo;$("repoLink2").href=DATA.repo;}

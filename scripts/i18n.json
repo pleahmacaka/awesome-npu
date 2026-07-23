@@ -69,7 +69,9 @@
     "col_note": "비고",
     "a_selectall": "전체 선택",
     "a_close": "닫기",
-    "arch": "아키텍처"
+    "arch": "아키텍처",
+    "sort_asc": "오름차순",
+    "sort_desc": "내림차순"
   },
   "en": {
     "_name": "English",
@@ -141,7 +143,9 @@
     "col_note": "Notes",
     "a_selectall": "Select all",
     "a_close": "Close",
-    "arch": "Architectures"
+    "arch": "Architectures",
+    "sort_asc": "Ascending",
+    "sort_desc": "Descending"
   },
   "ja": {
     "_name": "日本語",
@@ -213,7 +217,9 @@
     "col_note": "備考",
     "a_selectall": "すべて選択",
     "a_close": "閉じる",
-    "arch": "アーキテクチャ"
+    "arch": "アーキテクチャ",
+    "sort_asc": "昇順",
+    "sort_desc": "降順"
   },
   "zh": {
     "_name": "中文",
@@ -285,7 +291,9 @@
     "col_note": "备注",
     "a_selectall": "全选",
     "a_close": "关闭",
-    "arch": "架构"
+    "arch": "架构",
+    "sort_asc": "升序",
+    "sort_desc": "降序"
   },
   "es": {
     "_name": "Español",
@@ -357,7 +365,9 @@
     "col_note": "Notas",
     "a_selectall": "Seleccionar todo",
     "a_close": "Cerrar",
-    "arch": "Arquitecturas"
+    "arch": "Arquitecturas",
+    "sort_asc": "Ascendente",
+    "sort_desc": "Descendente"
   },
   "he": {
     "_name": "עברית",
@@ -429,6 +439,8 @@
     "col_note": "הערות",
     "a_selectall": "בחר הכול",
     "a_close": "סגירה",
-    "arch": "ארכיטקטורות"
+    "arch": "ארכיטקטורות",
+    "sort_asc": "עולה",
+    "sort_desc": "יורד"
   }
 }

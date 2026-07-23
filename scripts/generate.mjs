@@ -406,11 +406,13 @@ function ssrFor(lang){
     const intg=p.standalone?'':` <span class="intg" data-tip="${escHtml(T.warn_integrated)}" role="img" aria-label="${escHtml(T.warn_integrated)}" tabindex="0">⚠</span>`;
     const price=p.priceDisplay==null?T.undisclosed:p.priceDisplay;
     const rel=p.releaseDisplay||T.unknown;
+    const archTxt=p.arch&&p.arch.length?escHtml(p.arch.join(' · ')):'<span class="muted">-</span>';
     return `<tr data-id="${escHtml(p.id)}"><td class="sel"><input type="checkbox" class="rowchk" data-id="${escHtml(p.id)}" aria-label="${escHtml(p.product)}"></td>`+
       `<td class="idx">${String(i+1).padStart(2,'0')}</td>`+
-      `<td class="prod"><a class="pn" href="${escHtml(p.url)}" target="_blank" rel="noopener">${escHtml(p.product)}${EXT_SVG}</a>${p.chip?`<div class="pchip">${escHtml(p.chip)}</div>`:''}${p.arch&&p.arch.length?`<div class="parch">${p.arch.map(escHtml).join(' · ')}</div>`:''}</td>`+
+      `<td class="prod"><a class="pn" href="${escHtml(p.url)}" target="_blank" rel="noopener">${escHtml(p.product)}${EXT_SVG}</a>${p.chip?`<div class="pchip">${escHtml(p.chip)}</div>`:''}</td>`+
       `<td class="muted">${escHtml(p.vendor)}</td><td>${ccS(p)}</td>`+
       `<td><span class="seg">${escHtml(SEG_T[p.segment]||p.segment)}</span></td>`+
+      `<td class="arch">${archTxt}</td>`+
       `<td>${escHtml(p.form)}${intg}</td>`+
       `<td class="r"><span class="num">${escHtml(perf)}</span></td>`+
       `<td class="muted">${escHtml(p.memory||'-')}</td>`+
@@ -418,8 +420,14 @@ function ssrFor(lang){
       `<td class="r"><span class="num ${p.priceUSD!=null?'':'muted'}">${escHtml(price)}</span></td>`+
       `<td class="r"><span class="num ${p.releaseDate?'':'muted'}">${escHtml(rel)}</span></td></tr>`;
   };
-  const TH=(k,r)=>`<th scope="col"${r?' class="r"':''}>${escHtml(T[k])}</th>`;
-  const THEAD=`<thead><tr><th class="sel"><input type="checkbox" class="selall" aria-label="${escHtml(T.a_selectall)}"></th><th scope="col"><span class="sr">#</span></th>${TH('col_product')}${TH('col_vendor')}${TH('col_country')}${TH('col_class')}${TH('col_form')}${TH('col_perf',1)}${TH('col_memory')}${TH('col_power')}${TH('col_price',1)}${TH('col_release',1)}</tr></thead>`;
+  const headCell=(col,k,o)=>{ o=o||{}; const inter=o.sort||o.filter; const cls=[o.r?'r':'',inter?'thx':''].filter(Boolean).join(' ');
+    const caret=inter?'<svg class="thc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>':'';
+    return `<th scope="col" data-col="${col}"${cls?` class="${cls}"`:''}><span class="thl">${escHtml(T[k])}</span>${caret}</th>`; };
+  const THEAD=`<thead><tr><th class="sel"><input type="checkbox" class="selall" aria-label="${escHtml(T.a_selectall)}"></th><th scope="col"><span class="sr">#</span></th>`+
+    headCell('product','col_product',{sort:1})+headCell('vendor','col_vendor',{sort:1,filter:1})+headCell('country','col_country',{filter:1})+
+    headCell('class','col_class',{filter:1})+headCell('arch','arch',{filter:1})+headCell('form','col_form',{filter:1})+
+    headCell('perf','col_perf',{r:1,sort:1})+headCell('memory','col_memory',{})+headCell('power','col_power',{})+
+    headCell('price','col_price',{r:1,sort:1})+headCell('release','col_release',{r:1,sort:1})+`</tr></thead>`;
   return {
     table:`<table class="db">${THEAD}<tbody>${products.map(rowS).join('')}</tbody></table>`,
     count:`<b>${products.length}</b> ${escHtml(T.w_products)}`,
