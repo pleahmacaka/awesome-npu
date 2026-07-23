@@ -1,6 +1,6 @@
 # Awesome NPU [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-> 🌐 **Interactive web version (filter, search, compare, mobile-friendly):** https://pleahmacaka.github.io/awesome-npu/
+> 🌐 **Interactive web version (filter, search, compare, mobile-friendly):** <https://pleahmacaka.github.io/awesome-npu/>
 
 Commercial NPUs and AI inference accelerators, from MCU-class parts to datacenter cards.
 
@@ -30,164 +30,163 @@ Flags: 🇰🇷 Korea, 🇺🇸 USA, 🇳🇱 Netherlands, 🇨🇳 China, 🇳�
   - [Model zoos](#model-zoos)
 - [Learning resources](#learning-resources)
 - [Glossary](#glossary)
-- [Contributing](#contributing)
 
 ## Products
 
-| Vendor | Product | Country | Form Factor | Compute (TOPS) | Memory | Use Case | Released | Price |
-|--------|---------|:---:|-------------|:---:|--------|----------|:---:|-------|
-| Syntiant | [NDP120](https://www.syntiant.com/hardware) ⚠ | 🇺🇸 | SoC | - | on-chip | Always-on audio / sensor | 2021-09 | - |
-| BrainChip | [Akida (AKD1000)](https://brainchip.com/akida-generations/) ⚠ | 🇺🇸 | M.2 / PCIe | - | on-chip SRAM | Neuromorphic event-based | 2021-01 | - |
-| Rebellions | [ION](https://rebellions.ai/) | 🇰🇷 | PCIe | - | on-card | Finance inference | 2021-11 | - |
-| Rebellions | [ATOM](https://rebellions.ai/rebellions-product/atom/) | 🇰🇷 | PCIe | - | GDDR6 (on-card) | Datacenter inference | 2023-02 | - |
-| Rebellions | [ATOM Max](https://rebellions.ai/rebellions-product/atom-max/) | 🇰🇷 | PCIe | - | on-card | Datacenter inference | 2023-12 | - |
-| Rebellions | [REBEL / Rebel 100](https://rebellions.ai/rebellions-product/rebel/) | 🇰🇷 | Server/Rack | - | HBM3E (on-package) | LLM & multimodal | 2025-08 | - |
-| FuriosaAI | [WARBOY](https://www.furiosa.ai/warboy) | 🇰🇷 | PCIe | - | on-card | Vision inference | 2021-06 | - |
-| FuriosaAI | [RNGD](https://www.furiosa.ai/rngd) | 🇰🇷 | PCIe | - | HBM3 (48 GB) | LLM inference | 2024-08 | - |
-| DEEPX | [DX-H1](https://deepx.ai/products/dx-h1-v-npu/) | 🇰🇷 | Server/Rack | - | on-card | Multi-camera inference server | - | - |
-| DEEPX | [DX-M2](https://deepx.ai/) | 🇰🇷 | M.2 | - | on-module | Robotics / physical AI | - | - |
-| HyperAccel | [Orion](https://hyperaccel.ai/) | 🇰🇷 | Server/Rack | - | HBM / LPDDR | LLM inference (FPGA) | 2023-11 | - |
-| HyperAccel | [Bertha](https://hyperaccel.ai/) | 🇰🇷 | PCIe | - | LPDDR5X (on-card) | LLM inference (ASIC) | 2026-01 | ~₩5M (target) |
-| Telechips | [N-Dolphin](https://www.telechips.com/) ⚠ | 🇰🇷 | SoC | - | shared (host) | Automotive vision (ADAS) | 2023-12 | - |
-| Apple | [Neural Engine (A / M series)](https://www.apple.com/) ⚠ | 🇺🇸 | SoC | - | unified (shared) | Mobile / desktop on-device | 2017-09 | - |
-| MediaTek | [APU (NeuroPilot / Dimensity)](https://www.mediatek.com/) ⚠ | 🇯🇵 | SoC | - | shared (host) | Mobile on-device | 2018-01 | - |
-| Ambarella | [CV72S](https://www.ambarella.com/) ⚠ | 🇺🇸 | SoC | - | shared (host) | Camera / edge vision | 2023-01 | - |
-| NXP | [Ara-1 DNPU](https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/discrete-neural-processing-units:DNPU) | 🇳🇱 | M.2 | - | on-module | Camera / edge server | 2025-04 | - |
-| Nordic Semiconductor | [Axon NPU (nRF54LM20B)](https://www.nordicsemi.com/Products/Technologies/Edge-AI/Axon-NPU) ⚠ | 🇳🇴 | SoC | - | 512 KB RAM / 2 MB NVM | MCU-class TinyML | 2026-04 | - |
-| Qualcomm | [Hexagon NPU](https://www.qualcomm.com/products/technology/processors/hexagon) ⚠ | 🇺🇸 | SoC | - | shared (host) | Mobile / on-device | - | - |
-| Intel | [Movidius NCS (1st gen)](https://www.intel.com/content/www/us/en/developer/tools/neural-compute-stick/overview.html) | 🇺🇸 | USB | - | on-stick | Prototyping (Myriad 2) | 2017-07 | EOL |
-| Analog Devices | [MAX78002](https://www.analog.com/en/products/max78002.html) ⚠ | 🇺🇸 | SoC | - | on-chip | MCU-class TinyML / vision-audio CNN | 2022 | - |
-| Ambiq | [Apollo510](https://ambiq.com/product/apollo510/) ⚠ | 🇺🇸 | SoC | - | on-chip | MCU-class TinyML / wearables | 2024 | - |
-| Sony | [IMX500](https://www.aitrios.sony-semicon.com/edge-ai-devices/imx500) ⚠ | 🇯🇵 | sensor | - | on-chip | On-sensor intelligent vision AI | 2020 | - |
-| Himax | [WiseEye2 WE2 (HX6538)](https://www.himax.com.tw/products/wiseeye-ai-sensing/wiseeye2-ai-processor/) ⚠ | 🇹🇼 | SoC | - | on-chip | Always-on endpoint vision AI | 2023 | - |
-| Ambarella | [N1](https://www.ambarella.com/news/ambarella-brings-generative-ai-capabilities-to-edge-devices-introduces-n1-system-on-chip-series-for-on-premise-applications/) ⚠ | 🇺🇸 | SoC | - | external LPDDR5 | Edge generative AI / on-premise LLM | 2024 | - |
-| Silicon Labs | [xG26 (MG26/BG26)](https://www.silabs.com/wireless/efr32xg26) ⚠ | 🇺🇸 | SoC | - | on-chip | MCU-class TinyML / wireless IoT | 2024 | - |
-| NXP | [MCX N94x](https://www.nxp.com/products/MCX-N94-N54-N53-N52-N24) ⚠ | 🇳🇱 | SoC | - | shared (host) | AI-enabled microcontroller / IoT | 2023 | - |
-| BrainChip | [Akida AKD1500](https://brainchip.com/brainchip-unveils-breakthrough-akd1500-edge-ai-co-processor-at-embedded-world-north-america/) ⚠ | 🇺🇸 | SoC | - | on-chip SRAM | Ultra-low-power edge AI co-processor / wearables | 2025 | - |
-| Syntiant | [NDP250](https://www.syntiant.com/products/chips-and-hardware/ndp250/) ⚠ | 🇺🇸 | SoC | - | on-chip SRAM | Always-on speech / vision / sensor edge AI | 2024 | - |
-| Renesas | [RZ/V2L](https://www.renesas.com/en/products/rz-v2l) ⚠ | 🇯🇵 | SoC | - | shared (host) | Entry vision-AI MPU | 2021 | - |
-| Analog Devices | [MAX78000](https://www.analog.com/en/products/max78000.html) ⚠ | 🇺🇸 | SoC | - | on-chip SRAM | Battery-powered CNN inference / IoT | 2020 | - |
-| GreenWaves | [GAP9](https://greenwaves-technologies.com/gap9_processor/) ⚠ | 🇫🇷 | SoC | 0.05 | on-chip | MCU-class TinyML / hearables audio | 2022 | - |
-| Infineon | [PSOC Edge E84](https://www.infineon.com/products/microcontroller/32-bit-psoc-arm-cortex/32-bit-psoc-edge-arm/psoc-edge-e84) ⚠ | 🇩🇪 | SoC | 0.1 | on-chip | MCU-class ML / always-on | 2024 | - |
-| Alif Semiconductor | [Ensemble E7](https://alifsemi.com/ensemble-e7-series/) ⚠ | 🇺🇸 | SoC | 0.25 | on-chip | MCU-class TinyML fusion processor | 2022 | - |
-| NXP | [i.MX 93](https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/i-mx-applications-processors/i-mx-9-processors/i-mx-93-applications-processor-family-arm-cortex-a55-ml-acceleration-power-efficient-mpu:i.MX93) ⚠ | 🇳🇱 | SoC | 0.5 | shared (host) | Power-efficient edge ML | 2023 | - |
-| STMicroelectronics | [STM32N6](https://www.st.com/en/microcontrollers-microprocessors/stm32n6-series.html) ⚠ | 🇨🇭 | SoC | 0.6 | on-chip | MCU-class edge AI / vision | 2024 | - |
-| Rockchip | [RK3568 NPU](https://www.rock-chips.com/uploads/pdf/2022.8.26/192/RK3568%20Brief%20Datasheet.pdf) ⚠ | 🇨🇳 | SoC | 0.8 | shared (host) | Entry edge vision / SBC / NVR | 2021 | - |
-| Rockchip | [RK3562 NPU](https://www.cnx-software.com/2023/03/13/rockchip-showcases-rk3528-tv-box-soc-and-rk3562-tablet-soc/) ⚠ | 🇨🇳 | SoC | 1 | shared (host) | Entry tablet / IoT edge AI | 2023 | - |
-| Kneron | [KL720](https://www.kneron.com/page/soc/) ⚠ | 🇺🇸 | SoC | 1.4 | shared (host) | Edge AI vision / audio | 2020 | - |
-| NXP | [i.MX 95](https://www.nxp.com/products/i.MX95) ⚠ | 🇳🇱 | SoC | 2 | external LPDDR4/5 | Edge AI applications processor | 2024 | - |
-| Rockchip | [RV1126 NPU](https://www.rock-chips.com/uploads/pdf/2022.8.26/191/RV1126%20Brief%20Datasheet.pdf) ⚠ | 🇨🇳 | SoC | 2 | shared (host) | Smart IP camera / edge vision | 2021 | - |
-| Texas Instruments | [AM62A](https://www.ti.com/product/AM62A7) ⚠ | 🇺🇸 | SoC | 2 | shared (host) | Low-power edge AI camera / vision | 2023 | - |
-| NXP | [i.MX 8M Plus NPU](https://www.nxp.com/products/i.MX8MPLUS) ⚠ | 🇳🇱 | SoC | 2.3 | shared (host) | Industrial IoT | 2021-01 | - |
-| Rockchip | [RK1808](https://t.rock-chips.com/en/) ⚠ | 🇨🇳 | SoC / USB | 3 | shared (host) | Early edge NPU stick | 2019-01 | - |
-| Rockchip | [RK3399Pro NPU](https://www.prnewswire.com/news-releases/rockchip-released-its-first-ai-processor-rk3399pro----npu-performance-up-to-24tops-300578633.html) ⚠ | 🇨🇳 | SoC | 3.0 | shared (host) | Edge AI dev boards / vision | 2018 | - |
-| Kneron | [KL630](https://www.kneron.com/page/soc/) ⚠ | 🇺🇸 | SoC | 3.6 | shared (host) | Edge AI vision, INT4 / transformers | 2022 | - |
-| Google | [Coral USB Accelerator](https://coral.ai/products/accelerator/) | 🇺🇸 | USB | 4 | 8 MB SRAM (on-chip) | Edge (TFLite) | 2019-03 | $59.99 |
-| Google | [Coral M.2 / Mini PCIe (single)](https://coral.ai/products/m2-accelerator-ae/) | 🇺🇸 | M.2 / mPCIe | 4 | 8 MB SRAM (on-chip) | Edge (TFLite) | 2019-11 | $24.99 |
-| Google | [Coral Mini PCIe Accelerator](https://coral.ai/products/mini-pcie-accelerator/) | 🇺🇸 | mPCIe | 4 | 8 MB SRAM (on-chip) | Edge (TFLite) | 2020-01 | $24.99 |
-| Google | [Coral Dev Board](https://coral.ai/products/dev-board/) | 🇺🇸 | SoC (SBC) | 4 | 1–4 GB LPDDR4 | Dev board (Edge TPU + i.MX 8M) | 2020-01 | $129.99 |
-| Google | [Coral Dev Board Mini](https://coral.ai/products/dev-board-mini/) | 🇺🇸 | SoC (SBC) | 4 | 2 GB LPDDR3 | Dev board (Edge TPU + MT8167) | 2020-11 | $99.99 |
-| Google | [Coral SoM](https://coral.ai/products/som/) ⚠ | 🇺🇸 | SoM | 4 | 1 GB LPDDR4 | System-on-module (Edge TPU) | 2020-01 | $99.99 |
-| Google | [Coral Accelerator Module](https://coral.ai/products/accelerator-module/) ⚠ | 🇺🇸 | SMT module | 4 | 8 MB SRAM (on-chip) | Solder-down (Edge TPU) | 2020-11 | - |
-| Intel | [Neural Compute Stick 2](https://www.intel.com/content/www/us/en/developer/tools/neural-compute-stick/overview.html) | 🇺🇸 | USB | 4 | on-stick | Prototyping (OpenVINO) | 2018-11 | ~$70 (EOL) |
-| MediaTek | [Genio 1200](https://www.mediatek.com/products/iot/genio-iot/genio-1200) ⚠ | 🇯🇵 | SoC | 4.8 | shared (host) | Premium IoT / edge AI platform | 2022 | - |
-| MemryX | [MX3](https://memryx.com/products/) | 🇺🇸 | M.2 | 5 (TFLOPS) | on-chip SRAM | Vision / CNN | 2024-06 | ~$149 |
-| Rockchip | [RK3588 NPU](https://www.rock-chips.com/a/en/products/RK35_Series/2022/0926/1660.html) ⚠ | 🇨🇳 | SoC | 6 | shared (host) | General edge (SBC) | 2022-01 | $100+ (board) |
-| Rockchip | [RK3576 NPU](https://www.rock-chips.com/) ⚠ | 🇨🇳 | SoC | 6 | shared (host) | Mid-range edge (SBC) | 2024-05 | board |
-| Ambarella | [CV5](https://www.ambarella.com/news/ambarella-introduces-cv5-high-performance-ai-vision-processor-for-single-8k-and-multi-imager-ai-cameras/) ⚠ | 🇺🇸 | SoC | 6 | shared (host) | 8K AI camera / drone / automotive camera | 2021 | - |
-| DEEPX | [DX-L1 / DX-L2](https://deepx.ai/) ⚠ | 🇰🇷 | SoC | 6.4 | shared (host) | Smart appliances / sensors | - | - |
-| Hailo | [Hailo-15L](https://hailo.ai/products/ai-vision-processors/hailo-15-ai-vision-processor/) ⚠ | 🇮🇱 | SoC | 7 | shared (host) | Mainstream AI camera SoC | 2024 | - |
-| Google | [Coral M.2 Dual Edge TPU](https://coral.ai/products/m2-accelerator-dual-edgetpu/) | 🇺🇸 | M.2 | 8 | 8 MB SRAM x2 | Edge (TFLite) | 2020-01 | $39.99 |
-| Kneron | [KL530](https://www.kneron.com/en/product/ai_solution/) ⚠ | 🇺🇸 | SoC | 8 | on-chip | Entry on-device vision | 2022-05 | - |
-| Texas Instruments | [TDA4VM](https://www.ti.com/product/TDA4VM) ⚠ | 🇺🇸 | SoC | 8 | external LPDDR4 | Automotive/robotics vision | 2021 | - |
-| Mobilint | [REGULUS](https://www.mobilint.com/regulus) ⚠ | 🇰🇷 | SoC | 10 | ~8 GB LPDDR4X | Drones / AI cameras | 2025-01 | - |
-| Kneron | [KL830](https://www.kneron.com/page/soc/) ⚠ | 🇺🇸 | SoC | 10 | external LPDDR | Edge GPT / Transformer AI SoC | 2024 | - |
-| Intel | [Core Ultra NPU (AI Boost, Meteor Lake)](https://www.intel.com/content/www/us/en/products/sku/236847/intel-core-ultra-7-processor-155h-24m-cache-up-to-4-80-ghz/specifications.html) ⚠ | 🇺🇸 | SoC | 11 | shared (host) | AI PC / on-device client AI | 2023 | - |
-| Hailo | [Hailo-15M](https://hailo.ai/products/ai-vision-processors/hailo-15-ai-vision-processor/) ⚠ | 🇮🇱 | SoC | 11 | shared (host) | Mid-range AI camera SoC | 2023 | - |
-| Hailo | [Hailo-8L M.2](https://hailo.ai/products/ai-accelerators/hailo-8l-entry-level-ai-acceleration-module/) | 🇮🇱 | M.2 | 13 | on-chip | Entry edge vision (Pi AI Kit) | 2024-06 | ~$70 |
-| Renesas | [RZ/V2N](https://www.renesas.com/en/products/rz-v2n) ⚠ | 🇯🇵 | SoC | 15 | shared (host) | Mid-range vision AI (smart city / factory) | 2025 | - |
-| Blaize | [1600 SoC](https://www.blaize.com/products/) | 🇺🇸 | SoC / PCIe | 16 | up to 4 GB LPDDR4 | Edge vision / gateway | 2023-01 | - |
-| Sophgo | [BM1688](https://en.sophgo.com/sophon-u/product/introduce/bm1688.html) ⚠ | 🇨🇳 | SoC | 16 | shared (host) | Edge LLM/VLM and multi-stream vision | 2024 | - |
-| Gyrfalcon | [Lightspeeur 2803S Plai Plug](https://www.gyrfalcontech.com/) | 🇺🇸 | USB | 16.8 | on-chip | Edge (USB compute stick) | 2019-06 | $69.99 |
-| Huawei | [Ascend 310 (Atlas 200)](https://www.hiascend.com/) ⚠ | 🇨🇳 | SoC / module | 16 | LPDDR4X (on-module) | Edge inference | 2018-10 | - |
-| Axera | [AX650N](https://www.axera-tech.com/en/) ⚠ | 🇨🇳 | SoC | 18 | external LPDDR4X | Edge vision / Transformer inference | 2023 | - |
-| Hailo | [Hailo-15H](https://hailo.ai/products/ai-vision-processors/hailo-15h-ai-vision-processor/) ⚠ | 🇮🇱 | SoC | 20 | external LPDDR4 | AI vision processor for smart cameras | 2023 | - |
-| Kneron | [KL730](https://www.kneron.com/en/product/ai_solution/) ⚠ | 🇺🇸 | SoC | 25 | on-chip | On-device vision | 2023-08 | - |
-| DEEPX | [DX-M1](https://deepx.ai/products/dx-m1/) | 🇰🇷 | M.2 | 25 | 4 GB LPDDR5 (on-card) | Edge (industrial, RPi5) | 2025-09 | ~$100s |
-| DEEPX | [DX-M1M](https://deepx.ai/products/dx-m1m/) | 🇰🇷 | M.2 | 25 | on-module | On-device (low power) | 2025-12 | - |
-| Hailo | [Hailo-8 M.2](https://hailo.ai/products/ai-accelerators/hailo-8-m2-ai-acceleration-module/) | 🇮🇱 | M.2 | 26 | on-chip | Edge vision (RPi5) | 2021-01 | $120–150 |
-| Rockchip | [RK1820](https://www.rock-chips.com/) ⚠ | 🇨🇳 | SoC | 30 | stacked DRAM | Local LLM / vision | 2025-11 | - |
-| Sophgo | [SG2300X (BM1684X)](https://en.sophgo.com/) ⚠ | 🇨🇳 | SoC | 32 | external LPDDR4X | Edge AI box / on-device LLM | 2023 | - |
-| NVIDIA | [Jetson AGX Xavier](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/) | 🇺🇸 | module | 32 | 16-32 GB LPDDR4x | Autonomous machines / robotics | 2018 | - |
-| NXP | [Ara240 DNPU](https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/discrete-neural-processing-units:DNPU) | 🇳🇱 | M.2 | 40 | 16 GB (on-module) | GenAI / LLM & VLM | 2026-06 | - |
-| Hailo | [Hailo-10H M.2](https://hailo.ai/products/ai-accelerators/hailo-10h-m2-generative-ai-acceleration-module/) | 🇮🇱 | M.2 | 40 | LPDDR4 (on-module) | Generative AI on edge | 2025-01 | - |
-| SiMa.ai | [MLSoC](https://sima.ai/products/) | 🇺🇸 | M.2 / module | 50 | LPDDR4 (on-module) | Automotive / robotics | 2023-05 | - |
-| SiMa.ai | [Modalix](https://sima.ai/mlsoc-family/) | 🇺🇸 | SoM | 50 | on-module LPDDR | Multimodal and generative AI at the edge | 2025 | - |
-| Black Sesame Technologies | [Huashan A1000](https://www.bst.ai/) ⚠ | 🇨🇳 | SoC | 58 | external LPDDR4 | Automotive ADAS SoC | 2020 | - |
-| EdgeCortix | [SAKURA-II](https://www.edgecortix.com/en/products/sakura) | 🇯🇵 | M.2 | 60 | up to 16 GB LPDDR4X | Edge generative-AI co-processor | 2024-05 | - |
-| NVIDIA | [Jetson Orin Nano Super](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/) | 🇺🇸 | SoM | 67 | 8 GB LPDDR5 (unified) | Entry edge AI dev kit | 2024-12 | $249 |
-| Mobilint | [MLA100 PCIe Card](https://www.mobilint.com/aries/mla100) | 🇰🇷 | PCIe | 80 | 16 / 32 GB LPDDR4X | Edge / AI workstation | 2024-01 | - |
-| Mobilint | [MLA100 MXM](https://www.mobilint.com/aries) | 🇰🇷 | MXM | 80 | LPDDR4X (on-module) | Embedded robotics | 2025-04 | - |
-| Mobilint | [MLX-A1 Edge AI Box](https://www.mobilint.com/aries/mlx-a1) | 🇰🇷 | Box | 80 | LPDDR4X (on-board) | All-in-one edge box | 2025-06 | - |
-| Qualcomm | [Snapdragon X2 Elite NPU](https://www.qualcomm.com/products/mobile/snapdragon/pcs-and-tablets) ⚠ | 🇺🇸 | SoC | 80 | unified LPDDR5x | PC / on-device | 2025-09 | - |
-| Renesas | [RZ/V2H](https://www.renesas.com/en/products/rz-v2h) ⚠ | 🇯🇵 | SoC | 80 | external LPDDR4/5 | Vision-AI MPU / robotics | 2024 | - |
-| NVIDIA | [Jetson Orin NX 16GB](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/) | 🇺🇸 | module | 100 | 16 GB LPDDR5 | Robotics / edge AI module | 2023 | - |
-| Axelera AI | [Metis M.2](https://axelera.ai/ai-accelerators) | 🇳🇱 | M.2 | 214 | 1 GB (on-card) | Vision / local LLM | 2023-11 | ~$199 |
-| NVIDIA | [Jetson AGX Orin 64GB](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/) | 🇺🇸 | SoM | 275 | 64 GB LPDDR5 (unified) | Edge AI / robotics module | 2022 | - |
-| Mobilint | [MLA400 PCIe Card](https://www.mobilint.com/aries/mla400) | 🇰🇷 | PCIe | ~320 | LPDDR4X (on-card) | On-prem multi-LLM / vision | 2026-01 | - |
-| Horizon Robotics | [Journey 6P (J6)](https://en.horizon.auto/) ⚠ | 🇨🇳 | SoC | 560 | external LPDDR | Automotive ADAS / autonomous driving | 2024 | - |
-| Axelera AI | [Europa](https://axelera.ai/) | 🇳🇱 | PCIe | 629 | on-card | Datacenter-class edge | 2026 | - |
-| Axelera AI | [Metis PCIe (4-core)](https://axelera.ai/ai-accelerators) | 🇳🇱 | PCIe | 856 | up to 8 GB (on-card) | Multi-stream edge server | 2026-01 | - |
-| NVIDIA | [DRIVE AGX Thor](https://www.nvidia.com/en-us/solutions/autonomous-vehicles/in-vehicle-computing/) | 🇺🇸 | module | 1000 | 64 GB LPDDR5X | Autonomous driving / robotics central compute | 2025 | - |
+| Vendor                    | Product                                                                                                                                                                                                                                 | Country | Form Factor  | Compute (TOPS) | Memory                 | Use Case                                         | Released | Price          |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------------ | -------------- | ---------------------- | ------------------------------------------------ | -------- | -------------- |
+| Syntiant                  | [NDP120](https://www.syntiant.com/hardware) ⚠                                                                                                                                                                                           | 🇺🇸    | SoC          | -              | on-chip                | Always-on audio / sensor                         | 2021-09  | -              |
+| BrainChip                 | [Akida (AKD1000)](https://brainchip.com/akida-generations/) ⚠                                                                                                                                                                           | 🇺🇸    | M.2 / PCIe   | -              | on-chip SRAM           | Neuromorphic event-based                         | 2021-01  | -              |
+| Rebellions                | [ION](https://rebellions.ai/)                                                                                                                                                                                                           | 🇰🇷    | PCIe         | -              | on-card                | Finance inference                                | 2021-11  | -              |
+| Rebellions                | [ATOM](https://rebellions.ai/rebellions-product/atom/)                                                                                                                                                                                  | 🇰🇷    | PCIe         | -              | GDDR6 (on-card)        | Datacenter inference                             | 2023-02  | -              |
+| Rebellions                | [ATOM Max](https://rebellions.ai/rebellions-product/atom-max/)                                                                                                                                                                          | 🇰🇷    | PCIe         | -              | on-card                | Datacenter inference                             | 2023-12  | -              |
+| Rebellions                | [REBEL / Rebel 100](https://rebellions.ai/rebellions-product/rebel/)                                                                                                                                                                    | 🇰🇷    | Server/Rack  | -              | HBM3E (on-package)     | LLM & multimodal                                 | 2025-08  | -              |
+| FuriosaAI                 | [WARBOY](https://www.furiosa.ai/warboy)                                                                                                                                                                                                 | 🇰🇷    | PCIe         | -              | on-card                | Vision inference                                 | 2021-06  | -              |
+| FuriosaAI                 | [RNGD](https://www.furiosa.ai/rngd)                                                                                                                                                                                                     | 🇰🇷    | PCIe         | -              | HBM3 (48 GB)           | LLM inference                                    | 2024-08  | -              |
+| DEEPX                     | [DX-H1](https://deepx.ai/products/dx-h1-v-npu/)                                                                                                                                                                                         | 🇰🇷    | Server/Rack  | -              | on-card                | Multi-camera inference server                    | -        | -              |
+| DEEPX                     | [DX-M2](https://deepx.ai/)                                                                                                                                                                                                              | 🇰🇷    | M.2          | -              | on-module              | Robotics / physical AI                           | -        | -              |
+| HyperAccel                | [Orion](https://hyperaccel.ai/)                                                                                                                                                                                                         | 🇰🇷    | Server/Rack  | -              | HBM / LPDDR            | LLM inference (FPGA)                             | 2023-11  | -              |
+| HyperAccel                | [Bertha](https://hyperaccel.ai/#bertha)                                                                                                                                                                                                 | 🇰🇷    | PCIe         | -              | LPDDR5X (on-card)      | LLM inference (ASIC)                             | 2026-01  | \~₩5M (target) |
+| Telechips                 | [N-Dolphin](https://www.telechips.com/) ⚠                                                                                                                                                                                               | 🇰🇷    | SoC          | -              | shared (host)          | Automotive vision (ADAS)                         | 2023-12  | -              |
+| Apple                     | [Neural Engine (A / M series)](https://www.apple.com/) ⚠                                                                                                                                                                                | 🇺🇸    | SoC          | -              | unified (shared)       | Mobile / desktop on-device                       | 2017-09  | -              |
+| MediaTek                  | [APU (NeuroPilot / Dimensity)](https://www.mediatek.com/) ⚠                                                                                                                                                                             | 🇯🇵    | SoC          | -              | shared (host)          | Mobile on-device                                 | 2018-01  | -              |
+| Ambarella                 | [CV72S](https://www.ambarella.com/) ⚠                                                                                                                                                                                                   | 🇺🇸    | SoC          | -              | shared (host)          | Camera / edge vision                             | 2023-01  | -              |
+| NXP                       | [Ara-1 DNPU](https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/discrete-neural-processing-units:DNPU)                                                                                                         | 🇳🇱    | M.2          | -              | on-module              | Camera / edge server                             | 2025-04  | -              |
+| Nordic Semiconductor      | [Axon NPU (nRF54LM20B)](https://www.nordicsemi.com/Products/Technologies/Edge-AI/Axon-NPU) ⚠                                                                                                                                            | 🇳🇴    | SoC          | -              | 512 KB RAM / 2 MB NVM  | MCU-class TinyML                                 | 2026-04  | -              |
+| Qualcomm                  | [Hexagon NPU](https://www.qualcomm.com/products/technology/processors/hexagon) ⚠                                                                                                                                                        | 🇺🇸    | SoC          | -              | shared (host)          | Mobile / on-device                               | -        | -              |
+| Intel                     | [Movidius NCS (1st gen)](https://www.intel.com/content/www/us/en/developer/tools/neural-compute-stick/overview.html)                                                                                                                    | 🇺🇸    | USB          | -              | on-stick               | Prototyping (Myriad 2)                           | 2017-07  | EOL            |
+| Analog Devices            | [MAX78002](https://www.analog.com/en/products/max78002.html) ⚠                                                                                                                                                                          | 🇺🇸    | SoC          | -              | on-chip                | MCU-class TinyML / vision-audio CNN              | 2022     | -              |
+| Ambiq                     | [Apollo510](https://ambiq.com/product/apollo510/) ⚠                                                                                                                                                                                     | 🇺🇸    | SoC          | -              | on-chip                | MCU-class TinyML / wearables                     | 2024     | -              |
+| Sony                      | [IMX500](https://www.aitrios.sony-semicon.com/edge-ai-devices/imx500) ⚠                                                                                                                                                                 | 🇯🇵    | sensor       | -              | on-chip                | On-sensor intelligent vision AI                  | 2020     | -              |
+| Himax                     | [WiseEye2 WE2 (HX6538)](https://www.himax.com.tw/products/wiseeye-ai-sensing/wiseeye2-ai-processor/) ⚠                                                                                                                                  | 🇹🇼    | SoC          | -              | on-chip                | Always-on endpoint vision AI                     | 2023     | -              |
+| Ambarella                 | [N1](https://www.ambarella.com/news/ambarella-brings-generative-ai-capabilities-to-edge-devices-introduces-n1-system-on-chip-series-for-on-premise-applications/) ⚠                                                                     | 🇺🇸    | SoC          | -              | external LPDDR5        | Edge generative AI / on-premise LLM              | 2024     | -              |
+| Silicon Labs              | [xG26 (MG26/BG26)](https://www.silabs.com/wireless/efr32xg26) ⚠                                                                                                                                                                         | 🇺🇸    | SoC          | -              | on-chip                | MCU-class TinyML / wireless IoT                  | 2024     | -              |
+| NXP                       | [MCX N94x](https://www.nxp.com/products/MCX-N94-N54-N53-N52-N24) ⚠                                                                                                                                                                      | 🇳🇱    | SoC          | -              | shared (host)          | AI-enabled microcontroller / IoT                 | 2023     | -              |
+| BrainChip                 | [Akida AKD1500](https://brainchip.com/brainchip-unveils-breakthrough-akd1500-edge-ai-co-processor-at-embedded-world-north-america/) ⚠                                                                                                   | 🇺🇸    | SoC          | -              | on-chip SRAM           | Ultra-low-power edge AI co-processor / wearables | 2025     | -              |
+| Syntiant                  | [NDP250](https://www.syntiant.com/products/chips-and-hardware/ndp250/) ⚠                                                                                                                                                                | 🇺🇸    | SoC          | -              | on-chip SRAM           | Always-on speech / vision / sensor edge AI       | 2024     | -              |
+| Renesas                   | [RZ/V2L](https://www.renesas.com/en/products/rz-v2l) ⚠                                                                                                                                                                                  | 🇯🇵    | SoC          | -              | shared (host)          | Entry vision-AI MPU                              | 2021     | -              |
+| Analog Devices            | [MAX78000](https://www.analog.com/en/products/max78000.html) ⚠                                                                                                                                                                          | 🇺🇸    | SoC          | -              | on-chip SRAM           | Battery-powered CNN inference / IoT              | 2020     | -              |
+| GreenWaves                | [GAP9](https://greenwaves-technologies.com/gap9_processor/) ⚠                                                                                                                                                                           | 🇫🇷    | SoC          | 0.05           | on-chip                | MCU-class TinyML / hearables audio               | 2022     | -              |
+| Infineon                  | [PSOC Edge E84](https://www.infineon.com/products/microcontroller/32-bit-psoc-arm-cortex/32-bit-psoc-edge-arm/psoc-edge-e84) ⚠                                                                                                          | 🇩🇪    | SoC          | 0.1            | on-chip                | MCU-class ML / always-on                         | 2024     | -              |
+| Alif Semiconductor        | [Ensemble E7](https://alifsemi.com/ensemble-e7-series/) ⚠                                                                                                                                                                               | 🇺🇸    | SoC          | 0.25           | on-chip                | MCU-class TinyML fusion processor                | 2022     | -              |
+| NXP                       | [i.MX 93](https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/i-mx-applications-processors/i-mx-9-processors/i-mx-93-applications-processor-family-arm-cortex-a55-ml-acceleration-power-efficient-mpu:i.MX93) ⚠ | 🇳🇱    | SoC          | 0.5            | shared (host)          | Power-efficient edge ML                          | 2023     | -              |
+| STMicroelectronics        | [STM32N6](https://www.st.com/en/microcontrollers-microprocessors/stm32n6-series.html) ⚠                                                                                                                                                 | 🇨🇭    | SoC          | 0.6            | on-chip                | MCU-class edge AI / vision                       | 2024     | -              |
+| Rockchip                  | [RK3568 NPU](https://www.rock-chips.com/uploads/pdf/2022.8.26/192/RK3568%20Brief%20Datasheet.pdf) ⚠                                                                                                                                     | 🇨🇳    | SoC          | 0.8            | shared (host)          | Entry edge vision / SBC / NVR                    | 2021     | -              |
+| Rockchip                  | [RK3562 NPU](https://www.cnx-software.com/2023/03/13/rockchip-showcases-rk3528-tv-box-soc-and-rk3562-tablet-soc/) ⚠                                                                                                                     | 🇨🇳    | SoC          | 1              | shared (host)          | Entry tablet / IoT edge AI                       | 2023     | -              |
+| Kneron                    | [KL720](https://www.kneron.com/page/soc/) ⚠                                                                                                                                                                                             | 🇺🇸    | SoC          | 1.4            | shared (host)          | Edge AI vision / audio                           | 2020     | -              |
+| NXP                       | [i.MX 95](https://www.nxp.com/products/i.MX95) ⚠                                                                                                                                                                                        | 🇳🇱    | SoC          | 2              | external LPDDR4/5      | Edge AI applications processor                   | 2024     | -              |
+| Rockchip                  | [RV1126 NPU](https://www.rock-chips.com/uploads/pdf/2022.8.26/191/RV1126%20Brief%20Datasheet.pdf) ⚠                                                                                                                                     | 🇨🇳    | SoC          | 2              | shared (host)          | Smart IP camera / edge vision                    | 2021     | -              |
+| Texas Instruments         | [AM62A](https://www.ti.com/product/AM62A7) ⚠                                                                                                                                                                                            | 🇺🇸    | SoC          | 2              | shared (host)          | Low-power edge AI camera / vision                | 2023     | -              |
+| NXP                       | [i.MX 8M Plus NPU](https://www.nxp.com/products/i.MX8MPLUS) ⚠                                                                                                                                                                           | 🇳🇱    | SoC          | 2.3            | shared (host)          | Industrial IoT                                   | 2021-01  | -              |
+| Rockchip                  | [RK1808](https://t.rock-chips.com/en/) ⚠                                                                                                                                                                                                | 🇨🇳    | SoC / USB    | 3              | shared (host)          | Early edge NPU stick                             | 2019-01  | -              |
+| Rockchip                  | [RK3399Pro NPU](https://www.prnewswire.com/news-releases/rockchip-released-its-first-ai-processor-rk3399pro----npu-performance-up-to-24tops-300578633.html) ⚠                                                                           | 🇨🇳    | SoC          | 3.0            | shared (host)          | Edge AI dev boards / vision                      | 2018     | -              |
+| Kneron                    | [KL630](https://www.kneron.com/page/soc/#kl630) ⚠                                                                                                                                                                                       | 🇺🇸    | SoC          | 3.6            | shared (host)          | Edge AI vision, INT4 / transformers              | 2022     | -              |
+| Google                    | [Coral USB Accelerator](https://coral.ai/products/accelerator/)                                                                                                                                                                         | 🇺🇸    | USB          | 4              | 8 MB SRAM (on-chip)    | Edge (TFLite)                                    | 2019-03  | $59.99         |
+| Google                    | [Coral M.2 / Mini PCIe (single)](https://coral.ai/products/m2-accelerator-ae/)                                                                                                                                                          | 🇺🇸    | M.2 / mPCIe  | 4              | 8 MB SRAM (on-chip)    | Edge (TFLite)                                    | 2019-11  | $24.99         |
+| Google                    | [Coral Mini PCIe Accelerator](https://coral.ai/products/mini-pcie-accelerator/)                                                                                                                                                         | 🇺🇸    | mPCIe        | 4              | 8 MB SRAM (on-chip)    | Edge (TFLite)                                    | 2020-01  | $24.99         |
+| Google                    | [Coral Dev Board](https://coral.ai/products/dev-board/)                                                                                                                                                                                 | 🇺🇸    | SoC (SBC)    | 4              | 1–4 GB LPDDR4          | Dev board (Edge TPU + i.MX 8M)                   | 2020-01  | $129.99        |
+| Google                    | [Coral Dev Board Mini](https://coral.ai/products/dev-board-mini/)                                                                                                                                                                       | 🇺🇸    | SoC (SBC)    | 4              | 2 GB LPDDR3            | Dev board (Edge TPU + MT8167)                    | 2020-11  | $99.99         |
+| Google                    | [Coral SoM](https://coral.ai/products/som/) ⚠                                                                                                                                                                                           | 🇺🇸    | SoM          | 4              | 1 GB LPDDR4            | System-on-module (Edge TPU)                      | 2020-01  | $99.99         |
+| Google                    | [Coral Accelerator Module](https://coral.ai/products/accelerator-module/) ⚠                                                                                                                                                             | 🇺🇸    | SMT module   | 4              | 8 MB SRAM (on-chip)    | Solder-down (Edge TPU)                           | 2020-11  | -              |
+| Intel                     | [Neural Compute Stick 2](https://www.intel.com/content/www/us/en/developer/tools/neural-compute-stick/overview.html#neural-compute-stick-2)                                                                                             | 🇺🇸    | USB          | 4              | on-stick               | Prototyping (OpenVINO)                           | 2018-11  | \~$70 (EOL)    |
+| MediaTek                  | [Genio 1200](https://www.mediatek.com/products/iot/genio-iot/genio-1200) ⚠                                                                                                                                                              | 🇯🇵    | SoC          | 4.8            | shared (host)          | Premium IoT / edge AI platform                   | 2022     | -              |
+| MemryX                    | [MX3](https://memryx.com/products/)                                                                                                                                                                                                     | 🇺🇸    | M.2          | 5 (TFLOPS)     | on-chip SRAM           | Vision / CNN                                     | 2024-06  | \~$149         |
+| Rockchip                  | [RK3588 NPU](https://www.rock-chips.com/a/en/products/RK35_Series/2022/0926/1660.html) ⚠                                                                                                                                                | 🇨🇳    | SoC          | 6              | shared (host)          | General edge (SBC)                               | 2022-01  | $100+ (board)  |
+| Rockchip                  | [RK3576 NPU](https://www.rock-chips.com/) ⚠                                                                                                                                                                                             | 🇨🇳    | SoC          | 6              | shared (host)          | Mid-range edge (SBC)                             | 2024-05  | board          |
+| Ambarella                 | [CV5](https://www.ambarella.com/news/ambarella-introduces-cv5-high-performance-ai-vision-processor-for-single-8k-and-multi-imager-ai-cameras/) ⚠                                                                                        | 🇺🇸    | SoC          | 6              | shared (host)          | 8K AI camera / drone / automotive camera         | 2021     | -              |
+| DEEPX                     | [DX-L1 / DX-L2](https://deepx.ai/#dx-l1-dx-l2) ⚠                                                                                                                                                                                        | 🇰🇷    | SoC          | 6.4            | shared (host)          | Smart appliances / sensors                       | -        | -              |
+| Hailo                     | [Hailo-15L](https://hailo.ai/products/ai-vision-processors/hailo-15-ai-vision-processor/) ⚠                                                                                                                                             | 🇮🇱    | SoC          | 7              | shared (host)          | Mainstream AI camera SoC                         | 2024     | -              |
+| Google                    | [Coral M.2 Dual Edge TPU](https://coral.ai/products/m2-accelerator-dual-edgetpu/)                                                                                                                                                       | 🇺🇸    | M.2          | 8              | 8 MB SRAM x2           | Edge (TFLite)                                    | 2020-01  | $39.99         |
+| Kneron                    | [KL530](https://www.kneron.com/en/product/ai_solution/) ⚠                                                                                                                                                                               | 🇺🇸    | SoC          | 8              | on-chip                | Entry on-device vision                           | 2022-05  | -              |
+| Texas Instruments         | [TDA4VM](https://www.ti.com/product/TDA4VM) ⚠                                                                                                                                                                                           | 🇺🇸    | SoC          | 8              | external LPDDR4        | Automotive/robotics vision                       | 2021     | -              |
+| Mobilint                  | [REGULUS](https://www.mobilint.com/regulus) ⚠                                                                                                                                                                                           | 🇰🇷    | SoC          | 10             | \~8 GB LPDDR4X         | Drones / AI cameras                              | 2025-01  | -              |
+| Kneron                    | [KL830](https://www.kneron.com/page/soc/#kl830) ⚠                                                                                                                                                                                       | 🇺🇸    | SoC          | 10             | external LPDDR         | Edge GPT / Transformer AI SoC                    | 2024     | -              |
+| Intel                     | [Core Ultra NPU (AI Boost, Meteor Lake)](https://www.intel.com/content/www/us/en/products/sku/236847/intel-core-ultra-7-processor-155h-24m-cache-up-to-4-80-ghz/specifications.html) ⚠                                                  | 🇺🇸    | SoC          | 11             | shared (host)          | AI PC / on-device client AI                      | 2023     | -              |
+| Hailo                     | [Hailo-15M](https://hailo.ai/products/ai-vision-processors/hailo-15-ai-vision-processor/#hailo-15m) ⚠                                                                                                                                   | 🇮🇱    | SoC          | 11             | shared (host)          | Mid-range AI camera SoC                          | 2023     | -              |
+| Hailo                     | [Hailo-8L M.2](https://hailo.ai/products/ai-accelerators/hailo-8l-entry-level-ai-acceleration-module/)                                                                                                                                  | 🇮🇱    | M.2          | 13             | on-chip                | Entry edge vision (Pi AI Kit)                    | 2024-06  | \~$70          |
+| Renesas                   | [RZ/V2N](https://www.renesas.com/en/products/rz-v2n) ⚠                                                                                                                                                                                  | 🇯🇵    | SoC          | 15             | shared (host)          | Mid-range vision AI (smart city / factory)       | 2025     | -              |
+| Blaize                    | [1600 SoC](https://www.blaize.com/products/)                                                                                                                                                                                            | 🇺🇸    | SoC / PCIe   | 16             | up to 4 GB LPDDR4      | Edge vision / gateway                            | 2023-01  | -              |
+| Sophgo                    | [BM1688](https://en.sophgo.com/sophon-u/product/introduce/bm1688.html) ⚠                                                                                                                                                                | 🇨🇳    | SoC          | 16             | shared (host)          | Edge LLM/VLM and multi-stream vision             | 2024     | -              |
+| Gyrfalcon                 | [Lightspeeur 2803S Plai Plug](https://www.gyrfalcontech.com/)                                                                                                                                                                           | 🇺🇸    | USB          | 16.8           | on-chip                | Edge (USB compute stick)                         | 2019-06  | $69.99         |
+| Huawei                    | [Ascend 310 (Atlas 200)](https://www.hiascend.com/) ⚠                                                                                                                                                                                   | 🇨🇳    | SoC / module | 16             | LPDDR4X (on-module)    | Edge inference                                   | 2018-10  | -              |
+| Axera                     | [AX650N](https://www.axera-tech.com/en/) ⚠                                                                                                                                                                                              | 🇨🇳    | SoC          | 18             | external LPDDR4X       | Edge vision / Transformer inference              | 2023     | -              |
+| Hailo                     | [Hailo-15H](https://hailo.ai/products/ai-vision-processors/hailo-15h-ai-vision-processor/) ⚠                                                                                                                                            | 🇮🇱    | SoC          | 20             | external LPDDR4        | AI vision processor for smart cameras            | 2023     | -              |
+| Kneron                    | [KL730](https://www.kneron.com/en/product/ai_solution/#kl730) ⚠                                                                                                                                                                         | 🇺🇸    | SoC          | 25             | on-chip                | On-device vision                                 | 2023-08  | -              |
+| DEEPX                     | [DX-M1](https://deepx.ai/products/dx-m1/)                                                                                                                                                                                               | 🇰🇷    | M.2          | 25             | 4 GB LPDDR5 (on-card)  | Edge (industrial, RPi5)                          | 2025-09  | \~$100s        |
+| DEEPX                     | [DX-M1M](https://deepx.ai/products/dx-m1m/)                                                                                                                                                                                             | 🇰🇷    | M.2          | 25             | on-module              | On-device (low power)                            | 2025-12  | -              |
+| Hailo                     | [Hailo-8 M.2](https://hailo.ai/products/ai-accelerators/hailo-8-m2-ai-acceleration-module/)                                                                                                                                             | 🇮🇱    | M.2          | 26             | on-chip                | Edge vision (RPi5)                               | 2021-01  | $120–150       |
+| Rockchip                  | [RK1820](https://www.rock-chips.com/#rk1820) ⚠                                                                                                                                                                                          | 🇨🇳    | SoC          | 30             | stacked DRAM           | Local LLM / vision                               | 2025-11  | -              |
+| Sophgo                    | [SG2300X (BM1684X)](https://en.sophgo.com/) ⚠                                                                                                                                                                                           | 🇨🇳    | SoC          | 32             | external LPDDR4X       | Edge AI box / on-device LLM                      | 2023     | -              |
+| NVIDIA                    | [Jetson AGX Xavier](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/)                                                                                                                               | 🇺🇸    | module       | 32             | 16-32 GB LPDDR4x       | Autonomous machines / robotics                   | 2018     | -              |
+| NXP                       | [Ara240 DNPU](https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/discrete-neural-processing-units:DNPU#ara240-dnpu)                                                                                            | 🇳🇱    | M.2          | 40             | 16 GB (on-module)      | GenAI / LLM & VLM                                | 2026-06  | -              |
+| Hailo                     | [Hailo-10H M.2](https://hailo.ai/products/ai-accelerators/hailo-10h-m2-generative-ai-acceleration-module/)                                                                                                                              | 🇮🇱    | M.2          | 40             | LPDDR4 (on-module)     | Generative AI on edge                            | 2025-01  | -              |
+| SiMa.ai                   | [MLSoC](https://sima.ai/products/)                                                                                                                                                                                                      | 🇺🇸    | M.2 / module | 50             | LPDDR4 (on-module)     | Automotive / robotics                            | 2023-05  | -              |
+| SiMa.ai                   | [Modalix](https://sima.ai/mlsoc-family/)                                                                                                                                                                                                | 🇺🇸    | SoM          | 50             | on-module LPDDR        | Multimodal and generative AI at the edge         | 2025     | -              |
+| Black Sesame Technologies | [Huashan A1000](https://www.bst.ai/) ⚠                                                                                                                                                                                                  | 🇨🇳    | SoC          | 58             | external LPDDR4        | Automotive ADAS SoC                              | 2020     | -              |
+| EdgeCortix                | [SAKURA-II](https://www.edgecortix.com/en/products/sakura)                                                                                                                                                                              | 🇯🇵    | M.2          | 60             | up to 16 GB LPDDR4X    | Edge generative-AI co-processor                  | 2024-05  | -              |
+| NVIDIA                    | [Jetson Orin Nano Super](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/)                                                                                                                                | 🇺🇸    | SoM          | 67             | 8 GB LPDDR5 (unified)  | Entry edge AI dev kit                            | 2024-12  | $249           |
+| Mobilint                  | [MLA100 PCIe Card](https://www.mobilint.com/aries/mla100)                                                                                                                                                                               | 🇰🇷    | PCIe         | 80             | 16 / 32 GB LPDDR4X     | Edge / AI workstation                            | 2024-01  | -              |
+| Mobilint                  | [MLA100 MXM](https://www.mobilint.com/aries)                                                                                                                                                                                            | 🇰🇷    | MXM          | 80             | LPDDR4X (on-module)    | Embedded robotics                                | 2025-04  | -              |
+| Mobilint                  | [MLX-A1 Edge AI Box](https://www.mobilint.com/aries/mlx-a1)                                                                                                                                                                             | 🇰🇷    | Box          | 80             | LPDDR4X (on-board)     | All-in-one edge box                              | 2025-06  | -              |
+| Qualcomm                  | [Snapdragon X2 Elite NPU](https://www.qualcomm.com/products/mobile/snapdragon/pcs-and-tablets) ⚠                                                                                                                                        | 🇺🇸    | SoC          | 80             | unified LPDDR5x        | PC / on-device                                   | 2025-09  | -              |
+| Renesas                   | [RZ/V2H](https://www.renesas.com/en/products/rz-v2h) ⚠                                                                                                                                                                                  | 🇯🇵    | SoC          | 80             | external LPDDR4/5      | Vision-AI MPU / robotics                         | 2024     | -              |
+| NVIDIA                    | [Jetson Orin NX 16GB](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/#jetson-orin-nx-16gb)                                                                                                               | 🇺🇸    | module       | 100            | 16 GB LPDDR5           | Robotics / edge AI module                        | 2023     | -              |
+| Axelera AI                | [Metis M.2](https://axelera.ai/ai-accelerators)                                                                                                                                                                                         | 🇳🇱    | M.2          | 214            | 1 GB (on-card)         | Vision / local LLM                               | 2023-11  | \~$199         |
+| NVIDIA                    | [Jetson AGX Orin 64GB](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/#jetson-agx-orin-64gb)                                                                                                             | 🇺🇸    | SoM          | 275            | 64 GB LPDDR5 (unified) | Edge AI / robotics module                        | 2022     | -              |
+| Mobilint                  | [MLA400 PCIe Card](https://www.mobilint.com/aries/mla400)                                                                                                                                                                               | 🇰🇷    | PCIe         | \~320          | LPDDR4X (on-card)      | On-prem multi-LLM / vision                       | 2026-01  | -              |
+| Horizon Robotics          | [Journey 6P (J6)](https://en.horizon.auto/) ⚠                                                                                                                                                                                           | 🇨🇳    | SoC          | 560            | external LPDDR         | Automotive ADAS / autonomous driving             | 2024     | -              |
+| Axelera AI                | [Europa](https://axelera.ai/)                                                                                                                                                                                                           | 🇳🇱    | PCIe         | 629            | on-card                | Datacenter-class edge                            | 2026     | -              |
+| Axelera AI                | [Metis PCIe (4-core)](https://axelera.ai/ai-accelerators#metis-pcie-4-core)                                                                                                                                                             | 🇳🇱    | PCIe         | 856            | up to 8 GB (on-card)   | Multi-stream edge server                         | 2026-01  | -              |
+| NVIDIA                    | [DRIVE AGX Thor](https://www.nvidia.com/en-us/solutions/autonomous-vehicles/in-vehicle-computing/)                                                                                                                                      | 🇺🇸    | module       | 1000           | 64 GB LPDDR5X          | Autonomous driving / robotics central compute    | 2025     | -              |
 
 ## Datacenter inference accelerators
 
 Larger AI accelerators aimed at server/datacenter inference rather than embedded edge. Listed separately because they are cards/systems, not on-device parts. Compute here is peak FP8/FP16 (TFLOPS) where TOPS isn't the vendor's headline number.
 
-| Vendor | Product | Country | Form Factor | Compute | Memory | Released | Price |
-|--------|---------|:---:|-------------|---------|--------|:---:|-------|
-| Tenstorrent | [Wormhole n150s](https://tenstorrent.com/hardware/wormhole) | 🇺🇸 | PCIe | 262 TFLOPS FP8 | 12 GB GDDR6 | 2024-07 | $999 |
-| Tenstorrent | [Wormhole n300s](https://tenstorrent.com/hardware/wormhole) | 🇺🇸 | PCIe | 524 TFLOPS FP8 | 24 GB GDDR6 | 2024-07 | $1,399 |
-| Tenstorrent | [Blackhole p100a](https://tenstorrent.com/hardware/blackhole) | 🇺🇸 | PCIe | ~670 TFLOPS FP8 | 28 GB GDDR6 | 2025-04 | $999 |
-| Tenstorrent | [Blackhole p150a](https://tenstorrent.com/hardware/blackhole) | 🇺🇸 | PCIe | 745 TFLOPS FP8 | 32 GB GDDR6 | 2025-04 | $1,399 |
-| Graphcore | [Bow IPU (Bow-2000)](https://www.graphcore.ai/products/ipu) | 🇺🇸 | Blade / system | 350 TFLOPS FP16 | 900 MB SRAM | 2022-03 | - |
-| SambaNova | [SN40L](https://sambanova.ai/technology/sn40l-rdu) | 🇺🇸 | System (RDU) | - | HBM3 + DDR | 2023-09 | - |
-| Cerebras | [WSE-3 (CS-3)](https://www.cerebras.ai/product-chip) | 🇺🇸 | Wafer-scale system | - | 44 GB on-chip | 2024-03 | - |
-| Groq | [LPU (GroqCard)](https://groq.com/) | 🇺🇸 | PCIe | - | 230 MB SRAM | 2023-01 | - |
-| d-Matrix | [Corsair](https://www.d-matrix.ai/product/) | 🇺🇸 | PCIe | - | digital in-memory | 2025-01 | - |
-| Untether AI | [speedAI240](https://www.untether.ai/) | 🇺🇸 | PCIe | - | at-memory compute | 2024-01 | - |
-| Etched | [Sohu](https://www.etched.com/) | 🇺🇸 | System | - | transformer-only ASIC | 2025 | - |
-| Huawei | [Ascend 910C](https://www.hiascend.com/) | 🇨🇳 | System (OAM) | - | HBM | 2025-01 | - |
-| Cambricon | [Siyuan 590](https://www.cambricon.com/) | 🇨🇳 | PCIe / system | - | HBM | 2023-01 | - |
-| Gyrfalcon | [GAINBOARD 2803S](https://www.gyrfalcontech.com/) | 🇺🇸 | PCIe / server | 1,084 TOPS (INT8) | on-board | 2018-11 | - |
-| AWS | [Trainium2](https://aws.amazon.com/ai/machine-learning/trainium/) | 🇺🇸 | Server | 667 TFLOPS BF16 | 96 GB HBM3e | 2024 | - |
-| AWS | [Inferentia2](https://aws.amazon.com/machine-learning/inferentia/) | 🇺🇸 | Server | 190 TFLOPS BF16 | 32 GB HBM | 2023 | - |
-| Google | [TPU v6e (Trillium)](https://cloud.google.com/tpu/docs/v6e) | 🇺🇸 | Server | 918 TFLOPS BF16 | 32 GB HBM | 2024 | - |
-| Google | [TPU v5e](https://cloud.google.com/tpu/docs/v5e) | 🇺🇸 | Server | 197 TFLOPS BF16 | 16 GB HBM | 2023 | - |
-| Intel | [Gaudi 3](https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi3.html) | 🇺🇸 | OAM | 1835 TFLOPS BF16 | 128 GB HBM2e | 2024 | - |
-| Qualcomm | [Cloud AI 100 Ultra](https://www.qualcomm.com/artificial-intelligence/data-center/cloud-ai-100-ultra) | 🇺🇸 | PCIe | 870 TOPS (INT8) | 128 GB LPDDR4x | 2024 | - |
-| Microsoft | [Maia 100](https://techcommunity.microsoft.com/blog/azureinfrastructureblog/inside-maia-100-revolutionizing-ai-workloads-with-microsofts-custom-ai-accelerat/4229118) | 🇺🇸 | OAM | 800 TFLOPS BF16 | 64 GB HBM2e | 2024 | - |
-| Meta | [MTIA v2](https://ai.meta.com/blog/next-generation-meta-training-inference-accelerator-AI-MTIA/) | 🇺🇸 | PCIe | 354 TOPS (INT8) | 128 GB LPDDR5 | 2024 | - |
-| IBM | [Spyre Accelerator](https://www.research.ibm.com/blog/building-the-ibm-spyre-accelerator) | 🇺🇸 | PCIe | 300 TOPS (INT8) | 128 GB LPDDR5 | 2025 | - |
-| Positron | [Atlas](https://www.positron.ai/atlas) | 🇺🇸 | Server | - | 32 GB HBM per card | 2024 | - |
-| Biren | [BR100](https://www.birentech.com/) | 🇨🇳 | OAM | 1024 TFLOPS BF16 | 64 GB HBM2e | 2022 | - |
-| Moffett AI | [Antoum S30](https://www.servethehome.com/moffett-antoum-ai-inference-accelerator-at-hot-chips-2023/) | 🇨🇳 | PCIe | 88.5 TOPS (INT8) | LPDDR4x | 2022 | - |
-| Enflame | [L600](https://www.enflame-tech.com/) | 🇨🇳 | OAM | - | 144 GB HBM | 2025 | - |
-| Moore Threads | [MTT S4000](https://en.mthreads.com/product/S4000) | 🇨🇳 | PCIe | 100 TFLOPS FP16 | 48 GB GDDR6 | 2023 | - |
-| Intel | [Gaudi 2](https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi2.html) | 🇺🇸 | OAM | >400 TFLOPS BF16 | 96 GB HBM2E | 2022 | - |
-| Google | [TPU v4](https://cloud.google.com/tpu/docs/v4) | 🇺🇸 | Server | 275 TFLOPS BF16 | 32 GB HBM2 | 2022 | - |
-| Google | [TPU v5p](https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5p-and-ai-hypercomputer) | 🇺🇸 | Server | 459 TFLOPS BF16 | 95 GB HBM2e | 2023 | - |
-| AWS | [Inferentia1](https://aws.amazon.com/ai/machine-learning/inferentia/) | 🇺🇸 | Server | 128 TOPS (INT8) | 8 GB DDR4 | 2019 | - |
-| AWS | [Trainium1](https://aws.amazon.com/ai/machine-learning/trainium/) | 🇺🇸 | Server | 190 TFLOPS BF16 | 32 GB HBM | 2022 | - |
-| Huawei | [Ascend 910B](https://www.hiascend.com/en/) | 🇨🇳 | OAM | ~320 TFLOPS FP16 | 64 GB HBM2e | 2023 | - |
-| Huawei | [Atlas 300I Duo](https://support.huawei.com/enterprise/en/ascend-computing/atlas-300i-duo-pid-252823107) | 🇨🇳 | PCIe | 280 TOPS (INT8) | 96 GB LPDDR4X | 2023 | - |
-| Cambricon | [MLU370-X8](https://www.cambricon.com/index.php?m=content&c=index&a=lists&catid=406) | 🇨🇳 | PCIe | 256 TOPS (INT8) | 48 GB LPDDR5 | 2022 | - |
-| Tenstorrent | [Grayskull e150](https://docs.tenstorrent.com/aibs/grayskull/specifications.html) | 🇺🇸 | PCIe | 332 TFLOPS FP8 | 8 GB LPDDR4 + 120 MB SRAM | 2024 | $799 |
-| Qualcomm | [Cloud AI 100](https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/documents/prod_brief_qcom_cloud_ai_100_0.pdf) | 🇺🇸 | PCIe | 400 TOPS (INT8) | up to 32 GB DRAM + 144 MB SRAM | 2021 | - |
-| Graphcore | [C600](https://www.graphcore.ai/posts/graphcore-launches-c600-pcie-card-for-ai-compute) | 🇺🇸 | PCIe | 560 TFLOPS FP8 | 900 MB In-Processor SRAM | 2022 | - |
-| Untether AI | [tsunAImi tsn200](https://www.untether.ai/products/) | 🇺🇸 | PCIe | 500 TOPS (INT8) | 204 MB SRAM (at-memory) | 2023 | - |
-| SambaNova | [SN30](https://sambanova.ai/hubfs/23945802/SambaNova_DataSheet_DataScale_SN30_09132022_EN-1.pdf) | 🇺🇸 | Server | 688 TFLOPS BF16 | up to 1 TB DDR + 640 MB SRAM | 2022 | - |
-| Meta | [MTIA v1](https://ai.meta.com/blog/meta-training-inference-accelerator-AI-MTIA/) | 🇺🇸 | module | 102.4 TOPS (INT8) | up to 128 GB LPDDR5 | 2023 | - |
+| Vendor        | Product                                                                                                                                                               | Country | Form Factor        | Compute           | Memory                         | Released | Price  |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------------------ | ----------------- | ------------------------------ | -------- | ------ |
+| Tenstorrent   | [Wormhole n150s](https://tenstorrent.com/hardware/wormhole)                                                                                                           | 🇺🇸    | PCIe               | 262 TFLOPS FP8    | 12 GB GDDR6                    | 2024-07  | $999   |
+| Tenstorrent   | [Wormhole n300s](https://tenstorrent.com/hardware/wormhole#wormhole-n300s)                                                                                            | 🇺🇸    | PCIe               | 524 TFLOPS FP8    | 24 GB GDDR6                    | 2024-07  | $1,399 |
+| Tenstorrent   | [Blackhole p100a](https://tenstorrent.com/hardware/blackhole)                                                                                                         | 🇺🇸    | PCIe               | \~670 TFLOPS FP8  | 28 GB GDDR6                    | 2025-04  | $999   |
+| Tenstorrent   | [Blackhole p150a](https://tenstorrent.com/hardware/blackhole#blackhole-p150a)                                                                                         | 🇺🇸    | PCIe               | 745 TFLOPS FP8    | 32 GB GDDR6                    | 2025-04  | $1,399 |
+| Graphcore     | [Bow IPU (Bow-2000)](https://www.graphcore.ai/products/ipu)                                                                                                           | 🇺🇸    | Blade / system     | 350 TFLOPS FP16   | 900 MB SRAM                    | 2022-03  | -      |
+| SambaNova     | [SN40L](https://sambanova.ai/technology/sn40l-rdu)                                                                                                                    | 🇺🇸    | System (RDU)       | -                 | HBM3 + DDR                     | 2023-09  | -      |
+| Cerebras      | [WSE-3 (CS-3)](https://www.cerebras.ai/product-chip)                                                                                                                  | 🇺🇸    | Wafer-scale system | -                 | 44 GB on-chip                  | 2024-03  | -      |
+| Groq          | [LPU (GroqCard)](https://groq.com/)                                                                                                                                   | 🇺🇸    | PCIe               | -                 | 230 MB SRAM                    | 2023-01  | -      |
+| d-Matrix      | [Corsair](https://www.d-matrix.ai/product/)                                                                                                                           | 🇺🇸    | PCIe               | -                 | digital in-memory              | 2025-01  | -      |
+| Untether AI   | [speedAI240](https://www.untether.ai/)                                                                                                                                | 🇺🇸    | PCIe               | -                 | at-memory compute              | 2024-01  | -      |
+| Etched        | [Sohu](https://www.etched.com/)                                                                                                                                       | 🇺🇸    | System             | -                 | transformer-only ASIC          | 2025     | -      |
+| Huawei        | [Ascend 910C](https://www.hiascend.com/#ascend-910c)                                                                                                                  | 🇨🇳    | System (OAM)       | -                 | HBM                            | 2025-01  | -      |
+| Cambricon     | [Siyuan 590](https://www.cambricon.com/)                                                                                                                              | 🇨🇳    | PCIe / system      | -                 | HBM                            | 2023-01  | -      |
+| Gyrfalcon     | [GAINBOARD 2803S](https://www.gyrfalcontech.com/#gainboard-2803s)                                                                                                     | 🇺🇸    | PCIe / server      | 1,084 TOPS (INT8) | on-board                       | 2018-11  | -      |
+| AWS           | [Trainium2](https://aws.amazon.com/ai/machine-learning/trainium/)                                                                                                     | 🇺🇸    | Server             | 667 TFLOPS BF16   | 96 GB HBM3e                    | 2024     | -      |
+| AWS           | [Inferentia2](https://aws.amazon.com/machine-learning/inferentia/)                                                                                                    | 🇺🇸    | Server             | 190 TFLOPS BF16   | 32 GB HBM                      | 2023     | -      |
+| Google        | [TPU v6e (Trillium)](https://cloud.google.com/tpu/docs/v6e)                                                                                                           | 🇺🇸    | Server             | 918 TFLOPS BF16   | 32 GB HBM                      | 2024     | -      |
+| Google        | [TPU v5e](https://cloud.google.com/tpu/docs/v5e)                                                                                                                      | 🇺🇸    | Server             | 197 TFLOPS BF16   | 16 GB HBM                      | 2023     | -      |
+| Intel         | [Gaudi 3](https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi3.html)                                                            | 🇺🇸    | OAM                | 1835 TFLOPS BF16  | 128 GB HBM2e                   | 2024     | -      |
+| Qualcomm      | [Cloud AI 100 Ultra](https://www.qualcomm.com/artificial-intelligence/data-center/cloud-ai-100-ultra)                                                                 | 🇺🇸    | PCIe               | 870 TOPS (INT8)   | 128 GB LPDDR4x                 | 2024     | -      |
+| Microsoft     | [Maia 100](https://techcommunity.microsoft.com/blog/azureinfrastructureblog/inside-maia-100-revolutionizing-ai-workloads-with-microsofts-custom-ai-accelerat/4229118) | 🇺🇸    | OAM                | 800 TFLOPS BF16   | 64 GB HBM2e                    | 2024     | -      |
+| Meta          | [MTIA v2](https://ai.meta.com/blog/next-generation-meta-training-inference-accelerator-AI-MTIA/)                                                                      | 🇺🇸    | PCIe               | 354 TOPS (INT8)   | 128 GB LPDDR5                  | 2024     | -      |
+| IBM           | [Spyre Accelerator](https://www.research.ibm.com/blog/building-the-ibm-spyre-accelerator)                                                                             | 🇺🇸    | PCIe               | 300 TOPS (INT8)   | 128 GB LPDDR5                  | 2025     | -      |
+| Positron      | [Atlas](https://www.positron.ai/atlas)                                                                                                                                | 🇺🇸    | Server             | -                 | 32 GB HBM per card             | 2024     | -      |
+| Biren         | [BR100](https://www.birentech.com/)                                                                                                                                   | 🇨🇳    | OAM                | 1024 TFLOPS BF16  | 64 GB HBM2e                    | 2022     | -      |
+| Moffett AI    | [Antoum S30](https://www.servethehome.com/moffett-antoum-ai-inference-accelerator-at-hot-chips-2023/)                                                                 | 🇨🇳    | PCIe               | 88.5 TOPS (INT8)  | LPDDR4x                        | 2022     | -      |
+| Enflame       | [L600](https://www.enflame-tech.com/)                                                                                                                                 | 🇨🇳    | OAM                | -                 | 144 GB HBM                     | 2025     | -      |
+| Moore Threads | [MTT S4000](https://en.mthreads.com/product/S4000)                                                                                                                    | 🇨🇳    | PCIe               | 100 TFLOPS FP16   | 48 GB GDDR6                    | 2023     | -      |
+| Intel         | [Gaudi 2](https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi2.html)                                                            | 🇺🇸    | OAM                | >400 TFLOPS BF16  | 96 GB HBM2E                    | 2022     | -      |
+| Google        | [TPU v4](https://cloud.google.com/tpu/docs/v4)                                                                                                                        | 🇺🇸    | Server             | 275 TFLOPS BF16   | 32 GB HBM2                     | 2022     | -      |
+| Google        | [TPU v5p](https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5p-and-ai-hypercomputer)                                                  | 🇺🇸    | Server             | 459 TFLOPS BF16   | 95 GB HBM2e                    | 2023     | -      |
+| AWS           | [Inferentia1](https://aws.amazon.com/ai/machine-learning/inferentia/)                                                                                                 | 🇺🇸    | Server             | 128 TOPS (INT8)   | 8 GB DDR4                      | 2019     | -      |
+| AWS           | [Trainium1](https://aws.amazon.com/ai/machine-learning/trainium/#trainium1)                                                                                           | 🇺🇸    | Server             | 190 TFLOPS BF16   | 32 GB HBM                      | 2022     | -      |
+| Huawei        | [Ascend 910B](https://www.hiascend.com/en/)                                                                                                                           | 🇨🇳    | OAM                | \~320 TFLOPS FP16 | 64 GB HBM2e                    | 2023     | -      |
+| Huawei        | [Atlas 300I Duo](https://support.huawei.com/enterprise/en/ascend-computing/atlas-300i-duo-pid-252823107)                                                              | 🇨🇳    | PCIe               | 280 TOPS (INT8)   | 96 GB LPDDR4X                  | 2023     | -      |
+| Cambricon     | [MLU370-X8](https://www.cambricon.com/index.php?m=content\&c=index\&a=lists\&catid=406)                                                                               | 🇨🇳    | PCIe               | 256 TOPS (INT8)   | 48 GB LPDDR5                   | 2022     | -      |
+| Tenstorrent   | [Grayskull e150](https://docs.tenstorrent.com/aibs/grayskull/specifications.html)                                                                                     | 🇺🇸    | PCIe               | 332 TFLOPS FP8    | 8 GB LPDDR4 + 120 MB SRAM      | 2024     | $799   |
+| Qualcomm      | [Cloud AI 100](https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/documents/prod_brief_qcom_cloud_ai_100_0.pdf)                                             | 🇺🇸    | PCIe               | 400 TOPS (INT8)   | up to 32 GB DRAM + 144 MB SRAM | 2021     | -      |
+| Graphcore     | [C600](https://www.graphcore.ai/posts/graphcore-launches-c600-pcie-card-for-ai-compute)                                                                               | 🇺🇸    | PCIe               | 560 TFLOPS FP8    | 900 MB In-Processor SRAM       | 2022     | -      |
+| Untether AI   | [tsunAImi tsn200](https://www.untether.ai/products/)                                                                                                                  | 🇺🇸    | PCIe               | 500 TOPS (INT8)   | 204 MB SRAM (at-memory)        | 2023     | -      |
+| SambaNova     | [SN30](https://sambanova.ai/hubfs/23945802/SambaNova_DataSheet_DataScale_SN30_09132022_EN-1.pdf)                                                                      | 🇺🇸    | Server             | 688 TFLOPS BF16   | up to 1 TB DDR + 640 MB SRAM   | 2022     | -      |
+| Meta          | [MTIA v1](https://ai.meta.com/blog/meta-training-inference-accelerator-AI-MTIA/)                                                                                      | 🇺🇸    | module             | 102.4 TOPS (INT8) | up to 128 GB LPDDR5            | 2023     | -      |
 
 ## Raspberry Pi accelerators
 
@@ -195,33 +194,36 @@ Which accelerator fits depends on the Pi generation. Pi 5 exposes a PCIe lane (v
 
 ### Pi 5 (M.2 HAT+)
 
-| Module | Compute | Interface | PyTorch/ONNX | Notes |
-|--------|:---:|-----------|:---:|-------|
-| [Hailo-8](https://hailo.ai/) | 26 TOPS | M.2 (Pi AI HAT+) | yes | Higher-end AI HAT+ option |
-| [Hailo-8L](https://hailo.ai/) | 13 TOPS | M.2 (Pi AI Kit) | yes | Official Pi 5 AI Kit chip; ~$70 |
-| [Axelera Metis M.2](https://axelera.ai/ai-accelerators) | 214 TOPS | M.2 | yes (Voyager SDK) | Highest compute; model zoo still limited |
-| [DEEPX DX-M1](https://deepx.ai/products/dx-m1/) | 25 TOPS | M.2 | yes (DXNN SDK) | Digi-Key stock, industrial temp range |
-| [Coral M.2 Dual Edge TPU](https://coral.ai/products/m2-accelerator-dual-edgetpu/) | 8 TOPS | M.2 E-key | TFLite only | Cheapest; needs dual-lane E-key slot |
-| [Coral M.2 Edge TPU](https://coral.ai/products/m2-accelerator-ae/) | 4 TOPS | M.2 A+E-key | TFLite only | Single-TPU variant |
+| Module                  | Compute  | Interface        | PyTorch/ONNX      | Notes                                    |
+| ----------------------- | -------- | ---------------- | ----------------- | ---------------------------------------- |
+| Hailo-8                 | 26 TOPS  | M.2 (Pi AI HAT+) | yes               | Higher-end AI HAT+ option                |
+| Hailo-8L                | 13 TOPS  | M.2 (Pi AI Kit)  | yes               | Official Pi 5 AI Kit chip; \~$70         |
+| Axelera Metis M.2       | 214 TOPS | M.2              | yes (Voyager SDK) | Highest compute; model zoo still limited |
+| DEEPX DX-M1             | 25 TOPS  | M.2              | yes (DXNN SDK)    | Digi-Key stock, industrial temp range    |
+| Coral M.2 Dual Edge TPU | 8 TOPS   | M.2 E-key        | TFLite only       | Cheapest; needs dual-lane E-key slot     |
+| Coral M.2 Edge TPU      | 4 TOPS   | M.2 A+E-key      | TFLite only       | Single-TPU variant                       |
 
 ### Pi 4 / Pi 3 and older (USB)
 
 No PCIe on these boards — USB accelerators only. Works on Pi 4, Pi 3B+, and most Linux SBCs.
 
-| Module | Compute | Interface | PyTorch/ONNX | Notes |
-|--------|:---:|-----------|:---:|-------|
-| [Hailo-8 USB stick](https://hailo.ai/) | 26 TOPS | USB 3.0 | yes | Fastest USB option; ~5W peak |
-| [Coral USB Accelerator](https://coral.ai/products/accelerator/) | 4 TOPS | USB 3.0 | TFLite only | Works on Pi 3B+/4; driver updates stalled |
-| [Intel NCS2 (Myriad X)](https://www.intel.com/content/www/us/en/developer/tools/neural-compute-stick/overview.html) | 4 TOPS | USB 3.0 | OpenVINO | EOL, no driver updates since ~2021 |
-| [Orange Pi AI Stick (Lyeffe)](http://www.orangepi.org/) | ~2.8 TOPS | USB | limited | Myriad-class; sparse support |
-| [Toybrick RK1808 (TB-RK1808S0)](https://t.rock-chips.com/en/) | ~3 TOPS | USB | RKNN toolkit | Rockchip RK1808 USB compute stick |
+| Module                        | Compute    | Interface | PyTorch/ONNX | Notes                                     |
+| ----------------------------- | ---------- | --------- | ------------ | ----------------------------------------- |
+| Hailo-8 USB stick             | 26 TOPS    | USB 3.0   | yes          | Fastest USB option; \~5W peak             |
+| Coral USB Accelerator         | 4 TOPS     | USB 3.0   | TFLite only  | Works on Pi 3B+/4; driver updates stalled |
+| Intel NCS2 (Myriad X)         | 4 TOPS     | USB 3.0   | OpenVINO     | EOL, no driver updates since \~2021       |
+| Orange Pi AI Stick (Lyeffe)   | \~2.8 TOPS | USB       | limited      | Myriad-class; sparse support              |
+| Toybrick RK1808 (TB-RK1808S0) | \~3 TOPS   | USB       | RKNN toolkit | Rockchip RK1808 USB compute stick         |
 
 ### Notes on Pi compatibility
 
-- **Coral** hasn't seen meaningful driver/runtime updates in years; expect friction with recent Python/OS releases. Still fine for TFLite vision.
-- **NCS2** is discontinued (EOL); usable only on legacy OpenVINO. Buy only from remaining stock.
-- **Multi-accelerator rigs** (e.g. several Coral + Hailo behind a PCIe switch on Pi 5) work but need driver/overlay hacks and offer limited multi-chip software support.
-- **Mobilint / Rebellions / FuriosaAI** make no M.2 or USB part and cannot attach to a Pi.
+**Coral** hasn't seen meaningful driver/runtime updates in years; expect friction with recent Python/OS releases. Still fine for TFLite vision.
+
+**NCS2** is discontinued (EOL); usable only on legacy OpenVINO. Buy only from remaining stock.
+
+**Multi-accelerator rigs** (e.g. several Coral + Hailo behind a PCIe switch on Pi 5) work but need driver/overlay hacks and offer limited multi-chip software support.
+
+**Mobilint / Rebellions / FuriosaAI** make no M.2 or USB part and cannot attach to a Pi.
 
 ## Software
 
@@ -231,101 +233,103 @@ The tooling that turns a trained model into something an NPU can run: vendor SDK
 
 Each NPU vendor ships its own compiler/quantizer. Most take ONNX or a framework graph and emit a device-specific binary.
 
-| SDK | Vendor | Input | Notes |
-|-----|--------|-------|-------|
-| [DXNN](https://deepx.ai/) | DEEPX | PyTorch / ONNX / TF | Compiler + runtime for DX-M1/M2 |
-| [qb SDK](https://www.mobilint.com/) | Mobilint | ONNX | Model compiler + tools for ARIES/REGULUS |
-| [Dataflow Compiler (DFC)](https://hailo.ai/developer-zone/) | Hailo | ONNX / TFLite | Compiles to Hailo-8/10H; PyTorch via ONNX |
-| [Voyager SDK](https://axelera.ai/) | Axelera | ONNX / PyTorch | Metis toolchain; 100+ model zoo |
-| [OpenVINO](https://github.com/openvinotoolkit/openvino) | Intel | ONNX / IR | Optimizes for Intel CPU/GPU/NPU + Myriad |
-| [Edge TPU Compiler](https://coral.ai/docs/edgetpu/compiler/) | Google | TFLite (INT8) | Compiles quantized TFLite for Coral |
-| [RKNN-Toolkit2](https://github.com/airockchip/rknn-toolkit2) | Rockchip | ONNX / TF / others | For RK3588/RK1808 NPU |
-| [SiMa Palette](https://sima.ai/) | SiMa.ai | ONNX | MLSoC compiler + SDK |
-| [MemryX SDK](https://developer.memryx.com/) | MemryX | ONNX / TFLite / PyTorch | Dataflow compiler for MX3 |
-| [Furiosa SDK](https://github.com/furiosa-ai) | FuriosaAI | ONNX | Compiler, runtime, K8s integration for RNGD |
-| [eIQ](https://www.nxp.com/design/design-center/software/eiq-ml-development-environment:EIQ) | NXP | ONNX / TFLite | ML toolkit spanning MCU → i.MX → Ara DNPU |
+| SDK                                                                                         | Vendor    | Input                   | Notes                                              |
+| ------------------------------------------------------------------------------------------- | --------- | ----------------------- | -------------------------------------------------- |
+| [DXNN](https://deepx.ai/#dxnn)                                                              | DEEPX     | PyTorch / ONNX / TF     | Compiler + runtime for DX-M1/M2                    |
+| [qb SDK](https://www.mobilint.com/)                                                         | Mobilint  | ONNX                    | Model compiler + tools for ARIES/REGULUS           |
+| [Dataflow Compiler (DFC)](https://hailo.ai/developer-zone/)                                 | Hailo     | ONNX / TFLite           | Compiles to Hailo-8/10H; PyTorch via ONNX          |
+| [Voyager SDK](https://axelera.ai/#voyager-sdk)                                              | Axelera   | ONNX / PyTorch          | Metis toolchain; 100+ model zoo                    |
+| [OpenVINO](https://github.com/openvinotoolkit/openvino)                                     | Intel     | ONNX / IR               | Optimizes for Intel CPU/GPU/NPU + Myriad           |
+| [Edge TPU Compiler](https://coral.ai/docs/edgetpu/compiler/)                                | Google    | TFLite (INT8)           | Compiles quantized TFLite for Coral                |
+| [RKNN-Toolkit2](https://github.com/airockchip/rknn-toolkit2)                                | Rockchip  | ONNX / TF / others      | For RK3588/RK1808 NPU                              |
+| [SiMa Palette](https://sima.ai/)                                                            | SiMa.ai   | ONNX                    | MLSoC compiler + SDK                               |
+| [MemryX SDK](https://developer.memryx.com/)                                                 | MemryX    | ONNX / TFLite / PyTorch | Dataflow compiler for MX3                          |
+| [Furiosa SDK](https://github.com/furiosa-ai)                                                | FuriosaAI | ONNX                    | Compiler, runtime, Kubernetes integration for RNGD |
+| [eIQ](https://www.nxp.com/design/design-center/software/eiq-ml-development-environment:EIQ) | NXP       | ONNX / TFLite           | ML toolkit spanning MCU → i.MX → Ara DNPU          |
 
 ### Compilers & IR
 
 Vendor-neutral compiler stacks that lower a model through an intermediate representation to hardware-specific code.
 
-- [Apache TVM](https://github.com/apache/tvm) — deep-learning compiler with auto-scheduling; microTVM targets MCUs/NPUs
-- [IREE](https://github.com/iree-org/iree) — MLIR-based compiler + runtime for edge to datacenter
-- [MLIR](https://github.com/llvm/llvm-project/tree/main/mlir) — LLVM compiler infrastructure underlying many NPU stacks
-- [Glow](https://github.com/pytorch/glow) — Meta's ML graph compiler for accelerators
-- [XLA](https://github.com/openxla/xla) — operation-fusion compiler (TF/JAX), influences edge compiler design
-- [OpenXLA / StableHLO](https://github.com/openxla/stablehlo) — portable HLO dialect across compilers
+- [Apache TVM](https://github.com/apache/tvm) - Deep-learning compiler with auto-scheduling; microTVM targets MCUs/NPUs.
+- [IREE](https://github.com/iree-org/iree) - MLIR-based compiler + runtime for edge to datacenter.
+- [MLIR](https://github.com/llvm/llvm-project/tree/main/mlir) - LLVM compiler infrastructure underlying many NPU stacks.
+- [Glow](https://github.com/pytorch/glow) - Meta's ML graph compiler for accelerators.
+- [XLA](https://github.com/openxla/xla) - Operation-fusion compiler (TF/JAX), influences edge compiler design.
+- [OpenXLA / StableHLO](https://github.com/openxla/stablehlo) - Portable HLO dialect across compilers.
 
 ### Runtimes & inference engines
 
 Cross-vendor runtimes that dispatch to CPU/GPU/NPU back-ends.
 
-- [ONNX Runtime](https://github.com/microsoft/onnxruntime) — execution-provider interface binds graphs to NPU back-ends (NNAPI, OpenVINO, TensorRT, QNN)
-- [ExecuTorch](https://github.com/pytorch/executorch) — PyTorch Edge runtime for mobile/embedded/MCU with NPU delegation
-- [TensorFlow Lite / LiteRT](https://github.com/google-ai-edge/LiteRT) — on-device runtime; NNAPI/GPU/NPU delegates
-- [LiteRT-LM](https://github.com/google-ai-edge/LiteRT-LM) — LiteRT extension for on-device LLMs
-- [NCNN](https://github.com/Tencent/ncnn) — Tencent's mobile-first inference framework
-- [MNN](https://github.com/alibaba/MNN) — Alibaba's lightweight edge inference engine
-- [MACE](https://github.com/XiaoMi/mace) — Xiaomi's mobile NN accelerator
-- [TNN](https://github.com/Tencent/TNN) — Tencent cross-platform inference framework
-- [NNAPI](https://developer.android.com/ndk/guides/neuralnetworks) — Android's neural networks hardware abstraction (legacy; superseded by LiteRT delegates)
-- [QNN (Qualcomm AI Engine Direct)](https://www.qualcomm.com/developer/software/qualcomm-ai-engine-direct-sdk) — low-level Hexagon NPU access
+- [ONNX Runtime](https://github.com/microsoft/onnxruntime) - Execution-provider interface binds graphs to NPU back-ends (NNAPI, OpenVINO, TensorRT, QNN).
+- [ExecuTorch](https://github.com/pytorch/executorch) - PyTorch Edge runtime for mobile/embedded/MCU with NPU delegation.
+- [TensorFlow Lite / LiteRT](https://github.com/google-ai-edge/LiteRT) - On-device runtime; NNAPI/GPU/NPU delegates.
+- [LiteRT-LM](https://github.com/google-ai-edge/LiteRT-LM) - LiteRT extension for on-device LLMs.
+- [NCNN](https://github.com/Tencent/ncnn) - Tencent's mobile-first inference framework.
+- [MNN](https://github.com/alibaba/MNN) - Alibaba's lightweight edge inference engine.
+- [MACE](https://github.com/XiaoMi/mace) - Xiaomi's mobile NN accelerator.
+- [TNN](https://github.com/Tencent/TNN) - Tencent cross-platform inference framework.
+- [NNAPI](https://developer.android.com/ndk/guides/neuralnetworks) - Android's neural networks hardware abstraction (legacy; superseded by LiteRT delegates).
+- [QNN (Qualcomm AI Engine Direct)](https://www.qualcomm.com/developer/software/qualcomm-ai-engine-direct-sdk) - Low-level Hexagon NPU access.
 
 ### LLM on edge
 
 Running local language models on constrained hardware.
 
-- [llama.cpp](https://github.com/ggml-org/llama.cpp) — CPU-first GGUF inference, minimal setup
-- [Ollama](https://github.com/ollama/ollama) — local LLM runner built on llama.cpp
-- [MLC LLM](https://github.com/mlc-ai/mlc-llm) — TVM-based LLM deployment across GPU/NPU/mobile
-- [torchchat](https://github.com/pytorch/torchchat) — PyTorch local LLM inference (server/desktop/mobile)
+- [llama.cpp](https://github.com/ggml-org/llama.cpp) - CPU-first GGUF inference, minimal setup.
+- [Ollama](https://github.com/ollama/ollama) - Local LLM runner built on llama.cpp.
+- [MLC LLM](https://github.com/mlc-ai/mlc-llm) - TVM-based LLM deployment across GPU/NPU/mobile.
+- [torchchat](https://github.com/pytorch/torchchat) - PyTorch local LLM inference (server/desktop/mobile).
 
 ### Model optimization (quantization / pruning)
 
 The step that makes models fit an NPU — usually INT8 quantization.
 
-- [Neural Network Compression Framework (NNCF)](https://github.com/openvinotoolkit/nncf) — Intel quantization/pruning for OpenVINO
-- [PyTorch Quantization](https://pytorch.org/docs/stable/quantization.html) — native PTQ/QAT (eager + FX + export)
-- [TensorFlow Model Optimization Toolkit](https://github.com/tensorflow/model-optimization) — quantization, pruning, clustering
-- [ONNX Runtime quantization](https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html) — post-training INT8 for ONNX
-- [AIMET](https://github.com/quic/aimet) — Qualcomm's model-efficiency toolkit (quant + compression)
-- [Brevitas](https://github.com/Xilinx/brevitas) — AMD/Xilinx quantization-aware training in PyTorch
+- [Neural Network Compression Framework (NNCF)](https://github.com/openvinotoolkit/nncf) - Intel quantization/pruning for OpenVINO.
+- [PyTorch Quantization](https://pytorch.org/docs/stable/quantization.html) - Native PTQ/QAT (eager + FX + export).
+- [TensorFlow Model Optimization Toolkit](https://github.com/tensorflow/model-optimization) - Quantization, pruning, clustering.
+- [ONNX Runtime quantization](https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html) - Post-training INT8 for ONNX.
+- [AIMET](https://github.com/quic/aimet) - Qualcomm's model-efficiency toolkit (quant + compression).
+- [Brevitas](https://github.com/Xilinx/brevitas) - AMD/Xilinx quantization-aware training in PyTorch.
 
 ### Benchmarks
 
-- [MLPerf Inference](https://github.com/mlcommons/inference) — MLCommons standard inference benchmark (edge + datacenter suites)
-- [MLPerf Tiny](https://github.com/mlcommons/tiny) — benchmark for MCU-class TinyML
-- [ai-benchmark](https://ai-benchmark.com/) — mobile SoC / NPU benchmark
-- [EEMBC MLMark](https://www.eembc.org/mlmark/) — embedded ML benchmark
+- [MLPerf Inference](https://github.com/mlcommons/inference) - MLCommons standard inference benchmark (edge + datacenter suites).
+- [MLPerf Tiny](https://github.com/mlcommons/tiny) - Benchmark for MCU-class TinyML.
+- [ai-benchmark](https://ai-benchmark.com/) - Mobile SoC / NPU benchmark.
+- [EEMBC MLMark](https://www.eembc.org/mlmark/) - Embedded ML benchmark.
 
 ### Model zoos
 
-- [ONNX Model Zoo](https://github.com/onnx/models) — pre-trained models in ONNX
-- [Hailo Model Zoo](https://github.com/hailo-ai/hailo_model_zoo) — models pre-compiled for Hailo
-- [OpenVINO Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo) — Intel pre-trained models + demos
-- [Coral Models](https://coral.ai/models/) — Edge TPU-compiled TFLite models
-- [timm](https://github.com/huggingface/pytorch-image-models) — PyTorch image models, common export source
+- [ONNX Model Zoo](https://github.com/onnx/models) - Pre-trained models in ONNX.
+- [Hailo Model Zoo](https://github.com/hailo-ai/hailo_model_zoo) - Models pre-compiled for Hailo.
+- [OpenVINO Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo) - Intel pre-trained models + demos.
+- [Coral Models](https://coral.ai/models/) - Edge TPU-compiled TFLite models.
+- [timm](https://github.com/huggingface/pytorch-image-models) - PyTorch image models, common export source.
 
 ## Learning resources
 
-- [Awesome Edge Machine Learning](https://github.com/Bisonai/awesome-edge-machine-learning) — curated edge ML list
-- [Awesome Model Quantization](https://github.com/htqin/awesome-model-quantization) — quantization papers and methods
-- [Awesome Embedded / TinyML](https://github.com/gigwegbe/tinyml-papers-and-projects) — TinyML papers and projects
-- [Model-Inference-Deployment](https://github.com/Yulv-git/Model-Inference-Deployment) — inference framework comparison (OpenVINO, TVM, NCNN, MNN, …)
-- [Jeff Geerling – Raspberry Pi AI](https://www.jeffgeerling.com/blog) — hands-on Pi + NPU experiments
+- [Awesome Edge Machine Learning](https://github.com/Bisonai/awesome-edge-machine-learning) - Curated edge ML list.
+- [Awesome Model Quantization](https://github.com/htqin/awesome-model-quantization) - Quantization papers and methods.
+- [Awesome Embedded / TinyML](https://github.com/gigwegbe/tinyml-papers-and-projects) - TinyML papers and projects.
+- [Model-Inference-Deployment](https://github.com/Yulv-git/Model-Inference-Deployment) - Inference framework comparison (OpenVINO, TVM, NCNN, MNN).
+- [Jeff Geerling – Raspberry Pi AI](https://www.jeffgeerling.com/blog) - Hands-on Pi + NPU experiments.
 
 ## Glossary
 
-- NPU — Neural Processing Unit
-- LPU — LLM Processing Unit; NPU subclass for LLM inference
-- VPU — Vision Processing Unit
-- DNPU — Discrete NPU (standalone, not SoC-integrated)
-- TOPS / POPS — Tera / Peta Operations Per Second (precision-dependent)
-- SoM — System on Module
-- IR — Intermediate Representation; the mid-level form a compiler lowers a model into
-- PTQ / QAT — Post-Training Quantization / Quantization-Aware Training
-- Delegate / Execution Provider — runtime plugin that offloads a subgraph to a specific accelerator
-- GGUF — quantized model file format used by llama.cpp
+| Term                          | Meaning                                                                        |
+| ----------------------------- | ------------------------------------------------------------------------------ |
+| NPU                           | Neural Processing Unit                                                         |
+| LPU                           | LLM Processing Unit; NPU subclass for LLM inference                            |
+| VPU                           | Vision Processing Unit                                                         |
+| DNPU                          | Discrete NPU (standalone, not SoC-integrated)                                  |
+| TOPS / POPS                   | Tera / Peta Operations Per Second (precision-dependent)                        |
+| SoM                           | System on Module                                                               |
+| IR                            | Intermediate Representation; the mid-level form a compiler lowers a model into |
+| PTQ / QAT                     | Post-Training Quantization / Quantization-Aware Training                       |
+| Delegate / Execution Provider | runtime plugin that offloads a subgraph to a specific accelerator              |
+| GGUF                          | quantized model file format used by llama.cpp                                  |
 
 ## Contributing
 
