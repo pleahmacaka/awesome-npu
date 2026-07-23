@@ -1,0 +1,618 @@
+{
+ "Syntiant||NDP120": [
+  "RNN",
+  "CNN"
+ ],
+ "BrainChip||Akida (AKD1000)": [
+  "SNN",
+  "CNN"
+ ],
+ "Rebellions||ION": [
+  "CNN",
+  "RNN",
+  "Transformer"
+ ],
+ "Rebellions||ATOM": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Rebellions||ATOM Max": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Rebellions||REBEL / Rebel 100": [
+  "Transformer",
+  "LLM",
+  "VLM",
+  "CNN"
+ ],
+ "FuriosaAI||WARBOY": [
+  "CNN"
+ ],
+ "FuriosaAI||RNGD": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "DEEPX||DX-H1": [
+  "CNN",
+  "Transformer"
+ ],
+ "DEEPX||DX-M2": [
+  "CNN",
+  "Transformer"
+ ],
+ "HyperAccel||Orion": [
+  "Transformer",
+  "LLM"
+ ],
+ "HyperAccel||Bertha": [
+  "Transformer",
+  "LLM"
+ ],
+ "Telechips||N-Dolphin": [
+  "CNN"
+ ],
+ "Apple||Neural Engine (A / M series)": [
+  "CNN",
+  "Transformer",
+  "LLM",
+  "Diffusion"
+ ],
+ "MediaTek||APU (NeuroPilot / Dimensity)": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Ambarella||CV72S": [
+  "CNN",
+  "Transformer"
+ ],
+ "NXP||Ara-1 DNPU": [
+  "CNN",
+  "RNN",
+  "Transformer"
+ ],
+ "Nordic Semiconductor||Axon NPU (nRF54LM20B)": [
+  "RNN",
+  "CNN"
+ ],
+ "Qualcomm||Hexagon NPU": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Intel||Movidius NCS (1st gen)": [
+  "CNN"
+ ],
+ "Analog Devices||MAX78002": [
+  "CNN",
+  "RNN"
+ ],
+ "Ambiq||Apollo510": [
+  "CNN",
+  "RNN"
+ ],
+ "Sony||IMX500": [
+  "CNN"
+ ],
+ "Himax||WiseEye2 WE2 (HX6538)": [
+  "CNN",
+  "RNN"
+ ],
+ "Ambarella||N1": [
+  "LLM",
+  "Transformer",
+  "VLM",
+  "CNN"
+ ],
+ "Silicon Labs||xG26 (MG26/BG26)": [
+  "CNN",
+  "RNN"
+ ],
+ "NXP||MCX N94x": [
+  "CNN",
+  "RNN"
+ ],
+ "BrainChip||Akida AKD1500": [
+  "SNN",
+  "CNN"
+ ],
+ "Syntiant||NDP250": [
+  "RNN",
+  "CNN"
+ ],
+ "Renesas||RZ/V2L": [
+  "CNN"
+ ],
+ "Analog Devices||MAX78000": [
+  "CNN",
+  "RNN"
+ ],
+ "GreenWaves||GAP9": [
+  "RNN",
+  "CNN"
+ ],
+ "Infineon||PSOC Edge E84": [
+  "CNN",
+  "RNN"
+ ],
+ "Alif Semiconductor||Ensemble E7": [
+  "CNN",
+  "RNN"
+ ],
+ "NXP||i.MX 93": [
+  "CNN",
+  "RNN"
+ ],
+ "STMicroelectronics||STM32N6": [
+  "CNN",
+  "RNN"
+ ],
+ "Rockchip||RK3568 NPU": [
+  "CNN"
+ ],
+ "Rockchip||RK3562 NPU": [
+  "CNN"
+ ],
+ "Kneron||KL720": [
+  "CNN",
+  "RNN"
+ ],
+ "NXP||i.MX 95": [
+  "CNN"
+ ],
+ "Rockchip||RV1126 NPU": [
+  "CNN"
+ ],
+ "Texas Instruments||AM62A": [
+  "CNN"
+ ],
+ "NXP||i.MX 8M Plus NPU": [
+  "CNN"
+ ],
+ "Rockchip||RK1808": [
+  "CNN"
+ ],
+ "Rockchip||RK3399Pro NPU": [
+  "CNN"
+ ],
+ "Kneron||KL630": [
+  "CNN",
+  "Transformer"
+ ],
+ "Google||Coral USB Accelerator": [
+  "CNN"
+ ],
+ "Google||Coral M.2 / Mini PCIe (single)": [
+  "CNN"
+ ],
+ "Google||Coral Mini PCIe Accelerator": [
+  "CNN"
+ ],
+ "Google||Coral Dev Board": [
+  "CNN"
+ ],
+ "Google||Coral Dev Board Mini": [
+  "CNN"
+ ],
+ "Google||Coral SoM": [
+  "CNN"
+ ],
+ "Google||Coral Accelerator Module": [
+  "CNN"
+ ],
+ "Intel||Neural Compute Stick 2": [
+  "CNN"
+ ],
+ "MediaTek||Genio 1200": [
+  "CNN",
+  "RNN"
+ ],
+ "MemryX||MX3": [
+  "CNN"
+ ],
+ "Rockchip||RK3588 NPU": [
+  "CNN",
+  "Transformer"
+ ],
+ "Rockchip||RK3576 NPU": [
+  "CNN",
+  "Transformer"
+ ],
+ "Ambarella||CV5": [
+  "CNN"
+ ],
+ "DEEPX||DX-L1 / DX-L2": [
+  "CNN"
+ ],
+ "Hailo||Hailo-15L": [
+  "CNN",
+  "Transformer"
+ ],
+ "Google||Coral M.2 Dual Edge TPU": [
+  "CNN"
+ ],
+ "Kneron||KL530": [
+  "CNN",
+  "Transformer"
+ ],
+ "Texas Instruments||TDA4VM": [
+  "CNN"
+ ],
+ "Mobilint||REGULUS": [
+  "CNN"
+ ],
+ "Kneron||KL830": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "Intel||Core Ultra NPU (AI Boost, Meteor Lake)": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Hailo||Hailo-15M": [
+  "CNN",
+  "Transformer"
+ ],
+ "Hailo||Hailo-8L M.2": [
+  "CNN"
+ ],
+ "Renesas||RZ/V2N": [
+  "CNN",
+  "Transformer"
+ ],
+ "Blaize||1600 SoC": [
+  "CNN",
+  "Transformer"
+ ],
+ "Sophgo||BM1688": [
+  "CNN",
+  "Transformer",
+  "LLM",
+  "VLM"
+ ],
+ "Gyrfalcon||Lightspeeur 2803S Plai Plug": [
+  "CNN"
+ ],
+ "Huawei||Ascend 310 (Atlas 200)": [
+  "CNN"
+ ],
+ "Axera||AX650N": [
+  "CNN",
+  "Transformer"
+ ],
+ "Hailo||Hailo-15H": [
+  "CNN",
+  "Transformer"
+ ],
+ "Kneron||KL730": [
+  "CNN",
+  "Transformer"
+ ],
+ "DEEPX||DX-M1": [
+  "CNN",
+  "Transformer"
+ ],
+ "DEEPX||DX-M1M": [
+  "CNN",
+  "Transformer"
+ ],
+ "Hailo||Hailo-8 M.2": [
+  "CNN",
+  "Transformer"
+ ],
+ "Rockchip||RK1820": [
+  "Transformer",
+  "LLM",
+  "VLM"
+ ],
+ "Sophgo||SG2300X (BM1684X)": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "NVIDIA||Jetson AGX Xavier": [
+  "CNN",
+  "Transformer"
+ ],
+ "NXP||Ara240 DNPU": [
+  "LLM",
+  "Transformer",
+  "VLM",
+  "CNN"
+ ],
+ "Hailo||Hailo-10H M.2": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "SiMa.ai||MLSoC": [
+  "CNN",
+  "Transformer"
+ ],
+ "SiMa.ai||Modalix": [
+  "Transformer",
+  "LLM",
+  "VLM",
+  "CNN"
+ ],
+ "Black Sesame Technologies||Huashan A1000": [
+  "CNN",
+  "Transformer"
+ ],
+ "EdgeCortix||SAKURA-II": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "NVIDIA||Jetson Orin Nano Super": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Mobilint||MLA100 PCIe Card": [
+  "CNN",
+  "Transformer"
+ ],
+ "Mobilint||MLA100 MXM": [
+  "CNN",
+  "Transformer"
+ ],
+ "Mobilint||MLX-A1 Edge AI Box": [
+  "CNN",
+  "Transformer"
+ ],
+ "Qualcomm||Snapdragon X2 Elite NPU": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Renesas||RZ/V2H": [
+  "CNN",
+  "Transformer"
+ ],
+ "NVIDIA||Jetson Orin NX 16GB": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Axelera AI||Metis M.2": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "NVIDIA||Jetson AGX Orin 64GB": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Mobilint||MLA400 PCIe Card": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "Horizon Robotics||Journey 6P (J6)": [
+  "CNN",
+  "Transformer"
+ ],
+ "Axelera AI||Europa": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Axelera AI||Metis PCIe (4-core)": [
+  "CNN",
+  "Transformer"
+ ],
+ "NVIDIA||DRIVE AGX Thor": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Tenstorrent||Wormhole n150s": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Tenstorrent||Wormhole n300s": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Tenstorrent||Blackhole p100a": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Tenstorrent||Blackhole p150a": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Graphcore||Bow IPU (Bow-2000)": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "SambaNova||SN40L": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "Cerebras||WSE-3 (CS-3)": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "Groq||LPU (GroqCard)": [
+  "Transformer",
+  "LLM"
+ ],
+ "d-Matrix||Corsair": [
+  "Transformer",
+  "LLM"
+ ],
+ "Untether AI||speedAI240": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Etched||Sohu": [
+  "Transformer",
+  "LLM"
+ ],
+ "Huawei||Ascend 910C": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "Cambricon||Siyuan 590": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Gyrfalcon||GAINBOARD 2803S": [
+  "CNN"
+ ],
+ "AWS||Trainium2": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "AWS||Inferentia2": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "Google||TPU v6e (Trillium)": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Google||TPU v5e": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Intel||Gaudi 3": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "Qualcomm||Cloud AI 100 Ultra": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Microsoft||Maia 100": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "Meta||MTIA v2": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "IBM||Spyre Accelerator": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Positron||Atlas": [
+  "Transformer",
+  "LLM"
+ ],
+ "Biren||BR100": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Moffett AI||Antoum S30": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Enflame||L600": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "Moore Threads||MTT S4000": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Intel||Gaudi 2": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "Google||TPU v4": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Google||TPU v5p": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "AWS||Inferentia1": [
+  "CNN",
+  "Transformer"
+ ],
+ "AWS||Trainium1": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "Huawei||Ascend 910B": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "Huawei||Atlas 300I Duo": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Cambricon||MLU370-X8": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Tenstorrent||Grayskull e150": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Qualcomm||Cloud AI 100": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Graphcore||C600": [
+  "CNN",
+  "Transformer",
+  "LLM"
+ ],
+ "Untether AI||tsunAImi tsn200": [
+  "CNN",
+  "Transformer"
+ ],
+ "SambaNova||SN30": [
+  "Transformer",
+  "LLM",
+  "CNN"
+ ],
+ "Meta||MTIA v1": [
+  "CNN",
+  "Transformer"
+ ]
+}
