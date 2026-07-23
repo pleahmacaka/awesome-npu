@@ -351,75 +351,133 @@ const introHTML = renderMarkdown(introMd);
 const docsHTML = renderMarkdown(docsMd);
 const DATA = { products, generatedAt: new Date().toISOString().slice(0,10), repo: REPO_URL };
 
-// ---- SSR: 초기 표·통계를 정적 HTML로 미리 렌더 (레이아웃 시프트 방지 + 스크립트 없이도 내용 노출). 언어 기본값 = 영어(en) ----
-const T = I18N.en;
-const regionEN = new Intl.DisplayNames(['en'], { type:'region' });
-const cnameEN = code => { try { return regionEN.of(code) || code; } catch (e) { return code; } };
+// ---- 다국어 정적 페이지 생성 (언어별 SSR + hreflang) : SEO ----
 const EXT_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>';
-const SEG_T = { mcu:T.seg_mcu, edge:T.seg_edge, datacenter:T.seg_datacenter };
-const ccS = p => `<span class="cc" title="${escHtml(cnameEN(p.country))}">${escHtml(p.country)}</span>`;
-function rowS(p,i){
-  const perf = p.computeDisplay || '-';
-  const power = p.power || '-';
-  const intg = p.standalone ? '' : ` <span class="intg" data-tip="${escHtml(T.warn_integrated)}" role="img" aria-label="${escHtml(T.warn_integrated)}" tabindex="0">⚠</span>`;
-  const price = p.priceDisplay==null ? T.undisclosed : p.priceDisplay;
-  const rel = p.releaseDisplay || T.unknown;
-  return `<tr data-id="${escHtml(p.id)}"><td class="sel"><input type="checkbox" class="rowchk" data-id="${escHtml(p.id)}" aria-label="${escHtml(p.product)}"></td>`+
-    `<td class="idx">${String(i+1).padStart(2,'0')}</td>`+
-    `<td class="prod"><a class="pn" href="${escHtml(p.url)}" target="_blank" rel="noopener">${escHtml(p.product)}${EXT_SVG}</a>${p.chip?`<div class="pchip">${escHtml(p.chip)}</div>`:''}</td>`+
-    `<td class="muted">${escHtml(p.vendor)}</td><td>${ccS(p)}</td>`+
-    `<td><span class="seg">${escHtml(SEG_T[p.segment]||p.segment)}</span></td>`+
-    `<td>${escHtml(p.form)}${intg}</td>`+
-    `<td class="r"><span class="num">${escHtml(perf)}</span></td>`+
-    `<td class="muted">${escHtml(p.memory||'-')}</td>`+
-    `<td><span class="num">${escHtml(power)}</span></td>`+
-    `<td class="r"><span class="num ${p.priceUSD!=null?'':'muted'}">${escHtml(price)}</span></td>`+
-    `<td class="r"><span class="num ${p.releaseDate?'':'muted'}">${escHtml(rel)}</span></td></tr>`;
-}
-const TH = (k,r) => `<th scope="col"${r?' class="r"':''}>${escHtml(T[k])}</th>`;
-const THEAD = `<thead><tr><th class="sel"><input type="checkbox" class="selall" aria-label="${escHtml(T.a_selectall)}"></th><th scope="col"><span class="sr">#</span></th>${TH('col_product')}${TH('col_vendor')}${TH('col_country')}${TH('col_class')}${TH('col_form')}${TH('col_perf',1)}${TH('col_memory')}${TH('col_power')}${TH('col_price',1)}${TH('col_release',1)}</tr></thead>`;
-const ssrTable = `<table class="db">${THEAD}<tbody>${products.map(rowS).join('')}</tbody></table>`;
 const vendorsN = new Set(products.map(p=>p.vendor)).size;
 const countriesN = new Set(products.map(p=>p.country)).size;
-const ssrCount = `<b>${products.length}</b> ${escHtml(T.w_products)}`;
-const ssrMeta = `<span><b>${products.length}</b> ${escHtml(T.w_products)}</span><span><b>${vendorsN}</b> ${escHtml(T.w_vendors)}</span><span><b>${countriesN}</b> ${escHtml(T.w_countries)}</span>`;
-
-// JSON-LD 구조화 데이터 (검색엔진 SEO)
-const jsonld = {
-  '@context':'https://schema.org',
-  '@graph':[
-    { '@type':'WebSite', '@id':PAGES_URL+'#website', name:'Awesome NPU', url:PAGES_URL,
-      inLanguage:'en', description:'An interactive databook of NPUs and AI inference accelerators, from MCU-class on-device chips to datacenter cards.' },
-    { '@type':['CollectionPage','ItemList'], '@id':PAGES_URL+'#catalog',
-      name:'NPU hardware catalog', url:PAGES_URL, isPartOf:{ '@id':PAGES_URL+'#website' },
-      numberOfItems:products.length,
-      itemListElement: products.map((p,i)=>({
-        '@type':'ListItem', position:i+1,
-        item:{ '@type':'Product', name:p.product, url:p.url,
-          brand:{ '@type':'Brand', name:p.vendor },
-          category:({mcu:'MCU-class NPU',edge:'Edge NPU',datacenter:'Datacenter AI accelerator'}[p.segment]||'NPU') }
-      }))
-    }
-  ]
+const OGLOCALE = { en:'en_US', ko:'ko_KR', ja:'ja_JP', zh:'zh_CN', es:'es_ES', he:'he_IL' };
+const HREFLANG_CODE = { en:'en', ko:'ko', ja:'ja', zh:'zh-Hans', es:'es', he:'he' };
+const langPath = lang => lang==='en' ? PAGES_URL : `${PAGES_URL}${lang}/`;
+const SEO_TITLE = {
+  en:'Awesome NPU | NPU and AI accelerator list and comparison',
+  ko:'NPU 목록, AI 가속기 비교 | Awesome NPU',
+  ja:'NPU 一覧、AIアクセラレータ比較 | Awesome NPU',
+  zh:'NPU 列表与 AI 加速器对比 | Awesome NPU',
+  es:'Lista de NPU y comparación de aceleradores de IA | Awesome NPU',
+  he:'רשימת NPU והשוואת מאיצי AI | Awesome NPU',
 };
+const seoDesc = lang => { const n=products.length; return ({
+  en:`An interactive databook of ${n} NPUs and AI inference accelerators from ${vendorsN} vendors, spanning MCU-class chips to datacenter cards. Filter, sort and compare by TOPS, memory, power, price and release date.`,
+  ko:`MCU급 칩부터 데이터센터 카드까지, NPU와 AI 추론 가속기 ${n}종을 성능(TOPS), 메모리, 전력, 가격으로 필터·정렬·비교할 수 있는 인터랙티브 데이터북입니다.`,
+  ja:`MCUクラスのチップからデータセンターカードまで、NPUとAI推論アクセラレータ${n}種を性能(TOPS)、メモリ、消費電力、価格で絞り込み・並べ替え・比較できるインタラクティブなデータブック。`,
+  zh:`从 MCU 级芯片到数据中心卡，收录 ${n} 款 NPU 与 AI 推理加速器，可按性能(TOPS)、内存、功耗、价格进行筛选、排序与对比的交互式数据手册。`,
+  es:`Un databook interactivo de ${n} NPU y aceleradores de inferencia de IA, desde chips de clase MCU hasta tarjetas de datacenter. Filtra, ordena y compara por TOPS, memoria, consumo, precio y fecha.`,
+  he:`ספר נתונים אינטראקטיבי של ${n} מעבדי NPU ומאיצי הסקת AI, משבבי MCU ועד כרטיסי מרכזי נתונים. סינון, מיון והשוואה לפי TOPS, זיכרון, צריכה ומחיר.`,
+})[lang]; };
+const seoKw = lang => {
+  const base='NPU, AI accelerator, AI inference accelerator, edge AI, on-device AI, TinyML, TOPS, datacenter inference, LPU, Rebellions, FuriosaAI, DEEPX, Mobilint, Hailo, Coral, Jetson, TPU, Gaudi';
+  const loc={ ko:'NPU 목록, NPU 비교, AI 가속기, NPU 종류, ', ja:'NPU 一覧, NPU 比較, AIアクセラレータ, ', zh:'NPU 列表, NPU 对比, AI 加速器, ', es:'lista de NPU, comparación de NPU, acelerador de IA, ', he:'רשימת NPU, השוואת NPU, מאיץ AI, ' }[lang]||'';
+  return loc+base;
+};
+const HREFLANG = [`<link rel="alternate" hreflang="x-default" href="${PAGES_URL}">`]
+  .concat(LANGS.map(l=>`<link rel="alternate" hreflang="${HREFLANG_CODE[l]}" href="${langPath(l)}">`)).join('\n');
 
-const dataScript = `<script>window.DATA=${JSON.stringify(DATA).replace(/</g,'\\u003c')};window.I18N=${JSON.stringify(I18N).replace(/</g,'\\u003c')};</script>`;
-const ldScript = `<script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g,'\\u003c')}</script>`;
-for (const ph of ['<!--__DATA__-->','<!--__META__-->','<!--__COUNT__-->','<!--__TABLE__-->','<!--__ABOUT__-->','<!--__DOCS__-->'])
+// data-i18n 텍스트/속성을 대상 언어로 치환 → 정적 HTML 자체가 해당 언어가 됨(검색엔진/무JS 노출)
+function localizeBody(html, L){
+  html = html.replace(/(<[^>]*\sdata-i18n="([a-z_]+)"[^>]*>)([^<]*)(<\/)/g, (m,open,key,txt,close)=> L[key]!=null ? open+escHtml(L[key])+close : m);
+  html = html.replace(/(\sdata-i18n-ph="([a-z_]+)"[^>]*\splaceholder=")([^"]*)(")/g, (m,pre,key,val,q)=> L[key]!=null ? pre+escHtml(L[key])+q : m);
+  html = html.replace(/(\sdata-i18n-aria="([a-z_]+)"\s+aria-label=")([^"]*)(")/g, (m,pre,key,val,q)=> L[key]!=null ? pre+escHtml(L[key])+q : m);
+  return html;
+}
+function ssrFor(lang){
+  const T=I18N[lang];
+  let regionDN; try{ regionDN=new Intl.DisplayNames([lang],{type:'region'}); }catch(e){ regionDN=null; }
+  const cname=code=>{ try{ return (regionDN&&regionDN.of(code))||code; }catch(e){ return code; } };
+  const SEG_T={ mcu:T.seg_mcu, edge:T.seg_edge, datacenter:T.seg_datacenter };
+  const ccS=p=>`<span class="cc" title="${escHtml(cname(p.country))}">${escHtml(p.country)}</span>`;
+  const rowS=(p,i)=>{
+    const perf=p.computeDisplay||'-'; const power=p.power||'-';
+    const intg=p.standalone?'':` <span class="intg" data-tip="${escHtml(T.warn_integrated)}" role="img" aria-label="${escHtml(T.warn_integrated)}" tabindex="0">⚠</span>`;
+    const price=p.priceDisplay==null?T.undisclosed:p.priceDisplay;
+    const rel=p.releaseDisplay||T.unknown;
+    return `<tr data-id="${escHtml(p.id)}"><td class="sel"><input type="checkbox" class="rowchk" data-id="${escHtml(p.id)}" aria-label="${escHtml(p.product)}"></td>`+
+      `<td class="idx">${String(i+1).padStart(2,'0')}</td>`+
+      `<td class="prod"><a class="pn" href="${escHtml(p.url)}" target="_blank" rel="noopener">${escHtml(p.product)}${EXT_SVG}</a>${p.chip?`<div class="pchip">${escHtml(p.chip)}</div>`:''}</td>`+
+      `<td class="muted">${escHtml(p.vendor)}</td><td>${ccS(p)}</td>`+
+      `<td><span class="seg">${escHtml(SEG_T[p.segment]||p.segment)}</span></td>`+
+      `<td>${escHtml(p.form)}${intg}</td>`+
+      `<td class="r"><span class="num">${escHtml(perf)}</span></td>`+
+      `<td class="muted">${escHtml(p.memory||'-')}</td>`+
+      `<td><span class="num">${escHtml(power)}</span></td>`+
+      `<td class="r"><span class="num ${p.priceUSD!=null?'':'muted'}">${escHtml(price)}</span></td>`+
+      `<td class="r"><span class="num ${p.releaseDate?'':'muted'}">${escHtml(rel)}</span></td></tr>`;
+  };
+  const TH=(k,r)=>`<th scope="col"${r?' class="r"':''}>${escHtml(T[k])}</th>`;
+  const THEAD=`<thead><tr><th class="sel"><input type="checkbox" class="selall" aria-label="${escHtml(T.a_selectall)}"></th><th scope="col"><span class="sr">#</span></th>${TH('col_product')}${TH('col_vendor')}${TH('col_country')}${TH('col_class')}${TH('col_form')}${TH('col_perf',1)}${TH('col_memory')}${TH('col_power')}${TH('col_price',1)}${TH('col_release',1)}</tr></thead>`;
+  return {
+    table:`<table class="db">${THEAD}<tbody>${products.map(rowS).join('')}</tbody></table>`,
+    count:`<b>${products.length}</b> ${escHtml(T.w_products)}`,
+    meta:`<span><b>${products.length}</b> ${escHtml(T.w_products)}</span><span><b>${vendorsN}</b> ${escHtml(T.w_vendors)}</span><span><b>${countriesN}</b> ${escHtml(T.w_countries)}</span>`,
+  };
+}
+function jsonldFor(lang){
+  const url=langPath(lang);
+  return { '@context':'https://schema.org', '@graph':[
+    { '@type':'WebSite', '@id':PAGES_URL+'#website', name:'Awesome NPU', url:PAGES_URL, inLanguage:lang, description:seoDesc(lang) },
+    { '@type':'BreadcrumbList', '@id':url+'#breadcrumb', itemListElement:[{ '@type':'ListItem', position:1, name:'Awesome NPU', item:PAGES_URL }] },
+    { '@type':['CollectionPage','ItemList'], '@id':url+'#catalog', name:SEO_TITLE[lang], url, inLanguage:lang, isPartOf:{ '@id':PAGES_URL+'#website' }, numberOfItems:products.length,
+      itemListElement: products.map((p,i)=>({ '@type':'ListItem', position:i+1, item:{ '@type':'Product', name:p.product, url:p.url, brand:{ '@type':'Brand', name:p.vendor }, category:({mcu:'MCU-class NPU',edge:'Edge NPU',datacenter:'Datacenter AI accelerator'}[p.segment]||'NPU') } })) }
+  ] };
+}
+
+for (const ph of ['<!--__DATA__-->','<!--__META__-->','<!--__COUNT__-->','<!--__TABLE__-->','<!--__ABOUT__-->','<!--__DOCS__-->','<!--__HREFLANG__-->','__LANG__','__DIR__','__TITLE__','__DESC__','__CANONICAL__','__OGTITLE__','__OGLOCALE__','__KEYWORDS__'])
   if (!template.includes(ph)) { console.error(`template.html 자리표시자 누락: ${ph}`); process.exit(1); }
-const out = template
-  .replace('<!--__META__-->', ssrMeta)
-  .replace('<!--__COUNT__-->', ssrCount)
-  .replace('<!--__TABLE__-->', ssrTable)
-  .replace('<!--__ABOUT__-->', introHTML)
-  .replace('<!--__DOCS__-->', docsHTML)
-  .replace('<!--__DATA__-->', dataScript + '\n' + ldScript);
-fs.writeFileSync(path.join(ROOT,'index.html'), out);
+const DATA_JSON = JSON.stringify(DATA).replace(/</g,'\\u003c');
+const I18N_JSON = JSON.stringify(I18N).replace(/</g,'\\u003c');
+
+let pageCount = 0;
+for (const lang of LANGS){
+  const L = I18N[lang];
+  const ssr = ssrFor(lang);
+  const locked = lang !== 'en';
+  const dataScript = `<script>window.DATA=${DATA_JSON};window.I18N=${I18N_JSON};window.__SSRLANG=${JSON.stringify(lang)};window.__LANGLOCK=${locked};</script>`;
+  const ldScript = `<script type="application/ld+json">${JSON.stringify(jsonldFor(lang)).replace(/</g,'\\u003c')}</script>`;
+  const page = localizeBody(template, L)
+    .replace(/__LANG__/g, lang)
+    .replace(/__DIR__/g, L._dir || 'ltr')
+    .replace(/__TITLE__/g, escHtml(SEO_TITLE[lang]))
+    .replace(/__OGTITLE__/g, escHtml(SEO_TITLE[lang]))
+    .replace('__OGLOCALE__', OGLOCALE[lang])
+    .replace(/__DESC__/g, escHtml(seoDesc(lang)))
+    .replace('__KEYWORDS__', escHtml(seoKw(lang)))
+    .replace(/__CANONICAL__/g, langPath(lang))
+    .replace('<!--__HREFLANG__-->', HREFLANG)
+    .replace('<!--__META__-->', ssr.meta)
+    .replace('<!--__COUNT__-->', ssr.count)
+    .replace('<!--__TABLE__-->', ssr.table)
+    .replace('<!--__ABOUT__-->', introHTML)
+    .replace('<!--__DOCS__-->', docsHTML)
+    .replace('<!--__DATA__-->', dataScript + '\n' + ldScript);
+  const outPath = lang === 'en' ? path.join(ROOT,'index.html') : path.join(ROOT, lang, 'index.html');
+  fs.mkdirSync(path.dirname(outPath), { recursive:true });
+  fs.writeFileSync(outPath, page);
+  pageCount++;
+}
+
+// 사이트맵 (모든 언어 URL + hreflang 대체)
+const today = new Date().toISOString().slice(0,10);
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n`+
+  LANGS.map(lang=>{
+    const alts = [`    <xhtml:link rel="alternate" hreflang="x-default" href="${PAGES_URL}"/>`]
+      .concat(LANGS.map(l=>`    <xhtml:link rel="alternate" hreflang="${HREFLANG_CODE[l]}" href="${langPath(l)}"/>`)).join('\n');
+    return `  <url>\n    <loc>${langPath(lang)}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>${lang==='en'?'1.0':'0.8'}</priority>\n${alts}\n  </url>`;
+  }).join('\n')+`\n</urlset>\n`;
+fs.writeFileSync(path.join(ROOT,'sitemap.xml'), sitemap);
 
 // 요약
 const kr = products.filter(p=>p.origin==='kr').length;
 const seg = k => products.filter(p=>p.segment===k).length;
-console.log(`✓ index.html 생성 완료`);
+console.log(`✓ 생성 완료: ${pageCount}개 언어 페이지 (index.html + ${LANGS.filter(l=>l!=='en').join('/')}/) + sitemap.xml`);
 console.log(`  제품 ${products.length}종 (Products ${mainProducts.length} + Datacenter ${dcProducts.length})`);
 console.log(`  국내 ${kr} · 해외 ${products.length-kr}`);
 console.log(`  데이터센터 ${seg('datacenter')} · 엣지 ${seg('edge')} · MCU ${seg('mcu')}`);

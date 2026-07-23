@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="dark">
+<html lang="__LANG__" dir="__DIR__" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -7,24 +7,26 @@
 <meta name="theme-color" content="#0c0b0a" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23d23a1f'/%3E%3Ctext x='16' y='23' font-family='Arial,Helvetica,sans-serif' font-size='21' font-weight='700' text-anchor='middle' fill='%23fff'%3EN%3C/text%3E%3C/svg%3E">
-<meta name="description" content="An interactive databook of 100+ NPUs and AI inference accelerators, from MCU-class on-device chips to datacenter cards. Filter, sort and compare by performance (TOPS), memory, power, price and release date across many vendors and countries.">
-<meta name="keywords" content="NPU, AI accelerator, AI inference accelerator, Rebellions, FuriosaAI, DEEPX, Mobilint, Hailo, Coral, Jetson, TPU, Gaudi, edge AI, on-device AI, TinyML, TOPS, datacenter inference, LPU">
+<meta name="description" content="__DESC__">
+<meta name="keywords" content="__KEYWORDS__">
 <meta name="author" content="pleahmacaka">
 <meta name="robots" content="index, follow">
-<title>Awesome NPU</title>
-<link rel="canonical" href="https://pleahmacaka.github.io/awesome-npu/">
+<title>__TITLE__</title>
+<link rel="canonical" href="__CANONICAL__">
+<!--__HREFLANG__-->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Awesome NPU">
-<meta property="og:url" content="https://pleahmacaka.github.io/awesome-npu/">
-<meta property="og:title" content="Awesome NPU">
-<meta property="og:description" content="An interactive databook of NPUs and AI inference accelerators, from MCU-class on-device chips to datacenter cards.">
+<meta property="og:locale" content="__OGLOCALE__">
+<meta property="og:url" content="__CANONICAL__">
+<meta property="og:title" content="__OGTITLE__">
+<meta property="og:description" content="__DESC__">
 <meta property="og:image" content="https://pleahmacaka.github.io/awesome-npu/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Awesome NPU">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Awesome NPU">
-<meta name="twitter:description" content="An interactive databook of NPUs and AI inference accelerators, from MCU-class chips to datacenter cards.">
+<meta name="twitter:title" content="__OGTITLE__">
+<meta name="twitter:description" content="__DESC__">
 <meta name="twitter:image" content="https://pleahmacaka.github.io/awesome-npu/og.png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
@@ -715,6 +717,7 @@ table.cmp .dim{color:var(--ink-3)}
   // ---- i18n ----
   function detectLang(){
     try{ const q=new URLSearchParams(location.search).get("lang"); if(q&&SUPPORTED.includes(q)) return q; }catch(e){}
+    if(window.__LANGLOCK && SUPPORTED.includes(window.__SSRLANG)) return window.__SSRLANG;
     try{ const s=localStorage.getItem("npu-lang"); if(s&&SUPPORTED.includes(s)) return s; }catch(e){}
     const cands=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||"en"];
     for(const c of cands){ let b=String(c).toLowerCase().split("-")[0]; if(b==="iw")b="he"; if(b==="zh")return "zh"; if(SUPPORTED.includes(b))return b; }
@@ -735,7 +738,7 @@ table.cmp .dim{color:var(--ink-3)}
     document.querySelectorAll("[data-i18n-aria]").forEach(el=>{const k=el.getAttribute("data-i18n-aria"); if(L[k]!=null) el.setAttribute("aria-label",L[k]);});
     if($("langSel")) $("langSel").value=curLang;
     buildFilters(); buildMeta();
-    if(!(initial && curLang==="en")) render();
+    if(!(initial && curLang===(window.__SSRLANG||"en"))) render();
     updateCmp();
     try{ localStorage.setItem("npu-lang",curLang); }catch(e){}
     setTimeout(setSticky,0);
