@@ -1,6 +1,6 @@
 # Awesome NPU [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-> 🌐 **인터랙티브 웹 버전 (필터·검색·모바일 대응):** https://pleahmacaka.github.io/awesome-npu/
+> 🌐 **Interactive web version (filter, search, compare, mobile-friendly):** https://pleahmacaka.github.io/awesome-npu/
 
 Commercial NPUs and AI inference accelerators, from MCU-class parts to datacenter cards.
 
