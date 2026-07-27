@@ -252,19 +252,19 @@ function parsePrice(raw, enrich){
 }
 function formGroup(form){
   const f = form || '';
+  // 장착(마운트) 방식 분류: 슬롯/폼팩터로 그룹. SoC 내장은 'Embedded'(MCU/베어메탈).
   if (/M\.2/i.test(f)) return 'M.2';
+  if (/mPCIe/i.test(f)) return 'mPCIe';
   if (/USB/i.test(f)) return 'USB';
   if (/MXM/i.test(f)) return 'MXM';
-  if (/Box/i.test(f)) return 'Box';
-  if (/PCIe/i.test(f)) return 'PCIe';
-  if (/OAM/i.test(f)) return 'OAM';
+  if (/PCIe|Card/i.test(f)) return 'PCIe';
+  if (/OAM|Server|System|Blade|Wafer|Rack/i.test(f)) return 'Server';
   if (/SoM/i.test(f)) return 'SoM';
   if (/\bIP\b/i.test(f)) return 'IP';
   if (/HAT/i.test(f)) return 'HAT';
-  if (/Card/i.test(f)) return 'PCIe';
-  if (/SoC|sensor|chip/i.test(f)) return 'SoC';
-  if (/SBC|board/i.test(f)) return 'Board';
-  return 'Server/System';
+  if (/SBC|board|Box/i.test(f)) return 'Board';
+  if (/SoC|sensor|chip|module/i.test(f)) return 'Embedded';
+  return 'Server';
 }
 
 // ---------- 표 파서 ----------

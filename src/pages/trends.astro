@@ -3,24 +3,28 @@ import { products, I18N, PAGES_URL, detailCss, detailScript, themeInit, FAVICON,
 import Charts from '../components/Charts.svelte';
 import 'layerchart/core.css';
 
-// aggregations for the charts
-const yearMap = {}, countryMap = {}, vendorMap = {}, classMap = {};
+// aggregations for the trend charts
+const yearMap = {}, countryMap = {}, vendorMap = {}, mountMap = {};
 for (const p of products) {
-  if (p.releaseDate) { const y = p.releaseDate.slice(0, 4); yearMap[y] = (yearMap[y] || 0) + 1; }
+  if (p.releaseDate) { const y = p.releaseDate.slice(0, 4); if (/^\d{4}$/.test(y)) yearMap[y] = (yearMap[y] || 0) + 1; }
   countryMap[p.country] = (countryMap[p.country] || 0) + 1;
   vendorMap[p.vendor] = (vendorMap[p.vendor] || 0) + 1;
-  classMap[p.segment] = (classMap[p.segment] || 0) + 1;
+  mountMap[p.formGroup] = (mountMap[p.formGroup] || 0) + 1;
 }
 const agg = {
+  total: products.length,
   byYear: Object.keys(yearMap).sort().map(y => ({ label: y, count: yearMap[y] })),
-  byCountry: Object.entries(countryMap).sort((a, b) => b[1] - a[1]).slice(0, 12).map(([code, count]) => ({ code, count })),
-  byVendor: Object.entries(vendorMap).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([label, count]) => ({ label, count })),
-  byClass: ['mcu', 'edge', 'datacenter'].filter(k => classMap[k]).map(k => ({ key: k, count: classMap[k] })),
+  byCountry: Object.entries(countryMap).sort((a, b) => b[1] - a[1]).map(([code, count]) => ({ code, count })),
+  byVendor: Object.entries(vendorMap).sort((a, b) => b[1] - a[1]).map(([label, count]) => ({ label, count })),
+  byMount: Object.entries(mountMap).sort((a, b) => b[1] - a[1]).map(([key, count]) => ({ key, count })),
+  vendorTotal: Object.keys(vendorMap).length,
+  countryTotal: Object.keys(countryMap).length,
+  mountTotal: Object.keys(mountMap).length,
 };
 
-const canonical = PAGES_URL + 'charts/';
-const title = 'NPU release charts by year, country, vendor and class | Awesome NPU';
-const desc = `Interactive charts of ${products.length} NPUs and AI accelerators: releases by year and breakdowns by country, vendor and product class.`;
+const canonical = PAGES_URL + 'trends/';
+const title = 'NPU release trends by year, country, vendor and mount | Awesome NPU';
+const desc = `Interactive trends across ${products.length} NPUs and AI accelerators: releases by year and breakdowns by country, vendor and mount type.`;
 const jsonld = { '@context': 'https://schema.org', '@type': 'WebPage', name: title, url: canonical, isPartOf: { '@type': 'WebSite', name: 'Awesome NPU', url: PAGES_URL } };
 const dataInj = `window.I18N=${JSON.stringify(I18N).replace(/</g, '\\u003c')};`;
 ---
@@ -56,10 +60,10 @@ const dataInj = `window.I18N=${JSON.stringify(I18N).replace(/</g, '\\u003c')};`;
 <body>
 <Fragment set:html={topbar()} />
 <main class="wrap ch-wrap">
-  <nav class="bc"><a href={PAGES_URL} data-i18n="nav_products">Products</a><span class="sep">/</span><span data-i18n="nav_charts">Charts</span></nav>
+  <nav class="bc"><a href={PAGES_URL} data-i18n="nav_products">Products</a><span class="sep">/</span><span data-i18n="nav_charts">Trends</span></nav>
   <div class="ch-head">
-    <h1 class="ch-h1" data-i18n="charts_title">NPU release charts</h1>
-    <p class="ch-sub" data-i18n="charts_sub">Releases by year, and breakdowns by country, vendor and class.</p>
+    <h1 class="ch-h1" data-i18n="charts_title">NPU release trends</h1>
+    <p class="ch-sub" data-i18n="charts_sub">Release trends by year, and breakdowns by country, vendor and mount type.</p>
   </div>
   <Charts client:load agg={agg} i18n={I18N} />
   <div><a class="back" href={PAGES_URL} data-i18n="back_catalog">Back to the catalog</a></div>

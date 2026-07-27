@@ -45,7 +45,7 @@ function ssrFor(lang){
   const T=I18N[lang];
   let regionDN; try{ regionDN=new Intl.DisplayNames([lang],{type:'region'}); }catch(e){ regionDN=null; }
   const cname=code=>{ try{ return (regionDN&&regionDN.of(code))||code; }catch(e){ return code; } };
-  const SEG_T={ mcu:T.seg_mcu, edge:T.seg_edge, datacenter:T.seg_datacenter };
+  const mountL=m=>T['mount_'+String(m).toLowerCase().replace(/[^a-z0-9]/g,'')]||m;
   const ccS=p=>`<span class="cc" title="${escHtml(cname(p.country))}">${escHtml(p.country)}</span>`;
   const rowS=(p,i)=>{
     const perf=p.computeDisplay||'-'; const power=p.power||'-';
@@ -57,9 +57,8 @@ function ssrFor(lang){
       `<td class="idx">${String(i+1).padStart(2,'0')}</td>`+
       `<td class="prod"><a class="pn" href="${escHtml(p.page)}">${escHtml(p.product)}</a>${p.chip?`<div class="pchip">${escHtml(p.chip)}</div>`:''}</td>`+
       `<td class="muted"><a class="vn" href="${escHtml(p.vpage)}">${escHtml(p.vendor)}</a></td><td>${ccS(p)}</td>`+
-      `<td><span class="seg">${escHtml(SEG_T[p.segment]||p.segment)}</span></td>`+
       `<td class="arch">${archTxt}</td>`+
-      `<td>${escHtml(p.form)}${intg}</td>`+
+      `<td><span class="seg">${escHtml(mountL(p.formGroup))}</span>${intg}</td>`+
       `<td class="r"><span class="num">${escHtml(perf)}</span></td>`+
       `<td class="muted">${escHtml(p.memory||'-')}</td>`+
       `<td><span class="num">${escHtml(power)}</span></td>`+
@@ -71,7 +70,7 @@ function ssrFor(lang){
     return `<th scope="col" data-col="${col}"${cls?` class="${cls}"`:''}><span class="thl">${escHtml(T[k])}</span>${caret}</th>`; };
   const THEAD=`<thead><tr><th class="sel"><input type="checkbox" class="selall" aria-label="${escHtml(T.a_selectall)}"></th><th scope="col"><span class="sr">#</span></th>`+
     headCell('product','col_product',{sort:1})+headCell('vendor','col_vendor',{sort:1,filter:1})+headCell('country','col_country',{filter:1})+
-    headCell('class','col_class',{filter:1})+headCell('arch','arch',{filter:1})+headCell('form','col_form',{filter:1})+
+    headCell('arch','arch',{filter:1})+headCell('form','col_form',{filter:1})+
     headCell('perf','col_perf',{r:1,sort:1})+headCell('memory','col_memory',{})+headCell('power','col_power',{})+
     headCell('price','col_price',{r:1,sort:1})+headCell('release','col_release',{r:1,sort:1})+`</tr></thead>`;
   return {
@@ -187,15 +186,17 @@ export function renderProduct(p){
   const seg = ({mcu:'MCU-class NPU',edge:'Edge NPU',datacenter:'Datacenter AI accelerator'}[p.segment]||'NPU');
   const title = `${p.product} (${p.vendor}) NPU specs | Awesome NPU`;
   const archTxt = (p.arch&&p.arch.length)?p.arch.join(', '):'';
-  const desc = `${p.product} by ${p.vendor}: ${archTxt?archTxt+' ':''}${TEN['seg_'+p.segment]} NPU. ${p.computeDisplay&&p.computeDisplay!=='-'?p.computeDisplay+', ':''}${p.memory?p.memory+', ':''}${p.form}. Specs, supported architectures and the official source in the Awesome NPU databook.`.slice(0,300);
+  const desc = `${p.product} by ${p.vendor}: ${archTxt?archTxt+' ':''}NPU. ${p.computeDisplay&&p.computeDisplay!=='-'?p.computeDisplay+', ':''}${p.memory?p.memory+', ':''}${p.form}. Specs, supported architectures and the official source in the Awesome NPU databook.`.slice(0,300);
   const price = p.priceDisplay==null ? `<span data-i18n="undisclosed">${escHtml(TEN.undisclosed)}</span>` : escHtml(p.priceDisplay);
   const rel = p.releaseDisplay ? escHtml(p.releaseDisplay) : `<span data-i18n="unknown">${escHtml(TEN.unknown)}</span>`;
   const dgRow = (k,v) => `<dt data-i18n="${k}">${escHtml(TEN[k])}</dt><dd>${v}</dd>`;
+  const mslug = String(p.formGroup||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+  const mountTxt = TEN['mount_'+mslug] || p.formGroup;
   const specsSSR = p.specsI18n.en.map(([k,v])=>`<dt>${escHtml(k)}</dt><dd>${escHtml(v)}</dd>`).join('');
   const warn = p.standalone ? '' : `<p class="dwarn" data-i18n="warn_integrated">${escHtml(TEN.warn_integrated)}</p>`;
   const archBlock = (p.arch&&p.arch.length)?`<div class="darch"><i data-i18n="arch">${escHtml(TEN.arch)}</i>${p.arch.map(a=>`<span class="at">${escHtml(a)}</span>`).join('')}</div>`:'';
   const related = (bySlugVendor[p.vendor]||[]).filter(q=>q.id!==p.id).slice(0,6);
-  const relBlock = related.length?`<div class="rel"><h2 data-i18n="used_in">More from ${escHtml(p.vendor)}</h2><div class="relg">${related.map(q=>`<a class="relc" href="${q.page}"><b>${escHtml(q.product)}</b><div class="rs">${escHtml([TEN['seg_'+q.segment],q.form,q.computeDisplay!=='-'?q.computeDisplay:''].filter(Boolean).join(' / '))}</div></a>`).join('')}</div></div>`:'';
+  const relBlock = related.length?`<div class="rel"><h2 data-i18n="used_in">More from ${escHtml(p.vendor)}</h2><div class="relg">${related.map(q=>`<a class="relc" href="${q.page}"><b>${escHtml(q.product)}</b><div class="rs">${escHtml([q.form,q.computeDisplay!=='-'?q.computeDisplay:''].filter(Boolean).join(' / '))}</div></a>`).join('')}</div></div>`:'';
   const jsonld = { '@context':'https://schema.org','@graph':[
     { '@type':'Product', '@id':p.page+'#product', name:p.product, url:p.page, category:seg, brand:{'@type':'Brand',name:p.vendor}, sameAs:p.url, description:(p.noteI18n.en||desc) },
     { '@type':'BreadcrumbList', itemListElement:[
@@ -209,8 +210,7 @@ export function renderProduct(p){
     `<dl class="dg">`+
       dgRow('col_vendor',`<a href="${p.vpage}">${escHtml(p.vendor)}</a>`)+
       `<dt data-i18n="col_country">${escHtml(TEN.col_country)}</dt><dd id="d-country">${escHtml(cnEN(p.country))}</dd>`+
-      `<dt data-i18n="col_class">${escHtml(TEN.col_class)}</dt><dd data-i18n="seg_${p.segment}">${escHtml(TEN['seg_'+p.segment])}</dd>`+
-      dgRow('col_form', escHtml(p.form)+(p.standalone?'':' <span class="dwarn" style="margin:0" data-i18n="integrated">'+escHtml(TEN.integrated)+'</span>'))+
+      dgRow('col_form', `<span data-i18n="mount_${mslug}">${escHtml(mountTxt)}</span>`+(p.form&&p.form.toLowerCase().replace(/[^a-z0-9]/g,'')!==mslug?` <span style="color:var(--ink-3)">(${escHtml(p.form)})</span>`:'')+(p.standalone?'':' <span class="dwarn" style="margin:0" data-i18n="integrated">'+escHtml(TEN.integrated)+'</span>'))+
       dgRow('col_perf', escHtml(p.computeDisplay||'-'))+
       dgRow('col_memory', escHtml(p.memory||'-'))+
       dgRow('col_power', escHtml(p.power||'-'))+
@@ -240,7 +240,7 @@ export function renderVendor(vendor){
       {'@type':'ListItem',position:2,name:vendor,item:vpage} ] },
     { '@type':'ItemList', numberOfItems:list.length, itemListElement:list.map((p,i)=>({'@type':'ListItem',position:i+1,name:p.product,url:p.page})) } ] };
   const dataInj = `<script>window.I18N=${JSON.stringify(I18N).replace(/</g,'\\u003c')};</script>`;
-  const cards = list.map(p=>`<a class="relc" href="${p.page}"><b>${escHtml(p.product)}</b><div class="rs">${escHtml([TEN['seg_'+p.segment],p.form,p.computeDisplay!=='-'?p.computeDisplay:'',(p.arch&&p.arch.join(' · '))].filter(Boolean).join(' / '))}</div></a>`).join('');
+  const cards = list.map(p=>`<a class="relc" href="${p.page}"><b>${escHtml(p.product)}</b><div class="rs">${escHtml([p.form,p.computeDisplay!=='-'?p.computeDisplay:'',(p.arch&&p.arch.join(' · '))].filter(Boolean).join(' / '))}</div></a>`).join('');
   return pageHead(title, desc, vpage, jsonld)+topbar()+
     `<main class="wrap"><nav class="bc"><a href="${PAGES_URL}" data-i18n="nav_products">Products</a><span class="sep">/</span><span>${escHtml(vendor)}</span></nav>`+
     `<h1 class="dt">${escHtml(vendor)}</h1><div class="dsub">${escHtml(countries.map(cnEN).join(', '))} · <b>${list.length}</b> <span data-i18n="w_products">${escHtml(TEN.w_products)}</span></div>`+
@@ -252,7 +252,7 @@ export function renderVendor(vendor){
 // 사이트맵 (모든 언어 URL + hreflang 대체 + 제품/벤더 상세)
 export function buildSitemap(today){
   const detailEntries = [
-    {loc:`${PAGES_URL}charts/`, pr:'0.7'},
+    {loc:`${PAGES_URL}trends/`, pr:'0.7'},
     ...Object.values(vendorSlug).map(s=>({loc:`${PAGES_URL}v/${s}/`, pr:'0.7'})),
     ...products.map(p=>({loc:p.page, pr:'0.6'})),
   ];

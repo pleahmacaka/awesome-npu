@@ -371,6 +371,9 @@ table.cmp .dim{color:var(--ink-3)}
 .news-status.err{color:var(--spot)}
 .news-retry{margin-inline-start:10px;font-size:12.5px;background:none;border:1px solid var(--rule-2);color:var(--ink-2);padding:5px 13px;cursor:pointer;font-family:inherit}
 .news-foot{margin:24px 0 0;font-size:12px;color:var(--ink-3)}
+.vsearch{width:100%;max-width:340px;margin:0 0 10px;background:none;border:1px solid var(--rule-2);color:var(--ink);font-size:12.5px;padding:7px 11px;font-family:inherit}
+.vsearch:focus{outline:none;border-color:var(--rule-3)}
+.chips.scroll{max-height:168px;overflow-y:auto;padding-inline-end:4px}
 </style>
 </head>
 <body>
@@ -386,7 +389,7 @@ table.cmp .dim{color:var(--ink-3)}
     </nav>
     <div class="tb-r">
       <a href="#news" id="navNews" class="tnews" data-i18n="nav_news">News</a>
-      <a href="https://pleahmacaka.github.io/awesome-npu/charts/" id="navCharts" class="tnews" data-i18n="nav_charts">Charts</a>
+      <a href="https://pleahmacaka.github.io/awesome-npu/trends/" id="navCharts" class="tnews" data-i18n="nav_charts">Trends</a>
       <select id="langSel" class="langsel" data-i18n-aria="a_language" aria-label="Language"></select>
       <a id="repoLink" class="ibtn" href="#" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.34 9.34 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg></a>
       <button id="themeBtn" class="ibtn" data-i18n-aria="a_theme" aria-label="Toggle theme"></button>
@@ -441,21 +444,26 @@ table.cmp .dim{color:var(--ink-3)}
       </div>
     </div>
     <div class="quick" id="quick">
-      <div class="qgroup"><span class="qlab" data-i18n="class_label">Class</span><div id="q-segment" style="display:flex;gap:8px"></div></div>
+      <div class="qgroup"><span class="qlab" data-i18n="mount_label">Mount</span><div id="q-segment" style="display:flex;gap:8px;flex-wrap:wrap"></div></div>
     </div>
   </div>
 </div>
 
 <div class="drawer" id="drawer">
   <div class="wrap drawer-in">
+    <div><div class="flabel" data-i18n="mount_label">Mount</div><div class="chips" id="f-form"></div></div>
     <div><div class="flabel" data-i18n="country">Country</div><div class="chips" id="f-country"></div></div>
-    <div><div class="flabel" data-i18n="form">Form factor</div><div class="chips" id="f-form"></div></div>
     <div><div class="flabel" data-i18n="arch">Architectures</div><div class="chips" id="f-arch"></div></div>
-    <div style="grid-column:span 2;min-width:0"><div class="flabel" data-i18n="vendor">Vendor</div><div class="chips" id="f-vendor"></div></div>
+    <div style="grid-column:span 2;min-width:0">
+      <div class="flabel" data-i18n="vendor">Vendor</div>
+      <input type="search" class="vsearch" id="f-vendor-search" data-i18n-ph="vendor_search_ph" placeholder="Search vendors" autocomplete="off">
+      <div class="chips scroll" id="f-vendor"></div>
+    </div>
     <div>
       <div class="flabel" data-i18n="release_range">Release date</div>
       <div class="date"><input type="month" id="dateFrom" data-i18n-aria="date_from" aria-label="From"><span class="til">~</span><input type="month" id="dateTo" data-i18n-aria="date_to" aria-label="To"></div>
       <label class="chk"><input type="checkbox" id="includeNoDate" checked><span data-i18n="include_undated">Include undated</span></label>
+      <label class="chk"><input type="checkbox" id="includeIntegrated"><span data-i18n="include_integrated">Include integrated / IP (host required)</span></label>
     </div>
     <div class="drawer-foot"><button class="txtbtn reset" id="resetBtn" data-i18n="reset">Reset filters</button></div>
   </div>
@@ -540,7 +548,7 @@ table.cmp .dim{color:var(--ink-3)}
   let curLang = "en", L = I18N.en, regionDN = null;
   function setRegionDN(lang){ try{ regionDN = new Intl.DisplayNames([lang],{type:"region"}); }catch(e){ regionDN = null; } }
   const regionOf = code => { try{ return (regionDN && regionDN.of(code)) || code; }catch(e){ return code; } };
-  const segLabel = s => L["seg_"+s] || s;
+  const mountLabel = m => (L && L["mount_"+String(m).toLowerCase().replace(/[^a-z0-9]/g,"")]) || m;
 
   const SUN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
   const MOON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>';
@@ -558,15 +566,15 @@ table.cmp .dim{color:var(--ink-3)}
   const relOf = p => p.releaseDisplay || L.unknown;
   const warnBtn = p => p.standalone ? "" : `<span class="intg" data-tip="${esc(L.warn_integrated)}" role="img" aria-label="${esc(L.warn_integrated)}" tabindex="0">⚠</span>`;
 
-  const FORM_ORDER = ["M.2","PCIe","USB","MXM","Box","OAM","SoM","SoC","Server/System"];
-  const FORMS = [...new Set(products.map(p=>p.formGroup))].sort((a,b)=>FORM_ORDER.indexOf(a)-FORM_ORDER.indexOf(b));
+  const FORM_ORDER = ["Embedded","PCIe","M.2","mPCIe","USB","SoM","HAT","Board","MXM","Server","IP"];
+  const FORMS = [...new Set(products.map(p=>p.formGroup))].sort((a,b)=>{const i=FORM_ORDER.indexOf(a),j=FORM_ORDER.indexOf(b);return (i<0?99:i)-(j<0?99:j);});
   const VENDORS = [...new Set(products.map(p=>p.vendor))].sort();
-  const SEGS = ["mcu","edge","datacenter"];
+  const QUICK_MOUNTS = ["Embedded","PCIe","M.2","USB","SoM","Server"].filter(m=>FORMS.includes(m));
 
   const ARCHS = [...new Set(products.flatMap(p=>p.arch||[]))].sort((a,b)=>["CNN","RNN","Transformer","ViT","LLM","VLM","Diffusion","SNN"].indexOf(a)-["CNN","RNN","Transformer","ViT","LLM","VLM","Diffusion","SNN"].indexOf(b));
   const state = { search:"", view:"table", sort:"default",
-    segment:new Set(), country:new Set(), form:new Set(), vendor:new Set(), arch:new Set(),
-    dateFrom:null, dateTo:null, includeNoDate:true, compare:new Set() };
+    country:new Set(), form:new Set(), vendor:new Set(), arch:new Set(),
+    includeIntegrated:false, dateFrom:null, dateTo:null, includeNoDate:true, compare:new Set() };
 
   function chipBtn(label, pressed, onclick){
     const b=document.createElement("button"); b.className="tog"; b.type="button"; b.textContent=label;
@@ -581,21 +589,29 @@ table.cmp .dim{color:var(--ink-3)}
   }
   function buildFilters(){
     const seg=$("q-segment"); seg.innerHTML="";
-    SEGS.forEach(k=>seg.appendChild(chipBtn(segLabel(k), state.segment.has(k), function(){
-      state.segment.has(k) ? (state.segment.delete(k), this.setAttribute("aria-pressed","false")) : (state.segment.add(k), this.setAttribute("aria-pressed","true"));
-      render();
+    QUICK_MOUNTS.forEach(k=>seg.appendChild(chipBtn(mountLabel(k), state.form.has(k), function(){
+      state.form.has(k) ? state.form.delete(k) : state.form.add(k);
+      buildFilters(); render(); fcount();
     })));
     multi("f-country", [...new Set(products.map(p=>p.country))].sort().map(c=>({key:c,label:regionOf(c)})), state.country);
-    multi("f-form", FORMS.map(f=>({key:f,label:f})), state.form);
+    multi("f-form", FORMS.map(f=>({key:f,label:mountLabel(f)})), state.form);
     multi("f-arch", ARCHS.map(a=>({key:a,label:a})), state.arch);
     $("f-arch").parentElement.hidden = ARCHS.length===0;
     multi("f-vendor", VENDORS.map(v=>({key:v,label:v})), state.vendor);
+    filterVendorChips($("f-vendor-search") ? $("f-vendor-search").value : "");
   }
-  function fcount(){ const n=state.country.size+state.form.size+state.vendor.size+state.arch.size+((state.dateFrom||state.dateTo)?1:0)+(state.includeNoDate?0:1);
+  // 벤더가 많아 검색으로 필터 (D)
+  function filterVendorChips(q){
+    q=(q||"").toLowerCase().trim();
+    Array.prototype.forEach.call($("f-vendor").children, function(b){
+      b.style.display = (!q || b.textContent.toLowerCase().indexOf(q)>=0) ? "" : "none";
+    });
+  }
+  function fcount(){ const n=state.country.size+state.form.size+state.vendor.size+state.arch.size+(state.includeIntegrated?1:0)+((state.dateFrom||state.dateTo)?1:0)+(state.includeNoDate?0:1);
     const e=$("fcount"); if(n){e.hidden=false;e.textContent=n;}else e.hidden=true; }
 
   function matches(p){
-    if(state.segment.size&&!state.segment.has(p.segment))return false;
+    if(!state.includeIntegrated && !p.standalone)return false;
     if(state.country.size&&!state.country.has(p.country))return false;
     if(state.form.size&&!state.form.has(p.formGroup))return false;
     if(state.vendor.size&&!state.vendor.has(p.vendor))return false;
@@ -635,9 +651,8 @@ table.cmp .dim{color:var(--ink-3)}
       <td class="prod"><a class="pn" href="${esc(p.page)}">${esc(p.product)}</a>${p.chip?`<div class="pchip">${esc(p.chip)}</div>`:""}</td>
       <td class="muted"><a class="vn" href="${esc(p.vpage)}">${esc(p.vendor)}</a></td>
       <td>${cc(p)}</td>
-      <td><span class="seg">${esc(segLabel(p.segment))}</span></td>
       <td class="arch">${p.arch&&p.arch.length?esc(p.arch.join(" · ")):'<span class="muted">-</span>'}</td>
-      <td>${esc(p.form)}${w?" "+w:""}</td>
+      <td><span class="seg">${esc(mountLabel(p.formGroup))}</span>${w?" "+w:""}</td>
       <td class="r"><span class="num">${esc(perf)}</span></td>
       <td class="muted">${esc(p.memory||"-")}</td>
       <td><span class="num">${esc(powerOf(p))}</span></td>
@@ -647,7 +662,7 @@ table.cmp .dim{color:var(--ink-3)}
   }
   function buildThead(){
     const hc=(col,k,o)=>{ o=o||{}; const inter=o.sort||o.filter;
-      const fset={vendor:state.vendor,country:state.country,class:state.segment,arch:state.arch,form:state.form}[col];
+      const fset={vendor:state.vendor,country:state.country,arch:state.arch,form:state.form}[col];
       const sk={product:'name',vendor:'vendor',perf:'tops',price:'price',release:'date'}[col];
       const active=(o.filter&&fset&&fset.size>0)||(o.sort&&sk&&(state.sort===sk+'-asc'||state.sort===sk+'-desc'||(sk==='vendor'&&state.sort==='vendor')));
       const cls=[o.r?'r':'',inter?'thx':'',active?'active':''].filter(Boolean).join(' ');
@@ -655,7 +670,7 @@ table.cmp .dim{color:var(--ink-3)}
       return `<th scope="col" data-col="${col}"${cls?` class="${cls}"`:''}><span class="thl">${esc(L[k])}</span>${caret}</th>`; };
     return `<thead><tr><th class="sel"><input type="checkbox" class="selall" aria-label="${esc(L.a_selectall)}"></th><th scope="col"><span class="sr">#</span></th>`+
       hc('product','col_product',{sort:1})+hc('vendor','col_vendor',{sort:1,filter:1})+hc('country','col_country',{filter:1})+
-      hc('class','col_class',{filter:1})+hc('arch','arch',{filter:1})+hc('form','col_form',{filter:1})+
+      hc('arch','arch',{filter:1})+hc('form','col_form',{filter:1})+
       hc('perf','col_perf',{r:1,sort:1})+hc('memory','col_memory',{})+hc('power','col_power',{})+
       hc('price','col_price',{r:1,sort:1})+hc('release','col_release',{r:1,sort:1})+`</tr></thead>`; }
   function table(list){ return `<table class="db">${buildThead()}<tbody>${list.map(row).join("")}</tbody></table>`; }
@@ -670,7 +685,7 @@ table.cmp .dim{color:var(--ink-3)}
     const picked=state.compare.has(p.id);
     const cls=["entry", animate?"ri":""].filter(Boolean).join(" ");
     const st=animate?` style="--i:${Math.min(i,14)}"`:"";
-    const sub=[p.chip, segLabel(p.segment), p.form, (p.standalone?null:L.integrated), relOf(p)].filter(Boolean).map(esc).join(" / ");
+    const sub=[p.chip, mountLabel(p.formGroup), (p.standalone?null:L.integrated), relOf(p)].filter(Boolean).map(esc).join(" / ");
     return `<article class="${cls}"${st}>
       <div class="e-top"><a class="e-vendor" href="${esc(p.vpage)}">${esc(p.vendor)}</a><span class="e-topr">${cc(p)}<label class="e-chk"><input type="checkbox" class="rowchk" data-id="${esc(p.id)}" aria-label="${esc(p.product)}"${picked?" checked":""}></label></span></div>
       <a class="e-name" href="${esc(p.page)}">${esc(p.product)}</a>
@@ -754,13 +769,12 @@ table.cmp .dim{color:var(--ink-3)}
 
   // ---- column header menu (click header -> sort / filter) ----
   const SORTKEY={product:'name',vendor:'vendor',perf:'tops',price:'price',release:'date'};
-  const FILTERSET={vendor:()=>state.vendor,country:()=>state.country,class:()=>state.segment,arch:()=>state.arch,form:()=>state.form};
+  const FILTERSET={vendor:()=>state.vendor,country:()=>state.country,arch:()=>state.arch,form:()=>state.form};
   const FILTEROPTS={
     vendor:()=>VENDORS.map(v=>({k:v,label:v})),
     country:()=>[...new Set(products.map(p=>p.country))].sort().map(c=>({k:c,label:regionOf(c)})),
-    class:()=>SEGS.map(s=>({k:s,label:segLabel(s)})),
     arch:()=>ARCHS.map(a=>({k:a,label:a})),
-    form:()=>FORMS.map(f=>({k:f,label:f})),
+    form:()=>FORMS.map(f=>({k:f,label:mountLabel(f)})),
   };
   const CARETUP='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 15 6-6 6 6"/></svg>';
   const CARETDN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>';
@@ -808,9 +822,8 @@ table.cmp .dim{color:var(--ink-3)}
     const rowsDef=[
       ["col_vendor", p=>esc(p.vendor)],
       ["col_country", p=>esc(regionOf(p.country))],
-      ["col_class", p=>esc(segLabel(p.segment))],
       ["arch", p=>(p.arch&&p.arch.length)?p.arch.map(esc).join(", "):'<span class="dim">-</span>'],
-      ["col_form", p=>{ const w=warnBtn(p); return esc(p.form||"-")+(w?" "+w:""); }],
+      ["col_form", p=>{ const w=warnBtn(p); return esc(mountLabel(p.formGroup))+(w?" "+w:""); }],
       ["col_perf", p=>esc(p.computeDisplay||"-")],
       ["col_memory", p=>esc(p.memory||"-")],
       ["col_power", p=>esc(powerOf(p))],
@@ -871,7 +884,7 @@ table.cmp .dim{color:var(--ink-3)}
     document.querySelectorAll("[data-i18n-aria]").forEach(el=>{const k=el.getAttribute("data-i18n-aria"); if(L[k]!=null) el.setAttribute("aria-label",L[k]);});
     if($("langSel")) $("langSel").value=curLang;
     buildFilters(); buildMeta();
-    if(!(initial && curLang===(window.__SSRLANG||"en"))) render();
+    render();
     updateCmp();
     if(newsActive){ newsBuildKws(); newsLoad(); }
     try{ localStorage.setItem("npu-lang",curLang); }catch(e){}
@@ -893,11 +906,14 @@ table.cmp .dim{color:var(--ink-3)}
   $("dateFrom").onchange=e=>{state.dateFrom=e.target.value||null;render();fcount();};
   $("dateTo").onchange=e=>{state.dateTo=e.target.value||null;render();fcount();};
   $("includeNoDate").onchange=e=>{state.includeNoDate=e.target.checked;render();fcount();};
+  $("includeIntegrated").onchange=e=>{state.includeIntegrated=e.target.checked;render();fcount();};
+  $("f-vendor-search").oninput=e=>filterVendorChips(e.target.value);
   $("viewTable").onclick=()=>setView("table"); $("viewCard").onclick=()=>setView("card"); $("viewChip").onclick=()=>setView("chip");
   $("filterToggle").onclick=()=>{const d=$("drawer");const o=d.classList.toggle("open");$("filterToggle").setAttribute("aria-expanded",String(o));setTimeout(setSticky,280);};
   $("resetBtn").onclick=()=>{Object.assign(state,{search:"",sort:"default",dateFrom:null,dateTo:null,includeNoDate:true});
-    state.segment.clear();state.country.clear();state.form.clear();state.vendor.clear();state.arch.clear();
-    $("search").value="";$("dateFrom").value="";$("dateTo").value="";$("includeNoDate").checked=true;$("sortSel").value="default";
+    state.country.clear();state.form.clear();state.vendor.clear();state.arch.clear();state.includeIntegrated=false;
+    $("search").value="";$("dateFrom").value="";$("dateTo").value="";$("includeNoDate").checked=true;$("includeIntegrated").checked=false;$("sortSel").value="default";
+    if($("f-vendor-search"))$("f-vendor-search").value="";
     buildFilters();fcount();render();};
   let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(setSticky,150);});
 
@@ -912,14 +928,14 @@ table.cmp .dim{color:var(--ink-3)}
   var newsActive=false, newsKw="all";
   var NEWS_LOCALE={ko:{hl:"ko",gl:"KR",ceid:"KR:ko"},en:{hl:"en-US",gl:"US",ceid:"US:en"},ja:{hl:"ja",gl:"JP",ceid:"JP:ja"},zh:{hl:"zh-CN",gl:"CN",ceid:"CN:zh-Hans"},es:{hl:"es",gl:"ES",ceid:"ES:es"},he:{hl:"he",gl:"IL",ceid:"IL:he"}};
   var NEWS_KWS=[{id:"all",q:'NPU OR "AI accelerator" OR "neural processing unit" OR TPU'},{id:"npu",q:'NPU "neural processing unit"'},{id:"accel",q:'"AI accelerator" OR "inference accelerator"'},{id:"edge",q:'"edge AI" OR "on-device AI"'},{id:"tpu",q:'TPU OR "tensor processing unit"'},{id:"datacenter",q:'"AI chip" datacenter inference accelerator'}];
-  var NEWS_PROXIES=[function(u){return "https://api.allorigins.win/raw?url="+encodeURIComponent(u);},function(u){return "https://corsproxy.io/?url="+encodeURIComponent(u);},function(u){return "https://api.codetabs.com/v1/proxy/?quest="+encodeURIComponent(u);}];
+  var NEWS_PROXIES=[function(u){return "https://api.codetabs.com/v1/proxy/?quest="+encodeURIComponent(u);},function(u){return "https://corsproxy.io/?url="+encodeURIComponent(u);},function(u){return "https://api.allorigins.win/get?url="+encodeURIComponent(u);},function(u){return "https://api.allorigins.win/raw?url="+encodeURIComponent(u);},function(u){return "https://thingproxy.freeboard.io/fetch/"+u;}];
   function newsRssUrl(kw,lang){var loc=NEWS_LOCALE[lang]||NEWS_LOCALE.en;var e=NEWS_KWS.filter(function(k){return k.id===kw;})[0]||NEWS_KWS[0];return "https://news.google.com/rss/search?q="+encodeURIComponent(e.q)+"&hl="+loc.hl+"&gl="+loc.gl+"&ceid="+encodeURIComponent(loc.ceid);}
   function newsCacheKey(kw,lang){return "npu-news:"+lang+":"+kw;}
   function newsRead(kw,lang){try{var r=localStorage.getItem(newsCacheKey(kw,lang));if(!r)return null;var o=JSON.parse(r);o.stale=(Date.now()-o.t>1200000);return o;}catch(e){return null;}}
   function newsSave(kw,lang,items){try{localStorage.setItem(newsCacheKey(kw,lang),JSON.stringify({t:Date.now(),items:items}));}catch(e){}}
-  function newsParseItems(text){var items=[];var t=String(text||"").trim();if(t.charAt(0)==="{"){try{var j=JSON.parse(t);(j.items||[]).forEach(function(it){items.push({title:it.title,link:it.link,pub:it.pubDate,src:(it.source&&it.source.title)||""});});return items;}catch(e){}}try{var doc=new DOMParser().parseFromString(text,"text/xml");Array.prototype.forEach.call(doc.querySelectorAll("item"),function(n){var g=function(t){var el=n.getElementsByTagName(t)[0];return el?el.textContent:"";};var title=g("title");if(title)items.push({title:title,link:g("link"),pub:g("pubDate"),src:g("source")});});}catch(e){}return items;}
+  function newsParseItems(text){var items=[];var t=String(text||"").trim();if(t.charAt(0)==="{"){try{var j=JSON.parse(t);if(typeof j.contents==="string")return newsParseItems(j.contents);if(j.items&&j.items.length){j.items.forEach(function(it){items.push({title:it.title,link:it.link,pub:it.pubDate,src:(it.source&&it.source.title)||""});});return items;}}catch(e){}}try{var doc=new DOMParser().parseFromString(text,"text/xml");Array.prototype.forEach.call(doc.querySelectorAll("item"),function(n){var g=function(t){var el=n.getElementsByTagName(t)[0];return el?el.textContent:"";};var title=g("title");if(title)items.push({title:title,link:g("link"),pub:g("pubDate"),src:g("source")});});}catch(e){}return items;}
   function newsTry(url){var ctrl=new AbortController();var to=setTimeout(function(){ctrl.abort();},8000);return fetch(url,{signal:ctrl.signal}).then(function(r){clearTimeout(to);if(!r.ok)throw 0;return r.text();}).then(function(txt){var it=newsParseItems(txt);if(!it.length)throw 0;return it;});}
-  function newsFetch(kw,lang){var rss=newsRssUrl(kw,lang);var tries=NEWS_PROXIES.map(function(pf){return newsTry(pf(rss));});tries.push(newsTry("https://api.rss2json.com/v1/api.json?count=24&rss_url="+encodeURIComponent(rss)));return Promise.any(tries);}
+  function newsFetch(kw,lang){var rss=newsRssUrl(kw,lang);return Promise.any(NEWS_PROXIES.map(function(pf){return newsTry(pf(rss));}));}
   function newsRender(items){$("newsGrid").innerHTML=items.slice(0,24).map(function(it){var d="";try{if(it.pub)d=new Date(it.pub).toLocaleDateString(curLang,{year:"numeric",month:"short",day:"numeric"});}catch(e){}return '<a class="ncard" href="'+esc(it.link)+'" target="_blank" rel="noopener"><div class="ntitle">'+esc(it.title)+'</div><div class="nmeta">'+(it.src?'<span class="nsrc">'+esc(it.src)+'</span>':"")+(d?'<span class="ndate">'+esc(d)+'</span>':"")+'</div></a>';}).join("");}
   function newsLoad(force){var lang=curLang,kw=newsKw;var status=$("newsStatus"),foot=$("newsFoot");var cached=force?null:newsRead(kw,lang);if(cached&&cached.items&&cached.items.length){newsRender(cached.items);}if(cached&&!cached.stale){status.hidden=true;foot.hidden=false;return;}status.hidden=false;status.className="news-status";status.textContent=(L&&L.news_loading)||"Loading news…";newsFetch(kw,lang).then(function(items){newsSave(kw,lang,items);if(kw!==newsKw||lang!==curLang)return;status.hidden=true;newsRender(items);foot.hidden=false;try{$("newsUpd").textContent=new Date().toLocaleString(curLang);}catch(e){}}).catch(function(){if(cached&&cached.items&&cached.items.length){status.hidden=true;}else{status.hidden=false;status.className="news-status err";status.innerHTML=esc((L&&L.news_error)||"Couldn't load news right now.")+' <button class="news-retry" id="newsRetry"></button>';var rb=$("newsRetry");if(rb){rb.textContent=(L&&L.news_retry)||"Retry";rb.onclick=function(){newsLoad(true);};}}});}
   function newsBuildKws(){var box=$("newsKws");if(!box)return;box.innerHTML=NEWS_KWS.map(function(k){return '<button class="nkw'+(k.id===newsKw?" on":"")+'" data-kw="'+k.id+'" data-i18n="news_kw_'+k.id+'"></button>';}).join("");Array.prototype.forEach.call(box.querySelectorAll(".nkw"),function(b){var k=b.getAttribute("data-i18n");b.textContent=(L&&L[k])||b.getAttribute("data-kw");b.onclick=function(){newsKw=b.getAttribute("data-kw");Array.prototype.forEach.call(box.querySelectorAll(".nkw"),function(x){x.classList.toggle("on",x===b);});newsLoad();};});}
