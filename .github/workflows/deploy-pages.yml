@@ -1,17 +1,12 @@
 name: Deploy to GitHub Pages
 
-# README.md 를 소스로 index.html 을 생성해 GitHub Pages 로 배포한다.
-# Settings > Pages > Source = "GitHub Actions" 상태에서 main push 시 자동 배포.
+# Builds the site with Astro (src/pages + scripts/{catalog,render}.mjs read
+# from README.md) and deploys dist/ to GitHub Pages on push to main.
+# Settings > Pages > Source = "GitHub Actions".
 
 on:
   push:
     branches: [main]
-    paths:
-      - 'README.md'
-      - 'index.html'
-      - 'scripts/**'
-      - '.nojekyll'
-      - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -35,9 +30,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
 
-      - name: Generate index.html from README.md
-        run: node scripts/generate.mjs
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with Astro
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -45,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: 'dist'
 
   deploy:
     needs: build

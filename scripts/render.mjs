@@ -252,6 +252,7 @@ export function renderVendor(vendor){
 // 사이트맵 (모든 언어 URL + hreflang 대체 + 제품/벤더 상세)
 export function buildSitemap(today){
   const detailEntries = [
+    {loc:`${PAGES_URL}charts/`, pr:'0.7'},
     ...Object.values(vendorSlug).map(s=>({loc:`${PAGES_URL}v/${s}/`, pr:'0.7'})),
     ...products.map(p=>({loc:p.page, pr:'0.6'})),
   ];
@@ -265,4 +266,5 @@ export function buildSitemap(today){
     `\n</urlset>\n`;
 }
 
-export { products, mainProducts, dcProducts, vendorSlug, LANGS, ENRICH, usedKeys, langPath, PAGES_URL };
+export { products, mainProducts, dcProducts, vendorSlug, LANGS, ENRICH, usedKeys, langPath, PAGES_URL, REPO_URL, I18N,
+  detailCss, detailScript, themeInit, FAVICON, topbar, footerH };

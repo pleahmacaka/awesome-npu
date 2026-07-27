@@ -1,0 +1,71 @@
+---
+import { products, I18N, PAGES_URL, detailCss, detailScript, themeInit, FAVICON, topbar, footerH } from '../../scripts/render.mjs';
+import Charts from '../components/Charts.svelte';
+import 'layerchart/core.css';
+
+// aggregations for the charts
+const yearMap = {}, countryMap = {}, vendorMap = {}, classMap = {};
+for (const p of products) {
+  if (p.releaseDate) { const y = p.releaseDate.slice(0, 4); yearMap[y] = (yearMap[y] || 0) + 1; }
+  countryMap[p.country] = (countryMap[p.country] || 0) + 1;
+  vendorMap[p.vendor] = (vendorMap[p.vendor] || 0) + 1;
+  classMap[p.segment] = (classMap[p.segment] || 0) + 1;
+}
+const agg = {
+  byYear: Object.keys(yearMap).sort().map(y => ({ label: y, count: yearMap[y] })),
+  byCountry: Object.entries(countryMap).sort((a, b) => b[1] - a[1]).slice(0, 12).map(([code, count]) => ({ code, count })),
+  byVendor: Object.entries(vendorMap).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([label, count]) => ({ label, count })),
+  byClass: ['mcu', 'edge', 'datacenter'].filter(k => classMap[k]).map(k => ({ key: k, count: classMap[k] })),
+};
+
+const canonical = PAGES_URL + 'charts/';
+const title = 'NPU release charts by year, country, vendor and class | Awesome NPU';
+const desc = `Interactive charts of ${products.length} NPUs and AI accelerators: releases by year and breakdowns by country, vendor and product class.`;
+const jsonld = { '@context': 'https://schema.org', '@type': 'WebPage', name: title, url: canonical, isPartOf: { '@type': 'WebSite', name: 'Awesome NPU', url: PAGES_URL } };
+const dataInj = `window.I18N=${JSON.stringify(I18N).replace(/</g, '\\u003c')};`;
+---
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="color-scheme" content="dark light" />
+<link rel="icon" href={FAVICON} />
+<title>{title}</title>
+<meta name="description" content={desc} />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href={canonical} />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Awesome NPU" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={desc} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={PAGES_URL + 'og.png'} />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<style set:html={detailCss}></style>
+<Fragment set:html={themeInit} />
+<script type="application/ld+json" set:html={JSON.stringify(jsonld)}></script>
+<style>{`
+  .ch-wrap{padding-block:clamp(28px,5vw,52px) 80px}
+  .ch-head{margin:0 0 22px}
+  .ch-h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:0;text-wrap:balance}
+  .ch-sub{margin:8px 0 0;color:var(--ink-3);font-size:13.5px}
+`}</style>
+</head>
+<body>
+<Fragment set:html={topbar()} />
+<main class="wrap ch-wrap">
+  <nav class="bc"><a href={PAGES_URL} data-i18n="nav_products">Products</a><span class="sep">/</span><span data-i18n="nav_charts">Charts</span></nav>
+  <div class="ch-head">
+    <h1 class="ch-h1" data-i18n="charts_title">NPU release charts</h1>
+    <p class="ch-sub" data-i18n="charts_sub">Releases by year, and breakdowns by country, vendor and class.</p>
+  </div>
+  <Charts client:load agg={agg} i18n={I18N} />
+  <div><a class="back" href={PAGES_URL} data-i18n="back_catalog">Back to the catalog</a></div>
+</main>
+<Fragment set:html={footerH()} />
+<script is:inline set:html={dataInj}></script>
+<Fragment set:html={detailScript} />
+</body>
+</html>
