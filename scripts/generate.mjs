@@ -63,7 +63,7 @@ const CHIP_OVERRIDE = {
   'Gyrfalcon||GAINBOARD 2803S': 'Lightspeeur 2803S',
 };
 
-const FLAGS = { KR:'🇰🇷', US:'🇺🇸', NL:'🇳🇱', CN:'🇨🇳', NO:'🇳🇴', IL:'🇮🇱', JP:'🇯🇵', DE:'🇩🇪', FR:'🇫🇷', TW:'🇹🇼', CH:'🇨🇭' };
+const FLAGS = { KR:'🇰🇷', US:'🇺🇸', NL:'🇳🇱', CN:'🇨🇳', NO:'🇳🇴', IL:'🇮🇱', JP:'🇯🇵', DE:'🇩🇪', FR:'🇫🇷', TW:'🇹🇼', CH:'🇨🇭', GB:'🇬🇧', GR:'🇬🇷', CA:'🇨🇦' };
 const CNAME_UI = { KR:'대한민국', US:'미국', NL:'네덜란드', CN:'중국', NO:'노르웨이', IL:'이스라엘', JP:'일본', DE:'독일', FR:'프랑스', TW:'대만', CH:'스위스' };
 
 /* 제조사 공식 자료·공개 보도 기반 한글 상세 (키: `벤더||README 제품명`) */
@@ -261,7 +261,11 @@ function formGroup(form){
   if (/PCIe/i.test(f)) return 'PCIe';
   if (/OAM/i.test(f)) return 'OAM';
   if (/SoM/i.test(f)) return 'SoM';
-  if (/SoC|sensor/i.test(f)) return 'SoC';
+  if (/\bIP\b/i.test(f)) return 'IP';
+  if (/HAT/i.test(f)) return 'HAT';
+  if (/Card/i.test(f)) return 'PCIe';
+  if (/SoC|sensor|chip/i.test(f)) return 'SoC';
+  if (/SBC|board/i.test(f)) return 'Board';
   return 'Server/System';
 }
 

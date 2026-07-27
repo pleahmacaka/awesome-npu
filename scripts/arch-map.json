@@ -590,5 +590,408 @@
   "Meta||MTIA v1": [
     "CNN",
     "Transformer"
+  ],
+  "Arm||Ethos-U55": [
+    "CNN",
+    "RNN"
+  ],
+  "Arm||Ethos-U65": [
+    "CNN",
+    "RNN"
+  ],
+  "Arm||Ethos-U85": [
+    "CNN",
+    "RNN",
+    "Transformer"
+  ],
+  "Arm||Ethos-N78": [
+    "CNN",
+    "RNN"
+  ],
+  "Cadence||Tensilica Neo NPU": [
+    "CNN",
+    "RNN",
+    "Transformer"
+  ],
+  "Synopsys||ARC NPX6 NPU": [
+    "CNN",
+    "RNN",
+    "Transformer",
+    "LLM"
+  ],
+  "Synopsys||ARC NPX6FS NPU": [
+    "CNN",
+    "RNN",
+    "Transformer"
+  ],
+  "Ceva||NeuPro-M": [
+    "CNN",
+    "RNN",
+    "Transformer",
+    "ViT",
+    "LLM"
+  ],
+  "Ceva||NeuPro-Nano": [
+    "CNN",
+    "RNN"
+  ],
+  "VeriSilicon||Vivante VIP9000": [
+    "CNN",
+    "RNN",
+    "Transformer"
+  ],
+  "Expedera||Origin E1": [
+    "CNN",
+    "RNN"
+  ],
+  "Expedera||Origin E2": [
+    "CNN",
+    "RNN"
+  ],
+  "Expedera||Origin E6": [
+    "CNN",
+    "ViT",
+    "Transformer",
+    "Diffusion"
+  ],
+  "Expedera||Origin E8": [
+    "CNN",
+    "RNN",
+    "Transformer",
+    "LLM",
+    "Diffusion"
+  ],
+  "Expedera||Origin Evolution": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "Quadric||Chimera GPNPU (QC Series)": [
+    "CNN",
+    "RNN",
+    "Transformer",
+    "ViT",
+    "LLM"
+  ],
+  "Andes Technology||AndesAIRE AnDLA I350": [
+    "CNN"
+  ],
+  "Andes Technology||AndesAIRE AnDLA I370": [
+    "CNN",
+    "RNN"
+  ],
+  "SiFive||Intelligence XM Series": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "Imagination Technologies||IMG Series4 NNA": [
+    "CNN"
+  ],
+  "Think Silicon||NEOX (GA100)": [
+    "CNN",
+    "RNN"
+  ],
+  "Flex Logix||InferX (nnMAX)": [
+    "CNN"
+  ],
+  "Hailo||Hailo-8 Century": [
+    "CNN",
+    "ViT"
+  ],
+  "Hailo||Hailo-8R": [
+    "CNN"
+  ],
+  "Raspberry Pi||AI Kit (Hailo-8L)": [
+    "CNN"
+  ],
+  "Raspberry Pi||AI HAT+ (26 TOPS)": [
+    "CNN",
+    "ViT"
+  ],
+  "Raspberry Pi||AI HAT+ (13 TOPS)": [
+    "CNN"
+  ],
+  "EdgeCortix||SAKURA-II PCIe (single)": [
+    "CNN",
+    "Transformer",
+    "LLM",
+    "ViT"
+  ],
+  "EdgeCortix||SAKURA-II PCIe (dual)": [
+    "CNN",
+    "Transformer",
+    "LLM",
+    "ViT"
+  ],
+  "Kneron||KL520": [
+    "CNN"
+  ],
+  "Kneron||KL520 AI Dongle": [
+    "CNN"
+  ],
+  "Kneron||KL720 USB Dongle": [
+    "CNN"
+  ],
+  "AAEON||M2AI-2242-520": [
+    "CNN"
+  ],
+  "AAEON||MINI-AI-520": [
+    "CNN"
+  ],
+  "Axelera AI||Metis Compute Board": [
+    "CNN",
+    "ViT",
+    "Transformer"
+  ],
+  "Sipeed||MaixCAM": [
+    "CNN"
+  ],
+  "Sipeed||MaixCAM-Pro": [
+    "CNN"
+  ],
+  "Sipeed||Maix-II Dock": [
+    "CNN"
+  ],
+  "Luckfox||Pico Ultra": [
+    "CNN"
+  ],
+  "Seeed Studio||reComputer AI R2130-12": [
+    "CNN",
+    "ViT"
+  ],
+  "Samsung||Exynos 2400": [
+    "CNN",
+    "Transformer",
+    "LLM",
+    "Diffusion"
+  ],
+  "Samsung||Exynos 2500": [
+    "CNN",
+    "Transformer",
+    "ViT",
+    "LLM",
+    "Diffusion"
+  ],
+  "Google||Tensor G3": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "Google||Tensor G4": [
+    "CNN",
+    "Transformer",
+    "LLM",
+    "VLM",
+    "Diffusion"
+  ],
+  "Google||Tensor G5": [
+    "CNN",
+    "Transformer",
+    "LLM",
+    "VLM",
+    "Diffusion"
+  ],
+  "Mobileye||EyeQ5": [
+    "CNN"
+  ],
+  "Mobileye||EyeQ6 Lite": [
+    "CNN"
+  ],
+  "Mobileye||EyeQ6 High": [
+    "CNN",
+    "ViT",
+    "Transformer"
+  ],
+  "Tesla||FSD Chip (HW3)": [
+    "CNN"
+  ],
+  "Tesla||FSD Computer HW4 (AI4)": [
+    "CNN",
+    "Transformer"
+  ],
+  "Qualcomm||Snapdragon Ride Flex SA8775P": [
+    "CNN",
+    "Transformer"
+  ],
+  "Qualcomm||Snapdragon Ride SA8650P": [
+    "CNN",
+    "Transformer"
+  ],
+  "Qualcomm||Snapdragon 8 Elite": [
+    "CNN",
+    "Transformer",
+    "ViT",
+    "LLM",
+    "VLM",
+    "Diffusion"
+  ],
+  "MediaTek||Dimensity 9400": [
+    "CNN",
+    "Transformer",
+    "ViT",
+    "LLM",
+    "VLM",
+    "Diffusion"
+  ],
+  "MediaTek||Genio 700": [
+    "CNN",
+    "Transformer"
+  ],
+  "MediaTek||Genio 510": [
+    "CNN"
+  ],
+  "Allwinner||V853": [
+    "CNN"
+  ],
+  "UNISOC||T7520": [
+    "CNN"
+  ],
+  "Renesas||R-Car V4H": [
+    "CNN"
+  ],
+  "Renesas||R-Car V4M": [
+    "CNN"
+  ],
+  "Texas Instruments||TDA4VH-Q1": [
+    "CNN"
+  ],
+  "Texas Instruments||TDA4VE-Q1": [
+    "CNN"
+  ],
+  "Kunlunxin||R200": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "T-Head (Alibaba)||Hanguang 800": [
+    "CNN"
+  ],
+  "Preferred Networks||MN-Core": [
+    "CNN",
+    "Transformer"
+  ],
+  "Preferred Networks||MN-Core 2": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "Esperanto Technologies||ET-SoC-1": [
+    "CNN",
+    "Transformer"
+  ],
+  "Vastai||VA1": [
+    "CNN",
+    "Transformer"
+  ],
+  "Intellifusion||DeepEdge10 Max": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "Sophgo||SC11-FP300": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "Cambricon||MLU370-S4": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "Taalas||HC1": [
+    "Transformer",
+    "LLM"
+  ],
+  "Intel||Loihi 2": [
+    "SNN"
+  ],
+  "SynSense||Speck": [
+    "SNN",
+    "CNN"
+  ],
+  "SynSense||Xylo": [
+    "SNN"
+  ],
+  "Innatera||Pulsar": [
+    "SNN",
+    "CNN"
+  ],
+  "GrAI Matter Labs||GrAI VIP": [
+    "CNN"
+  ],
+  "IBM||NorthPole": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "SpiNNcloud Systems||SpiNNaker2": [
+    "SNN",
+    "CNN",
+    "Transformer"
+  ],
+  "GreenWaves||GAP8": [
+    "CNN"
+  ],
+  "NXP||MCX N54x": [
+    "CNN",
+    "RNN"
+  ],
+  "NXP||i.MX RT700": [
+    "CNN",
+    "RNN",
+    "Transformer"
+  ],
+  "Renesas||RA8P1": [
+    "CNN",
+    "RNN"
+  ],
+  "Renesas||RZ/V2M": [
+    "CNN"
+  ],
+  "Infineon||PSOC Edge E81": [
+    "CNN"
+  ],
+  "Infineon||PSOC Edge E83": [
+    "CNN",
+    "RNN"
+  ],
+  "Alif Semiconductor||Ensemble E1": [
+    "CNN",
+    "RNN"
+  ],
+  "Alif Semiconductor||Ensemble E3": [
+    "CNN",
+    "RNN"
+  ],
+  "Alif Semiconductor||Ensemble E5": [
+    "CNN",
+    "RNN"
+  ],
+  "Alif Semiconductor||Balletto B1": [
+    "CNN",
+    "RNN"
+  ],
+  "Syntiant||NDP100": [
+    "CNN"
+  ],
+  "Syntiant||NDP101": [
+    "CNN"
+  ],
+  "Syntiant||NDP200": [
+    "CNN"
+  ],
+  "Femtosense||SPU-001": [
+    "CNN",
+    "RNN"
+  ],
+  "Texas Instruments||TMS320F28P55x": [
+    "CNN"
+  ],
+  "Texas Instruments||MSPM0G5187": [
+    "CNN"
+  ],
+  "Texas Instruments||AM13E23019": [
+    "CNN"
   ]
 }
