@@ -8,14 +8,19 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dir = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dir, '..');
+// Anchor file reads to the repo's scripts/ dir. Under Astro's bundler,
+// import.meta.url moves, so prefer <cwd>/scripts (cwd is the repo root for
+// both `astro build` and `node scripts/generate.mjs`), falling back to __dir.
+const SCRIPTS = fs.existsSync(path.join(process.cwd(), 'scripts', 'i18n.json'))
+  ? path.join(process.cwd(), 'scripts') : __dir;
+const ROOT = path.resolve(SCRIPTS, '..');
 const REPO_URL = 'https://github.com/pleahmacaka/awesome-npu';
 const PAGES_URL = 'https://pleahmacaka.github.io/awesome-npu/';
-const I18N = JSON.parse(fs.readFileSync(path.join(__dir, 'i18n.json'), 'utf8'));
-const EI18N = JSON.parse(fs.readFileSync(path.join(__dir, 'enrich-i18n.json'), 'utf8'));
+const I18N = JSON.parse(fs.readFileSync(path.join(SCRIPTS, 'i18n.json'), 'utf8'));
+const EI18N = JSON.parse(fs.readFileSync(path.join(SCRIPTS, 'enrich-i18n.json'), 'utf8'));
 /* 지원 신경망 아키텍처 (CNN/RNN/Transformer/LLM 등) — 제품별 분류. 키: `벤더||제품명` */
 let ARCH = {};
-try { ARCH = JSON.parse(fs.readFileSync(path.join(__dir, 'arch-map.json'), 'utf8')); }
+try { ARCH = JSON.parse(fs.readFileSync(path.join(SCRIPTS, 'arch-map.json'), 'utf8')); }
 catch (e) { console.warn('[warn] arch-map.json 없음 — 아키텍처 필드 생략'); }
 const ARCH_ORDER = ['CNN','RNN','Transformer','ViT','LLM','VLM','Diffusion','SNN'];
 const sortArch = a => [...(a||[])].sort((x,y)=>{ const i=ARCH_ORDER.indexOf(x), j=ARCH_ORDER.indexOf(y); return (i<0?99:i)-(j<0?99:j); });
@@ -328,7 +333,7 @@ function parseTableUnder(lines, headingText, isDatacenter, usedKeys){
 
 // ---------- 실행 ----------
 const readme = fs.readFileSync(path.join(ROOT,'README.md'), 'utf8');
-const template = fs.readFileSync(path.join(__dir,'template.html'), 'utf8');
+const template = fs.readFileSync(path.join(SCRIPTS,'template.html'), 'utf8');
 const lines = readme.replace(/\r/g,'').split('\n');
 
 const usedKeys = new Set();

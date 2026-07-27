@@ -1,0 +1,9 @@
+---
+import { vendorSlug, renderVendor } from '../../../scripts/render.mjs';
+export function getStaticPaths() {
+  const slugToVendor = Object.fromEntries(Object.entries(vendorSlug).map(([v, s]) => [s, v]));
+  return Object.values(vendorSlug).map(slug => ({ params: { slug }, props: { html: renderVendor(slugToVendor[slug]) } }));
+}
+const { html } = Astro.props;
+---
+<Fragment set:html={html} />
