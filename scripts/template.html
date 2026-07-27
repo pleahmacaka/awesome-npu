@@ -348,6 +348,29 @@ table.cmp .dim{color:var(--ink-3)}
   .rmeta .hint{display:none}
   .cmpbar .cnt{width:100%}
 }
+/* news tab */
+.tnews{font-size:12.5px;color:var(--ink-2);border:1px solid var(--rule-2);padding:6px 12px;cursor:pointer;white-space:nowrap;transition:.12s}
+.tnews:hover{color:var(--ink);border-color:var(--rule-3)}
+.tnews.active{background:var(--spot);color:#fff;border-color:var(--spot)}
+.news-in{padding-block:clamp(28px,5vw,52px) 60px}
+.news-head{margin-bottom:22px}
+.news-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;letter-spacing:-.02em;margin:0}
+.news-sub{margin:8px 0 0;color:var(--ink-3);font-size:13.5px}
+.news-kws{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.nkw{font-size:12.5px;color:var(--ink-2);background:none;border:1px solid var(--rule-2);padding:6px 13px;cursor:pointer;font-family:inherit;transition:.12s}
+.nkw:hover{color:var(--ink);border-color:var(--rule-3)}
+.nkw.on{background:var(--spot);color:#fff;border-color:var(--spot)}
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));border-top:1px solid var(--rule);border-inline-start:1px solid var(--rule)}
+.ncard{display:flex;flex-direction:column;gap:10px;padding:18px 20px;border-inline-end:1px solid var(--rule);border-block-end:1px solid var(--rule);min-height:100px}
+.ncard:hover{background:var(--wash)}
+.ntitle{font-weight:650;font-size:14.5px;line-height:1.42;letter-spacing:-.01em}
+.ncard:hover .ntitle{color:var(--spot)}
+.nmeta{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-3)}
+.nsrc{color:var(--ink-2)}
+.news-status{padding:44px 4px;color:var(--ink-3);font-size:14px}
+.news-status.err{color:var(--spot)}
+.news-retry{margin-inline-start:10px;font-size:12.5px;background:none;border:1px solid var(--rule-2);color:var(--ink-2);padding:5px 13px;cursor:pointer;font-family:inherit}
+.news-foot{margin:24px 0 0;font-size:12px;color:var(--ink-3)}
 </style>
 </head>
 <body>
@@ -356,12 +379,13 @@ table.cmp .dim{color:var(--ink-3)}
   <div class="wrap topbar-in">
     <a href="#top" class="wm">Awesome NPU</a>
     <nav class="tnav">
-      <a href="#explorer" data-i18n="nav_products">Products</a>
+      <a href="#explorer" id="navProducts" data-i18n="nav_products">Products</a>
       <a href="#raspberry-pi-accelerators" data-i18n="nav_rpi">Raspberry Pi</a>
       <a href="#software" data-i18n="nav_software">Software</a>
       <a href="#glossary" data-i18n="nav_glossary">Glossary</a>
     </nav>
     <div class="tb-r">
+      <a href="#news" id="navNews" class="tnews" data-i18n="nav_news">News</a>
       <select id="langSel" class="langsel" data-i18n-aria="a_language" aria-label="Language"></select>
       <a id="repoLink" class="ibtn" href="#" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.34 9.34 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg></a>
       <button id="themeBtn" class="ibtn" data-i18n-aria="a_theme" aria-label="Toggle theme"></button>
@@ -371,6 +395,7 @@ table.cmp .dim{color:var(--ink-3)}
 
 <a id="top"></a>
 
+<div id="catalogView">
 <header class="mast">
   <div class="wrap mast-in">
     <div class="mast-kicker" data-i18n="kicker">NPU hardware reference</div>
@@ -455,6 +480,20 @@ table.cmp .dim{color:var(--ink-3)}
 
 <section class="section">
   <div class="wrap docs-in"><div id="docs" class="doc"><!--__DOCS__--></div></div>
+</section>
+</div><!-- /catalogView -->
+
+<section id="newsView" hidden aria-labelledby="newsTitle">
+  <div class="wrap news-in">
+    <div class="news-head">
+      <h2 id="newsTitle" class="news-title" data-i18n="news_title">NPU News</h2>
+      <p class="news-sub" data-i18n="news_sub">Latest coverage from Google News, in your language.</p>
+    </div>
+    <div class="news-kws" id="newsKws" role="tablist" aria-label="Topics"></div>
+    <div class="news-status" id="newsStatus" hidden></div>
+    <div class="news-grid" id="newsGrid"></div>
+    <p class="news-foot" id="newsFoot" hidden><span data-i18n="news_powered">News via Google News RSS</span> · <span id="newsUpd"></span></p>
+  </div>
 </section>
 
 <footer>
@@ -833,6 +872,7 @@ table.cmp .dim{color:var(--ink-3)}
     buildFilters(); buildMeta();
     if(!(initial && curLang===(window.__SSRLANG||"en"))) render();
     updateCmp();
+    if(newsActive){ newsBuildKws(); newsLoad(); }
     try{ localStorage.setItem("npu-lang",curLang); }catch(e){}
     setTimeout(setSticky,0);
   }
@@ -867,12 +907,32 @@ table.cmp .dim{color:var(--ink-3)}
   $("cmpOv").onclick=closeCompare;
   addEventListener("keydown",e=>{ if(e.key==="Escape"){ if($("cmpmodal").classList.contains("open"))closeCompare(); else if(!colMenu.hidden)closeColMenu(); else if(tipFor)hideTip(); } });
 
+  // ---- News tab (client-side Google News RSS via CORS-proxy fallback, cached) ----
+  var newsActive=false, newsKw="all";
+  var NEWS_LOCALE={ko:{hl:"ko",gl:"KR",ceid:"KR:ko"},en:{hl:"en-US",gl:"US",ceid:"US:en"},ja:{hl:"ja",gl:"JP",ceid:"JP:ja"},zh:{hl:"zh-CN",gl:"CN",ceid:"CN:zh-Hans"},es:{hl:"es",gl:"ES",ceid:"ES:es"},he:{hl:"he",gl:"IL",ceid:"IL:he"}};
+  var NEWS_KWS=[{id:"all",q:'NPU OR "AI accelerator" OR "neural processing unit" OR TPU'},{id:"npu",q:'NPU "neural processing unit"'},{id:"accel",q:'"AI accelerator" OR "inference accelerator"'},{id:"edge",q:'"edge AI" OR "on-device AI"'},{id:"tpu",q:'TPU OR "tensor processing unit"'},{id:"datacenter",q:'"AI chip" datacenter inference accelerator'}];
+  var NEWS_PROXIES=[function(u){return "https://api.allorigins.win/raw?url="+encodeURIComponent(u);},function(u){return "https://corsproxy.io/?url="+encodeURIComponent(u);},function(u){return "https://api.codetabs.com/v1/proxy/?quest="+encodeURIComponent(u);}];
+  function newsRssUrl(kw,lang){var loc=NEWS_LOCALE[lang]||NEWS_LOCALE.en;var e=NEWS_KWS.filter(function(k){return k.id===kw;})[0]||NEWS_KWS[0];return "https://news.google.com/rss/search?q="+encodeURIComponent(e.q)+"&hl="+loc.hl+"&gl="+loc.gl+"&ceid="+encodeURIComponent(loc.ceid);}
+  function newsCacheKey(kw,lang){return "npu-news:"+lang+":"+kw;}
+  function newsRead(kw,lang){try{var r=localStorage.getItem(newsCacheKey(kw,lang));if(!r)return null;var o=JSON.parse(r);o.stale=(Date.now()-o.t>1200000);return o;}catch(e){return null;}}
+  function newsSave(kw,lang,items){try{localStorage.setItem(newsCacheKey(kw,lang),JSON.stringify({t:Date.now(),items:items}));}catch(e){}}
+  function newsParseItems(text){var items=[];var t=String(text||"").trim();if(t.charAt(0)==="{"){try{var j=JSON.parse(t);(j.items||[]).forEach(function(it){items.push({title:it.title,link:it.link,pub:it.pubDate,src:(it.source&&it.source.title)||""});});return items;}catch(e){}}try{var doc=new DOMParser().parseFromString(text,"text/xml");Array.prototype.forEach.call(doc.querySelectorAll("item"),function(n){var g=function(t){var el=n.getElementsByTagName(t)[0];return el?el.textContent:"";};var title=g("title");if(title)items.push({title:title,link:g("link"),pub:g("pubDate"),src:g("source")});});}catch(e){}return items;}
+  function newsTry(url){var ctrl=new AbortController();var to=setTimeout(function(){ctrl.abort();},8000);return fetch(url,{signal:ctrl.signal}).then(function(r){clearTimeout(to);if(!r.ok)throw 0;return r.text();}).then(function(txt){var it=newsParseItems(txt);if(!it.length)throw 0;return it;});}
+  function newsFetch(kw,lang){var rss=newsRssUrl(kw,lang);var tries=NEWS_PROXIES.map(function(pf){return newsTry(pf(rss));});tries.push(newsTry("https://api.rss2json.com/v1/api.json?count=24&rss_url="+encodeURIComponent(rss)));return Promise.any(tries);}
+  function newsRender(items){$("newsGrid").innerHTML=items.slice(0,24).map(function(it){var d="";try{if(it.pub)d=new Date(it.pub).toLocaleDateString(curLang,{year:"numeric",month:"short",day:"numeric"});}catch(e){}return '<a class="ncard" href="'+esc(it.link)+'" target="_blank" rel="noopener"><div class="ntitle">'+esc(it.title)+'</div><div class="nmeta">'+(it.src?'<span class="nsrc">'+esc(it.src)+'</span>':"")+(d?'<span class="ndate">'+esc(d)+'</span>':"")+'</div></a>';}).join("");}
+  function newsLoad(force){var lang=curLang,kw=newsKw;var status=$("newsStatus"),foot=$("newsFoot");var cached=force?null:newsRead(kw,lang);if(cached&&cached.items&&cached.items.length){newsRender(cached.items);}if(cached&&!cached.stale){status.hidden=true;foot.hidden=false;return;}status.hidden=false;status.className="news-status";status.textContent=(L&&L.news_loading)||"Loading news…";newsFetch(kw,lang).then(function(items){newsSave(kw,lang,items);if(kw!==newsKw||lang!==curLang)return;status.hidden=true;newsRender(items);foot.hidden=false;try{$("newsUpd").textContent=new Date().toLocaleString(curLang);}catch(e){}}).catch(function(){if(cached&&cached.items&&cached.items.length){status.hidden=true;}else{status.hidden=false;status.className="news-status err";status.innerHTML=esc((L&&L.news_error)||"Couldn't load news right now.")+' <button class="news-retry" id="newsRetry"></button>';var rb=$("newsRetry");if(rb){rb.textContent=(L&&L.news_retry)||"Retry";rb.onclick=function(){newsLoad(true);};}}});}
+  function newsBuildKws(){var box=$("newsKws");if(!box)return;box.innerHTML=NEWS_KWS.map(function(k){return '<button class="nkw'+(k.id===newsKw?" on":"")+'" data-kw="'+k.id+'" data-i18n="news_kw_'+k.id+'"></button>';}).join("");Array.prototype.forEach.call(box.querySelectorAll(".nkw"),function(b){var k=b.getAttribute("data-i18n");b.textContent=(L&&L[k])||b.getAttribute("data-kw");b.onclick=function(){newsKw=b.getAttribute("data-kw");Array.prototype.forEach.call(box.querySelectorAll(".nkw"),function(x){x.classList.toggle("on",x===b);});newsLoad();};});}
+  function showNews(on){newsActive=on;$("catalogView").hidden=on;$("newsView").hidden=!on;$("navNews").classList.toggle("active",on);if(on){if(!$("newsKws").children.length)newsBuildKws();newsLoad();window.scrollTo(0,0);}setTimeout(setSticky,0);}
+  $("navNews").addEventListener("click",function(e){e.preventDefault();try{history.replaceState(null,"","#news");}catch(_){}showNews(true);});
+  Array.prototype.forEach.call(document.querySelectorAll(".tnav a, .wm"),function(a){a.addEventListener("click",function(){if(newsActive){try{history.replaceState(null,"",location.pathname+location.search);}catch(_){}showNews(false);}});});
+
   // ---- init ----
   if(DATA.repo){$("repoLink").href=DATA.repo;$("repoLink2").href=DATA.repo;}
   $("viewTable").setAttribute("aria-pressed","true");$("viewCard").setAttribute("aria-pressed","false");$("viewChip").setAttribute("aria-pressed","false");
   buildLangSel();
   applyLang(detectLang(), true);
   try{ const vq=new URLSearchParams(location.search).get("view"); if(["table","card","chip"].includes(vq)) setView(vq); }catch(e){}
+  if(location.hash==="#news") showNews(true);
   updateCmp(); revealInit();
   setSticky(); setTimeout(setSticky,200);
 })();
