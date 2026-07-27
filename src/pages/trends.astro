@@ -46,7 +46,8 @@ const dataInj = `window.I18N=${JSON.stringify(I18N).replace(/</g, '\\u003c')};`;
 <meta property="og:url" content={canonical} />
 <meta property="og:image" content={PAGES_URL + 'og.png'} />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" /></noscript>
 <style set:html={detailCss}></style>
 <Fragment set:html={themeInit} />
 <script type="application/ld+json" set:html={JSON.stringify(jsonld)}></script>

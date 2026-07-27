@@ -30,7 +30,8 @@
 <meta name="twitter:description" content="__DESC__">
 <meta name="twitter:image" content="https://pleahmacaka.github.io/awesome-npu/og.png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"></noscript>
 <style>
 :root{
   --sans:'Pretendard','Pretendard Variable',sans-serif;
@@ -512,7 +513,7 @@ table.cmp .dim{color:var(--ink-3)}
   </div>
 </footer>
 
-<div class="cmpbar" id="cmpbar" aria-hidden="true">
+<div class="cmpbar" id="cmpbar" aria-hidden="true" inert>
   <div class="wrap cmpbar-in">
     <span class="cnt"><b id="cmpCount">0</b> <span data-i18n="selected">selected</span></span>
     <div class="sp">
@@ -812,6 +813,7 @@ table.cmp .dim{color:var(--ink-3)}
     $("cmpCount").textContent=n;
     $("cmpbar").classList.toggle("show", n>0);
     $("cmpbar").setAttribute("aria-hidden", n>0?"false":"true");
+    $("cmpbar").inert = n===0;
     document.body.classList.toggle("cmp-pad", n>0);
     syncSelAll();
     if($("cmpmodal").classList.contains("open")){ n<1 ? closeCompare() : buildCmpTable(); }
@@ -884,7 +886,10 @@ table.cmp .dim{color:var(--ink-3)}
     document.querySelectorAll("[data-i18n-aria]").forEach(el=>{const k=el.getAttribute("data-i18n-aria"); if(L[k]!=null) el.setAttribute("aria-label",L[k]);});
     if($("langSel")) $("langSel").value=curLang;
     buildFilters(); buildMeta();
-    render();
+    // The server already rendered the default view in this language, so on first
+    // load we keep that DOM (big TBT/LCP win) and only sync the working list.
+    if(initial && curLang===window.__SSRLANG){ lastList=sortList(products.filter(matches)); syncSelAll(); }
+    else render();
     updateCmp();
     if(newsActive){ newsBuildKws(); newsLoad(); }
     try{ localStorage.setItem("npu-lang",curLang); }catch(e){}
