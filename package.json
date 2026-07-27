@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build:news": "node scripts/build-news.mjs",
-    "build": "node scripts/build-news.mjs && astro build",
+    "build:assets": "node scripts/build-assets.mjs",
+    "build": "node scripts/build-news.mjs && node scripts/build-assets.mjs && astro build",
     "preview": "astro preview"
   },
   "dependencies": {

@@ -98,13 +98,17 @@ for (const ph of ['<!--__DATA__-->','<!--__META__-->','<!--__COUNT__-->','<!--__
   if (!template.includes(ph)) { console.error(`template.html 자리표시자 누락: ${ph}`); process.exit(1); }
 const DATA_JSON = JSON.stringify(DATA).replace(/</g,'\\u003c');
 const I18N_JSON = JSON.stringify(I18N).replace(/</g,'\\u003c');
+const BASE_PATH = new URL(PAGES_URL).pathname; // '/awesome-npu/'
 
 // 언어별 카탈로그 페이지(SPA) 전체 문서 문자열
 export function renderCatalog(lang){
   const L = I18N[lang];
   const ssr = ssrFor(lang);
   const locked = lang !== 'en';
-  const dataScript = `<script>window.DATA=${DATA_JSON};window.I18N=${I18N_JSON};window.__SSRLANG=${JSON.stringify(lang)};window.__LANGLOCK=${locked};</script>`;
+  // The ~420KB product dataset is served as a separate, cacheable script so it
+  // no longer bloats every HTML document (shrinks the doc ~55% -> faster FCP/LCP).
+  // Loaded synchronously right before the inline app script, which reads window.DATA.
+  const dataScript = `<script>window.__SSRLANG=${JSON.stringify(lang)};window.__LANGLOCK=${locked};</script><script src="${BASE_PATH}app-data.js"></script>`;
   const ldScript = `<script type="application/ld+json">${JSON.stringify(jsonldFor(lang)).replace(/</g,'\\u003c')}</script>`;
   return localizeBody(template, L)
     .replace(/__LANG__/g, lang)
@@ -272,4 +276,4 @@ export function buildSitemap(today){
 }
 
 export { products, mainProducts, dcProducts, vendorSlug, LANGS, ENRICH, usedKeys, langPath, PAGES_URL, REPO_URL, I18N,
-  detailCss, detailScript, themeInit, FAVICON, topbar, footerH };
+  detailCss, detailScript, themeInit, FAVICON, topbar, footerH, DATA_JSON, I18N_JSON };
