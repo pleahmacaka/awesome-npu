@@ -1409,6 +1409,782 @@
       "es": "SoC de visión con IA de 5nm (doble Cortex-A76) con el motor CVflow de 6 eTOPS, la métrica de TOPS equivalente a GPU de Ambarella, capaz de codificar vídeo 8K30 con menos de 2W para cámaras 8K y multisensor, drones y robótica.",
       "he": "SoC ראייה חכמה בגודל 5nm (Cortex-A76 כפול) עם מנוע CVflow המדורג ב-6 eTOPS, מדד ה-TOPS שווה-הערך ל-GPU של Ambarella, המסוגל לקודד וידאו 8K30 בהספק נמוך מ-2W עבור מצלמות 8K ורב-חיישן, רחפנים ורובוטיקה.",
       "ko": "듀얼 Cortex-A76 기반 5nm AI 비전 SoC로, CVflow 엔진이 Ambarella의 GPU 등가 TOPS 지표인 6 eTOPS를 제공하며 2W 이하에서 8K30 비디오를 인코딩할 수 있어 8K 및 멀티 이미저 카메라, 드론, 로보틱스를 겨냥한다."
+    },
+    "Arm||Ethos-U55": {
+      "ko": "Cortex-M CPU와 함께 사용하도록 설계된 Arm의 1세대 microNPU로, 32~256 MAC로 구성해 최대 0.5 TOPS를 제공한다. 면적과 전력이 제한된 임베디드 및 IoT ML 추론을 대상으로 한다.",
+      "en": "Arm's first-generation microNPU designed to pair with Cortex-M CPUs, configurable from 32 to 256 MACs for up to 0.5 TOPS. Targets area- and power-constrained embedded and IoT ML inference.",
+      "ja": "Cortex-M CPUと組み合わせて使用するよう設計されたArm第1世代のmicroNPUで、32～256 MACまで構成でき、最大0.5 TOPSを実現する。面積と電力に制約のある組み込みおよびIoTのML推論を狙う。",
+      "zh": "Arm 第一代 microNPU，专为与 Cortex-M CPU 搭配而设计，可在 32 至 256 MAC 之间配置，最高提供 0.5 TOPS。面向面积和功耗受限的嵌入式与 IoT ML 推理。",
+      "es": "microNPU de primera generación de Arm, diseñada para combinarse con CPU Cortex-M y configurable de 32 a 256 MAC para hasta 0.5 TOPS. Está orientada a la inferencia de ML embebida y de IoT con restricciones de área y consumo.",
+      "he": "ה-microNPU מהדור הראשון של Arm, שתוכנן לעבוד לצד מעבדי Cortex-M וניתן להגדרה מ-32 עד 256 MAC לביצועים של עד 0.5 TOPS. מיועד להסקת ML מוטמעת ו-IoT עם מגבלות שטח והספק."
+    },
+    "Arm||Ethos-N78": {
+      "ko": "Arm의 2세대 대형 NPU로, 90가지 이상의 옵션에 걸쳐 1~10 TOPS로 구성할 수 있다. MediaTek Dimensity, Samsung Exynos 등 모바일 SoC에 널리 채용되었다.",
+      "en": "Arm's second-generation larger NPU, configurable across 90+ options from 1 to 10 TOPS. Widely deployed in mobile SoCs such as MediaTek Dimensity and Samsung Exynos.",
+      "ja": "Arm第2世代の大型NPUで、90以上のオプションにわたり1～10 TOPSに構成できる。MediaTek DimensityやSamsung ExynosなどのモバイルSoCに広く採用されている。",
+      "zh": "Arm 第二代大型 NPU，可在 90 多种配置选项中从 1 至 10 TOPS 进行配置。已广泛应用于 MediaTek Dimensity、Samsung Exynos 等移动 SoC。",
+      "es": "NPU de mayor tamaño de segunda generación de Arm, configurable en más de 90 opciones de 1 a 10 TOPS. Se emplea ampliamente en SoC móviles como MediaTek Dimensity y Samsung Exynos.",
+      "he": "ה-NPU הגדול מהדור השני של Arm, הניתן להגדרה על פני יותר מ-90 אפשרויות מ-1 עד 10 TOPS. נפוץ ב-SoC ניידים כגון MediaTek Dimensity ו-Samsung Exynos."
+    },
+    "Synopsys||ARC NPX6FS NPU": {
+      "ko": "ARC NPX6 NPU IP의 기능 안전(functional-safety) 버전으로, 자동차용 AI SoC를 위한 ISO 26262를 지원한다. NPX6 아키텍처를 공유하며 인스턴스당 최대 250 TOPS를 제공한다.",
+      "en": "Functional-safety variant of the ARC NPX6 NPU IP with ISO 26262 support for automotive AI SoCs. Shares the NPX6 architecture and up to 250 TOPS per instance.",
+      "ja": "ARC NPX6 NPU IPの機能安全（ファンクショナルセーフティ）版で、車載AI SoC向けにISO 26262をサポートする。NPX6アーキテクチャを共有し、インスタンスあたり最大250 TOPSを実現する。",
+      "zh": "ARC NPX6 NPU IP 的功能安全版本，为车用 AI SoC 提供 ISO 26262 支持。沿用 NPX6 架构，每个实例最高可达 250 TOPS。",
+      "es": "Variante de seguridad funcional del IP NPU ARC NPX6 con soporte de ISO 26262 para SoC de IA de automoción. Comparte la arquitectura NPX6 y ofrece hasta 250 TOPS por instancia.",
+      "he": "גרסת בטיחות תפקודית (functional-safety) של רכיב ה-IP מסוג ARC NPX6 NPU, עם תמיכה ב-ISO 26262 עבור SoC של AI לרכב. חולק את ארכיטקטורת NPX6 ומספק עד 250 TOPS לכל מופע."
+    },
+    "VeriSilicon||Vivante VIP9000": {
+      "ko": "VeriSilicon의 Vivante VIP9000 NPU IP는 VIP V8 아키텍처를 사용해 0.5에서 20+ TOPS까지 확장된다. 양자화, 프루닝, 혼합 정밀도를 지원해 엣지부터 자동차용 AI까지 아우른다.",
+      "en": "VeriSilicon's Vivante VIP9000 NPU IP scales from 0.5 to 20+ TOPS using the VIP V8 architecture. Supports quantization, pruning and mixed precision for edge to automotive AI.",
+      "ja": "VeriSiliconのVivante VIP9000 NPU IPは、VIP V8アーキテクチャを用いて0.5から20+ TOPSまでスケールする。量子化、プルーニング、混合精度をサポートし、エッジから車載AIまでカバーする。",
+      "zh": "VeriSilicon 的 Vivante VIP9000 NPU IP 采用 VIP V8 架构，可从 0.5 扩展至 20+ TOPS。支持量化、剪枝和混合精度，覆盖从边缘到车用的 AI 应用。",
+      "es": "El IP NPU Vivante VIP9000 de VeriSilicon escala de 0.5 a más de 20 TOPS con la arquitectura VIP V8. Admite cuantización, poda y precisión mixta para IA desde el edge hasta la automoción.",
+      "he": "רכיב ה-IP מסוג Vivante VIP9000 NPU של VeriSilicon מתרחב מ-0.5 עד יותר מ-20 TOPS בעזרת ארכיטקטורת VIP V8. תומך בקוונטיזציה, בגיזום (pruning) ובדיוק מעורב, מהקצה ועד AI לרכב."
+    },
+    "Expedera||Origin E6": {
+      "ko": "코어당 16~32 TOPS를 제공하는 Origin NPU IP로, 스마트폰과 AR/VR 기기에서 이미지 트랜스포머, stable diffusion, 포인트 클라우드 AI에 최적화되어 있다.",
+      "en": "Origin NPU IP delivering 16 to 32 TOPS per core, tuned for image transformers, stable diffusion and point-cloud AI in smartphones and AR/VR devices.",
+      "ja": "コアあたり16～32 TOPSを実現するOrigin NPU IPで、スマートフォンやAR/VRデバイスでの画像トランスフォーマー、stable diffusion、点群AIに最適化されている。",
+      "zh": "Origin NPU IP 每核提供 16 至 32 TOPS，针对智能手机和 AR/VR 设备中的图像 transformer、stable diffusion 及点云 AI 进行了优化。",
+      "es": "IP NPU Origin que ofrece de 16 a 32 TOPS por núcleo, optimizado para transformers de imagen, stable diffusion e IA de nubes de puntos en smartphones y dispositivos AR/VR.",
+      "he": "רכיב ה-IP מסוג Origin NPU מספק 16 עד 32 TOPS לכל ליבה, ומכוונן ל-image transformers, ל-stable diffusion ולעיבוד AI של ענני נקודות בסמארטפונים ובמכשירי AR/VR."
+    },
+    "Quadric||Chimera GPNPU (QC Series)": {
+      "ko": "NPU 가속과 완전한 C++ 프로그래밍성을 결합한 범용 NPU(GPNPU) IP로, QC 시리즈는 단일 코어 1–108 TOPS, 멀티코어 최대 6,912 TOPS를 아우른다. 12nm에서 3nm까지 완전 합성이 가능하다.",
+      "en": "General-purpose NPU (GPNPU) IP blending NPU acceleration with full C++ programmability; QC series spans 1-108 TOPS single core and up to 6,912 TOPS multicore. Fully synthesizable from 12nm to 3nm.",
+      "ja": "NPUアクセラレーションと完全なC++プログラマビリティを融合した汎用NPU（GPNPU）IPで、QCシリーズはシングルコア1～108 TOPS、マルチコア最大6,912 TOPSをカバーする。12nmから3nmまで完全に合成可能。",
+      "zh": "将 NPU 加速与完整 C++ 可编程性融合的通用 NPU（GPNPU）IP；QC 系列单核覆盖 1–108 TOPS，多核最高达 6,912 TOPS。可从 12nm 到 3nm 完全综合。",
+      "es": "IP de NPU de propósito general (GPNPU) que combina la aceleración NPU con plena programabilidad en C++; la serie QC abarca de 1 a 108 TOPS en un solo núcleo y hasta 6,912 TOPS en multinúcleo. Totalmente sintetizable de 12nm a 3nm.",
+      "he": "רכיב IP מסוג NPU לשימוש כללי (GPNPU) המשלב האצת NPU עם תכנותיות מלאה ב-C++; סדרת QC משתרעת מ-1 עד 108 TOPS בליבה בודדת ועד 6,912 TOPS ברב-ליבתי. ניתן לסינתזה מלאה מ-12nm ועד 3nm."
+    },
+    "SiFive||Intelligence XM Series": {
+      "ko": "전용 확장형 AI 매트릭스 엔진을 갖춘 SiFive 최초의 RISC-V IP로, 4코어 클러스터당 GHz당 16 INT8 TOPS(8 BF16 TFLOPS)를 제공한다. AI 워크로드를 위해 스칼라, 벡터, 매트릭스 연산을 통합한다.",
+      "en": "SiFive's first RISC-V IP with a dedicated scalable AI matrix engine, delivering 16 INT8 TOPS (8 BF16 TFLOPS) per GHz per four-core cluster. Integrates scalar, vector and matrix compute for AI workloads.",
+      "ja": "専用のスケーラブルなAIマトリクスエンジンを備えたSiFive初のRISC-V IPで、4コアクラスタあたりGHzあたり16 INT8 TOPS（8 BF16 TFLOPS）を実現する。AIワークロード向けにスカラー、ベクトル、マトリクス演算を統合する。",
+      "zh": "SiFive 首款配备专用可扩展 AI 矩阵引擎的 RISC-V IP，每四核集群每 GHz 提供 16 INT8 TOPS（8 BF16 TFLOPS）。为 AI 工作负载整合了标量、向量和矩阵运算。",
+      "es": "Primer IP RISC-V de SiFive con un motor matricial de IA escalable dedicado, que ofrece 16 INT8 TOPS (8 BF16 TFLOPS) por GHz y por clúster de cuatro núcleos. Integra cómputo escalar, vectorial y matricial para cargas de trabajo de IA.",
+      "he": "רכיב ה-IP הראשון מסוג RISC-V של SiFive עם מנוע מטריצות AI ייעודי ובר-הרחבה, המספק 16 INT8 TOPS (8 BF16 TFLOPS) לכל GHz לכל אשכול בן ארבע ליבות. משלב חישוב סקלרי, וקטורי ומטריצי עבור עומסי עבודה של AI."
+    },
+    "Flex Logix||InferX (nnMAX)": {
+      "ko": "InferX(nnMAX) AI 추론 IP는 eFPGA 방식의 프로그래머블 인터커넥트를 사용하며, 라이선스가 가능하고 1에서 100 TOPS 이상까지 확장된다. Flex Logix는 2024년 Analog Devices에 인수되었다.",
+      "en": "InferX (nnMAX) AI inference IP uses eFPGA-style programmable interconnect, licensable and scalable from 1 to over 100 TOPS. Flex Logix was acquired by Analog Devices in 2024.",
+      "ja": "InferX（nnMAX）AI推論IPはeFPGA方式のプログラマブルインターコネクトを採用し、ライセンス供与が可能で1から100 TOPS超までスケールする。Flex Logixは2024年にAnalog Devicesに買収された。",
+      "zh": "InferX（nnMAX）AI 推理 IP 采用 eFPGA 式可编程互连，可授权且可从 1 扩展到超过 100 TOPS。Flex Logix 于 2024 年被 Analog Devices 收购。",
+      "es": "El IP de inferencia de IA InferX (nnMAX) emplea una interconexión programable de tipo eFPGA, licenciable y escalable de 1 a más de 100 TOPS. Flex Logix fue adquirida por Analog Devices en 2024.",
+      "he": "רכיב ה-IP להסקת AI מסוג InferX (nnMAX) משתמש בחיבור-גומלין (interconnect) הניתן לתכנות בסגנון eFPGA, ניתן לרישוי ולהרחבה מ-1 עד יותר מ-100 TOPS. Flex Logix נרכשה על ידי Analog Devices בשנת 2024."
+    },
+    "Raspberry Pi||AI Kit (Hailo-8L)": {
+      "ko": "M.2 HAT+와 Hailo-8L M.2 모듈을 결합해 13 TOPS를 제공하는 공식 Raspberry Pi 5 액세서리다. 현재는 단종되고 AI HAT+로 대체되었다.",
+      "en": "Official Raspberry Pi 5 accessory pairing the M.2 HAT+ with a Hailo-8L M.2 module for 13 TOPS. Now discontinued in favor of the AI HAT+.",
+      "ja": "M.2 HAT+とHailo-8L M.2モジュールを組み合わせて13 TOPSを提供する、Raspberry Pi 5の公式アクセサリ。現在は生産終了となり、AI HAT+に置き換えられた。",
+      "zh": "官方 Raspberry Pi 5 配件，将 M.2 HAT+ 与 Hailo-8L M.2 模块搭配以提供 13 TOPS。现已停产，由 AI HAT+ 取代。",
+      "es": "Accesorio oficial para Raspberry Pi 5 que combina el M.2 HAT+ con un módulo M.2 Hailo-8L para 13 TOPS. Ya descontinuado en favor del AI HAT+.",
+      "he": "אביזר רשמי ל-Raspberry Pi 5 המשלב את M.2 HAT+ עם מודול Hailo-8L M.2 לביצועים של 13 TOPS. הופסק כעת לטובת ה-AI HAT+."
+    },
+    "EdgeCortix||SAKURA-II PCIe (single)": {
+      "ko": "16GB LPDDR4를 탑재하고 약 10W에서 60 TOPS(INT8)/30 TFLOPS(BF16)를 제공하는 단일 칩 HHHL PCIe 카드로, 온디바이스 LLM과 생성형 AI를 겨냥한다.",
+      "en": "Single-chip HHHL PCIe card delivering 60 TOPS (INT8) / 30 TFLOPS (BF16) with 16GB LPDDR4 at ~10W, targeting on-device LLMs and generative AI.",
+      "ja": "16GB LPDDR4を搭載し、約10Wで60 TOPS（INT8）/30 TFLOPS（BF16）を実現するシングルチップのHHHL PCIeカードで、オンデバイスLLMと生成AIを狙う。",
+      "zh": "单芯片 HHHL PCIe 卡，配备 16GB LPDDR4，在约 10W 下提供 60 TOPS（INT8）/30 TFLOPS（BF16），面向端侧 LLM 与生成式 AI。",
+      "es": "Tarjeta PCIe HHHL de un solo chip que ofrece 60 TOPS (INT8) / 30 TFLOPS (BF16) con 16GB de LPDDR4 a ~10W, orientada a LLM en el dispositivo e IA generativa.",
+      "he": "כרטיס PCIe מסוג HHHL עם שבב יחיד, המספק 60 TOPS (INT8) / 30 TFLOPS (BF16) עם 16GB LPDDR4 בהספק של כ-10W, ומיועד ל-LLM על-גבי-המכשיר ול-AI גנרטיבי."
+    },
+    "Kneron||KL520 AI Dongle": {
+      "ko": "USB 2.0를 통해 모든 Windows/Linux/macOS 호스트에 Kneron KL520 NPU 추론(~0.35 TOPS)을 추가하는 USB 스틱으로, 프로토타이핑과 가벼운 엣지 워크로드에 적합하다.",
+      "en": "USB stick that adds Kneron KL520 NPU inference (~0.35 TOPS) to any Windows/Linux/macOS host over USB 2.0 for prototyping and light edge workloads.",
+      "ja": "USB 2.0経由で任意のWindows/Linux/macOSホストにKneron KL520 NPU推論（~0.35 TOPS）を追加するUSBスティックで、プロトタイピングや軽量なエッジワークロードに適する。",
+      "zh": "一款 USB 棒，通过 USB 2.0 为任意 Windows/Linux/macOS 主机添加 Kneron KL520 NPU 推理（约 0.35 TOPS），适用于原型开发和轻量边缘工作负载。",
+      "es": "Memoria USB que añade la inferencia de la NPU Kneron KL520 (~0.35 TOPS) a cualquier host Windows/Linux/macOS por USB 2.0, para prototipado y cargas de trabajo ligeras en el edge.",
+      "he": "התקן USB המוסיף הסקת NPU מסוג Kneron KL520 (~0.35 TOPS) לכל מארח Windows/Linux/macOS דרך USB 2.0, עבור אב-טיפוס ועומסי עבודה קלים בקצה."
+    },
+    "AAEON||MINI-AI-520": {
+      "ko": "Kneron KL520 NPU(~0.35 TOPS)를 기반으로 하는 AAEON Mini PCIe(mPCIe) AI 모듈로, 소형이면서 전력이 제한된 엣지 기기에 추론 기능을 추가한다.",
+      "en": "AAEON Mini PCIe (mPCIe) AI module built on the Kneron KL520 NPU (~0.35 TOPS) for adding inference to compact, power-constrained edge devices.",
+      "ja": "Kneron KL520 NPU（~0.35 TOPS）を採用したAAEONのMini PCIe（mPCIe）AIモジュールで、小型で電力に制約のあるエッジデバイスに推論機能を追加する。",
+      "zh": "基于 Kneron KL520 NPU（约 0.35 TOPS）的 AAEON Mini PCIe（mPCIe）AI 模块，用于为紧凑、功耗受限的边缘设备添加推理能力。",
+      "es": "Módulo de IA AAEON Mini PCIe (mPCIe) basado en la NPU Kneron KL520 (~0.35 TOPS) para añadir inferencia a dispositivos de edge compactos y con restricciones de consumo.",
+      "he": "מודול AI מסוג AAEON Mini PCIe (mPCIe) המבוסס על Kneron KL520 NPU (~0.35 TOPS), להוספת יכולת הסקה למכשירי קצה קומפקטיים ומוגבלי-הספק."
+    },
+    "Sipeed||MaixCAM-Pro": {
+      "ko": "2.4인치 터치스크린, 1W 스피커, IMU, RTC, 배터리 관리를 갖춘 업그레이드된 MaixCAM으로, Sophgo SG2002 1 TOPS NPU는 그대로 유지한다.",
+      "en": "Upgraded MaixCAM with a 2.4-inch touchscreen, 1W speaker, IMU, RTC and battery management, retaining the Sophgo SG2002 1 TOPS NPU.",
+      "ja": "2.4インチのタッチスクリーン、1Wスピーカー、IMU、RTC、バッテリー管理を備えたアップグレード版MaixCAMで、Sophgo SG2002の1 TOPS NPUはそのまま搭載する。",
+      "zh": "升级版 MaixCAM，配备 2.4 英寸触摸屏、1W 扬声器、IMU、RTC 和电池管理，并保留 Sophgo SG2002 的 1 TOPS NPU。",
+      "es": "MaixCAM mejorada con pantalla táctil de 2,4 pulgadas, altavoz de 1W, IMU, RTC y gestión de batería, que conserva la NPU de 1 TOPS del Sophgo SG2002.",
+      "he": "גרסה משודרגת של MaixCAM עם מסך מגע בגודל 2.4 אינץ', רמקול 1W, IMU, RTC וניהול סוללה, השומרת על ה-NPU בביצועי 1 TOPS של Sophgo SG2002."
+    },
+    "Seeed Studio||reComputer AI R2130-12": {
+      "ko": "Raspberry Pi 5(8GB)와 Hailo-8 가속기(26 TOPS)를 결합하고 듀얼 M.2 슬롯을 갖춘 소형 엣지 AI 미니 PC로, 영상 분석과 NVR 워크로드에 적합하다.",
+      "en": "Compact edge-AI mini-PC pairing a Raspberry Pi 5 (8GB) with a Hailo-8 accelerator (26 TOPS), with dual M.2 slots, for video analytics and NVR workloads.",
+      "ja": "Raspberry Pi 5（8GB）とHailo-8アクセラレータ（26 TOPS）を組み合わせ、デュアルM.2スロットを備えた小型エッジAIミニPCで、映像解析やNVRワークロードに適する。",
+      "zh": "紧凑型边缘 AI 迷你 PC，将 Raspberry Pi 5（8GB）与 Hailo-8 加速器（26 TOPS）搭配，配备双 M.2 插槽，适用于视频分析和 NVR 工作负载。",
+      "es": "Mini-PC de IA en el edge y formato compacto que combina una Raspberry Pi 5 (8GB) con un acelerador Hailo-8 (26 TOPS) y dos ranuras M.2, para análisis de vídeo y cargas de trabajo NVR.",
+      "he": "מיני-מחשב קומפקטי ל-AI בקצה המשלב Raspberry Pi 5 (8GB) עם מאיץ Hailo-8 (26 TOPS), עם שני חריצי M.2, עבור ניתוח וידאו ועומסי עבודה של NVR."
+    },
+    "Google||Tensor G3": {
+      "ko": "Google의 3세대 온칩 TPU를 탑재한 Pixel 8 SoC로, 온디바이스 파운데이션 모델과 생성형 AI 기능을 지원한다. Google은 TPU의 TOPS를 공개하지 않는다.",
+      "en": "Pixel 8 SoC with Google's third-generation on-chip TPU, enabling on-device foundation models and generative AI features. Google does not disclose TPU TOPS.",
+      "ja": "Google第3世代のオンチップTPUを搭載したPixel 8 SoCで、オンデバイスの基盤モデルや生成AI機能を可能にする。GoogleはTPUのTOPSを公表していない。",
+      "zh": "搭载 Google 第三代片上 TPU 的 Pixel 8 SoC，可实现端侧基础模型和生成式 AI 功能。Google 未公开 TPU 的 TOPS。",
+      "es": "SoC del Pixel 8 con la TPU integrada de tercera generación de Google, que habilita modelos fundacionales en el dispositivo y funciones de IA generativa. Google no divulga los TOPS de la TPU.",
+      "he": "ה-SoC של Pixel 8 עם TPU מובנה מהדור השלישי של Google, המאפשר מודלי יסוד (foundation models) על-גבי-המכשיר ותכונות AI גנרטיבי. Google אינה חושפת את ה-TOPS של ה-TPU."
+    },
+    "Mobileye||EyeQ5": {
+      "ko": "전용 딥러닝 가속기를 갖춘 차량용 ADAS/AV 비전 SoC로, 전방 카메라와 서라운드 인식을 위한 EyeQ5 Mid 및 EyeQ5 High 버전으로 제공된다. Mobileye는 제품 페이지에서 이 세대의 최대 TOPS를 명시하지 않는다.",
+      "en": "Automotive-grade ADAS/AV vision SoC with dedicated deep-learning accelerators, offered in EyeQ5 Mid and EyeQ5 High variants for front-camera and surround perception. Mobileye lists no peak TOPS for this generation on its product page.",
+      "ja": "専用のディープラーニングアクセラレータを備えた車載グレードのADAS/AV向けビジョンSoCで、前方カメラおよびサラウンド認識向けにEyeQ5 MidとEyeQ5 Highの各バリアントが用意される。Mobileyeは製品ページでこの世代のピークTOPSを記載していない。",
+      "zh": "车规级 ADAS/AV 视觉 SoC，配备专用深度学习加速器，提供 EyeQ5 Mid 和 EyeQ5 High 两个版本，用于前视摄像头和环视感知。Mobileye 未在其产品页面列出该代的峰值 TOPS。",
+      "es": "SoC de visión ADAS/AV de grado automotriz con aceleradores de aprendizaje profundo dedicados, ofrecido en las variantes EyeQ5 Mid y EyeQ5 High para percepción de cámara frontal y envolvente. Mobileye no indica un TOPS máximo para esta generación en su página de producto.",
+      "he": "SoC ראייה ברמת-רכב עבור ADAS/AV עם מאיצי למידה עמוקה ייעודיים, המוצע בגרסאות EyeQ5 Mid ו-EyeQ5 High לתפיסת מצלמה קדמית ותפיסה היקפית. Mobileye אינה מציינת TOPS שיא לדור זה בעמוד המוצר שלה."
+    },
+    "Tesla||FSD Chip (HW3)": {
+      "ko": "Tesla 최초의 자체 개발 Full Self-Driving 추론 SoC로, 각 칩에는 각각 36 TOPS의 NPU 2개가 통합되어 있으며(Tesla의 2019년 Autonomy Day 기준 칩당 72 TOPS), 이중화를 위해 FSD Computer당 칩 2개를 탑재한다.",
+      "en": "Tesla's first in-house Full Self-Driving inference SoC; each chip integrates two NPUs rated at 36 TOPS each (72 TOPS per chip, per Tesla's 2019 Autonomy Day), with two chips per FSD Computer for redundancy.",
+      "ja": "Tesla初の自社開発によるFull Self-Driving推論SoCで、各チップにはそれぞれ36 TOPSのNPUを2基統合し（Teslaの2019年Autonomy Dayによればチップあたり72 TOPS）、冗長性のためFSD Computerあたり2チップを搭載する。",
+      "zh": "Tesla 首款自研的 Full Self-Driving 推理 SoC；每颗芯片集成两个各 36 TOPS 的 NPU（据 Tesla 2019 年 Autonomy Day，每颗芯片 72 TOPS），每台 FSD Computer 配备两颗芯片以实现冗余。",
+      "es": "Primer SoC de inferencia Full Self-Driving desarrollado internamente por Tesla; cada chip integra dos NPU de 36 TOPS cada una (72 TOPS por chip, según el Autonomy Day de Tesla de 2019), con dos chips por FSD Computer para redundancia.",
+      "he": "ה-SoC הראשון של Tesla לפיתוח עצמי להסקת Full Self-Driving; כל שבב משלב שני NPU בביצועים של 36 TOPS כל אחד (72 TOPS לשבב, לפי Autonomy Day של Tesla מ-2019), עם שני שבבים לכל FSD Computer לצורך יתירות."
+    },
+    "Qualcomm||Snapdragon Ride SA8650P": {
+      "ko": "인식을 위해 Hexagon NPU 코어를 사용하는 5nm Snapdragon Ride ADAS/AD SoC로, 양산 도심 navigate-on-autopilot 시스템에 탑재되었다. Qualcomm은 이 부품의 공식 최대 INT8 TOPS를 공개하지 않는다.",
+      "en": "5nm Snapdragon Ride ADAS/AD SoC using Hexagon NPU cores for perception; deployed in production urban navigate-on-autopilot systems. Qualcomm does not publish an official peak INT8 TOPS for the part.",
+      "ja": "認識にHexagon NPUコアを用いる5nmのSnapdragon Ride ADAS/AD SoCで、量産の都市部navigate-on-autopilotシステムに採用されている。Qualcommはこの製品の公式なピークINT8 TOPSを公表していない。",
+      "zh": "采用 Hexagon NPU 核心进行感知的 5nm Snapdragon Ride ADAS/AD SoC；已部署于量产的城市 navigate-on-autopilot 系统。Qualcomm 未公布该部件的官方峰值 INT8 TOPS。",
+      "es": "SoC ADAS/AD Snapdragon Ride de 5nm que utiliza núcleos NPU Hexagon para la percepción; desplegado en sistemas de producción de navigate-on-autopilot urbano. Qualcomm no publica un TOPS INT8 máximo oficial para la pieza.",
+      "he": "SoC מסוג Snapdragon Ride בתהליך 5nm עבור ADAS/AD, המשתמש בליבות Hexagon NPU לתפיסה; מוטמע במערכות navigate-on-autopilot עירוניות בייצור. Qualcomm אינה מפרסמת ערך שיא רשמי של INT8 TOPS עבור הרכיב."
+    },
+    "MediaTek||Genio 700": {
+      "ko": "4 TOPS의 5세대 MediaTek APU/NPU를 탑재한 6nm 엣지 AI IoT SoC로, 스마트홈, 리테일, 산업용 비전 애플리케이션을 위한 제품이며 Genio 510과 핀 호환된다.",
+      "en": "6nm edge-AI IoT SoC with a fifth-generation MediaTek APU/NPU rated at 4 TOPS for smart home, retail and industrial vision applications; pin-compatible with the Genio 510.",
+      "ja": "4 TOPSの第5世代MediaTek APU/NPUを搭載した6nmのエッジAI IoT SoCで、スマートホーム、リテール、産業用ビジョン用途向け。Genio 510とピン互換。",
+      "zh": "6nm 边缘 AI IoT SoC，搭载额定 4 TOPS 的第五代 MediaTek APU/NPU，面向智能家居、零售和工业视觉应用；与 Genio 510 引脚兼容。",
+      "es": "SoC de IoT con IA en el edge de 6nm con una APU/NPU MediaTek de quinta generación de 4 TOPS para aplicaciones de hogar inteligente, retail y visión industrial; compatible en pines con el Genio 510.",
+      "he": "SoC מסוג edge-AI IoT בתהליך 6nm עם APU/NPU של MediaTek מהדור החמישי בביצועי 4 TOPS, ליישומי בית חכם, קמעונאות וראייה תעשייתית; תואם-פינים ל-Genio 510."
+    },
+    "UNISOC||T7520": {
+      "ko": "전용 신세대 NPU/AI 가속기를 탑재한 6nm EUV 5G 스마트폰 SoC로, UNISOC는 이전 세대 대비 에너지 효율(TOPS/W)을 50% 이상 개선했다고 밝혔다. 최대 TOPS는 공식적으로 명시되지 않았다.",
+      "en": "6nm EUV 5G smartphone SoC with a dedicated new-generation NPU/AI accelerator that UNISOC claims improves energy efficiency (TOPS/W) by more than 50% over the prior generation. Peak TOPS is not officially stated.",
+      "ja": "専用の新世代NPU/AIアクセラレータを搭載した6nm EUVの5GスマートフォンSoCで、UNISOCは前世代比でエネルギー効率（TOPS/W）を50%以上向上させたとしている。ピークTOPSは公式には示されていない。",
+      "zh": "6nm EUV 5G 智能手机 SoC，配备专用的新一代 NPU/AI 加速器，UNISOC 称其能效（TOPS/W）较上一代提升逾 50%。峰值 TOPS 未官方公布。",
+      "es": "SoC de smartphone 5G de 6nm EUV con un acelerador NPU/IA de nueva generación dedicado que, según UNISOC, mejora la eficiencia energética (TOPS/W) en más de un 50% respecto a la generación anterior. No se indica oficialmente el TOPS máximo.",
+      "he": "SoC לסמארטפון 5G בתהליך 6nm EUV עם מאיץ NPU/AI ייעודי מהדור החדש, ש-UNISOC טוענת כי הוא משפר את יעילות האנרגיה (TOPS/W) ביותר מ-50% לעומת הדור הקודם. ערך ה-TOPS השיא אינו מצוין באופן רשמי."
+    },
+    "Texas Instruments||TDA4VH-Q1": {
+      "ko": "옥타코어 Cortex-A72 기반의 Jacinto 7 자동차용 SoC로, 최대 4개의 MMAv2 딥러닝 가속기를 통해 최대 32 INT8 TOPS를 제공하여 ADAS 및 자율주행차 인식에 사용된다.",
+      "en": "Jacinto 7 automotive SoC (octa-core Cortex-A72) with up to four MMAv2 deep-learning accelerators providing up to 32 INT8 TOPS for ADAS and autonomous-vehicle perception.",
+      "ja": "オクタコアCortex-A72を搭載したJacinto 7車載SoCで、最大4基のMMAv2ディープラーニングアクセラレータにより最大32 INT8 TOPSを提供し、ADASや自動運転車の認識に用いられる。",
+      "zh": "Jacinto 7 车用 SoC（八核 Cortex-A72），配备最多四个 MMAv2 深度学习加速器，提供最高 32 INT8 TOPS，用于 ADAS 和自动驾驶车辆感知。",
+      "es": "SoC de automoción Jacinto 7 (Cortex-A72 de ocho núcleos) con hasta cuatro aceleradores de aprendizaje profundo MMAv2 que ofrecen hasta 32 INT8 TOPS para percepción en ADAS y vehículos autónomos.",
+      "he": "SoC לרכב מסוג Jacinto 7 (Cortex-A72 עם שמונה ליבות) עם עד ארבעה מאיצי למידה עמוקה מסוג MMAv2 המספקים עד 32 INT8 TOPS, עבור ADAS ותפיסה של כלי רכב אוטונומיים."
+    },
+    "T-Head (Alibaba)||Hanguang 800": {
+      "ko": "Alibaba/T-Head의 데이터센터 추론 NPU(12nm, 트랜지스터 170억 개, 192 MB 온칩 SRAM을 갖춘 4개 코어)로, INT8 최대 825 TOPS, ResNet-50에서 약 78,563 IPS를 기록한다. 상업적으로 판매되지 않고 Alibaba Cloud 내부에서 사용된다.",
+      "en": "Alibaba/T-Head data-center inference NPU (12nm, 17B transistors, four cores with 192 MB on-chip SRAM); 825 TOPS INT8 peak and ~78,563 IPS on ResNet-50. Deployed internally within Alibaba Cloud rather than sold commercially.",
+      "ja": "Alibaba/T-Headのデータセンター向け推論NPU（12nm、170億トランジスタ、192 MBのオンチップSRAMを備えた4コア）で、INT8ピーク825 TOPS、ResNet-50で約78,563 IPSを実現する。商用販売ではなくAlibaba Cloud内部で運用されている。",
+      "zh": "Alibaba/T-Head 数据中心推理 NPU（12nm，170 亿晶体管，四核心配 192 MB 片上 SRAM）；INT8 峰值 825 TOPS，在 ResNet-50 上约 78,563 IPS。仅在 Alibaba Cloud 内部部署，而非对外销售。",
+      "es": "NPU de inferencia para centros de datos de Alibaba/T-Head (12nm, 17.000 millones de transistores, cuatro núcleos con 192 MB de SRAM en chip); pico de 825 TOPS INT8 y ~78,563 IPS en ResNet-50. Se despliega internamente en Alibaba Cloud en lugar de venderse comercialmente.",
+      "he": "NPU להסקה במרכזי נתונים של Alibaba/T-Head (12nm, 17 מיליארד טרנזיסטורים, ארבע ליבות עם 192 MB של SRAM על-השבב); שיא של 825 TOPS INT8 וכ-78,563 IPS על ResNet-50. מוטמע פנימית בתוך Alibaba Cloud ולא נמכר מסחרית."
+    },
+    "Esperanto Technologies||ET-SoC-1": {
+      "ko": "1,088개의 ET-Minion 벡터/텐서 코어와 4개의 ET-Maxion 코어를 갖춘 RISC-V AI 추론 ASIC(TSMC 7nm, 트랜지스터 238억 개, 약 160 MB 온칩 SRAM)로, 20 W 미만에서 최대 100–200 TOPS를 제공한다. GPU가 아니다.",
+      "en": "RISC-V AI inference ASIC with 1,088 ET-Minion vector/tensor cores plus 4 ET-Maxion cores (TSMC 7nm, 23.8B transistors, ~160 MB on-chip SRAM); peak 100-200 TOPS under 20 W. Not a GPU.",
+      "ja": "1,088基のET-Minionベクトル/テンソルコアと4基のET-Maxionコアを備えたRISC-V AI推論ASIC（TSMC 7nm、238億トランジスタ、約160 MBのオンチップSRAM）で、20 W未満でピーク100～200 TOPSを実現する。GPUではない。",
+      "zh": "RISC-V AI 推理 ASIC，配备 1,088 个 ET-Minion 向量/张量核心和 4 个 ET-Maxion 核心（TSMC 7nm，238 亿晶体管，约 160 MB 片上 SRAM）；在 20 W 以下峰值 100–200 TOPS。并非 GPU。",
+      "es": "ASIC de inferencia de IA RISC-V con 1,088 núcleos vectoriales/tensoriales ET-Minion más 4 núcleos ET-Maxion (TSMC 7nm, 23.800 millones de transistores, ~160 MB de SRAM en chip); pico de 100-200 TOPS por debajo de 20 W. No es una GPU.",
+      "he": "ASIC להסקת AI מסוג RISC-V עם 1,088 ליבות וקטור/טנזור מסוג ET-Minion בתוספת 4 ליבות ET-Maxion (TSMC 7nm, 23.8 מיליארד טרנזיסטורים, כ-160 MB של SRAM על-השבב); שיא של 100-200 TOPS מתחת ל-20 W. אינו GPU."
+    },
+    "Sophgo||SC11-FP300": {
+      "ko": "BM1690 프로세서를 기반으로 하는 데이터센터 TPU 카드로, 약 1.1 TB/s의 256 GB LPDDR5X, PCIe 5.0 x16, 약 300 W, FP8을 지원한다. DeepSeek-R1 671B 추론 실행에 대해 CAICT 인증을 받았다. GPU가 아닌 전용 TPU이며, 벤더의 최대 TOPS는 공개되지 않았다.",
+      "en": "Data-center TPU card built on the BM1690 processor; 256 GB LPDDR5X at ~1.1 TB/s, PCIe 5.0 x16, ~300 W, FP8-capable. CAICT-certified to run DeepSeek-R1 671B inference. A dedicated TPU, not a GPU; vendor peak TOPS not disclosed.",
+      "ja": "BM1690プロセッサをベースとするデータセンター向けTPUカードで、約1.1 TB/sの256 GB LPDDR5X、PCIe 5.0 x16、約300 W、FP8対応。DeepSeek-R1 671Bの推論実行についてCAICT認証を取得している。GPUではなく専用TPUで、ベンダーのピークTOPSは非公表。",
+      "zh": "基于 BM1690 处理器的数据中心 TPU 卡；256 GB LPDDR5X，带宽约 1.1 TB/s，PCIe 5.0 x16，约 300 W，支持 FP8。已通过 CAICT 认证可运行 DeepSeek-R1 671B 推理。属专用 TPU 而非 GPU；厂商未公开峰值 TOPS。",
+      "es": "Tarjeta TPU para centros de datos basada en el procesador BM1690; 256 GB de LPDDR5X a ~1.1 TB/s, PCIe 5.0 x16, ~300 W, con soporte de FP8. Certificada por CAICT para ejecutar inferencia de DeepSeek-R1 671B. Una TPU dedicada, no una GPU; el fabricante no divulga el TOPS máximo.",
+      "he": "כרטיס TPU למרכזי נתונים המבוסס על המעבד BM1690; 256 GB LPDDR5X בקצב של כ-1.1 TB/s, PCIe 5.0 x16, כ-300 W, עם תמיכה ב-FP8. מאושר על ידי CAICT להרצת הסקה של DeepSeek-R1 671B. זהו TPU ייעודי ולא GPU; ערך ה-TOPS השיא של היצרן אינו נחשף."
+    },
+    "Intel||Loihi 2": {
+      "ko": "2세대 뉴로모픽 연구용 칩(Intel 4 공정)으로, 128개의 비동기 뉴로모픽 코어, 최대 100만 개의 스파이킹 뉴런과 약 1억 2천만 개의 시냅스를 갖추고 있으며, 프로그래머블 뉴런 모델과 계조 스파이크(graded spikes)를 지원한다. 상업적으로 판매되지 않는 연구용 칩이다.",
+      "en": "Second-generation neuromorphic research chip (Intel 4 process); 128 asynchronous neuromorphic cores, up to 1M spiking neurons and ~120M synapses, with programmable neuron models and graded spikes. A research chip, not sold commercially.",
+      "ja": "第2世代のニューロモルフィック研究用チップ（Intel 4プロセス）で、128個の非同期ニューロモルフィックコア、最大100万個のスパイキングニューロンと約1億2000万個のシナプスを備え、プログラマブルなニューロンモデルと段階的スパイク（graded spikes）に対応する。商用販売されない研究用チップ。",
+      "zh": "第二代神经形态研究芯片（Intel 4 工艺）；128 个异步神经形态核心，最多 100 万个脉冲神经元和约 1.2 亿个突触，支持可编程神经元模型和分级脉冲（graded spikes）。属研究芯片，不对外销售。",
+      "es": "Chip de investigación neuromórfico de segunda generación (proceso Intel 4); 128 núcleos neuromórficos asíncronos, hasta 1 millón de neuronas de disparo y ~120 millones de sinapsis, con modelos de neurona programables y picos graduados. Es un chip de investigación, no se vende comercialmente.",
+      "he": "שבב מחקר נוירומורפי מהדור השני (תהליך Intel 4); 128 ליבות נוירומורפיות אסינכרוניות, עד מיליון נוירוני-דחף (spiking neurons) וכ-120 מיליון סינפסות, עם מודלי נוירונים הניתנים לתכנות ודחפים מדורגים (graded spikes). שבב מחקר שאינו נמכר מסחרית."
+    },
+    "Innatera||Pulsar": {
+      "ko": "아날로그 및 디지털 SNN 엔진과 32비트 RISC-V CPU, 그리고 CNN 및 FFT/iFFT 가속기를 결합한 뉴로모픽 마이크로컨트롤러(Spiking Neural Processor)로, 마이크로와트 전력과 밀리초 미만의 지연 시간을 제공한다. Innatera T1의 양산 버전으로, 센서 엣지 추론용이다.",
+      "en": "Neuromorphic microcontroller (Spiking Neural Processor) combining analog and digital SNN engines with a 32-bit RISC-V CPU plus CNN and FFT/iFFT accelerators; microwatt power and sub-millisecond latency. Production version of Innatera's T1, for sensor-edge inference.",
+      "ja": "アナログおよびデジタルのSNNエンジンに32ビットRISC-V CPUとCNNおよびFFT/iFFTアクセラレータを組み合わせたニューロモルフィックマイクロコントローラ（Spiking Neural Processor）で、マイクロワットの電力とミリ秒未満のレイテンシを実現する。InnateraのT1の量産版で、センサーエッジ推論向け。",
+      "zh": "神经形态微控制器（Spiking Neural Processor），将模拟与数字 SNN 引擎同 32 位 RISC-V CPU 以及 CNN 和 FFT/iFFT 加速器相结合；功耗为微瓦级，延迟低于毫秒。系 Innatera T1 的量产版本，面向传感器边缘推理。",
+      "es": "Microcontrolador neuromórfico (Spiking Neural Processor) que combina motores SNN analógicos y digitales con una CPU RISC-V de 32 bits más aceleradores CNN y FFT/iFFT; potencia en microvatios y latencia inferior al milisegundo. Versión de producción del T1 de Innatera, para inferencia en el sensor-edge.",
+      "he": "מיקרו-בקר נוירומורפי (Spiking Neural Processor) המשלב מנועי SNN אנלוגיים ודיגיטליים עם מעבד RISC-V של 32 סיביות בתוספת מאיצי CNN ו-FFT/iFFT; הספק ברמת מיקרו-ואט והשהיה של פחות ממילישנייה. גרסת הייצור של T1 של Innatera, עבור הסקה בקצה-החיישן."
+    },
+    "SpiNNcloud Systems||SpiNNaker2": {
+      "ko": "상업적으로 출시된 최초의 뉴로모픽 슈퍼컴퓨터로, 각 SpiNNaker2 칩에는 152개의 Arm 코어와 가속기가 탑재되어 있다(GlobalFoundries 22FDX). 서버 보드 하나에 48개 칩(약 100 W, 약 730만 뉴런)이 들어가며, 랙 단위로는 수십억 개의 뉴런까지 확장되어 스파이킹, 딥러닝, 심볼릭 AI를 처리한다.",
+      "en": "First commercially available neuromorphic supercomputer; each SpiNNaker2 chip carries 152 Arm cores plus accelerators (GlobalFoundries 22FDX). A server board hosts 48 chips (~100 W, ~7.3M neurons) and racks scale toward billions of neurons, handling spiking, deep-learning and symbolic AI.",
+      "ja": "商用として初めて提供されるニューロモルフィックスーパーコンピュータで、各SpiNNaker2チップは152基のArmコアとアクセラレータを搭載する（GlobalFoundries 22FDX）。サーバーボード1枚に48チップ（約100 W、約730万ニューロン）を収容し、ラック単位では数十億ニューロンまでスケールして、スパイキング、ディープラーニング、シンボリックAIを処理する。",
+      "zh": "首款商用化的神经形态超级计算机；每颗 SpiNNaker2 芯片搭载 152 个 Arm 核心及加速器（GlobalFoundries 22FDX）。一块服务器板可容纳 48 颗芯片（约 100 W、约 730 万神经元），机架级则可扩展至数十亿神经元，处理脉冲、深度学习和符号 AI。",
+      "es": "Primer superordenador neuromórfico disponible comercialmente; cada chip SpiNNaker2 integra 152 núcleos Arm más aceleradores (GlobalFoundries 22FDX). Una placa de servidor aloja 48 chips (~100 W, ~7,3 millones de neuronas) y los racks escalan hacia miles de millones de neuronas, gestionando IA spiking, de aprendizaje profundo y simbólica.",
+      "he": "מחשב-העל הנוירומורפי הראשון הזמין מסחרית; כל שבב SpiNNaker2 נושא 152 ליבות Arm בתוספת מאיצים (GlobalFoundries 22FDX). לוח שרת אחד מארח 48 שבבים (כ-100 W, כ-7.3 מיליון נוירונים), ומדפים (racks) מתרחבים עד מיליארדי נוירונים, ומטפלים ב-AI מסוג spiking, בלמידה עמוקה וב-AI סימבולי."
+    },
+    "NXP||i.MX RT700": {
+      "ko": "듀얼 Cortex-M33 코어, HiFi4/HiFi1 DSP, 그리고 7.5 MB SRAM을 갖춘 통합 eIQ Neutron N3-64 NPU를 탑재한 크로스오버 MCU다. 이 NPU는 CNN, RNN, TCN 및 transformer 네트워크를 지원하여 온디바이스 비전과 오디오를 처리한다.",
+      "en": "Crossover MCU with dual Cortex-M33 cores, HiFi4/HiFi1 DSPs and an integrated eIQ Neutron N3-64 NPU with 7.5 MB SRAM. The NPU supports CNN, RNN, TCN and transformer networks for on-device vision and audio.",
+      "ja": "デュアルCortex-M33コア、HiFi4/HiFi1 DSP、および7.5 MBのSRAMを備えた統合eIQ Neutron N3-64 NPUを搭載したクロスオーバーMCU。このNPUはCNN、RNN、TCN、transformerネットワークをサポートし、オンデバイスのビジョンとオーディオを処理する。",
+      "zh": "跨界 MCU，配备双 Cortex-M33 核心、HiFi4/HiFi1 DSP 以及集成的 eIQ Neutron N3-64 NPU（含 7.5 MB SRAM）。该 NPU 支持 CNN、RNN、TCN 和 transformer 网络，用于端侧视觉与音频。",
+      "es": "MCU crossover con dos núcleos Cortex-M33, DSP HiFi4/HiFi1 y una NPU eIQ Neutron N3-64 integrada con 7.5 MB de SRAM. La NPU admite redes CNN, RNN, TCN y transformer para visión y audio en el dispositivo.",
+      "he": "מיקרו-בקר מסוג crossover עם שתי ליבות Cortex-M33, מעבדי DSP מסוג HiFi4/HiFi1 ו-NPU משולב מסוג eIQ Neutron N3-64 עם 7.5 MB של SRAM. ה-NPU תומך ברשתות CNN, RNN, TCN ו-transformer עבור ראייה ואודיו על-גבי-המכשיר."
+    },
+    "Infineon||PSOC Edge E81": {
+      "ko": "고성능 Cortex-M55(Helium)와 저전력 Cortex-M33을 Infineon의 초저전력 NNLite 하드웨어 NN 가속기와 결합한 엔트리급 ML MCU다. E83/E84와 달리 Arm Ethos-U55 micro-NPU를 포함하지 않는다.",
+      "en": "Entry ML MCU with a high-performance Cortex-M55 (Helium) plus a low-power Cortex-M33 paired with Infineon's ultra-low-power NNLite hardware NN accelerator. Unlike the E83/E84 it does not include the Arm Ethos-U55 micro-NPU.",
+      "ja": "高性能なCortex-M55（Helium）と低消費電力のCortex-M33を、Infineonの超低消費電力NNLiteハードウェアNNアクセラレータと組み合わせたエントリー向けML MCU。E83/E84とは異なり、Arm Ethos-U55 micro-NPUは搭載しない。",
+      "zh": "入门级 ML MCU，配备高性能 Cortex-M55（Helium）和低功耗 Cortex-M33，并搭配 Infineon 的超低功耗 NNLite 硬件 NN 加速器。与 E83/E84 不同，它不包含 Arm Ethos-U55 micro-NPU。",
+      "es": "MCU de ML de gama de entrada con un Cortex-M55 de alto rendimiento (Helium) más un Cortex-M33 de bajo consumo, combinados con el acelerador de NN por hardware NNLite de consumo ultrabajo de Infineon. A diferencia del E83/E84, no incluye la micro-NPU Arm Ethos-U55.",
+      "he": "מיקרו-בקר ML ברמת כניסה עם Cortex-M55 ביצועי (Helium) בתוספת Cortex-M33 חסכוני בהספק, המשולבים עם מאיץ NN חומרתי מסוג NNLite של Infineon בהספק נמוך במיוחד. בשונה מ-E83/E84, הוא אינו כולל את ה-micro-NPU מסוג Arm Ethos-U55."
+    },
+    "Alif Semiconductor||Ensemble E3": {
+      "ko": "두 개의 Arm Ethos-U55 NPU(하나는 256 MAC/cycle로 최대 204 GOPS, 다른 하나는 128 MAC/cycle로 최대 46 GOPS)를 갖춘 듀얼 Cortex-M55 MCU다. 엔드포인트에서 실시간 얼굴 검출을 시연했다.",
+      "en": "Dual Cortex-M55 MCU with two Arm Ethos-U55 NPUs (one 256 MAC/cycle up to 204 GOPS and one 128 MAC/cycle up to 46 GOPS). Demonstrated real-time face detection at the endpoint.",
+      "ja": "2基のArm Ethos-U55 NPU（1基は256 MAC/cycleで最大204 GOPS、もう1基は128 MAC/cycleで最大46 GOPS）を備えたデュアルCortex-M55 MCU。エンドポイントでのリアルタイム顔検出を実証した。",
+      "zh": "双 Cortex-M55 MCU，配备两个 Arm Ethos-U55 NPU（一个 256 MAC/cycle、最高 204 GOPS，另一个 128 MAC/cycle、最高 46 GOPS）。已在端点演示实时人脸检测。",
+      "es": "MCU con doble Cortex-M55 y dos NPU Arm Ethos-U55 (una de 256 MAC/cycle hasta 204 GOPS y otra de 128 MAC/cycle hasta 46 GOPS). Ha demostrado detección de rostros en tiempo real en el endpoint.",
+      "he": "מיקרו-בקר עם שני מעבדי Cortex-M55 ושני NPU מסוג Arm Ethos-U55 (אחד בקצב 256 MAC/cycle עד 204 GOPS ואחד בקצב 128 MAC/cycle עד 46 GOPS). הדגים זיהוי פנים בזמן אמת בנקודת-הקצה."
+    },
+    "Syntiant||NDP100": {
+      "ko": "임베디드 Arm Cortex-M0와 112 KB RAM을 갖춘 Syntiant Core 1 뉴럴 엔진을 기반으로 하는 초저전력 Neural Decision Processor다. 140마이크로와트 미만에서 상시 대기 키워드 스포팅을 실행한다.",
+      "en": "Ultra-low-power Neural Decision Processor built on the Syntiant Core 1 neural engine with an embedded Arm Cortex-M0 and 112 KB RAM. Runs always-on keyword spotting under 140 microwatts.",
+      "ja": "組み込みArm Cortex-M0と112 KB RAMを備えたSyntiant Core 1ニューラルエンジンをベースとする超低消費電力のNeural Decision Processor。140マイクロワット未満で常時オンのキーワードスポッティングを実行する。",
+      "zh": "基于 Syntiant Core 1 神经引擎的超低功耗 Neural Decision Processor，内嵌 Arm Cortex-M0 和 112 KB RAM。可在 140 微瓦以下运行常开关键词唤醒。",
+      "es": "Neural Decision Processor de consumo ultrabajo basado en el motor neuronal Syntiant Core 1, con un Arm Cortex-M0 embebido y 112 KB de RAM. Ejecuta detección de palabras clave siempre activa por debajo de 140 microvatios.",
+      "he": "Neural Decision Processor בהספק נמוך במיוחד, המבוסס על מנוע נוירוני מסוג Syntiant Core 1 עם Arm Cortex-M0 מוטמע ו-112 KB RAM. מריץ זיהוי מילות-מפתח בפעולה מתמדת (always-on) בהספק נמוך מ-140 מיקרו-ואט."
+    },
+    "Femtosense||SPU-001": {
+      "ko": "1 MB 온칩 SRAM과 SPI 호스트 인터페이스를 갖춘 Sparse Processing Unit(SPU) AI 코프로세서로, 네트워크 희소성을 활용해 전력을 약 100분의 1로 낮춘다. 1 mW 미만에서 실시간 음성 향상과 키워드 검출을 처리한다.",
+      "en": "Sparse Processing Unit (SPU) AI co-processor with 1 MB on-chip SRAM and an SPI host interface, exploiting network sparsity for about 100x lower power. Handles real-time speech enhancement and keyword detection under 1 mW.",
+      "ja": "1 MBのオンチップSRAMとSPIホストインターフェースを備えたSparse Processing Unit（SPU）AIコプロセッサで、ネットワークのスパース性を活用して消費電力を約100分の1に低減する。1 mW未満でリアルタイムの音声強調とキーワード検出を処理する。",
+      "zh": "配备 1 MB 片上 SRAM 和 SPI 主机接口的 Sparse Processing Unit（SPU）AI 协处理器，利用网络稀疏性将功耗降低约 100 倍。可在 1 mW 以下处理实时语音增强和关键词检测。",
+      "es": "Coprocesador de IA Sparse Processing Unit (SPU) con 1 MB de SRAM en chip e interfaz de host SPI, que aprovecha la dispersión de la red para reducir el consumo unas 100 veces. Gestiona mejora de voz en tiempo real y detección de palabras clave por debajo de 1 mW.",
+      "he": "מעבד-עזר AI מסוג Sparse Processing Unit (SPU) עם 1 MB של SRAM על-השבב וממשק מארח SPI, המנצל את הדלילות (sparsity) של הרשת כדי להפחית את ההספק פי כ-100. מטפל בשיפור דיבור בזמן אמת ובזיהוי מילות-מפתח בהספק נמוך מ-1 mW."
+    },
+    "Texas Instruments||AM13E23019": {
+      "ko": "CPU와 독립적으로 신경망 추론을 실행하는 통합 TinyEngine NPU를 갖춘 Sitara AM13Ex 실시간 MCU로, CORDIC 구현보다 약 10배 빠른 삼각함수 연산 가속기도 함께 탑재한다. 2026년 3월 발표되었다.",
+      "en": "Sitara AM13Ex real-time MCU with an integrated TinyEngine NPU that executes neural inference independently of the CPU, plus a trigonometric math accelerator about 10x faster than a CORDIC implementation. Announced March 2026.",
+      "ja": "CPUとは独立してニューラル推論を実行する統合TinyEngine NPUを備えたSitara AM13ExリアルタイムMCUで、CORDIC実装より約10倍高速な三角関数演算アクセラレータも搭載する。2026年3月発表。",
+      "zh": "Sitara AM13Ex 实时 MCU，集成可独立于 CPU 执行神经推理的 TinyEngine NPU，并配备比 CORDIC 实现快约 10 倍的三角函数运算加速器。于 2026 年 3 月发布。",
+      "es": "MCU en tiempo real Sitara AM13Ex con una NPU TinyEngine integrada que ejecuta inferencia neuronal de forma independiente de la CPU, más un acelerador de cálculo trigonométrico unas 10 veces más rápido que una implementación CORDIC. Anunciado en marzo de 2026.",
+      "he": "מיקרו-בקר בזמן אמת מסוג Sitara AM13Ex עם NPU משולב מסוג TinyEngine המבצע הסקה נוירונית באופן עצמאי מה-CPU, בתוספת מאיץ חישוב טריגונומטרי מהיר פי כ-10 מיישום CORDIC. הוכרז במרץ 2026."
+    },
+    "Arm||Ethos-U65": {
+      "en": "MicroNPU that doubles the Ethos-U55's MAC count to 512 for up to 1 TOPS, intended for embedded and Cortex-A class systems. Licensable RTL integrated by SoC vendors.",
+      "ko": "Ethos-U55의 MAC 수를 512개로 두 배 늘려 최대 1 TOPS를 제공하는 microNPU로, 임베디드 및 Cortex-A급 시스템을 겨냥한다. SoC 벤더가 통합하는 라이선스 가능한 RTL이다.",
+      "ja": "Ethos-U55のMAC数を512に倍増させ最大1 TOPSを実現するmicroNPUで、組み込みおよびCortex-Aクラスのシステムを対象とする。SoCベンダーが統合するライセンス可能なRTLとして提供される。",
+      "zh": "将Ethos-U55的MAC数量翻倍至512、可提供最高1 TOPS的microNPU，面向嵌入式及Cortex-A级系统。以可授权RTL形式提供，由SoC厂商集成。",
+      "es": "microNPU que duplica el número de MAC del Ethos-U55 hasta 512 para alcanzar hasta 1 TOPS, orientado a sistemas embebidos y de clase Cortex-A. RTL licenciable integrado por los fabricantes de SoC.",
+      "he": "microNPU שמכפיל את מספר ה-MAC של ה-Ethos-U55 ל-512 עבור עד 1 TOPS, מיועד למערכות מוטמעות ולמערכות ברמת Cortex-A. RTL בר-רישוי המשולב על ידי יצרני SoC."
+    },
+    "Cadence||Tensilica Neo NPU": {
+      "en": "Tensilica Neo NPU IP scales from 8 GOPS to 80 TOPS in a single core (256-32K MACs) and to hundreds of TOPS multicore. Supports Int4/8/16 and FP16 for CNN, RNN and transformer networks.",
+      "ko": "Tensilica Neo NPU IP는 단일 코어(256~32K MAC)에서 8 GOPS부터 80 TOPS까지, 멀티코어에서는 수백 TOPS까지 확장된다. CNN, RNN 및 트랜스포머 네트워크를 위해 Int4/8/16 및 FP16을 지원한다.",
+      "ja": "Tensilica Neo NPU IPは、シングルコア（256～32K MAC）で8 GOPSから80 TOPS、マルチコアでは数百TOPSまでスケールする。CNN、RNN、トランスフォーマーネットワーク向けにInt4/8/16およびFP16をサポートする。",
+      "zh": "Tensilica Neo NPU IP在单核（256–32K MAC）下可从8 GOPS扩展至80 TOPS，多核下可达数百TOPS。支持Int4/8/16与FP16，适用于CNN、RNN及transformer网络。",
+      "es": "La IP Tensilica Neo NPU escala de 8 GOPS a 80 TOPS en un solo núcleo (256-32K MAC) y hasta cientos de TOPS en multinúcleo. Admite Int4/8/16 y FP16 para redes CNN, RNN y transformer.",
+      "he": "ה-IP של Tensilica Neo NPU מתרחב מ-8 GOPS ועד 80 TOPS בליבה יחידה (256–32K MAC) ועד מאות TOPS במולטי-ליבה. תומך ב-Int4/8/16 וב-FP16 עבור רשתות CNN, RNN ו-transformer."
+    },
+    "Ceva||NeuPro-M": {
+      "en": "Scalable NPU IP delivering from 4 to over 200 TOPS per core (2,000+ TOPS multicore), optimized for transformers, ViT and generative AI. Reported up to 350 TOPS/W at 3nm.",
+      "ko": "코어당 4 TOPS부터 200 TOPS 이상(멀티코어 2,000+ TOPS)을 제공하는 확장 가능한 NPU IP로, 트랜스포머, ViT 및 생성형 AI에 최적화되어 있다. 3nm에서 최대 350 TOPS/W로 보고되었다.",
+      "ja": "コアあたり4 TOPSから200 TOPS超（マルチコアで2,000+ TOPS）を実現するスケーラブルなNPU IPで、トランスフォーマー、ViT、生成AIに最適化されている。3nmで最大350 TOPS/Wと報告されている。",
+      "zh": "可扩展的NPU IP，每核心提供4至200 TOPS以上（多核2,000+ TOPS），针对transformer、ViT及生成式AI优化。据报道在3nm下可达最高350 TOPS/W。",
+      "es": "IP de NPU escalable que ofrece de 4 a más de 200 TOPS por núcleo (más de 2000 TOPS en multinúcleo), optimizada para transformers, ViT e IA generativa. Se reportan hasta 350 TOPS/W en 3nm.",
+      "he": "IP של NPU בר-הרחבה המספק בין 4 ל-200 TOPS ומעלה לכל ליבה (2,000+ TOPS במולטי-ליבה), ממוטב עבור transformers, ViT ו-AI גנרטיבי. דווח על עד 350 TOPS/W ב-3nm."
+    },
+    "Expedera||Origin E1": {
+      "en": "Ultra-low-power Origin NPU IP core delivering about 1 TOPS (up to 18 TOPS/W) for always-on applications. Uses Expedera's packet-based architecture requiring little to no external memory.",
+      "ko": "약 1 TOPS(최대 18 TOPS/W)를 제공하는 초저전력 Origin NPU IP 코어로, 상시 구동(always-on) 애플리케이션을 위한 것이다. 외부 메모리가 거의 또는 전혀 필요 없는 Expedera의 패킷 기반 아키텍처를 사용한다.",
+      "ja": "約1 TOPS（最大18 TOPS/W）を実現する超低消費電力のOrigin NPU IPコアで、常時稼働（always-on）アプリケーション向け。外部メモリをほとんど、あるいはまったく必要としないExpedera独自のパケットベースアーキテクチャを採用する。",
+      "zh": "超低功耗Origin NPU IP核心，提供约1 TOPS（最高18 TOPS/W），面向常开（always-on）应用。采用Expedera的基于数据包架构，几乎无需甚至完全无需外部内存。",
+      "es": "Núcleo IP de NPU Origin de ultra bajo consumo que ofrece cerca de 1 TOPS (hasta 18 TOPS/W) para aplicaciones always-on. Emplea la arquitectura basada en paquetes de Expedera, que requiere poca o ninguna memoria externa.",
+      "he": "ליבת IP של Origin NPU בהספק נמוך במיוחד המספקת כ-1 TOPS (עד 18 TOPS/W) עבור יישומי always-on. משתמשת בארכיטקטורה מבוססת-חבילות של Expedera הדורשת מעט מאוד או כלל לא זיכרון חיצוני."
+    },
+    "Expedera||Origin E8": {
+      "en": "High-performance Origin NPU IP up to 128 TOPS per core, scaling to PetaOps multicore for ADAS and data-center inference. Supports CNN, RNN, transformers and stable diffusion.",
+      "ko": "코어당 최대 128 TOPS를 제공하는 고성능 Origin NPU IP로, 멀티코어에서 PetaOps까지 확장되어 ADAS 및 데이터센터 추론에 사용된다. CNN, RNN, 트랜스포머 및 stable diffusion을 지원한다.",
+      "ja": "コアあたり最大128 TOPSの高性能Origin NPU IPで、マルチコアではPetaOps規模までスケールし、ADASやデータセンター推論に対応する。CNN、RNN、トランスフォーマー、stable diffusionをサポートする。",
+      "zh": "高性能Origin NPU IP，每核心最高128 TOPS，多核可扩展至PetaOps级，面向ADAS与数据中心推理。支持CNN、RNN、transformer及stable diffusion。",
+      "es": "IP de NPU Origin de alto rendimiento con hasta 128 TOPS por núcleo, escalable a PetaOps en multinúcleo para ADAS e inferencia en centros de datos. Admite CNN, RNN, transformers y stable diffusion.",
+      "he": "IP של Origin NPU בעל ביצועים גבוהים של עד 128 TOPS לכל ליבה, המתרחב ל-PetaOps במולטי-ליבה עבור ADAS והסקה במרכזי נתונים. תומך ב-CNN, RNN, transformers ו-stable diffusion."
+    },
+    "Andes Technology||AndesAIRE AnDLA I350": {
+      "en": "AndesAIRE AnDLA I350 deep-learning accelerator IP configurable from 32 to 4096 MACs for 64 GOPS to 8 TOPS. Announced 2023 for edge and endpoint inference.",
+      "ko": "AndesAIRE AnDLA I350은 32개에서 4096개의 MAC으로 구성 가능한 딥러닝 가속기 IP로, 64 GOPS에서 8 TOPS를 제공한다. 엣지 및 엔드포인트 추론용으로 2023년에 발표되었다.",
+      "ja": "AndesAIRE AnDLA I350は、32～4096 MACで構成可能なディープラーニングアクセラレータIPで、64 GOPSから8 TOPSを実現する。エッジおよびエンドポイント推論向けに2023年に発表された。",
+      "zh": "AndesAIRE AnDLA I350深度学习加速器IP，可在32至4096个MAC之间配置，提供64 GOPS至8 TOPS。于2023年发布，面向边缘与端点推理。",
+      "es": "IP de acelerador de aprendizaje profundo AndesAIRE AnDLA I350, configurable de 32 a 4096 MAC para ofrecer de 64 GOPS a 8 TOPS. Anunciado en 2023 para inferencia en el borde y en dispositivos endpoint.",
+      "he": "IP של מאיץ למידה עמוקה AndesAIRE AnDLA I350 הניתן להגדרה מ-32 ועד 4096 MACs עבור 64 GOPS עד 8 TOPS. הוכרז ב-2023 עבור הסקה בקצה ובנקודות קצה."
+    },
+    "Imagination Technologies||IMG Series4 NNA": {
+      "en": "Imagination's multi-core neural network accelerator IP delivering 12.5 TOPS per core and 600+ TOPS in multi-core clusters. Targets automotive ADAS and autonomous driving with ISO 26262 support.",
+      "ko": "코어당 12.5 TOPS, 멀티코어 클러스터에서 600 TOPS 이상을 제공하는 Imagination의 멀티코어 신경망 가속기 IP다. ISO 26262 지원과 함께 차량용 ADAS 및 자율주행을 겨냥한다.",
+      "ja": "コアあたり12.5 TOPS、マルチコアクラスタで600 TOPS超を実現するImaginationのマルチコアニューラルネットワークアクセラレータIP。ISO 26262対応で車載ADASや自動運転を対象とする。",
+      "zh": "Imagination的多核神经网络加速器IP，每核心提供12.5 TOPS，多核集群下超过600 TOPS。支持ISO 26262，面向汽车ADAS与自动驾驶。",
+      "es": "IP de acelerador de redes neuronales multinúcleo de Imagination que ofrece 12,5 TOPS por núcleo y más de 600 TOPS en clústeres multinúcleo. Orientado a ADAS automotriz y conducción autónoma con soporte ISO 26262.",
+      "he": "IP של מאיץ רשתות עצביות רב-ליבתי מבית Imagination המספק 12.5 TOPS לכל ליבה ומעל 600 TOPS באשכולות רב-ליבתיים. מיועד ל-ADAS רכבי ולנהיגה אוטונומית עם תמיכה ב-ISO 26262."
+    },
+    "Hailo||Hailo-8 Century": {
+      "en": "PCIe add-in card line built on the 26 TOPS Hailo-8 processor, scaling from 52 to 208 TOPS across single- and multi-chip SKUs. DRAM-free design; entry 52 TOPS card starts at $249.",
+      "ko": "26 TOPS Hailo-8 프로세서를 기반으로 한 PCIe 애드인 카드 제품군으로, 단일 및 멀티칩 SKU에 걸쳐 52 TOPS에서 208 TOPS까지 확장된다. DRAM이 없는 설계이며, 입문형 52 TOPS 카드는 249달러부터 시작한다.",
+      "ja": "26 TOPSのHailo-8プロセッサをベースとするPCIeアドインカードのラインナップで、シングルチップおよびマルチチップのSKUにわたり52 TOPSから208 TOPSまでスケールする。DRAM不要の設計で、エントリーの52 TOPSカードは249ドルから。",
+      "zh": "基于26 TOPS Hailo-8处理器打造的PCIe插卡系列，在单芯片和多芯片SKU中从52 TOPS扩展至208 TOPS。采用无DRAM设计；入门级52 TOPS卡起价249美元。",
+      "es": "Línea de tarjetas PCIe basada en el procesador Hailo-8 de 26 TOPS, que escala de 52 a 208 TOPS entre los SKU de uno y varios chips. Diseño sin DRAM; la tarjeta de entrada de 52 TOPS parte de 249 dólares.",
+      "he": "סדרת כרטיסי הרחבה מסוג PCIe המבוססת על מעבד Hailo-8 בעל 26 TOPS, המתרחבת מ-52 ועד 208 TOPS על פני דגמי שבב יחיד ורב-שבבי. עיצוב נטול DRAM; כרטיס הכניסה של 52 TOPS מתחיל ב-249 דולר."
+    },
+    "Raspberry Pi||AI HAT+ (26 TOPS)": {
+      "en": "Raspberry Pi HAT+ with an on-board Hailo-8 accelerator delivering 26 TOPS over the Pi 5 PCIe interface, fully integrated into the Pi camera software stack.",
+      "ko": "온보드 Hailo-8 가속기를 탑재한 Raspberry Pi HAT+로, Pi 5의 PCIe 인터페이스를 통해 26 TOPS를 제공하며 Pi 카메라 소프트웨어 스택에 완전히 통합되어 있다.",
+      "ja": "オンボードのHailo-8アクセラレータを搭載したRaspberry Pi HAT+で、Pi 5のPCIeインターフェイス経由で26 TOPSを実現し、Piカメラソフトウェアスタックに完全に統合されている。",
+      "zh": "板载Hailo-8加速器的Raspberry Pi HAT+，通过Pi 5的PCIe接口提供26 TOPS，并完全集成到Pi摄像头软件栈中。",
+      "es": "Raspberry Pi HAT+ con un acelerador Hailo-8 integrado que ofrece 26 TOPS a través de la interfaz PCIe de la Pi 5, totalmente integrado en el stack de software de cámara de la Pi.",
+      "he": "Raspberry Pi HAT+ עם מאיץ Hailo-8 מובנה המספק 26 TOPS דרך ממשק ה-PCIe של ה-Pi 5, משולב באופן מלא ב-stack התוכנה של מצלמת ה-Pi."
+    },
+    "EdgeCortix||SAKURA-II PCIe (dual)": {
+      "en": "Dual-chip HHHL PCIe card delivering 120 TOPS (INT8) / 60 TFLOPS (BF16) with 32GB LPDDR4 at ~20W for larger generative models at the edge.",
+      "ko": "120 TOPS(INT8) / 60 TFLOPS(BF16)를 제공하는 듀얼칩 HHHL PCIe 카드로, 32GB LPDDR4를 약 20W에서 구동하며 엣지에서 더 큰 생성형 모델을 위한 것이다.",
+      "ja": "120 TOPS（INT8）/60 TFLOPS（BF16）を実現するデュアルチップのHHHL PCIeカードで、32GBのLPDDR4を約20Wで搭載し、エッジでのより大規模な生成モデルに対応する。",
+      "zh": "双芯片HHHL PCIe卡，提供120 TOPS（INT8）/60 TFLOPS（BF16），搭配32GB LPDDR4，功耗约20W，面向边缘端更大规模的生成式模型。",
+      "es": "Tarjeta PCIe HHHL de doble chip que ofrece 120 TOPS (INT8) / 60 TFLOPS (BF16) con 32GB de LPDDR4 a unos 20W para modelos generativos más grandes en el borde.",
+      "he": "כרטיס PCIe מסוג HHHL עם שני שבבים המספק 120 TOPS (INT8) / 60 TFLOPS (BF16) עם 32GB LPDDR4 בהספק של כ-20W עבור מודלים גנרטיביים גדולים יותר בקצה."
+    },
+    "Kneron||KL720 USB Dongle": {
+      "en": "USB accelerator built on the higher-performance KL720 SoC with 128MB on-board memory, used to add edge AI inference to a host PC or Raspberry Pi.",
+      "ko": "고성능 KL720 SoC를 기반으로 128MB 온보드 메모리를 탑재한 USB 가속기로, 호스트 PC나 Raspberry Pi에 엣지 AI 추론 기능을 추가하는 데 사용된다.",
+      "ja": "高性能なKL720 SoCをベースに128MBのオンボードメモリを搭載したUSBアクセラレータで、ホストPCやRaspberry PiにエッジAI推論を追加するために使用される。",
+      "zh": "基于高性能KL720 SoC、板载128MB内存的USB加速器，用于为主机PC或Raspberry Pi添加边缘AI推理能力。",
+      "es": "Acelerador USB basado en el SoC KL720 de mayor rendimiento con 128MB de memoria integrada, utilizado para añadir inferencia de IA en el borde a un PC anfitrión o una Raspberry Pi.",
+      "he": "מאיץ USB המבוסס על ה-SoC בעל הביצועים הגבוהים KL720 עם 128MB זיכרון מובנה, המשמש להוספת הסקת AI בקצה למחשב מארח או ל-Raspberry Pi."
+    },
+    "Axelera AI||Metis Compute Board": {
+      "en": "Mini-ITX single-board computer combining a Rockchip RK3588 host with an integrated quad-core Metis AIPU (up to 214 TOPS) over a 4-lane PCIe link for computer vision and edge GenAI.",
+      "ko": "Rockchip RK3588 호스트와 통합된 쿼드코어 Metis AIPU(최대 214 TOPS)를 4레인 PCIe 링크로 결합한 Mini-ITX 싱글보드 컴퓨터로, 컴퓨터 비전 및 엣지 GenAI를 위한 것이다.",
+      "ja": "Rockchip RK3588ホストと統合型クアッドコアMetis AIPU（最大214 TOPS）を4レーンのPCIeリンクで組み合わせたMini-ITXシングルボードコンピュータで、コンピュータビジョンやエッジGenAI向け。",
+      "zh": "Mini-ITX单板计算机，通过4通道PCIe链路将Rockchip RK3588主机与集成的四核Metis AIPU（最高214 TOPS）结合，面向计算机视觉与边缘GenAI。",
+      "es": "Ordenador de placa única Mini-ITX que combina un host Rockchip RK3588 con una AIPU Metis de cuatro núcleos integrada (hasta 214 TOPS) mediante un enlace PCIe de 4 líneas para visión por computador y GenAI en el borde.",
+      "he": "מחשב לוח יחיד בפורמט Mini-ITX המשלב מארח Rockchip RK3588 עם Metis AIPU מרובע-ליבות משולב (עד 214 TOPS) דרך קישור PCIe בן 4 נתיבים עבור ראייה ממוחשבת ו-GenAI בקצה."
+    },
+    "Sipeed||Maix-II Dock": {
+      "en": "Entry-level AIoT vision devkit using the Allwinner V831 SoC whose on-chip NPU provides about 0.2 TOPS for low-power CNN inference such as face and object detection.",
+      "ko": "Allwinner V831 SoC를 사용하는 입문형 AIoT 비전 개발 키트로, 온칩 NPU가 약 0.2 TOPS를 제공하여 얼굴 및 객체 검출과 같은 저전력 CNN 추론에 사용된다.",
+      "ja": "Allwinner V831 SoCを用いたエントリー向けAIoTビジョン開発キットで、オンチップNPUが約0.2 TOPSを提供し、顔検出や物体検出などの低消費電力CNN推論に対応する。",
+      "zh": "采用Allwinner V831 SoC的入门级AIoT视觉开发套件，其片上NPU提供约0.2 TOPS，用于人脸和物体检测等低功耗CNN推理。",
+      "es": "Kit de desarrollo de visión AIoT de nivel de entrada que utiliza el SoC Allwinner V831, cuya NPU integrada ofrece unos 0,2 TOPS para inferencia CNN de bajo consumo como la detección de rostros y objetos.",
+      "he": "ערכת פיתוח ראייה מסוג AIoT ברמת כניסה המשתמשת ב-SoC של Allwinner V831, שה-NPU המובנה שלו מספק כ-0.2 TOPS עבור הסקת CNN בהספק נמוך כגון זיהוי פנים ועצמים."
+    },
+    "Samsung||Exynos 2400": {
+      "en": "Flagship mobile SoC whose dedicated NPU (17K MAC, 2 GNPU + 2 SNPU) powers on-device generative AI such as image generation and live translation; used in the Galaxy S24. Samsung does not publish a peak INT8 TOPS figure.",
+      "ko": "전용 NPU(17K MAC, 2 GNPU + 2 SNPU)가 이미지 생성 및 실시간 번역 같은 온디바이스 생성형 AI를 구동하는 플래그십 모바일 SoC로, Galaxy S24에 탑재되었다. 삼성은 최대 INT8 TOPS 수치를 공개하지 않는다.",
+      "ja": "専用NPU（17K MAC、2 GNPU + 2 SNPU）が画像生成やライブ翻訳などのオンデバイス生成AIを駆動するフラッグシップモバイルSoCで、Galaxy S24に採用されている。SamsungはピークのINT8 TOPS値を公表していない。",
+      "zh": "旗舰移动SoC，其专用NPU（17K MAC，2 GNPU + 2 SNPU）驱动图像生成和实时翻译等设备端生成式AI；用于Galaxy S24。三星未公布峰值INT8 TOPS数据。",
+      "es": "SoC móvil de gama alta cuya NPU dedicada (17K MAC, 2 GNPU + 2 SNPU) impulsa IA generativa en el dispositivo como la generación de imágenes y la traducción en directo; usado en el Galaxy S24. Samsung no publica una cifra pico de TOPS en INT8.",
+      "he": "SoC נייד מוביל שה-NPU הייעודי שלו (17K MAC, 2 GNPU + 2 SNPU) מפעיל AI גנרטיבי על המכשיר כגון יצירת תמונות ותרגום חי; משמש ב-Galaxy S24. Samsung אינה מפרסמת נתון שיא של INT8 TOPS."
+    },
+    "Google||Tensor G4": {
+      "en": "Pixel 9 SoC whose on-chip TPU is the first to run Gemini Nano with multimodality and drives the on-device Pixel Studio diffusion model. No official TOPS figure is given.",
+      "ko": "온칩 TPU가 멀티모달리티를 갖춘 Gemini Nano를 최초로 구동하고 온디바이스 Pixel Studio 디퓨전 모델을 실행하는 Pixel 9 SoC다. 공식 TOPS 수치는 제공되지 않는다.",
+      "ja": "オンチップTPUがマルチモーダル対応のGemini Nanoを初めて実行し、オンデバイスのPixel Studio拡散モデルを駆動するPixel 9のSoC。公式のTOPS値は公表されていない。",
+      "zh": "Pixel 9的SoC，其片上TPU率先运行具备多模态能力的Gemini Nano，并驱动设备端的Pixel Studio扩散模型。官方未给出TOPS数据。",
+      "es": "SoC del Pixel 9 cuya TPU integrada es la primera en ejecutar Gemini Nano con multimodalidad e impulsa el modelo de difusión Pixel Studio en el dispositivo. No se ofrece una cifra oficial de TOPS.",
+      "he": "ה-SoC של Pixel 9 שה-TPU המובנה שלו הוא הראשון להריץ את Gemini Nano עם רב-מודאליות ומפעיל את מודל הדיפוזיה Pixel Studio על המכשיר. לא ניתן נתון TOPS רשמי."
+    },
+    "Mobileye||EyeQ6 Lite": {
+      "en": "Entry/mid ADAS SoC delivering 5 INT8 DL-TOPS on 7nm at about 3 W, roughly 4.5x the compute of EyeQ4 Mid in about half the die area. Production hardware was delivered in April 2024.",
+      "ko": "7nm 공정에서 약 3W로 5 INT8 DL-TOPS를 제공하는 엔트리/미드급 ADAS SoC로, 다이 면적은 약 절반이면서 EyeQ4 Mid 대비 약 4.5배의 연산 성능을 낸다. 양산 하드웨어는 2024년 4월에 출하되었다.",
+      "ja": "7nmプロセスで約3 Wにて5 INT8 DL-TOPSを実現するエントリー／ミドルクラスのADAS SoCで、ダイ面積は約半分ながらEyeQ4 Mid比で約4.5倍の演算性能を持つ。量産ハードウェアは2024年4月に出荷された。",
+      "zh": "入门/中端ADAS SoC，采用7nm工艺，在约3 W功耗下提供5 INT8 DL-TOPS，以约一半的芯片面积实现约为EyeQ4 Mid 4.5倍的算力。量产硬件已于2024年4月交付。",
+      "es": "SoC ADAS de gama de entrada/media que ofrece 5 DL-TOPS en INT8 en 7nm a unos 3 W, cerca de 4,5 veces la capacidad de cómputo del EyeQ4 Mid en aproximadamente la mitad del área de die. El hardware de producción se entregó en abril de 2024.",
+      "he": "SoC מסוג ADAS ברמת כניסה/ביניים המספק 5 INT8 DL-TOPS ב-7nm בהספק של כ-3 W, בערך פי 4.5 מכוח החישוב של EyeQ4 Mid בכמחצית משטח ה-die. חומרת הייצור סופקה באפריל 2024."
+    },
+    "Tesla||FSD Computer HW4 (AI4)": {
+      "en": "Second-generation FSD inference hardware (AI4) with three enhanced NPUs per SoC (96x96 MAC array at 2.2 GHz) and 16 GB GDDR6. Tesla has not officially published a peak TOPS figure for HW4.",
+      "ko": "SoC당 세 개의 향상된 NPU(2.2 GHz의 96x96 MAC 어레이)와 16 GB GDDR6를 갖춘 2세대 FSD 추론 하드웨어(AI4)다. Tesla는 HW4의 최대 TOPS 수치를 공식적으로 공개하지 않았다.",
+      "ja": "SoCあたり3基の強化型NPU（2.2 GHzの96×96 MACアレイ）と16 GBのGDDR6を備えた第2世代のFSD推論ハードウェア（AI4）。TeslaはHW4のピークTOPS値を公式には公表していない。",
+      "zh": "第二代FSD推理硬件（AI4），每个SoC配备三个增强型NPU（2.2 GHz的96x96 MAC阵列）和16 GB GDDR6。Tesla尚未正式公布HW4的峰值TOPS数据。",
+      "es": "Hardware de inferencia FSD de segunda generación (AI4) con tres NPU mejoradas por SoC (matriz MAC de 96x96 a 2,2 GHz) y 16 GB de GDDR6. Tesla no ha publicado oficialmente una cifra pico de TOPS para el HW4.",
+      "he": "חומרת הסקה מדור שני של FSD (AI4) עם שלושה NPU משופרים לכל SoC (מערך MAC בגודל 96x96 בתדר 2.2 GHz) ו-16 GB GDDR6. Tesla לא פרסמה רשמית נתון שיא של TOPS עבור HW4."
+    },
+    "Qualcomm||Snapdragon 8 Elite": {
+      "en": "2024 flagship mobile SoC (TSMC 3nm, custom Oryon CPU) with a redesigned fused Hexagon NPU delivering about 45% faster AI for on-device multimodal generative AI. Qualcomm does not publish a peak TOPS for the base 8 Elite.",
+      "ko": "재설계된 통합 Hexagon NPU를 탑재해 온디바이스 멀티모달 생성형 AI를 약 45% 더 빠르게 처리하는 2024년 플래그십 모바일 SoC(TSMC 3nm, 커스텀 Oryon CPU)다. Qualcomm은 기본 8 Elite의 최대 TOPS를 공개하지 않는다.",
+      "ja": "再設計された統合型Hexagon NPUを搭載し、オンデバイスのマルチモーダル生成AIを約45%高速化した2024年のフラッグシップモバイルSoC（TSMC 3nm、カスタムOryon CPU）。Qualcommは標準の8 EliteのピークTOPSを公表していない。",
+      "zh": "2024年旗舰移动SoC（TSMC 3nm、定制Oryon CPU），配备重新设计的融合Hexagon NPU，为设备端多模态生成式AI带来约45%的性能提升。Qualcomm未公布基础版8 Elite的峰值TOPS。",
+      "es": "SoC móvil insignia de 2024 (TSMC 3nm, CPU Oryon personalizada) con una NPU Hexagon fusionada y rediseñada que ofrece IA cerca de un 45% más rápida para IA generativa multimodal en el dispositivo. Qualcomm no publica un pico de TOPS para el 8 Elite base.",
+      "he": "SoC נייד מוביל משנת 2024 (TSMC 3nm, מעבד Oryon מותאם אישית) עם Hexagon NPU ממוזג ומעוצב מחדש המספק AI מהיר בכ-45% עבור AI גנרטיבי רב-מודאלי על המכשיר. Qualcomm אינה מפרסמת שיא TOPS עבור ה-8 Elite הבסיסי."
+    },
+    "MediaTek||Genio 510": {
+      "en": "6nm mainstream edge-AI IoT SoC with a MediaTek NPU rated at 3.2 TOPS for real-time on-device inference; pin-compatible with the Genio 700 for scalable vision-AI designs.",
+      "ko": "3.2 TOPS로 평가된 MediaTek NPU를 탑재해 실시간 온디바이스 추론을 지원하는 6nm 메인스트림 엣지 AI IoT SoC로, 확장 가능한 비전 AI 설계를 위해 Genio 700과 핀 호환된다.",
+      "ja": "3.2 TOPS定格のMediaTek NPUを搭載し、リアルタイムのオンデバイス推論に対応する6nmのメインストリーム向けエッジAI IoT SoC。スケーラブルなビジョンAI設計のためGenio 700とピン互換。",
+      "zh": "6nm主流边缘AI物联网SoC，配备额定3.2 TOPS的MediaTek NPU，用于实时设备端推理；与Genio 700引脚兼容，便于打造可扩展的视觉AI设计。",
+      "es": "SoC IoT de IA en el borde de gama media en 6nm con una NPU de MediaTek de 3,2 TOPS para inferencia en el dispositivo en tiempo real; compatible en pines con el Genio 700 para diseños escalables de visión con IA.",
+      "he": "SoC מסוג IoT ל-AI בקצה בייצור 6nm ברמת ביניים עם MediaTek NPU בדירוג 3.2 TOPS עבור הסקה על המכשיר בזמן אמת; תואם-פינים ל-Genio 700 עבור עיצובי ראייה מבוססי-AI ניתנים להרחבה."
+    },
+    "Renesas||R-Car V4H": {
+      "en": "7nm automotive ADAS SoC for Level 2+/Level 3 automated driving, delivering up to 34 TOPS of deep-learning performance for front-camera perception and surround view; selected for Toyota production models.",
+      "ko": "레벨 2+/레벨 3 자율주행을 위한 7nm 차량용 ADAS SoC로, 전방 카메라 인식 및 서라운드 뷰를 위해 최대 34 TOPS의 딥러닝 성능을 제공한다. Toyota 양산 모델에 채택되었다.",
+      "ja": "レベル2+／レベル3の自動運転向け7nm車載ADAS SoCで、前方カメラ認識やサラウンドビューに向けて最大34 TOPSのディープラーニング性能を提供する。Toyotaの量産モデルに採用されている。",
+      "zh": "面向L2+/L3自动驾驶的7nm汽车ADAS SoC，为前置摄像头感知和环视提供最高34 TOPS的深度学习性能；已被Toyota量产车型采用。",
+      "es": "SoC ADAS automotriz en 7nm para conducción automatizada de nivel 2+/nivel 3, que ofrece hasta 34 TOPS de rendimiento de aprendizaje profundo para la percepción con cámara frontal y la visión envolvente; seleccionado para modelos de producción de Toyota.",
+      "he": "SoC רכבי מסוג ADAS בייצור 7nm לנהיגה אוטומטית ברמה 2+/רמה 3, המספק עד 34 TOPS של ביצועי למידה עמוקה עבור תפיסת מצלמה קדמית ותצוגת סראונד; נבחר לדגמי ייצור של Toyota."
+    },
+    "Texas Instruments||TDA4VE-Q1": {
+      "en": "Jacinto 7 automotive smart-vision SoC whose MMA deep-learning accelerator delivers up to 8 TOPS in a low-power envelope for ADAS, automated parking and driver monitoring.",
+      "ko": "MMA 딥러닝 가속기가 저전력 범위에서 최대 8 TOPS를 제공하는 Jacinto 7 차량용 스마트 비전 SoC로, ADAS, 자동 주차 및 운전자 모니터링을 위한 것이다.",
+      "ja": "MMAディープラーニングアクセラレータが低消費電力の枠内で最大8 TOPSを実現するJacinto 7車載スマートビジョンSoCで、ADAS、自動駐車、ドライバーモニタリングに対応する。",
+      "zh": "Jacinto 7汽车智能视觉SoC，其MMA深度学习加速器在低功耗范围内提供最高8 TOPS，面向ADAS、自动泊车和驾驶员监控。",
+      "es": "SoC de visión inteligente automotriz Jacinto 7 cuyo acelerador de aprendizaje profundo MMA ofrece hasta 8 TOPS en un envolvente de bajo consumo para ADAS, aparcamiento automatizado y monitorización del conductor.",
+      "he": "SoC רכבי לראייה חכמה מסדרת Jacinto 7 שמאיץ הלמידה העמוקה MMA שלו מספק עד 8 TOPS במעטפת הספק נמוך עבור ADAS, חניה אוטומטית וניטור נהג."
+    },
+    "Preferred Networks||MN-Core": {
+      "en": "Dedicated dataflow deep-learning accelerator (TSMC 12nm, ~500 W); 524 TFLOPS half-precision, 131 TFLOPS FP32 and 32.8 TFLOPS FP64 peak. Powered the MN-3 supercomputer (Green500 #1, 2020-2021). Not a GPU.",
+      "ko": "전용 데이터플로우 딥러닝 가속기(TSMC 12nm, 약 500W)로, 반정밀도 524 TFLOPS, FP32 131 TFLOPS, FP64 32.8 TFLOPS의 피크 성능을 낸다. MN-3 슈퍼컴퓨터(2020~2021년 Green500 1위)를 구동했다. GPU가 아니다.",
+      "ja": "専用データフロー型ディープラーニングアクセラレータ（TSMC 12nm、約500 W）で、半精度524 TFLOPS、FP32で131 TFLOPS、FP64で32.8 TFLOPSのピーク性能を持つ。MN-3スーパーコンピュータ（2020～2021年のGreen500首位）を支えた。GPUではない。",
+      "zh": "专用数据流深度学习加速器（TSMC 12nm，约500 W）；峰值为半精度524 TFLOPS、FP32 131 TFLOPS及FP64 32.8 TFLOPS。曾为MN-3超级计算机（2020–2021年Green500第一）提供算力。并非GPU。",
+      "es": "Acelerador de aprendizaje profundo dedicado de flujo de datos (TSMC 12nm, ~500 W); 524 TFLOPS en media precisión, 131 TFLOPS en FP32 y 32,8 TFLOPS en FP64 de pico. Impulsó el supercomputador MN-3 (nº 1 de Green500, 2020-2021). No es una GPU.",
+      "he": "מאיץ למידה עמוקה ייעודי מסוג dataflow (TSMC 12nm, כ-500 W); שיא של 524 TFLOPS בדיוק חצי, 131 TFLOPS ב-FP32 ו-32.8 TFLOPS ב-FP64. הפעיל את מחשב-העל MN-3 (מקום 1 ב-Green500, 2020–2021). אינו GPU."
+    },
+    "Vastai||VA1": {
+      "en": "Data-center inference accelerator card built on the SV100-series ASIC (DSA architecture, not a GPU); over 200 TOPS INT8 with FP16/BF16/INT8 support, 32 GB, 75 W half-height PCIe, and up to 64-channel H.264/H.265 video decode.",
+      "ko": "SV100 시리즈 ASIC(GPU가 아닌 DSA 아키텍처)을 기반으로 한 데이터센터 추론 가속기 카드로, FP16/BF16/INT8을 지원하는 200 TOPS INT8 이상의 성능, 32 GB 메모리, 75 W 하프하이트 PCIe, 그리고 최대 64채널 H.264/H.265 비디오 디코딩을 제공한다.",
+      "ja": "SV100シリーズASIC（GPUではなくDSAアーキテクチャ）をベースとするデータセンター向け推論アクセラレータカードで、FP16/BF16/INT8対応の200 TOPS INT8超、32 GB、75 WのハーフハイトPCIe、最大64チャネルのH.264/H.265ビデオデコードに対応する。",
+      "zh": "基于SV100系列ASIC（DSA架构，并非GPU）打造的数据中心推理加速卡；INT8算力超200 TOPS，支持FP16/BF16/INT8，配备32 GB内存、75 W半高PCIe，并支持最高64路H.264/H.265视频解码。",
+      "es": "Tarjeta aceleradora de inferencia para centros de datos basada en el ASIC de la serie SV100 (arquitectura DSA, no una GPU); más de 200 TOPS en INT8 con soporte para FP16/BF16/INT8, 32 GB, PCIe de media altura de 75 W y decodificación de vídeo H.264/H.265 de hasta 64 canales.",
+      "he": "כרטיס מאיץ הסקה למרכזי נתונים המבוסס על ASIC מסדרת SV100 (ארכיטקטורת DSA, לא GPU); מעל 200 TOPS ב-INT8 עם תמיכה ב-FP16/BF16/INT8, 32 GB, PCIe בגובה חצי בהספק 75 W, ופענוח וידאו H.264/H.265 של עד 64 ערוצים."
+    },
+    "Cambricon||MLU370-S4": {
+      "en": "Half-height inference accelerator card built on the Siyuan 370 chiplet ASIC (TSMC 7nm, MLUarch03); 256 TOPS INT8, LPDDR5 memory, 75 W PCIe Gen4. Distinct from the dual-chip MLU370-X8. Not a GPU.",
+      "ko": "Siyuan 370 칩렛 ASIC(TSMC 7nm, MLUarch03)을 기반으로 한 하프하이트 추론 가속기 카드로, 256 TOPS INT8, LPDDR5 메모리, 75 W PCIe Gen4를 제공한다. 듀얼칩 MLU370-X8과는 구별된다. GPU가 아니다.",
+      "ja": "Siyuan 370チップレットASIC（TSMC 7nm、MLUarch03）をベースとするハーフハイトの推論アクセラレータカードで、256 TOPS INT8、LPDDR5メモリ、75 WのPCIe Gen4に対応する。デュアルチップのMLU370-X8とは異なる。GPUではない。",
+      "zh": "基于思元370（Siyuan 370）chiplet ASIC（TSMC 7nm，MLUarch03）打造的半高推理加速卡；256 TOPS INT8，LPDDR5内存，75 W PCIe Gen4。与双芯片的MLU370-X8有所区别。并非GPU。",
+      "es": "Tarjeta aceleradora de inferencia de media altura basada en el ASIC de chiplets Siyuan 370 (TSMC 7nm, MLUarch03); 256 TOPS en INT8, memoria LPDDR5, PCIe Gen4 de 75 W. Distinta de la MLU370-X8 de doble chip. No es una GPU.",
+      "he": "כרטיס מאיץ הסקה בגובה חצי המבוסס על ASIC מסוג chiplet של Siyuan 370 (TSMC 7nm, MLUarch03); 256 TOPS ב-INT8, זיכרון LPDDR5, PCIe Gen4 בהספק 75 W. שונה מה-MLU370-X8 הדו-שבבי. אינו GPU."
+    },
+    "SynSense||Speck": {
+      "en": "Ultra-low-power neuromorphic vision SoC integrating a DVS event-camera with a spiking-CNN processor (~320K integrate-and-fire neurons); fully event-driven at sub-milliwatt power. For always-on edge vision.",
+      "ko": "DVS 이벤트 카메라와 스파이킹 CNN 프로세서(약 32만 개의 integrate-and-fire 뉴런)를 통합한 초저전력 뉴로모픽 비전 SoC로, 밀리와트 미만의 전력에서 완전히 이벤트 구동 방식으로 동작한다. 상시 구동 엣지 비전을 위한 것이다.",
+      "ja": "DVSイベントカメラとスパイキングCNNプロセッサ（約32万個のintegrate-and-fireニューロン）を統合した超低消費電力のニューロモルフィックビジョンSoCで、サブミリワットの電力で完全にイベント駆動で動作する。常時稼働のエッジビジョン向け。",
+      "zh": "超低功耗神经形态视觉SoC，将DVS事件相机与脉冲CNN处理器（约32万个integrate-and-fire神经元）集成在一起；在亚毫瓦功耗下完全事件驱动。面向常开边缘视觉。",
+      "es": "SoC de visión neuromórfica de ultra bajo consumo que integra una cámara de eventos DVS con un procesador de CNN por impulsos (~320K neuronas integrate-and-fire); totalmente basado en eventos con consumo inferior al milivatio. Para visión en el borde always-on.",
+      "he": "SoC לראייה נוירומורפית בהספק נמוך במיוחד המשלב מצלמת אירועים מסוג DVS עם מעבד spiking-CNN (כ-320K נוירוני integrate-and-fire); מונע-אירועים לחלוטין בהספק נמוך ממיליוואט. עבור ראייה בקצה מסוג always-on."
+    },
+    "GrAI Matter Labs||GrAI VIP": {
+      "en": "Sparsity-native, brain-inspired NeuronFlow event-based dataflow vision inference SoC; ~18M neurons / 48M parameters with 36 MB on-chip memory, running ResNet-50 at <100 mW and ~1 ms latency. GrAI Matter Labs was acquired by Snap in 2022.",
+      "ko": "희소성(sparsity)을 기본으로 지원하는 뇌 영감 기반 NeuronFlow 이벤트 기반 데이터플로우 비전 추론 SoC로, 약 1,800만 개의 뉴런/4,800만 개의 파라미터와 36 MB 온칩 메모리를 갖추고 ResNet-50을 100 mW 미만, 약 1 ms 지연으로 실행한다. GrAI Matter Labs는 2022년 Snap에 인수되었다.",
+      "ja": "スパース性をネイティブに扱う、脳に着想を得たNeuronFlowイベントベースのデータフロー型ビジョン推論SoC。約1,800万ニューロン／4,800万パラメータと36 MBのオンチップメモリを備え、ResNet-50を100 mW未満・約1 msのレイテンシで実行する。GrAI Matter Labsは2022年にSnapに買収された。",
+      "zh": "原生支持稀疏性、受大脑启发的NeuronFlow基于事件的数据流视觉推理SoC；约1800万神经元/4800万参数，配备36 MB片上内存，以低于100 mW的功耗和约1 ms的延迟运行ResNet-50。GrAI Matter Labs于2022年被Snap收购。",
+      "es": "SoC de inferencia de visión de flujo de datos basado en eventos NeuronFlow, inspirado en el cerebro y nativo en dispersión; ~18M de neuronas / 48M de parámetros con 36 MB de memoria integrada, que ejecuta ResNet-50 con menos de 100 mW y una latencia de ~1 ms. GrAI Matter Labs fue adquirida por Snap en 2022.",
+      "he": "SoC להסקת ראייה מסוג dataflow מבוסס-אירועים בשם NeuronFlow, בהשראת המוח ותומך-דלילות באופן מובנה; כ-18M נוירונים / 48M פרמטרים עם 36 MB זיכרון מובנה, המריץ את ResNet-50 בהספק נמוך מ-100 mW ובהשהיה של כ-1 ms. GrAI Matter Labs נרכשה על ידי Snap ב-2022."
+    },
+    "GreenWaves||GAP8": {
+      "en": "RISC-V IoT application processor with an 8-core compute cluster plus a dedicated hardware convolution engine (HWCE) for CNN acceleration. Delivers up to about 10 GOPS at a few tens of mW for battery-powered edge sensing.",
+      "ko": "8코어 컴퓨트 클러스터와 CNN 가속을 위한 전용 하드웨어 컨볼루션 엔진(HWCE)을 갖춘 RISC-V IoT 애플리케이션 프로세서다. 배터리 구동 엣지 센싱을 위해 수십 mW에서 최대 약 10 GOPS를 제공한다.",
+      "ja": "8コアのコンピュートクラスタに加え、CNNアクセラレーション用の専用ハードウェア畳み込みエンジン（HWCE）を備えたRISC-V IoTアプリケーションプロセッサ。バッテリー駆動のエッジセンシング向けに、数十mWで最大約10 GOPSを実現する。",
+      "zh": "RISC-V物联网应用处理器，配备8核计算集群以及用于CNN加速的专用硬件卷积引擎（HWCE）。可在数十mW功耗下提供最高约10 GOPS，面向电池供电的边缘传感。",
+      "es": "Procesador de aplicaciones IoT RISC-V con un clúster de cómputo de 8 núcleos más un motor de convolución por hardware dedicado (HWCE) para acelerar CNN. Ofrece hasta unos 10 GOPS con unas pocas decenas de mW para sensado en el borde alimentado por batería.",
+      "he": "מעבד יישומי IoT מבוסס RISC-V עם אשכול חישוב בן 8 ליבות ומנוע קונבולוציה חומרתי ייעודי (HWCE) להאצת CNN. מספק עד כ-10 GOPS בהספק של כמה עשרות mW עבור חיישני קצה המופעלים בסוללה."
+    },
+    "Renesas||RA8P1": {
+      "en": "AI MCU pairing a 1 GHz Arm Cortex-M85 and a 250 MHz Cortex-M33 with an Arm Ethos-U55 NPU delivering 256 GOPS (256 MAC/cycle at 500 MHz). Built on TSMC 22ULL with embedded MRAM.",
+      "ko": "1 GHz Arm Cortex-M85과 250 MHz Cortex-M33을 256 GOPS(500 MHz에서 256 MAC/cycle)를 제공하는 Arm Ethos-U55 NPU와 결합한 AI MCU다. 임베디드 MRAM을 갖춘 TSMC 22ULL 공정으로 제조되었다.",
+      "ja": "1 GHzのArm Cortex-M85と250 MHzのCortex-M33を、256 GOPS（500 MHzで256 MAC/サイクル）を実現するArm Ethos-U55 NPUと組み合わせたAI MCU。組み込みMRAMを備えたTSMC 22ULLで製造される。",
+      "zh": "AI MCU，将1 GHz Arm Cortex-M85与250 MHz Cortex-M33同提供256 GOPS（500 MHz下256 MAC/周期）的Arm Ethos-U55 NPU相结合。采用带嵌入式MRAM的TSMC 22ULL工艺打造。",
+      "es": "MCU de IA que combina un Arm Cortex-M85 a 1 GHz y un Cortex-M33 a 250 MHz con una NPU Arm Ethos-U55 que ofrece 256 GOPS (256 MAC/ciclo a 500 MHz). Fabricado en TSMC 22ULL con MRAM embebida.",
+      "he": "MCU מסוג AI המשלב Arm Cortex-M85 בתדר 1 GHz ו-Cortex-M33 בתדר 250 MHz עם Arm Ethos-U55 NPU המספק 256 GOPS (256 MAC/מחזור ב-500 MHz). מיוצר בתהליך TSMC 22ULL עם MRAM מוטמע."
+    },
+    "Infineon||PSOC Edge E83": {
+      "en": "ML MCU combining a Cortex-M55 (Helium) and low-power Cortex-M33 with an Arm Ethos-U55 micro-NPU (128 MAC/cycle at 400 MHz) plus Infineon's NNLite accelerator. Adds NPU offload over the E81 but omits the E84's 2.5D GPU.",
+      "ko": "Cortex-M55(Helium)과 저전력 Cortex-M33을 Arm Ethos-U55 마이크로 NPU(400 MHz에서 128 MAC/cycle) 및 Infineon의 NNLite 가속기와 결합한 ML MCU다. E81 대비 NPU 오프로드를 추가했지만 E84의 2.5D GPU는 제외했다.",
+      "ja": "Cortex-M55（Helium）と低消費電力のCortex-M33を、Arm Ethos-U55マイクロNPU（400 MHzで128 MAC/サイクル）およびInfineonのNNLiteアクセラレータと組み合わせたML MCU。E81に対しNPUオフロードを追加する一方、E84の2.5D GPUは搭載しない。",
+      "zh": "ML MCU，将Cortex-M55（Helium）与低功耗Cortex-M33同Arm Ethos-U55微型NPU（400 MHz下128 MAC/周期）以及Infineon的NNLite加速器相结合。相比E81增加了NPU卸载，但未搭载E84的2.5D GPU。",
+      "es": "MCU de ML que combina un Cortex-M55 (Helium) y un Cortex-M33 de bajo consumo con un micro-NPU Arm Ethos-U55 (128 MAC/ciclo a 400 MHz) más el acelerador NNLite de Infineon. Añade descarga por NPU respecto al E81, pero prescinde de la GPU 2,5D del E84.",
+      "he": "MCU מסוג ML המשלב Cortex-M55 (Helium) ו-Cortex-M33 חסכוני עם micro-NPU מסוג Arm Ethos-U55 (128 MAC/מחזור ב-400 MHz) בתוספת מאיץ NNLite של Infineon. מוסיף הסטת עומס ל-NPU לעומת ה-E81 אך משמיט את ה-GPU בטכנולוגיית 2.5D של ה-E84."
+    },
+    "Alif Semiconductor||Ensemble E5": {
+      "en": "Higher-tier Ensemble fusion device with Arm Cortex-M55 (Helium) compute and two Arm Ethos-U55 NPUs (one 256 MAC/cycle up to 204 GOPS, one 128 MAC/cycle up to 46 GOPS). Positioned below the E7 in the family.",
+      "ko": "Arm Cortex-M55(Helium) 연산 성능과 두 개의 Arm Ethos-U55 NPU(하나는 256 MAC/cycle로 최대 204 GOPS, 다른 하나는 128 MAC/cycle로 최대 46 GOPS)를 갖춘 상위 등급 Ensemble 퓨전 디바이스다. 제품군 내에서 E7 아래에 위치한다.",
+      "ja": "Arm Cortex-M55（Helium）の演算に加え、2基のArm Ethos-U55 NPU（一方は256 MAC/サイクルで最大204 GOPS、もう一方は128 MAC/サイクルで最大46 GOPS）を備えた上位クラスのEnsembleフュージョンデバイス。ファミリー内ではE7の下に位置づけられる。",
+      "zh": "更高阶的Ensemble融合器件，具备Arm Cortex-M55（Helium）算力和两个Arm Ethos-U55 NPU（一个256 MAC/周期、最高204 GOPS，另一个128 MAC/周期、最高46 GOPS）。在该系列中定位于E7之下。",
+      "es": "Dispositivo de fusión Ensemble de gama superior con cómputo Arm Cortex-M55 (Helium) y dos NPU Arm Ethos-U55 (una de 256 MAC/ciclo hasta 204 GOPS y otra de 128 MAC/ciclo hasta 46 GOPS). Se sitúa por debajo del E7 en la familia.",
+      "he": "התקן היתוך מסדרת Ensemble ברמה גבוהה יותר עם חישוב Arm Cortex-M55 (Helium) ושני Arm Ethos-U55 NPU (אחד בקצב 256 MAC/מחזור עד 204 GOPS, והשני 128 MAC/מחזור עד 46 GOPS). ממוקם מתחת ל-E7 במשפחה."
+    },
+    "Syntiant||NDP101": {
+      "en": "Neural Decision Processor sibling of the NDP100 (Syntiant Core 1, Cortex-M0, 112 KB RAM) with host/sensor interfaces; widely used in TinyML boards such as the Arduino Nicla Voice. Runs real-time audio inference up to 100x per second at microwatt power.",
+      "ko": "NDP100의 자매 제품인 Neural Decision Processor(Syntiant Core 1, Cortex-M0, 112 KB RAM)로, 호스트/센서 인터페이스를 갖추고 있다. Arduino Nicla Voice 같은 TinyML 보드에서 널리 사용된다. 마이크로와트 전력으로 초당 최대 100회의 실시간 오디오 추론을 수행한다.",
+      "ja": "NDP100の姉妹製品であるNeural Decision Processor（Syntiant Core 1、Cortex-M0、112 KB RAM）で、ホスト／センサーインターフェイスを備える。Arduino Nicla VoiceなどのTinyMLボードで広く使われている。マイクロワットの電力で毎秒最大100回のリアルタイム音声推論を実行する。",
+      "zh": "NDP100的姊妹产品Neural Decision Processor（Syntiant Core 1、Cortex-M0、112 KB RAM），带有主机/传感器接口；广泛用于Arduino Nicla Voice等TinyML开发板。可在微瓦功耗下以每秒最高100次的速度执行实时音频推理。",
+      "es": "Neural Decision Processor hermano del NDP100 (Syntiant Core 1, Cortex-M0, 112 KB de RAM) con interfaces de host/sensor; muy usado en placas TinyML como la Arduino Nicla Voice. Ejecuta inferencia de audio en tiempo real hasta 100 veces por segundo con consumo de microvatios.",
+      "he": "Neural Decision Processor אחיו של ה-NDP100 (Syntiant Core 1, Cortex-M0, 112 KB RAM) עם ממשקי מארח/חיישן; נמצא בשימוש נרחב בלוחות TinyML כגון Arduino Nicla Voice. מבצע הסקת אודיו בזמן אמת עד 100 פעמים בשנייה בהספק של מיקרוואט."
+    },
+    "Texas Instruments||TMS320F28P55x": {
+      "en": "C2000 real-time MCU (150 MHz C28x DSP core) with TI's integrated TinyEngine NPU running at 75 MHz, rated 600 MOPS (INT8) / 1200 MOPS (INT4). Billed as the first real-time MCU family with an integrated NPU; targets arc-fault and motor-fault detection.",
+      "ko": "150 MHz C28x DSP 코어를 갖춘 C2000 실시간 MCU로, 75 MHz로 동작하는 TI의 통합 TinyEngine NPU를 탑재해 600 MOPS(INT8) / 1200 MOPS(INT4)의 성능을 낸다. NPU를 통합한 최초의 실시간 MCU 제품군으로 소개되었으며, 아크 결함 및 모터 결함 감지를 겨냥한다.",
+      "ja": "150 MHzのC28x DSPコアを備えたC2000リアルタイムMCUで、75 MHzで動作するTI統合のTinyEngine NPUを搭載し、600 MOPS（INT8）／1200 MOPS（INT4）の性能を持つ。NPUを統合した初のリアルタイムMCUファミリーとうたわれ、アーク故障やモーター故障の検出を対象とする。",
+      "zh": "C2000实时MCU（150 MHz C28x DSP核心），集成运行于75 MHz的TI TinyEngine NPU，额定600 MOPS（INT8）/1200 MOPS（INT4）。被称为首个集成NPU的实时MCU系列；面向电弧故障和电机故障检测。",
+      "es": "MCU en tiempo real C2000 (núcleo DSP C28x a 150 MHz) con la NPU TinyEngine integrada de TI funcionando a 75 MHz, con una capacidad de 600 MOPS (INT8) / 1200 MOPS (INT4). Presentada como la primera familia de MCU en tiempo real con una NPU integrada; orientada a la detección de fallos de arco y de motor.",
+      "he": "MCU בזמן אמת מסדרת C2000 (ליבת DSP מסוג C28x בתדר 150 MHz) עם TinyEngine NPU משולב של TI הפועל בתדר 75 MHz, בדירוג 600 MOPS (INT8) / 1200 MOPS (INT4). מוצג כמשפחת ה-MCU הראשונה בזמן אמת עם NPU משולב; מיועד לזיהוי כשלי קשת חשמלית וכשלי מנוע."
+    },
+    "Arm||Ethos-U85": {
+      "ko": "128에서 2048 MAC까지 확장해 최대 4 TOPS를 제공하는 3세대 Arm microNPU로, 네이티브 transformer 네트워크 지원을 추가했다. Cortex-M 및 Cortex-A SoC의 엣지 AI용으로 2024년 발표됐다.",
+      "en": "Third-generation Arm microNPU scaling 128 to 2048 MACs for up to 4 TOPS, adding native transformer network support. Announced 2024 for edge AI in Cortex-M and Cortex-A SoCs.",
+      "ja": "128から2048 MACまでスケールし最大4 TOPSを実現する第3世代のArm microNPUで、ネイティブなtransformerネットワーク対応を追加。Cortex-MおよびCortex-A SoC向けのエッジAI用として2024年に発表された。",
+      "zh": "第三代 Arm microNPU，可从 128 扩展至 2048 个 MAC，实现最高 4 TOPS，并新增对 transformer 网络的原生支持。2024 年发布，面向 Cortex-M 与 Cortex-A SoC 的边缘 AI。",
+      "es": "microNPU Arm de tercera generación que escala de 128 a 2048 MAC para ofrecer hasta 4 TOPS, añadiendo soporte nativo para redes transformer. Anunciada en 2024 para IA en el borde en SoC Cortex-M y Cortex-A.",
+      "he": "‏microNPU של Arm מהדור השלישי המתרחב מ-128 ל-2048 MAC עבור עד 4 TOPS, עם תמיכה מובנית ברשתות transformer. הוכרז ב-2024 עבור AI בקצה ב-SoC מסוג Cortex-M ו-Cortex-A."
+    },
+    "Synopsys||ARC NPX6 NPU": {
+      "ko": "ARC NPX6 뉴럴 프로세서 IP는 인스턴스당 최대 250 TOPS(희소성 적용 시 440), 다중 인스턴스로는 최대 3,500 TOPS를 제공한다. CNN, RNN, transformer 및 생성형 AI를 지원한다.",
+      "en": "ARC NPX6 neural processor IP delivers up to 250 TOPS per instance (440 with sparsity) and up to 3,500 TOPS across multiple instances. Supports CNNs, RNNs, transformers and generative AI.",
+      "ja": "ARC NPX6ニューラルプロセッサIPは、1インスタンスあたり最大250 TOPS（スパース性利用時は440）、複数インスタンスで最大3,500 TOPSを実現する。CNN、RNN、transformer、生成AIに対応。",
+      "zh": "ARC NPX6 神经处理器 IP 单个实例可提供最高 250 TOPS（启用稀疏性时为 440），多实例最高可达 3,500 TOPS。支持 CNN、RNN、transformer 及生成式 AI。",
+      "es": "La IP de procesador neuronal ARC NPX6 ofrece hasta 250 TOPS por instancia (440 con dispersión) y hasta 3.500 TOPS con varias instancias. Soporta CNN, RNN, transformers e IA generativa.",
+      "he": "‏IP של מעבד עצבי ARC NPX6 מספק עד 250 TOPS לכל מופע (440 עם sparsity) ועד 3,500 TOPS על פני מספר מופעים. תומך ב-CNN, ב-RNN, ב-transformer וב-AI גנרטיבי."
+    },
+    "Ceva||NeuPro-Nano": {
+      "ko": "코어당 10~200 GOPS를 제공하고 최대 64개의 int8 MAC을 갖춘 자립형 TinyML NPU IP로, 호스트 CPU 없이 동작할 수 있다. 상시 구동 음성, 비전, 센싱용으로 2024년 발표됐다.",
+      "en": "Self-sufficient TinyML NPU IP delivering 10 to 200 GOPS per core with up to 64 int8 MACs, able to run without a host CPU. Announced 2024 for always-on voice, vision and sensing.",
+      "ja": "コアあたり10～200 GOPSを実現し最大64個のint8 MACを備える自己完結型のTinyML NPU IPで、ホストCPUなしで動作可能。常時オンの音声・ビジョン・センシング向けとして2024年に発表された。",
+      "zh": "自给自足的 TinyML NPU IP，每核心提供 10 至 200 GOPS，最多配备 64 个 int8 MAC，可在无主机 CPU 的情况下运行。2024 年发布，面向常开的语音、视觉与传感应用。",
+      "es": "IP de NPU TinyML autosuficiente que ofrece de 10 a 200 GOPS por núcleo con hasta 64 MAC int8, capaz de funcionar sin una CPU anfitriona. Anunciada en 2024 para voz, visión y sensado siempre activos.",
+      "he": "‏IP של NPU מסוג TinyML עצמאי המספק 10 עד 200 GOPS לכל ליבה עם עד 64 int8 MAC, ומסוגל לפעול ללא CPU מארח. הוכרז ב-2024 עבור קול, ראייה וחישה במצב always-on."
+    },
+    "Expedera||Origin E2": {
+      "ko": "스마트폰과 엣지 노드용으로 1~20 TOPS 범위에서 구성 가능한 Origin NPU IP다. 패킷 기반 처리로 CNN, RNN, LSTM, DNN 네트워크를 지원한다.",
+      "en": "Origin NPU IP configurable from 1 to 20 TOPS for smartphones and edge nodes. Supports CNN, RNN, LSTM and DNN networks with packet-based processing.",
+      "ja": "スマートフォンやエッジノード向けに1～20 TOPSで構成可能なOrigin NPU IP。パケットベース処理でCNN、RNN、LSTM、DNNネットワークに対応する。",
+      "zh": "Origin NPU IP 可在 1 至 20 TOPS 范围内配置，面向智能手机与边缘节点。采用基于数据包的处理方式，支持 CNN、RNN、LSTM 与 DNN 网络。",
+      "es": "IP de NPU Origin configurable de 1 a 20 TOPS para smartphones y nodos de borde. Soporta redes CNN, RNN, LSTM y DNN con procesamiento basado en paquetes.",
+      "he": "‏IP של NPU מסוג Origin הניתן להגדרה מ-1 עד 20 TOPS עבור סמארטפונים וצמתי קצה. תומך ברשתות CNN, RNN, LSTM ו-DNN עם עיבוד מבוסס פאקטות."
+    },
+    "Expedera||Origin Evolution": {
+      "ko": "LLM과 CNN을 위해 설계된 Expedera의 2025년 생성형 AI NPU IP로, 코어당 약 128 TFLOPS, 멀티코어로는 PetaFLOPS까지 확장된다. Feed-Forward, Attention, Vector 블록을 갖춘 패킷 기반 아키텍처다.",
+      "en": "Expedera's 2025 generative-AI NPU IP purpose-built for LLMs and CNNs, scalable to roughly 128 TFLOPS per core and PetaFLOPS multicore. Packet-based architecture with Feed-Forward, Attention and Vector blocks.",
+      "ja": "LLMとCNN向けに設計されたExpederaの2025年の生成AI NPU IPで、コアあたり約128 TFLOPS、マルチコアではPetaFLOPS級まで拡張可能。Feed-Forward、Attention、Vectorの各ブロックを備えたパケットベースアーキテクチャ。",
+      "zh": "Expedera 于 2025 年推出的生成式 AI NPU IP，专为 LLM 与 CNN 打造，单核心可扩展至约 128 TFLOPS，多核心可达 PetaFLOPS。基于数据包的架构，包含 Feed-Forward、Attention 与 Vector 模块。",
+      "es": "IP de NPU de IA generativa de Expedera de 2025, diseñada específicamente para LLM y CNN, escalable a unos 128 TFLOPS por núcleo y PetaFLOPS en multinúcleo. Arquitectura basada en paquetes con bloques Feed-Forward, Attention y Vector.",
+      "he": "‏IP של NPU ל-AI גנרטיבי מבית Expedera משנת 2025, שתוכנן ייעודית ל-LLM ו-CNN, וניתן להרחבה לכ-128 TFLOPS לכל ליבה ול-PetaFLOPS במולטי-ליבה. ארכיטקטורה מבוססת פאקטות עם בלוקים של Feed-Forward, Attention ו-Vector."
+    },
+    "Andes Technology||AndesAIRE AnDLA I370": {
+      "ko": "최대 2 TOPS/GHz를 제공하는 차세대 AnDLA 딥러닝 가속기 IP로, RNN, 오디오/음성 및 INT16 지원을 추가했다. 비용에 민감한 엣지 AI용으로 2025년 발표됐다.",
+      "en": "Next-generation AnDLA deep-learning accelerator IP delivering up to 2 TOPS/GHz, adding RNN, audio/voice and INT16 support. Announced 2025 for cost-sensitive edge AI.",
+      "ja": "最大2 TOPS/GHzを実現する次世代AnDLAディープラーニングアクセラレータIPで、RNN、オーディオ/音声、INT16のサポートを追加。コスト重視のエッジAI向けとして2025年に発表された。",
+      "zh": "新一代 AnDLA 深度学习加速器 IP，可提供最高 2 TOPS/GHz，并新增对 RNN、音频/语音及 INT16 的支持。2025 年发布，面向成本敏感的边缘 AI。",
+      "es": "IP de acelerador de aprendizaje profundo AnDLA de nueva generación que ofrece hasta 2 TOPS/GHz, añadiendo soporte para RNN, audio/voz e INT16. Anunciada en 2025 para IA en el borde sensible al costo.",
+      "he": "‏IP של מאיץ למידה עמוקה AnDLA מהדור הבא המספק עד 2 TOPS/GHz, עם תמיכה נוספת ב-RNN, באודיו/קול וב-INT16. הוכרז ב-2025 עבור AI בקצה רגיש-עלות."
+    },
+    "Think Silicon||NEOX (GA100)": {
+      "ko": "그래픽과 AI를 하나의 아키텍처에서 처리하는 Think Silicon의 RISC-V(RV64C) GPNPU IP로, 초저전력 웨어러블과 AIoT용으로 4~64코어까지 확장된다. 비전, 오디오, 제스처 모델용 AI SDK와 함께 최대 약 410 GFLOPS를 제공한다.",
+      "en": "Think Silicon's RISC-V (RV64C) GPNPU IP performing both graphics and AI on one architecture, scaling 4-64 cores for ultra-low-power wearables and AIoT. Delivers up to ~410 GFLOPS with an AI SDK for vision, audio and gesture models.",
+      "ja": "グラフィックスとAIを単一アーキテクチャで処理するThink SiliconのRISC-V（RV64C）GPNPU IPで、超低消費電力のウェアラブルやAIoT向けに4～64コアまでスケールする。ビジョン・オーディオ・ジェスチャーモデル用のAI SDKとともに最大約410 GFLOPSを実現。",
+      "zh": "Think Silicon 的 RISC-V（RV64C）GPNPU IP，在单一架构上同时处理图形与 AI，可扩展 4 至 64 核心，面向超低功耗可穿戴设备与 AIoT。提供最高约 410 GFLOPS，并配有面向视觉、音频与手势模型的 AI SDK。",
+      "es": "IP de GPNPU RISC-V (RV64C) de Think Silicon que ejecuta gráficos e IA en una sola arquitectura, escalando de 4 a 64 núcleos para wearables y AIoT de muy bajo consumo. Ofrece hasta ~410 GFLOPS con un SDK de IA para modelos de visión, audio y gestos.",
+      "he": "‏IP של GPNPU מסוג RISC-V (RV64C) מבית Think Silicon המבצע גם גרפיקה וגם AI בארכיטקטורה אחת, ומתרחב מ-4 עד 64 ליבות עבור מכשירים לבישים ו-AIoT בצריכת הספק נמוכה במיוחד. מספק עד כ-410 GFLOPS עם AI SDK למודלים של ראייה, אודיו ומחוות."
+    },
+    "Hailo||Hailo-8R": {
+      "ko": "Hailo-8의 견고화된 Mini PCIe(mPCIe) 버전으로, 13 TOPS를 제공하며 -40°C~85°C의 확장 동작 온도 범위를 갖춰 차량용 및 산업용 엣지 추론에 적합하다.",
+      "en": "Ruggedized Mini PCIe (mPCIe) variant of the Hailo-8 delivering 13 TOPS with an extended -40C to 85C operating range for automotive and industrial edge inference.",
+      "ja": "Hailo-8の堅牢化Mini PCIe（mPCIe）バリアントで、13 TOPSを実現し、-40℃～85℃の拡張動作温度範囲を備え、車載および産業向けエッジ推論に対応する。",
+      "zh": "Hailo-8 的加固型 Mini PCIe（mPCIe）版本，提供 13 TOPS，工作温度范围扩展至 -40°C 到 85°C，面向车载与工业边缘推理。",
+      "es": "Variante Mini PCIe (mPCIe) reforzada del Hailo-8 que ofrece 13 TOPS con un rango de operación ampliado de -40 °C a 85 °C para inferencia en el borde automotriz e industrial.",
+      "he": "‏גרסת Mini PCIe (mPCIe) מוקשחת של ה-Hailo-8 המספקת 13 TOPS עם טווח פעולה מורחב של ‎-40°C עד 85°C עבור הסקה בקצה ביישומי רכב ותעשייה."
+    },
+    "Raspberry Pi||AI HAT+ (13 TOPS)": {
+      "ko": "Hailo-8L 가속기를 탑재해 13 TOPS를 제공하는 저가형 AI HAT+ SKU다. 26 TOPS Hailo-8 모델과 동일한 HAT+ 폼팩터와 PCIe 연결을 사용한다.",
+      "en": "Lower-cost AI HAT+ SKU carrying a Hailo-8L accelerator for 13 TOPS. Same HAT+ form factor and PCIe connection as the 26 TOPS Hailo-8 model.",
+      "ja": "Hailo-8Lアクセラレータを搭載し13 TOPSを提供する低価格版のAI HAT+ SKU。26 TOPSのHailo-8モデルと同じHAT+フォームファクタとPCIe接続を採用する。",
+      "zh": "更低成本的 AI HAT+ SKU，搭载 Hailo-8L 加速器，提供 13 TOPS。与 26 TOPS 的 Hailo-8 型号采用相同的 HAT+ 外形规格和 PCIe 连接。",
+      "es": "SKU de menor costo del AI HAT+ que incorpora un acelerador Hailo-8L para 13 TOPS. Mismo formato HAT+ y conexión PCIe que el modelo Hailo-8 de 26 TOPS.",
+      "he": "‏גרסת SKU בעלות נמוכה יותר של AI HAT+ הנושאת מאיץ Hailo-8L עבור 13 TOPS. אותו מבנה HAT+ וחיבור PCIe כמו דגם ה-Hailo-8 של 26 TOPS."
+    },
+    "Kneron||KL520": {
+      "ko": "재구성 가능한 NPU(약 0.35 TOPS)와 듀얼 Arm Cortex-M4 코어를 갖춘 Kneron의 1세대 엣지 AI SoC로, 약 0.5W에서 호스트 또는 AI 보조 프로세서로 동작할 수 있다.",
+      "en": "Kneron's first-generation edge AI SoC with a reconfigurable NPU (~0.35 TOPS) and dual Arm Cortex-M4 cores, able to run as host or AI co-processor at ~0.5W.",
+      "ja": "再構成可能なNPU（約0.35 TOPS）とデュアルArm Cortex-M4コアを備えたKneronの第1世代エッジAI SoCで、約0.5WでホストまたはAIコプロセッサとして動作可能。",
+      "zh": "Kneron 的第一代边缘 AI SoC，配备可重构 NPU（约 0.35 TOPS）与双 Arm Cortex-M4 核心，可在约 0.5W 下作为主机或 AI 协处理器运行。",
+      "es": "SoC de IA en el borde de primera generación de Kneron con una NPU reconfigurable (~0,35 TOPS) y dos núcleos Arm Cortex-M4, capaz de funcionar como anfitrión o coprocesador de IA a ~0,5 W.",
+      "he": "‏SoC ל-AI בקצה מהדור הראשון של Kneron עם NPU הניתן לתצורה מחדש (כ-0.35 TOPS) ושתי ליבות Arm Cortex-M4, המסוגל לפעול כמארח או כמעבד-עזר ל-AI בהספק של כ-0.5W."
+    },
+    "AAEON||M2AI-2242-520": {
+      "ko": "Kneron KL520 NPU(약 0.35 TOPS)를 탑재한 AAEON M.2 2242 AI 모듈로, 임베디드 x86/ARM 호스트 시스템에 초저전력 추론을 추가한다.",
+      "en": "AAEON M.2 2242 AI module carrying a Kneron KL520 NPU (~0.35 TOPS) to add ultra-low-power inference to embedded x86/ARM host systems.",
+      "ja": "Kneron KL520 NPU（約0.35 TOPS）を搭載したAAEON M.2 2242 AIモジュールで、組み込みx86/ARMホストシステムに超低消費電力の推論を追加する。",
+      "zh": "AAEON M.2 2242 AI 模块，搭载 Kneron KL520 NPU（约 0.35 TOPS），为嵌入式 x86/ARM 主机系统增加超低功耗推理能力。",
+      "es": "Módulo de IA AAEON M.2 2242 que incorpora una NPU Kneron KL520 (~0,35 TOPS) para añadir inferencia de muy bajo consumo a sistemas anfitriones x86/ARM embebidos.",
+      "he": "‏מודול AI מסוג AAEON M.2 2242 הנושא NPU של Kneron KL520 (כ-0.35 TOPS) כדי להוסיף הסקה בהספק נמוך במיוחד למערכות מארחות משובצות מסוג x86/ARM."
+    },
+    "Sipeed||MaixCAM": {
+      "ko": "1 TOPS INT8 NPU를 갖춘 Sophgo SG2002 RISC-V SoC 기반의 AI 카메라 개발 보드로, 최대 5MP 카메라와 2.3인치 터치스크린을 통합해 엣지 비전에 적합하다.",
+      "en": "AI camera dev board built on the Sophgo SG2002 RISC-V SoC with a 1 TOPS INT8 NPU, integrated up-to-5MP camera and 2.3-inch touchscreen for edge vision.",
+      "ja": "1 TOPS INT8 NPUを備えたSophgo SG2002 RISC-V SoCをベースとするAIカメラ開発ボードで、最大5MPカメラと2.3インチタッチスクリーンを統合し、エッジビジョンに対応する。",
+      "zh": "基于 Sophgo SG2002 RISC-V SoC 打造的 AI 相机开发板，配备 1 TOPS INT8 NPU、集成最高 5MP 相机与 2.3 英寸触摸屏，面向边缘视觉。",
+      "es": "Placa de desarrollo de cámara con IA basada en el SoC RISC-V Sophgo SG2002, con una NPU INT8 de 1 TOPS, cámara integrada de hasta 5MP y pantalla táctil de 2,3 pulgadas para visión en el borde.",
+      "he": "‏לוח פיתוח למצלמת AI המבוסס על ה-SoC מסוג Sophgo SG2002 RISC-V עם NPU מסוג INT8 של 1 TOPS, מצלמה משולבת של עד 5MP ומסך מגע של 2.3 אינץ' עבור ראייה בקצה."
+    },
+    "Luckfox||Pico Ultra": {
+      "ko": "0.5 TOPS NPU와 ISP를 통합한 Rockchip RV1106 기반의 초소형 Linux SBC로, 매우 저렴한 임베디드 컴퓨터 비전 애플리케이션을 겨냥한다.",
+      "en": "Micro Linux SBC based on Rockchip RV1106 with an integrated 0.5 TOPS NPU and ISP, aimed at very low-cost embedded computer-vision applications.",
+      "ja": "0.5 TOPS NPUとISPを統合したRockchip RV1106ベースの超小型Linux SBCで、非常に低コストな組み込みコンピュータビジョン用途を狙う。",
+      "zh": "基于 Rockchip RV1106 的微型 Linux SBC，集成 0.5 TOPS NPU 与 ISP，面向极低成本的嵌入式计算机视觉应用。",
+      "es": "SBC Linux micro basada en Rockchip RV1106 con una NPU de 0,5 TOPS e ISP integrados, orientada a aplicaciones de visión por computadora embebidas de muy bajo costo.",
+      "he": "‏SBC זעיר מבוסס Linux על גבי Rockchip RV1106 עם NPU של 0.5 TOPS ו-ISP משולבים, המיועד ליישומי ראייה ממוחשבת משובצים בעלות נמוכה מאוד."
+    },
+    "Samsung||Exynos 2500": {
+      "ko": "온디바이스 생성형 AI를 위해 업그레이드된 24K MAC NPU(2 GNPU + 2 SNPU 및 DSP)를 갖춘 3nm GAA 플래그십 SoC로, Galaxy Z Flip 7에 처음 탑재됐다. 공식 최대 INT8 TOPS는 공개되지 않았다.",
+      "en": "3nm GAA flagship SoC with an upgraded 24K MAC NPU (2 GNPU + 2 SNPU plus DSP) for on-device generative AI; debuted in the Galaxy Z Flip 7. No official peak INT8 TOPS is disclosed.",
+      "ja": "オンデバイス生成AI向けに強化された24K MAC NPU（2 GNPU + 2 SNPUおよびDSP）を備えた3nm GAAフラッグシップSoCで、Galaxy Z Flip 7に初搭載。公式のピークINT8 TOPSは非公開。",
+      "zh": "3nm GAA 旗舰 SoC，配备升级的 24K MAC NPU（2 个 GNPU + 2 个 SNPU 及 DSP），面向端侧生成式 AI，首发于 Galaxy Z Flip 7。官方未公布峰值 INT8 TOPS。",
+      "es": "SoC insignia de 3nm GAA con una NPU mejorada de 24K MAC (2 GNPU + 2 SNPU más DSP) para IA generativa en el dispositivo; debutó en el Galaxy Z Flip 7. No se divulga un pico oficial de INT8 TOPS.",
+      "he": "‏SoC דגל ב-3nm GAA עם NPU משודרג של 24K MAC (‏2 GNPU + 2 SNPU בתוספת DSP) עבור AI גנרטיבי במכשיר; הופיע לראשונה ב-Galaxy Z Flip 7. שיא INT8 TOPS רשמי אינו מפורסם."
+    },
+    "Google||Tensor G5": {
+      "ko": "Google이 처음으로 완전 자체 설계한 TSMC 3nm Pixel 10 SoC로, 새로 설계된 TPU는 Tensor G4보다 최대 60% 강력하며 최신 Gemini Nano를 구동한다. TOPS는 공개되지 않았다.",
+      "en": "Google's first fully self-designed, TSMC 3nm Pixel 10 SoC; its redesigned TPU is up to 60% more powerful than Tensor G4 and runs the latest Gemini Nano. TOPS not disclosed.",
+      "ja": "Googleが初めて完全自社設計したTSMC 3nmのPixel 10 SoC。刷新されたTPUはTensor G4より最大60%高性能で、最新のGemini Nanoを実行する。TOPSは非公開。",
+      "zh": "Google 首款完全自主设计的 TSMC 3nm Pixel 10 SoC；其重新设计的 TPU 性能比 Tensor G4 高出最多 60%，并运行最新的 Gemini Nano。未公布 TOPS。",
+      "es": "El primer SoC Pixel 10 de Google totalmente diseñado por la propia empresa, en TSMC 3nm; su TPU rediseñada es hasta un 60% más potente que la Tensor G4 y ejecuta el último Gemini Nano. No se divulgan los TOPS.",
+      "he": "‏ה-SoC הראשון של Google בעיצוב עצמי מלא, Pixel 10 בתהליך TSMC 3nm; ה-TPU המעוצב מחדש חזק בעד 60% מ-Tensor G4 ומריץ את Gemini Nano העדכני. ה-TOPS אינו מפורסם."
+    },
+    "Mobileye||EyeQ6 High": {
+      "ko": "7nm에서 34 INT8 DL-TOPS로 평가되는 고급 ADAS/AD SoC로, 두 개의 EyeQ6H가 Mobileye의 SuperVision L2++ 시스템을 구동하며 L3/L4를 지원할 수 있고, 전력은 25% 더 쓰면서 EyeQ5H의 약 3배 연산 성능을 제공한다.",
+      "en": "High-end ADAS/AD SoC rated at 34 INT8 DL-TOPS on 7nm; two EyeQ6H power Mobileye's SuperVision L2++ system and can support L3/L4, offering about 3x the compute of EyeQ5H at 25% more power.",
+      "ja": "7nmで34 INT8 DL-TOPSとされるハイエンドADAS/AD SoC。2基のEyeQ6HがMobileyeのSuperVision L2++システムを駆動し、L3/L4にも対応可能で、消費電力25%増でEyeQ5Hの約3倍の演算性能を提供する。",
+      "zh": "高端 ADAS/AD SoC，采用 7nm 工艺，额定 34 INT8 DL-TOPS；两颗 EyeQ6H 驱动 Mobileye 的 SuperVision L2++ 系统并可支持 L3/L4，功耗增加 25% 即可提供约为 EyeQ5H 三倍的算力。",
+      "es": "SoC ADAS/AD de gama alta con 34 INT8 DL-TOPS en 7nm; dos EyeQ6H alimentan el sistema SuperVision L2++ de Mobileye y pueden soportar L3/L4, ofreciendo unas 3 veces el cómputo del EyeQ5H con un 25% más de potencia.",
+      "he": "‏SoC מסוג ADAS/AD ברמה גבוהה המדורג ב-34 INT8 DL-TOPS בתהליך 7nm; שני EyeQ6H מפעילים את מערכת SuperVision L2++ של Mobileye ויכולים לתמוך ב-L3/L4, ומספקים בערך פי 3 מכוח החישוב של EyeQ5H בתוספת 25% הספק."
+    },
+    "Qualcomm||Snapdragon Ride Flex SA8775P": {
+      "ko": "듀얼 HMX 매트릭스 엔진을 갖춘 Hexagon Tensor Processor를 통해 디지털 콕핏과 ADAS/AD 워크로드를 하나의 다이에서 처리하는 차량용 SoC로, Ride Flex 제품군은 약 2,000 TOPS까지 확장되도록 설계됐다. Qualcomm은 SKU별 공식 INT8 TOPS 수치를 하나로 밝히지 않는다.",
+      "en": "Automotive SoC that hosts digital cockpit and ADAS/AD workloads on one die via a Hexagon Tensor Processor with dual HMX matrix engines; the Ride Flex family is designed to scale up to about 2,000 TOPS. Qualcomm does not state a single official per-SKU INT8 TOPS.",
+      "ja": "デュアルHMXマトリックスエンジンを備えたHexagon Tensor Processorにより、デジタルコックピットとADAS/ADのワークロードを1つのダイで処理する車載SoC。Ride Flexファミリーは約2,000 TOPSまでスケールするよう設計されている。QualcommはSKUごとの公式なINT8 TOPSを単一の値としては公表していない。",
+      "zh": "车载 SoC，通过配备双 HMX 矩阵引擎的 Hexagon Tensor Processor 在单一裸片上承载数字座舱与 ADAS/AD 工作负载；Ride Flex 系列设计可扩展至约 2,000 TOPS。Qualcomm 未给出单一官方的每 SKU INT8 TOPS 数值。",
+      "es": "SoC automotriz que aloja las cargas de trabajo del cockpit digital y de ADAS/AD en un solo die mediante un Hexagon Tensor Processor con dos motores matriciales HMX; la familia Ride Flex está diseñada para escalar hasta unos 2.000 TOPS. Qualcomm no indica un único valor oficial de INT8 TOPS por SKU.",
+      "he": "‏SoC לרכב המארח עומסי digital cockpit ו-ADAS/AD על שבב בודד באמצעות Hexagon Tensor Processor עם שני מנועי מטריצה מסוג HMX; משפחת Ride Flex תוכננה להתרחב עד כ-2,000 TOPS. Qualcomm אינה מציינת ערך INT8 TOPS רשמי יחיד לכל SKU."
+    },
+    "MediaTek||Dimensity 9400": {
+      "ko": "8세대 MediaTek NPU 890을 갖춘 플래그십 3nm 모바일 SoC로, 온디바이스 비디오 생성, LoRA 파인튜닝, Diffusion Transformer / Mixture-of-Experts 모델을 지원한다. MediaTek은 최대 TOPS 수치를 공개하지 않는다.",
+      "en": "Flagship 3nm mobile SoC with the eighth-generation MediaTek NPU 890 supporting on-device video generation, LoRA fine-tuning, and Diffusion Transformer / Mixture-of-Experts models. MediaTek does not disclose a peak TOPS figure.",
+      "ja": "第8世代のMediaTek NPU 890を搭載したフラッグシップ3nmモバイルSoCで、オンデバイスの動画生成、LoRAファインチューニング、Diffusion Transformer / Mixture-of-Expertsモデルに対応する。MediaTekはピークTOPS値を非公開としている。",
+      "zh": "旗舰 3nm 移动 SoC，配备第八代 MediaTek NPU 890，支持端侧视频生成、LoRA 微调以及 Diffusion Transformer / Mixture-of-Experts 模型。MediaTek 未公布峰值 TOPS 数值。",
+      "es": "SoC móvil insignia de 3nm con la MediaTek NPU 890 de octava generación, compatible con generación de video en el dispositivo, ajuste fino LoRA y modelos Diffusion Transformer / Mixture-of-Experts. MediaTek no divulga una cifra pico de TOPS.",
+      "he": "‏SoC נייד דגל בתהליך 3nm עם MediaTek NPU 890 מהדור השמיני, התומך ביצירת וידאו במכשיר, בכיוונון עדין של LoRA ובמודלים מסוג Diffusion Transformer / Mixture-of-Experts. MediaTek אינה מפרסמת ערך TOPS שיא."
+    },
+    "Allwinner||V853": {
+      "ko": "1 TOPS NPU를 갖춘 22nm 이기종 엣지-AIoT SoC(Cortex-A7 및 XuanTie E907 RISC-V)로, 스마트 카메라, 도어록, 대시캠에 적합하다. V853S 버전은 0.8 TOPS를 제공한다.",
+      "en": "22nm heterogeneous edge-AIoT SoC (Cortex-A7 plus XuanTie E907 RISC-V) with a 1 TOPS NPU for smart cameras, door locks and dashcams. A V853S variant provides 0.8 TOPS.",
+      "ja": "1 TOPS NPUを備えた22nmのヘテロジニアスなエッジAIoT SoC（Cortex-A7とXuanTie E907 RISC-V）で、スマートカメラ、ドアロック、ドライブレコーダー向け。V853Sバリアントは0.8 TOPSを提供する。",
+      "zh": "22nm 异构边缘 AIoT SoC（Cortex-A7 加 XuanTie E907 RISC-V），配备 1 TOPS NPU，面向智能摄像头、门锁与行车记录仪。V853S 版本提供 0.8 TOPS。",
+      "es": "SoC AIoT de borde heterogéneo de 22nm (Cortex-A7 más XuanTie E907 RISC-V) con una NPU de 1 TOPS para cámaras inteligentes, cerraduras y dashcams. Una variante V853S ofrece 0,8 TOPS.",
+      "he": "‏SoC הטרוגני מסוג edge-AIoT בתהליך 22nm (‏Cortex-A7 יחד עם XuanTie E907 RISC-V) עם NPU של 1 TOPS עבור מצלמות חכמות, מנעולי דלת ומצלמות רכב. גרסת V853S מספקת 0.8 TOPS."
+    },
+    "Renesas||R-Car V4M": {
+      "ko": "전방 카메라, 서라운드 뷰, 주차, 운전자 모니터링 시스템용으로 최대 17 TOPS를 제공하는 7nm 엔트리/미드급 차량용 ADAS SoC로, R-Car V4H와 소프트웨어 호환된다.",
+      "en": "7nm entry/mid automotive ADAS SoC delivering up to 17 TOPS for front-camera, surround-view, parking and driver-monitoring systems; software-compatible with the R-Car V4H.",
+      "ja": "フロントカメラ、サラウンドビュー、駐車、ドライバーモニタリングシステム向けに最大17 TOPSを実現する7nmのエントリー／ミッドレンジ車載ADAS SoCで、R-Car V4Hとソフトウェア互換。",
+      "zh": "7nm 入门/中端车载 ADAS SoC，为前置摄像头、环视、泊车与驾驶员监控系统提供最高 17 TOPS；与 R-Car V4H 软件兼容。",
+      "es": "SoC ADAS automotriz de gama de entrada/media de 7nm que ofrece hasta 17 TOPS para sistemas de cámara frontal, visión envolvente, aparcamiento y monitoreo del conductor; compatible a nivel de software con el R-Car V4H.",
+      "he": "‏SoC מסוג ADAS לרכב ברמת כניסה/ביניים בתהליך 7nm המספק עד 17 TOPS למערכות מצלמה קדמית, surround-view, חניה וניטור נהג; תואם תוכנה ל-R-Car V4H."
+    },
+    "Kunlunxin||R200": {
+      "ko": "Baidu Kunlunxin의 2세대 Kunlun XPU-R 가속기 카드(7nm)로, 256 TOPS INT8와 128 TFLOPS FP16, 풀 하이트 듀얼 슬롯 PCIe, 150 W를 갖춘다. GPU가 아닌 전용 XPU AI ASIC이며, R200-8F 버전은 32 GB GDDR6를 탑재한다.",
+      "en": "Second-generation Kunlun XPU-R accelerator card (7nm) from Baidu's Kunlunxin; 256 TOPS INT8 and 128 TFLOPS FP16, full-height dual-slot PCIe, 150 W. A dedicated XPU AI ASIC, not a GPU; the R200-8F variant carries 32 GB GDDR6.",
+      "ja": "Baidu傘下Kunlunxinの第2世代Kunlun XPU-Rアクセラレータカード（7nm）で、256 TOPS INT8および128 TFLOPS FP16、フルハイト2スロットPCIe、150 Wを備える。GPUではなく専用のXPU AI ASICであり、R200-8Fバリアントは32 GB GDDR6を搭載する。",
+      "zh": "百度昆仑芯的第二代昆仑 XPU-R 加速卡（7nm）；256 TOPS INT8 与 128 TFLOPS FP16，全高双槽 PCIe，150 W。属专用 XPU AI ASIC，而非 GPU；R200-8F 版本配备 32 GB GDDR6。",
+      "es": "Tarjeta aceleradora Kunlun XPU-R de segunda generación (7nm) de Kunlunxin, de Baidu; 256 TOPS INT8 y 128 TFLOPS FP16, PCIe de doble ranura y altura completa, 150 W. Un ASIC de IA XPU dedicado, no una GPU; la variante R200-8F lleva 32 GB de GDDR6.",
+      "he": "‏כרטיס מאיץ Kunlun XPU-R מהדור השני (7nm) מבית Kunlunxin של Baidu; ‏256 TOPS INT8 ו-128 TFLOPS FP16, ‏PCIe דו-חריצי בגובה מלא, 150 W. מדובר ב-XPU AI ASIC ייעודי, לא GPU; גרסת R200-8F נושאת 32 GB GDDR6."
+    },
+    "Preferred Networks||MN-Core 2": {
+      "ko": "2세대 데이터플로우 DL/HPC 가속기(TSMC 7nm, 330 W TDP, GDDR6X 메모리)로, 칩당 393 TFLOPS TF16, 49 TFLOPS FP32, 12 TFLOPS FP64를 제공한다. GPU가 아닌 전용 가속기다.",
+      "en": "Second-generation dataflow DL/HPC accelerator (TSMC 7nm, 330 W TDP, GDDR6X memory); 393 TFLOPS TF16, 49 TFLOPS FP32 and 12 TFLOPS FP64 per chip. Dedicated accelerator, not a GPU.",
+      "ja": "第2世代のデータフロー型DL/HPCアクセラレータ（TSMC 7nm、330 W TDP、GDDR6Xメモリ）で、チップあたり393 TFLOPS TF16、49 TFLOPS FP32、12 TFLOPS FP64を実現する。GPUではなく専用アクセラレータ。",
+      "zh": "第二代数据流 DL/HPC 加速器（TSMC 7nm，330 W TDP，GDDR6X 显存）；每颗芯片 393 TFLOPS TF16、49 TFLOPS FP32 与 12 TFLOPS FP64。属专用加速器，而非 GPU。",
+      "es": "Acelerador de dataflow DL/HPC de segunda generación (TSMC 7nm, 330 W de TDP, memoria GDDR6X); 393 TFLOPS TF16, 49 TFLOPS FP32 y 12 TFLOPS FP64 por chip. Acelerador dedicado, no una GPU.",
+      "he": "‏מאיץ DL/HPC מסוג dataflow מהדור השני (‏TSMC 7nm, ‏330 W TDP, זיכרון GDDR6X); ‏393 TFLOPS TF16, ‏49 TFLOPS FP32 ו-12 TFLOPS FP64 לכל שבב. מאיץ ייעודי, לא GPU."
+    },
+    "Intellifusion||DeepEdge10 Max": {
+      "ko": "D2D 칩렛 인터커넥트와 RISC-V 코어를 갖춘 14nm 엣지 AI SoC로, DeepEdge10 Max는 64 TOPS INT8 / 8 TFLOPS FP16을 제공하며 온디바이스 Transformer/대형 모델 추론을 지원한다. DeepEdge10 시리즈는 8~64 TOPS를 아우르며 Intellifusion DeepEye AI 박스에 탑재된다.",
+      "en": "14nm edge-AI SoC with D2D chiplet interconnect and RISC-V cores; DeepEdge10 Max delivers 64 TOPS INT8 / 8 TFLOPS FP16 and supports on-device Transformer/large-model inference. The DeepEdge10 series spans 8-64 TOPS and powers Intellifusion DeepEye AI boxes.",
+      "ja": "D2Dチップレット・インターコネクトとRISC-Vコアを備えた14nmエッジAI SoC。DeepEdge10 Maxは64 TOPS INT8／8 TFLOPS FP16を実現し、オンデバイスのTransformer/大規模モデル推論に対応する。DeepEdge10シリーズは8～64 TOPSをカバーし、IntellifusionのDeepEye AIボックスに搭載される。",
+      "zh": "14nm 边缘 AI SoC，采用 D2D 芯粒互连与 RISC-V 核心；DeepEdge10 Max 提供 64 TOPS INT8 / 8 TFLOPS FP16，支持端侧 Transformer/大模型推理。DeepEdge10 系列覆盖 8 至 64 TOPS，为 Intellifusion DeepEye AI 盒子提供算力。",
+      "es": "SoC de IA de borde de 14nm con interconexión de chiplets D2D y núcleos RISC-V; el DeepEdge10 Max ofrece 64 TOPS INT8 / 8 TFLOPS FP16 y soporta inferencia de Transformer/modelos grandes en el dispositivo. La serie DeepEdge10 abarca de 8 a 64 TOPS y equipa las cajas de IA DeepEye de Intellifusion.",
+      "he": "‏SoC ל-AI בקצה בתהליך 14nm עם חיבור chiplet מסוג D2D וליבות RISC-V; ‏DeepEdge10 Max מספק 64 TOPS INT8 / 8 TFLOPS FP16 ותומך בהסקה של Transformer/מודלים גדולים במכשיר. סדרת DeepEdge10 משתרעת על 8-64 TOPS ומפעילה את קופסאות ה-AI מסוג DeepEye של Intellifusion."
+    },
+    "Taalas||HC1": {
+      "ko": "모델을 실리콘에 직접 구현하고 HBM이 없는 하드와이어드 'hardcore' 추론 ASIC(TSMC N6, 815 mm2, 530억 트랜지스터, 약 250 W)이다. HC1은 Llama 3.1 8B를 내장하며 사용자당 약 17,000 tokens/s에 도달한다. 2026년 2월 발표됐다.",
+      "en": "Hardwired 'hardcore' inference ASIC (TSMC N6, 815 mm2, 53B transistors, ~250 W) with the model baked directly into silicon and no HBM. HC1 embeds Llama 3.1 8B and reaches ~17,000 tokens/s per user. Announced February 2026.",
+      "ja": "モデルをシリコンに直接焼き込み、HBMを持たないハードワイヤードな『hardcore』推論ASIC（TSMC N6、815 mm2、530億トランジスタ、約250 W）。HC1はLlama 3.1 8Bを内蔵し、ユーザーあたり約17,000 tokens/sに達する。2026年2月に発表。",
+      "zh": "硬连线的“hardcore”推理 ASIC（TSMC N6，815 mm2，530 亿晶体管，约 250 W），将模型直接固化到硅片中且不使用 HBM。HC1 内置 Llama 3.1 8B，每用户可达约 17,000 tokens/s。2026 年 2 月发布。",
+      "es": "ASIC de inferencia 'hardcore' cableado (TSMC N6, 815 mm2, 53.000 millones de transistores, ~250 W) con el modelo grabado directamente en el silicio y sin HBM. El HC1 integra Llama 3.1 8B y alcanza ~17.000 tokens/s por usuario. Anunciado en febrero de 2026.",
+      "he": "‏ASIC להסקה מסוג 'hardcore' עם חיווט קשיח (‏TSMC N6, ‏815 mm2, ‏53 מיליארד טרנזיסטורים, כ-250 W), שבו המודל צרוב ישירות בסיליקון וללא HBM. ‏HC1 משלב את Llama 3.1 8B ומגיע לכ-17,000 tokens/s למשתמש. הוכרז בפברואר 2026."
+    },
+    "SynSense||Xylo": {
+      "ko": "마이크로와트급 전력에서 최대 약 1,000개의 LIF 뉴런을 갖춘 28nm 초저전력 디지털 스파이킹 신경망 추론 칩이다. Xylo Audio와 Xylo IMU 버전은 엣지에서의 오디오, IMU, 생체 신호(EMG/EEG) 처리를 겨냥한다.",
+      "en": "28nm ultra-low-power digital spiking neural network inference chip with up to ~1,000 LIF neurons at microwatt-level power. Xylo Audio and Xylo IMU variants target audio, IMU and bio-signal (EMG/EEG) processing at the edge.",
+      "ja": "マイクロワット級の電力で最大約1,000個のLIFニューロンを備えた28nmの超低消費電力デジタル・スパイキングニューラルネットワーク推論チップ。Xylo AudioおよびXylo IMUバリアントは、エッジでのオーディオ、IMU、生体信号（EMG/EEG）処理を狙う。",
+      "zh": "28nm 超低功耗数字脉冲神经网络推理芯片，在微瓦级功耗下最多可容纳约 1,000 个 LIF 神经元。Xylo Audio 与 Xylo IMU 版本面向边缘端的音频、IMU 及生物信号（EMG/EEG）处理。",
+      "es": "Chip de inferencia de red neuronal de picos (spiking) digital de 28nm y muy bajo consumo, con hasta ~1.000 neuronas LIF a nivel de microvatios. Las variantes Xylo Audio y Xylo IMU se orientan al procesamiento en el borde de audio, IMU y bioseñales (EMG/EEG).",
+      "he": "‏שבב הסקה מסוג רשת עצבית ספייקינג דיגיטלית בתהליך 28nm בהספק נמוך במיוחד, עם עד כ-1,000 נוירוני LIF ברמת מיקרו-ואט. גרסאות Xylo Audio ו-Xylo IMU מיועדות לעיבוד אודיו, IMU ואותות ביולוגיים (EMG/EEG) בקצה."
+    },
+    "IBM||NorthPole": {
+      "ko": "IBM Research의 신경 추론 칩(12nm, 256코어, 220억 트랜지스터, 224 MB 온칩 SRAM, 오프칩 메모리 없음)으로, INT8에서 200 TOPS 초과(INT4에서 400, INT2에서 800)를 제공한다. 스파이킹이 아닌 공간형/데이터플로우 아키텍처로, ResNet-50과 토큰당 1 ms 미만의 LLM 추론에서 시연됐다.",
+      "en": "IBM Research neural-inference chip (12nm, 256 cores, 22B transistors, 224 MB on-chip SRAM and no off-chip memory); >200 TOPS INT8 (400 at INT4, 800 at INT2). A spatial/dataflow architecture (not spiking) demonstrated on ResNet-50 and sub-ms/token LLM inference.",
+      "ja": "IBM Researchのニューラル推論チップ（12nm、256コア、220億トランジスタ、224 MBのオンチップSRAM、オフチップメモリなし）で、INT8で200 TOPS超（INT4で400、INT2で800）。スパイキングではない空間的／データフロー型アーキテクチャで、ResNet-50およびトークンあたり1 ms未満のLLM推論で実証された。",
+      "zh": "IBM Research 的神经推理芯片（12nm，256 核心，220 亿晶体管，224 MB 片上 SRAM，无片外内存）；INT8 超过 200 TOPS（INT4 为 400，INT2 为 800）。采用空间/数据流架构（非脉冲），已在 ResNet-50 及每 token 亚毫秒级的 LLM 推理上得到验证。",
+      "es": "Chip de inferencia neuronal de IBM Research (12nm, 256 núcleos, 22.000 millones de transistores, 224 MB de SRAM en chip y sin memoria externa); >200 TOPS INT8 (400 en INT4, 800 en INT2). Una arquitectura espacial/de dataflow (no de picos) demostrada en ResNet-50 e inferencia de LLM por debajo de 1 ms por token.",
+      "he": "‏שבב הסקה עצבית של IBM Research (‏12nm, ‏256 ליבות, 22 מיליארד טרנזיסטורים, 224 MB SRAM על השבב וללא זיכרון חיצוני); מעל 200 TOPS INT8 (‏400 ב-INT4, ‏800 ב-INT2). ארכיטקטורה מרחבית/dataflow (לא ספייקינג) שהודגמה על ResNet-50 והסקת LLM בפחות מ-1 ms לכל token."
+    },
+    "NXP||MCX N54x": {
+      "ko": "NXP의 통합 eIQ Neutron N1-16 NPU와 PowerQuad DSP 가속기를 갖춘 듀얼 Arm Cortex-M33 MCU(150 MHz)다. NPU는 CPU 코어 단독 대비 최대 약 42배 빠른 ML 추론을 제공한다.",
+      "en": "Dual Arm Cortex-M33 MCU (150 MHz) with NXP's integrated eIQ Neutron N1-16 NPU and a PowerQuad DSP accelerator. The NPU provides up to about 42x faster ML inference than the CPU cores alone.",
+      "ja": "NXPの統合eIQ Neutron N1-16 NPUとPowerQuad DSPアクセラレータを備えたデュアルArm Cortex-M33 MCU（150 MHz）。NPUはCPUコア単体と比べて最大約42倍高速なML推論を提供する。",
+      "zh": "双 Arm Cortex-M33 MCU（150 MHz），集成 NXP 的 eIQ Neutron N1-16 NPU 与 PowerQuad DSP 加速器。相比仅使用 CPU 核心，该 NPU 可提供最高约 42 倍的 ML 推理加速。",
+      "es": "MCU con dos Arm Cortex-M33 (150 MHz) que integra la NPU eIQ Neutron N1-16 de NXP y un acelerador DSP PowerQuad. La NPU ofrece una inferencia de ML hasta unas 42 veces más rápida que los núcleos de CPU por sí solos.",
+      "he": "‏MCU עם שתי ליבות Arm Cortex-M33 (‏150 MHz) הכולל NPU משולב מסוג eIQ Neutron N1-16 של NXP ומאיץ DSP מסוג PowerQuad. ה-NPU מספק הסקת ML מהירה עד פי 42 בערך בהשוואה לליבות ה-CPU בלבד."
+    },
+    "Renesas||RZ/V2M": {
+      "ko": "Renesas의 DRP-AI 가속기(DRP + AI-MAC)와 4K 지원 ISP를 통합한 비전 AI ASSP로, 1 TOPS/W급 효율을 제공한다. 감시, 리테일, 산업용 객체 인식을 겨냥한다.",
+      "en": "Vision-AI ASSP integrating Renesas' DRP-AI accelerator (DRP + AI-MAC) and a 4K-capable ISP, delivering 1 TOPS/W-class efficiency. Targets surveillance, retail and industrial object recognition.",
+      "ja": "RenesasのDRP-AIアクセラレータ（DRP + AI-MAC）と4K対応ISPを統合したビジョンAI ASSPで、1 TOPS/Wクラスの効率を実現する。監視、リテール、産業向けの物体認識を狙う。",
+      "zh": "视觉 AI ASSP，集成 Renesas 的 DRP-AI 加速器（DRP + AI-MAC）与支持 4K 的 ISP，提供 1 TOPS/W 级的能效。面向安防、零售与工业物体识别。",
+      "es": "ASSP de visión con IA que integra el acelerador DRP-AI de Renesas (DRP + AI-MAC) y un ISP con capacidad 4K, ofreciendo una eficiencia de clase 1 TOPS/W. Orientado al reconocimiento de objetos en vigilancia, comercio minorista e industria.",
+      "he": "‏ASSP לראיית AI המשלב את מאיץ ה-DRP-AI של Renesas (‏DRP + AI-MAC) ו-ISP התומך ב-4K, ומספק יעילות ברמת 1 TOPS/W. מיועד לזיהוי עצמים באבטחה, בקמעונאות ובתעשייה."
+    },
+    "Alif Semiconductor||Ensemble E1": {
+      "ko": "하나의 Arm Ethos-U55 NPU(128 MAC/cycle, 최대 46 GOPS)와 실시간 가중치 압축 해제를 갖춘 단일 Cortex-M55 MCU다. Ensemble 엣지 AI 제품군의 엔트리 모델이다.",
+      "en": "Single Cortex-M55 MCU with one Arm Ethos-U55 NPU (128 MAC/cycle, up to 46 GOPS) and on-the-fly weight decompression. Entry member of the Ensemble edge-AI family.",
+      "ja": "1基のArm Ethos-U55 NPU（128 MAC/cycle、最大46 GOPS）とオンザフライの重み展開を備えたシングルCortex-M55 MCU。EnsembleエッジAIファミリーのエントリーモデル。",
+      "zh": "单 Cortex-M55 MCU，配备一个 Arm Ethos-U55 NPU（128 MAC/cycle，最高 46 GOPS）与实时权重解压。是 Ensemble 边缘 AI 系列的入门型号。",
+      "es": "MCU con un solo Cortex-M55 y una NPU Arm Ethos-U55 (128 MAC/ciclo, hasta 46 GOPS) con descompresión de pesos al vuelo. Miembro de entrada de la familia de IA de borde Ensemble.",
+      "he": "‏MCU עם Cortex-M55 בודד ו-NPU יחיד מסוג Arm Ethos-U55 (‏128 MAC/cycle, עד 46 GOPS) עם פריסת משקלים בזמן אמת. הדגם הבסיסי במשפחת ה-edge-AI מסוג Ensemble."
+    },
+    "Alif Semiconductor||Balletto B1": {
+      "ko": "160 MHz Cortex-M55(Helium)와 Arm Ethos-U55 NPU(최대 46 GOPS)를 Bluetooth LE / 802.15.4 라디오 및 2 MB TCM과 결합한 무선 MCU다. NPU를 통합한 최초의 BLE+Matter MCU로 마케팅된다.",
+      "en": "Wireless MCU combining a 160 MHz Cortex-M55 (Helium) and an Arm Ethos-U55 NPU (up to 46 GOPS) with a Bluetooth LE / 802.15.4 radio and 2 MB TCM. Marketed as the first BLE+Matter MCU with an integrated NPU.",
+      "ja": "160 MHzのCortex-M55（Helium）とArm Ethos-U55 NPU（最大46 GOPS）を、Bluetooth LE / 802.15.4無線および2 MB TCMと組み合わせたワイヤレスMCU。NPUを統合した初のBLE+Matter MCUとして訴求されている。",
+      "zh": "无线 MCU，将 160 MHz Cortex-M55（Helium）与 Arm Ethos-U55 NPU（最高 46 GOPS）同 Bluetooth LE / 802.15.4 无线电及 2 MB TCM 相结合。以首款集成 NPU 的 BLE+Matter MCU 进行宣传。",
+      "es": "MCU inalámbrico que combina un Cortex-M55 (Helium) a 160 MHz y una NPU Arm Ethos-U55 (hasta 46 GOPS) con una radio Bluetooth LE / 802.15.4 y 2 MB de TCM. Se comercializa como el primer MCU BLE+Matter con una NPU integrada.",
+      "he": "‏MCU אלחוטי המשלב Cortex-M55 (‏Helium) במהירות 160 MHz ו-NPU מסוג Arm Ethos-U55 (עד 46 GOPS) עם רדיו Bluetooth LE / 802.15.4 ו-2 MB TCM. משווק כ-MCU הראשון מסוג BLE+Matter עם NPU משולב."
+    },
+    "Syntiant||NDP200": {
+      "ko": "Arm Cortex-M0와 HiFi-3 DSP를 갖춘 상시 구동 이미지 및 센서 처리용 Neural Decision Processor로, Core 1 NDP100/101 대비 약 25배의 텐서 처리량을 제공한다. 1 mW 미만에서 정확한 추론을 제공한다.",
+      "en": "Neural Decision Processor for always-on image and sensor processing with an Arm Cortex-M0 and HiFi-3 DSP, providing about 25x the tensor throughput of the Core 1 NDP100/101. Delivers accurate inference at under 1 mW.",
+      "ja": "Arm Cortex-M0とHiFi-3 DSPを備えた、常時オンの画像・センサー処理向けNeural Decision Processorで、Core 1 NDP100/101の約25倍のテンサースループットを提供する。1 mW未満で高精度な推論を実現する。",
+      "zh": "面向常开图像与传感器处理的 Neural Decision Processor，配备 Arm Cortex-M0 与 HiFi-3 DSP，张量吞吐量约为 Core 1 NDP100/101 的 25 倍。可在低于 1 mW 的功耗下提供精确推理。",
+      "es": "Neural Decision Processor para procesamiento de imagen y sensores siempre activo, con un Arm Cortex-M0 y un DSP HiFi-3, que ofrece unas 25 veces el rendimiento tensorial del Core 1 NDP100/101. Proporciona inferencia precisa por debajo de 1 mW.",
+      "he": "‏Neural Decision Processor לעיבוד תמונה וחיישנים במצב always-on עם Arm Cortex-M0 ו-DSP מסוג HiFi-3, המספק בערך פי 25 מתפוקת הטנזורים של Core 1 NDP100/101. מספק הסקה מדויקת בפחות מ-1 mW."
+    },
+    "Texas Instruments||MSPM0G5187": {
+      "ko": "TI의 통합 TinyEngine NPU를 갖춘 Arm Cortex-M0+ MCU(80 MHz, 128 KB 플래시, 32 KB SRAM)로, 1,000개 단위 기준 US$1 미만의 가격이다. NPU는 비슷한 MCU의 소프트웨어 대비 최대 90배 낮은 지연 시간과 120배 낮은 에너지로 딥러닝 추론을 실행한다.",
+      "en": "Arm Cortex-M0+ MCU (80 MHz, 128 KB flash, 32 KB SRAM) with TI's integrated TinyEngine NPU, priced under US$1 in 1,000-unit quantities. The NPU runs deep-learning inference with up to 90x lower latency and 120x lower energy than software on a comparable MCU.",
+      "ja": "TIの統合TinyEngine NPUを備えたArm Cortex-M0+ MCU（80 MHz、128 KBフラッシュ、32 KB SRAM）で、1,000個ロット時にUS$1未満の価格。NPUは同等のMCU上のソフトウェアと比べて最大90分の1のレイテンシと120分の1のエネルギーでディープラーニング推論を実行する。",
+      "zh": "Arm Cortex-M0+ MCU（80 MHz，128 KB 闪存，32 KB SRAM），集成 TI 的 TinyEngine NPU，千片批量价格低于 US$1。相比同类 MCU 上的软件，该 NPU 运行深度学习推理的延迟最多降低 90 倍、能耗最多降低 120 倍。",
+      "es": "MCU Arm Cortex-M0+ (80 MHz, 128 KB de flash, 32 KB de SRAM) con la NPU TinyEngine integrada de TI, con un precio inferior a US$1 en cantidades de 1.000 unidades. La NPU ejecuta inferencia de aprendizaje profundo con una latencia hasta 90 veces menor y una energía hasta 120 veces menor que el software en un MCU comparable.",
+      "he": "‏MCU מסוג Arm Cortex-M0+ (‏80 MHz, ‏128 KB flash, ‏32 KB SRAM) עם NPU משולב מסוג TinyEngine של TI, במחיר של פחות מ-US$1 בכמויות של 1,000 יחידות. ה-NPU מריץ הסקת למידה עמוקה בזמן השהיה נמוך עד פי 90 ובאנרגיה נמוכה עד פי 120 בהשוואה לתוכנה על MCU דומה."
     }
   }
 }
