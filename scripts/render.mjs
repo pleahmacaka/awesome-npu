@@ -3,7 +3,7 @@
  * Reused by scripts/generate.mjs (writes files) and by the Astro site
  * (emits the same strings), so both produce byte-identical pages.
  */
-import { products, mainProducts, dcProducts, I18N, EI18N, ENRICH, LANGS, PAGES_URL, REPO_URL, escHtml, vendorSlug, introHTML, docsHTML, DATA, template, usedKeys } from './catalog.mjs';
+import { products, mainProducts, dcProducts, I18N, EI18N, ENRICH, LANGS, PAGES_URL, REPO_URL, escHtml, vendorSlug, introHTML, docsHTML, DATA, template, catalogCss, usedKeys } from './catalog.mjs';
 
 const vendorsN = new Set(products.map(p=>p.vendor)).size;
 const countriesN = new Set(products.map(p=>p.country)).size;
@@ -105,12 +105,15 @@ export function renderCatalog(lang){
   const L = I18N[lang];
   const ssr = ssrFor(lang);
   const locked = lang !== 'en';
-  // The ~420KB product dataset is served as a separate, cacheable script so it
-  // no longer bloats every HTML document (shrinks the doc ~55% -> faster FCP/LCP).
-  // Loaded synchronously right before the inline app script, which reads window.DATA.
-  const dataScript = `<script>window.__SSRLANG=${JSON.stringify(lang)};window.__LANGLOCK=${locked};</script><script src="${BASE_PATH}app-data.js"></script>`;
+  // The product dataset and the app logic live in separate cacheable files
+  // (public/app.js, built app-data.js) rather than inlined into every document,
+  // which keeps the HTML small and fast. Both are deferred so they never block
+  // first paint; app-data.js runs before app.js, which reads window.DATA.
+  const dataScript = `<script>window.__SSRLANG=${JSON.stringify(lang)};window.__LANGLOCK=${locked};</script><script defer src="${BASE_PATH}app-data.js"></script>`;
   const ldScript = `<script type="application/ld+json">${JSON.stringify(jsonldFor(lang)).replace(/</g,'\\u003c')}</script>`;
   return localizeBody(template, L)
+    .replace('/*__CSS__*/', () => catalogCss)
+    .replace('__APPJS__', BASE_PATH + 'app.js')
     .replace(/__LANG__/g, lang)
     .replace(/__DIR__/g, L._dir || 'ltr')
     .replace(/__TITLE__/g, escHtml(SEO_TITLE[lang]))
