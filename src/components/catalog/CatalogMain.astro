@@ -1,0 +1,13 @@
+---
+const { L, count, table } = Astro.props;
+---
+<main class="wrap">
+  <div class="rmeta">
+    <span id="count" set:html={count}></span>
+    <span class="hint muted" data-i18n="hint">{L.hint}</span>
+  </div>
+  <div class="tscroll" id="tablewrap" set:html={table}></div>
+  <div id="grid" hidden></div>
+  <div id="chipwrap" hidden></div>
+  <div id="empty" hidden data-i18n="no_results">{L.no_results}</div>
+</main>

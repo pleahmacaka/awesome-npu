@@ -1,0 +1,12 @@
+---
+const { L } = Astro.props;
+---
+<div class="cmpbar" id="cmpbar" aria-hidden="true" inert>
+  <div class="wrap cmpbar-in">
+    <span class="cnt"><b id="cmpCount">0</b> <span data-i18n="selected">{L.selected}</span></span>
+    <div class="sp">
+      <button class="btn" id="cmpClear" data-i18n="clear">{L.clear}</button>
+      <button class="btn pri" id="cmpOpen" data-i18n="compare">{L.compare}</button>
+    </div>
+  </div>
+</div>

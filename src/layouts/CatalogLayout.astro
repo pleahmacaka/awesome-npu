@@ -1,0 +1,47 @@
+---
+// Full document shell for the catalog pages: head/meta/SEO + font + inline CSS.
+// Body content is provided by the page through the default slot.
+const { lang, dir, title, desc, keywords, canonical, ogLocale, hreflang, css, favicon } = Astro.props;
+const OG_IMAGE = 'https://pleahmacaka.github.io/awesome-npu/og.png';
+const FONT = 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css';
+---
+<!DOCTYPE html>
+<html lang={lang} dir={dir} data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="color-scheme" content="dark light" />
+<meta name="theme-color" content="#0c0b0a" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)" />
+<link rel="icon" href={favicon} />
+<meta name="description" content={desc} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content="pleahmacaka" />
+<meta name="robots" content="index, follow" />
+<meta name="google-site-verification" content="icBcdfHaedpvCHuGMd9Hn5EJ-nnyXTFUqe0muZ4Dxg8" />
+<title>{title}</title>
+<link rel="canonical" href={canonical} />
+<Fragment set:html={hreflang} />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Awesome NPU" />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={desc} />
+<meta property="og:image" content={OG_IMAGE} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Awesome NPU" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={desc} />
+<meta name="twitter:image" content={OG_IMAGE} />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="preload" as="style" href={FONT} onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href={FONT} /></noscript>
+<style set:html={css}></style>
+</head>
+<body>
+<slot />
+</body>
+</html>

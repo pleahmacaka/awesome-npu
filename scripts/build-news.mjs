@@ -24,7 +24,7 @@ const LOCALE = {
   es: { hl: 'es', gl: 'ES', ceid: 'ES:es' },
   he: { hl: 'he', gl: 'IL', ceid: 'IL:he' },
 };
-// Keep in sync with NEWS_KWS in scripts/template.html
+// Keep in sync with NEWS_KWS in public/app.js
 const KWS = [
   { id: 'all', q: 'NPU OR "AI accelerator" OR "neural processing unit" OR TPU' },
   { id: 'npu', q: 'NPU "neural processing unit"' },

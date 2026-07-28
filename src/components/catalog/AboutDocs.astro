@@ -1,0 +1,13 @@
+---
+const { L, about, docs } = Astro.props;
+---
+<section class="section about">
+  <div class="wrap about-in">
+    <div class="shead" data-i18n="about_head">{L.about_head}</div>
+    <div id="about" class="doc" set:html={about}></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap docs-in"><div id="docs" class="doc" set:html={docs}></div></div>
+</section>

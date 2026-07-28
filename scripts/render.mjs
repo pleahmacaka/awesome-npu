@@ -3,7 +3,7 @@
  * Reused by scripts/generate.mjs (writes files) and by the Astro site
  * (emits the same strings), so both produce byte-identical pages.
  */
-import { products, mainProducts, dcProducts, I18N, EI18N, ENRICH, LANGS, PAGES_URL, REPO_URL, escHtml, vendorSlug, introHTML, docsHTML, DATA, template, catalogCss, usedKeys } from './catalog.mjs';
+import { products, mainProducts, dcProducts, I18N, EI18N, ENRICH, LANGS, PAGES_URL, REPO_URL, escHtml, vendorSlug, introHTML, docsHTML, DATA, catalogCss, usedKeys } from './catalog.mjs';
 
 const vendorsN = new Set(products.map(p=>p.vendor)).size;
 const countriesN = new Set(products.map(p=>p.country)).size;
@@ -34,13 +34,6 @@ const seoKw = lang => {
 const HREFLANG = [`<link rel="alternate" hreflang="x-default" href="${PAGES_URL}">`]
   .concat(LANGS.map(l=>`<link rel="alternate" hreflang="${HREFLANG_CODE[l]}" href="${langPath(l)}">`)).join('\n');
 
-// data-i18n 텍스트/속성을 대상 언어로 치환 → 정적 HTML 자체가 해당 언어가 됨(검색엔진/무JS 노출)
-function localizeBody(html, L){
-  html = html.replace(/(<[^>]*\sdata-i18n="([a-z_]+)"[^>]*>)([^<]*)(<\/)/g, (m,open,key,txt,close)=> L[key]!=null ? open+escHtml(L[key])+close : m);
-  html = html.replace(/(\sdata-i18n-ph="([a-z_]+)"[^>]*\splaceholder=")([^"]*)(")/g, (m,pre,key,val,q)=> L[key]!=null ? pre+escHtml(L[key])+q : m);
-  html = html.replace(/(\sdata-i18n-aria="([a-z_]+)"\s+aria-label=")([^"]*)(")/g, (m,pre,key,val,q)=> L[key]!=null ? pre+escHtml(L[key])+q : m);
-  return html;
-}
 function ssrFor(lang){
   const T=I18N[lang];
   let regionDN; try{ regionDN=new Intl.DisplayNames([lang],{type:'region'}); }catch(e){ regionDN=null; }
@@ -94,41 +87,25 @@ function jsonldFor(lang){
   ] };
 }
 
-for (const ph of ['<!--__DATA__-->','<!--__META__-->','<!--__COUNT__-->','<!--__TABLE__-->','<!--__ABOUT__-->','<!--__DOCS__-->','<!--__HREFLANG__-->','__LANG__','__DIR__','__TITLE__','__DESC__','__CANONICAL__','__OGTITLE__','__OGLOCALE__','__KEYWORDS__'])
-  if (!template.includes(ph)) { console.error(`template.html 자리표시자 누락: ${ph}`); process.exit(1); }
 const DATA_JSON = JSON.stringify(DATA).replace(/</g,'\\u003c');
 const I18N_JSON = JSON.stringify(I18N).replace(/</g,'\\u003c');
 const BASE_PATH = new URL(PAGES_URL).pathname; // '/awesome-npu/'
 
-// 언어별 카탈로그 페이지(SPA) 전체 문서 문자열
-export function renderCatalog(lang){
+
+// 컴포넌트 기반 카탈로그 렌더링용 데이터 제공자 (index / [lang] 페이지가 사용).
+// Astro 컴포넌트(src/components/catalog)에 값과 SSR 데이터 조각을 넘긴다.
+export function getCatalog(lang){
   const L = I18N[lang];
-  const ssr = ssrFor(lang);
   const locked = lang !== 'en';
-  // The product dataset and the app logic live in separate cacheable files
-  // (public/app.js, built app-data.js) rather than inlined into every document,
-  // which keeps the HTML small and fast. Both are deferred so they never block
-  // first paint; app-data.js runs before app.js, which reads window.DATA.
-  const dataScript = `<script>window.__SSRLANG=${JSON.stringify(lang)};window.__LANGLOCK=${locked};</script><script defer src="${BASE_PATH}app-data.js"></script>`;
-  const ldScript = `<script type="application/ld+json">${JSON.stringify(jsonldFor(lang)).replace(/</g,'\\u003c')}</script>`;
-  return localizeBody(template, L)
-    .replace('/*__CSS__*/', () => catalogCss)
-    .replace('__APPJS__', BASE_PATH + 'app.js')
-    .replace(/__LANG__/g, lang)
-    .replace(/__DIR__/g, L._dir || 'ltr')
-    .replace(/__TITLE__/g, escHtml(SEO_TITLE[lang]))
-    .replace(/__OGTITLE__/g, escHtml(SEO_TITLE[lang]))
-    .replace('__OGLOCALE__', OGLOCALE[lang])
-    .replace(/__DESC__/g, escHtml(seoDesc(lang)))
-    .replace('__KEYWORDS__', escHtml(seoKw(lang)))
-    .replace(/__CANONICAL__/g, langPath(lang))
-    .replace('<!--__HREFLANG__-->', HREFLANG)
-    .replace('<!--__META__-->', ssr.meta)
-    .replace('<!--__COUNT__-->', ssr.count)
-    .replace('<!--__TABLE__-->', ssr.table)
-    .replace('<!--__ABOUT__-->', introHTML)
-    .replace('<!--__DOCS__-->', docsHTML)
-    .replace('<!--__DATA__-->', dataScript + '\n' + ldScript);
+  return {
+    lang, dir: L._dir || 'ltr', L,
+    title: SEO_TITLE[lang], desc: seoDesc(lang), keywords: seoKw(lang),
+    canonical: langPath(lang), ogLocale: OGLOCALE[lang],
+    hreflang: HREFLANG, jsonld: jsonldFor(lang),
+    css: catalogCss, appjs: BASE_PATH + 'app.js', favicon: FAVICON,
+    dataScript: `<script>window.__SSRLANG=${JSON.stringify(lang)};window.__LANGLOCK=${locked};</script><script defer src="${BASE_PATH}app-data.js"></script>`,
+    ssr: ssrFor(lang), about: introHTML, docs: docsHTML,
+  };
 }
 
 // ---- 제품/벤더 상세 페이지 (내부 링크 + 원본 자료는 한 단계 더) ----

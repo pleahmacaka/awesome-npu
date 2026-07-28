@@ -1,5 +1,4 @@
 ---
-import { renderCatalog } from '../../scripts/render.mjs';
-const html = renderCatalog('en');
+import CatalogApp from '../components/catalog/CatalogApp.astro';
 ---
-<Fragment set:html={html} />
+<CatalogApp lang="en" />

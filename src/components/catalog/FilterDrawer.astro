@@ -1,0 +1,22 @@
+---
+const { L } = Astro.props;
+---
+<div class="drawer" id="drawer">
+  <div class="wrap drawer-in">
+    <div><div class="flabel" data-i18n="mount_label">{L.mount_label}</div><div class="chips" id="f-form"></div></div>
+    <div><div class="flabel" data-i18n="country">{L.country}</div><div class="chips" id="f-country"></div></div>
+    <div><div class="flabel" data-i18n="arch">{L.arch}</div><div class="chips" id="f-arch"></div></div>
+    <div style="grid-column:span 2;min-width:0">
+      <div class="flabel" data-i18n="vendor">{L.vendor}</div>
+      <input type="search" class="vsearch" id="f-vendor-search" data-i18n-ph="vendor_search_ph" placeholder={L.vendor_search_ph} autocomplete="off" />
+      <div class="chips scroll" id="f-vendor"></div>
+    </div>
+    <div>
+      <div class="flabel" data-i18n="release_range">{L.release_range}</div>
+      <div class="date"><input type="month" id="dateFrom" data-i18n-aria="date_from" aria-label={L.date_from} /><span class="til">~</span><input type="month" id="dateTo" data-i18n-aria="date_to" aria-label={L.date_to} /></div>
+      <label class="chk"><input type="checkbox" id="includeNoDate" checked /><span data-i18n="include_undated">{L.include_undated}</span></label>
+      <label class="chk"><input type="checkbox" id="includeIntegrated" /><span data-i18n="include_integrated">{L.include_integrated}</span></label>
+    </div>
+    <div class="drawer-foot"><button class="txtbtn reset" id="resetBtn" data-i18n="reset">{L.reset}</button></div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+---
+const { L } = Astro.props;
+---
+<div class="controls" id="controls">
+  <div class="wrap controls-in">
+    <div class="crow">
+      <button class="fbtn" id="filterToggle" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8L3 5Z"/></svg>
+        <span data-i18n="filters">{L.filters}</span> <span class="fc" id="fcount" hidden>0</span>
+      </button>
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" id="search" data-i18n-aria="a_search" aria-label={L.a_search} data-i18n-ph="search_ph" placeholder={L.search_ph} autocomplete="off" />
+      </label>
+      <div class="cbar">
+        <div class="viewt" role="group" data-i18n-aria="a_view" aria-label={L.a_view}>
+          <button id="viewTable" aria-pressed="true" data-i18n="view_table">{L.view_table}</button>
+          <button id="viewCard" aria-pressed="false" data-i18n="view_cards">{L.view_cards}</button>
+          <button id="viewChip" aria-pressed="false" data-i18n="view_chips">{L.view_chips}</button>
+        </div>
+        <div class="selwrap">
+          <select class="sort" id="sortSel" data-i18n-aria="a_sort" aria-label={L.a_sort}>
+            <option value="default" data-i18n="sort_default">{L.sort_default}</option>
+            <option value="tops-desc" data-i18n="sort_tops_desc">{L.sort_tops_desc}</option>
+            <option value="tops-asc" data-i18n="sort_tops_asc">{L.sort_tops_asc}</option>
+            <option value="price-asc" data-i18n="sort_price_asc">{L.sort_price_asc}</option>
+            <option value="price-desc" data-i18n="sort_price_desc">{L.sort_price_desc}</option>
+            <option value="date-desc" data-i18n="sort_date_desc">{L.sort_date_desc}</option>
+            <option value="date-asc" data-i18n="sort_date_asc">{L.sort_date_asc}</option>
+            <option value="vendor" data-i18n="sort_vendor">{L.sort_vendor}</option>
+          </select>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="quick" id="quick">
+      <div class="qgroup"><span class="qlab" data-i18n="mount_label">{L.mount_label}</span><div id="q-segment" style="display:flex;gap:8px;flex-wrap:wrap"></div></div>
+    </div>
+  </div>
+</div>

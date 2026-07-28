@@ -1,0 +1,15 @@
+---
+const { L } = Astro.props;
+---
+<section id="newsView" hidden aria-labelledby="newsTitle">
+  <div class="wrap news-in">
+    <div class="news-head">
+      <h2 id="newsTitle" class="news-title" data-i18n="news_title">{L.news_title}</h2>
+      <p class="news-sub" data-i18n="news_sub">{L.news_sub}</p>
+    </div>
+    <div class="news-kws" id="newsKws" role="tablist" aria-label="Topics"></div>
+    <div class="news-status" id="newsStatus" hidden></div>
+    <div class="news-grid" id="newsGrid"></div>
+    <p class="news-foot" id="newsFoot" hidden><span data-i18n="news_powered">{L.news_powered}</span> · <span id="newsUpd"></span></p>
+  </div>
+</section>

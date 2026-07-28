@@ -1,8 +1,9 @@
 ---
-import { renderCatalog, LANGS } from '../../../scripts/render.mjs';
+import { LANGS } from '../../../scripts/render.mjs';
+import CatalogApp from '../../components/catalog/CatalogApp.astro';
 export function getStaticPaths() {
-  return LANGS.filter(l => l !== 'en').map(lang => ({ params: { lang }, props: { html: renderCatalog(lang) } }));
+  return LANGS.filter(l => l !== 'en').map(lang => ({ params: { lang } }));
 }
-const { html } = Astro.props;
+const { lang } = Astro.params;
 ---
-<Fragment set:html={html} />
+<CatalogApp lang={lang} />

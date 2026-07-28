@@ -1,0 +1,41 @@
+---
+import { getCatalog } from '../../../scripts/render.mjs';
+import CatalogLayout from '../../layouts/CatalogLayout.astro';
+import Topbar from './Topbar.astro';
+import Masthead from './Masthead.astro';
+import Controls from './Controls.astro';
+import FilterDrawer from './FilterDrawer.astro';
+import CatalogMain from './CatalogMain.astro';
+import AboutDocs from './AboutDocs.astro';
+import NewsView from './NewsView.astro';
+import SiteFooter from './SiteFooter.astro';
+import CompareBar from './CompareBar.astro';
+import CompareModal from './CompareModal.astro';
+
+const { lang } = Astro.props;
+const c = getCatalog(lang);
+const jsonldStr = JSON.stringify(c.jsonld).replace(/</g, '\\u003c');
+const L = c.L;
+---
+<CatalogLayout
+  lang={c.lang} dir={c.dir} title={c.title} desc={c.desc} keywords={c.keywords}
+  canonical={c.canonical} ogLocale={c.ogLocale} hreflang={c.hreflang} css={c.css} favicon={c.favicon}
+>
+  <Topbar {L} />
+  <a id="top"></a>
+  <div id="catalogView">
+    <Masthead {L} meta={c.ssr.meta} />
+    <a id="explorer"></a>
+    <Controls {L} />
+    <FilterDrawer {L} />
+    <CatalogMain {L} count={c.ssr.count} table={c.ssr.table} />
+    <AboutDocs {L} about={c.about} docs={c.docs} />
+  </div><!-- /catalogView -->
+  <NewsView {L} />
+  <SiteFooter {L} />
+  <CompareBar {L} />
+  <CompareModal {L} />
+  <Fragment set:html={c.dataScript} />
+  <script type="application/ld+json" set:html={jsonldStr} is:inline></script>
+  <script is:inline defer src={c.appjs}></script>
+</CatalogLayout>

@@ -333,7 +333,6 @@ function parseTableUnder(lines, headingText, isDatacenter, usedKeys){
 
 // ---------- 실행 ----------
 const readme = fs.readFileSync(path.join(ROOT,'README.md'), 'utf8');
-const template = fs.readFileSync(path.join(SCRIPTS,'template.html'), 'utf8');
 const catalogCss = fs.readFileSync(path.join(SCRIPTS,'catalog.css'), 'utf8');
 const lines = readme.replace(/\r/g,'').split('\n');
 
@@ -372,4 +371,4 @@ const introHTML = renderMarkdown(introMd);
 const docsHTML = renderMarkdown(docsMd);
 const DATA = { products, generatedAt: new Date().toISOString().slice(0,10), repo: REPO_URL };
 
-export { products, mainProducts, dcProducts, I18N, EI18N, ENRICH, LANGS, PAGES_URL, REPO_URL, ROOT, escHtml, vendorSlug, introHTML, docsHTML, DATA, template, catalogCss, usedKeys };
+export { products, mainProducts, dcProducts, I18N, EI18N, ENRICH, LANGS, PAGES_URL, REPO_URL, ROOT, escHtml, vendorSlug, introHTML, docsHTML, DATA, catalogCss, usedKeys };
