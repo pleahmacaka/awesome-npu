@@ -16,6 +16,7 @@ const { L } = Astro.props;
       <div class="date"><input type="month" id="dateFrom" data-i18n-aria="date_from" aria-label={L.date_from} /><span class="til">~</span><input type="month" id="dateTo" data-i18n-aria="date_to" aria-label={L.date_to} /></div>
       <label class="chk"><input type="checkbox" id="includeNoDate" checked /><span data-i18n="include_undated">{L.include_undated}</span></label>
       <label class="chk"><input type="checkbox" id="includeIntegrated" /><span data-i18n="include_integrated">{L.include_integrated}</span></label>
+      <label class="chk"><input type="checkbox" id="includeGpu" /><span data-i18n="include_gpu">{L.include_gpu}</span></label>
     </div>
     <div class="drawer-foot"><button class="txtbtn reset" id="resetBtn" data-i18n="reset">{L.reset}</button></div>
   </div>

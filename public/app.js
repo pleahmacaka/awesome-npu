@@ -36,7 +36,7 @@
   const ARCHS = [...new Set(products.flatMap(p=>p.arch||[]))].sort((a,b)=>["CNN","RNN","Transformer","ViT","LLM","VLM","Diffusion","SNN"].indexOf(a)-["CNN","RNN","Transformer","ViT","LLM","VLM","Diffusion","SNN"].indexOf(b));
   const state = { search:"", view:"table", sort:"default",
     country:new Set(), form:new Set(), vendor:new Set(), arch:new Set(),
-    includeIntegrated:false, dateFrom:null, dateTo:null, includeNoDate:true, compare:new Set() };
+    includeIntegrated:false, includeGpu:false, dateFrom:null, dateTo:null, includeNoDate:true, compare:new Set() };
 
   function chipBtn(label, pressed, onclick){
     const b=document.createElement("button"); b.className="tog"; b.type="button"; b.textContent=label;
@@ -69,11 +69,12 @@
       b.style.display = (!q || b.textContent.toLowerCase().indexOf(q)>=0) ? "" : "none";
     });
   }
-  function fcount(){ const n=state.country.size+state.form.size+state.vendor.size+state.arch.size+(state.includeIntegrated?1:0)+((state.dateFrom||state.dateTo)?1:0)+(state.includeNoDate?0:1);
+  function fcount(){ const n=state.country.size+state.form.size+state.vendor.size+state.arch.size+(state.includeIntegrated?1:0)+(state.includeGpu?1:0)+((state.dateFrom||state.dateTo)?1:0)+(state.includeNoDate?0:1);
     const e=$("fcount"); if(n){e.hidden=false;e.textContent=n;}else e.hidden=true; }
 
   function matches(p){
     if(!state.includeIntegrated && !p.standalone)return false;
+    if(!state.includeGpu && p.kind==="gpu")return false;
     if(state.country.size&&!state.country.has(p.country))return false;
     if(state.form.size&&!state.form.has(p.formGroup))return false;
     if(state.vendor.size&&!state.vendor.has(p.vendor))return false;
@@ -94,6 +95,10 @@
     else if(s==="price-desc")a.sort((x,y)=>(y.priceUSD??-1)-(x.priceUSD??-1));
     else if(s==="date-desc")a.sort((x,y)=>(y.releaseDate||"").localeCompare(x.releaseDate||""));
     else if(s==="date-asc")a.sort((x,y)=>{if(!x.releaseDate)return 1;if(!y.releaseDate)return -1;return x.releaseDate.localeCompare(y.releaseDate);});
+    else if(s==="mem-desc")a.sort((x,y)=>(y.memGB??-1)-(x.memGB??-1));
+    else if(s==="mem-asc")a.sort((x,y)=>(x.memGB??Infinity)-(y.memGB??Infinity));
+    else if(s==="watts-desc")a.sort((x,y)=>(y.watts??-1)-(x.watts??-1));
+    else if(s==="watts-asc")a.sort((x,y)=>(x.watts??Infinity)-(y.watts??Infinity));
     else if(s==="vendor"||s==="vendor-asc")a.sort((x,y)=>x.vendor.localeCompare(y.vendor)||x.product.localeCompare(y.product));
     else if(s==="vendor-desc")a.sort((x,y)=>y.vendor.localeCompare(x.vendor)||x.product.localeCompare(y.product));
     else if(s==="name-asc")a.sort((x,y)=>x.product.localeCompare(y.product));
@@ -230,7 +235,7 @@
   addEventListener("scroll",()=>{ if(tipFor) hideTip(); }, true);
 
   // ---- column header menu (click header -> sort / filter) ----
-  const SORTKEY={product:'name',vendor:'vendor',perf:'tops',price:'price',release:'date'};
+  const SORTKEY={product:'name',vendor:'vendor',perf:'tops',memory:'mem',power:'watts',price:'price',release:'date'};
   const FILTERSET={vendor:()=>state.vendor,country:()=>state.country,arch:()=>state.arch,form:()=>state.form};
   const FILTEROPTS={
     vendor:()=>VENDORS.map(v=>({k:v,label:v})),
@@ -373,12 +378,13 @@
   $("dateTo").onchange=e=>{state.dateTo=e.target.value||null;render();fcount();};
   $("includeNoDate").onchange=e=>{state.includeNoDate=e.target.checked;render();fcount();};
   $("includeIntegrated").onchange=e=>{state.includeIntegrated=e.target.checked;render();fcount();};
+  $("includeGpu").onchange=e=>{state.includeGpu=e.target.checked;render();fcount();};
   $("f-vendor-search").oninput=e=>filterVendorChips(e.target.value);
   $("viewTable").onclick=()=>setView("table"); $("viewCard").onclick=()=>setView("card"); $("viewChip").onclick=()=>setView("chip");
   $("filterToggle").onclick=()=>{const d=$("drawer");const o=d.classList.toggle("open");$("filterToggle").setAttribute("aria-expanded",String(o));setTimeout(setSticky,280);};
   $("resetBtn").onclick=()=>{Object.assign(state,{search:"",sort:"default",dateFrom:null,dateTo:null,includeNoDate:true});
-    state.country.clear();state.form.clear();state.vendor.clear();state.arch.clear();state.includeIntegrated=false;
-    $("search").value="";$("dateFrom").value="";$("dateTo").value="";$("includeNoDate").checked=true;$("includeIntegrated").checked=false;$("sortSel").value="default";
+    state.country.clear();state.form.clear();state.vendor.clear();state.arch.clear();state.includeIntegrated=false;state.includeGpu=false;
+    $("search").value="";$("dateFrom").value="";$("dateTo").value="";$("includeNoDate").checked=true;$("includeIntegrated").checked=false;if($("includeGpu"))$("includeGpu").checked=false;$("sortSel").value="default";
     if($("f-vendor-search"))$("f-vendor-search").value="";
     buildFilters();fcount();render();};
   let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(setSticky,150);});

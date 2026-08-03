@@ -267,6 +267,23 @@ function formGroup(form){
   return 'Server';
 }
 
+// 정렬용 숫자 파생: 메모리 문자열 → GB(가장 큰 용량), 전력 문자열 → W.
+function parseMemGB(s){
+  if (!s) return null;
+  let best = null, m; const re = /([\d.]+)\s*(TB|GB|MB|KB)/gi;
+  while ((m = re.exec(s))) {
+    const v = parseFloat(m[1]), u = m[2].toUpperCase();
+    const gb = u === 'TB' ? v * 1024 : u === 'GB' ? v : u === 'MB' ? v / 1024 : v / 1048576;
+    if (best === null || gb > best) best = gb;
+  }
+  return best;
+}
+function parseWatts(s){
+  if (!s) return null;
+  const m = String(s).match(/([\d.]+)\s*W\b/i);
+  return m ? parseFloat(m[1]) : null;
+}
+
 // ---------- 표 파서 ----------
 function colFinder(header){
   const H = header.map(h=>h.toLowerCase());
@@ -320,8 +337,9 @@ function parseTableUnder(lines, headingText, isDatacenter, usedKeys){
       vendor, product:name, url, standalone,
       country, origin: country === 'KR' ? 'kr' : 'global',
       form, formGroup: formGroup(form),
+      kind: (enrich && enrich.kind) || 'npu',
       compute: comp.display === '—' ? null : (cells[col.compute]||'').trim(), computeDisplay: comp.display, tops: comp.tops,
-      memory, useCase, power,
+      memory, memGB: parseMemGB(memory), useCase, power, watts: parseWatts(power),
       release: rel.date ? (cells[col.released]||'').trim() : null, releaseDate: rel.date, releaseDisplay: rel.display,
       price: (cells[col.price]||'').trim(), priceDisplay: pr.display, priceUSD: pr.priceUSD,
       segment, tags, arch: sortArch(ARCH[key]),

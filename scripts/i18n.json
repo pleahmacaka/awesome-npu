@@ -112,7 +112,12 @@
     "ch_note_year": "연도별 제품 출시 수입니다.",
     "ch_note_country": "제품 제조사의 본사 소재 국가 기준입니다.",
     "ch_note_vendor": "카탈로그 제품 수 기준 상위 기업입니다.",
-    "ch_note_mount": "제품이 호스트에 물리적으로 연결되는 방식입니다."
+    "ch_note_mount": "제품이 호스트에 물리적으로 연결되는 방식입니다.",
+    "include_gpu": "GPU 비교군 포함",
+    "sort_mem_desc": "메모리 많은순",
+    "sort_mem_asc": "메모리 적은순",
+    "sort_power_desc": "전력 높은순",
+    "sort_power_asc": "전력 낮은순"
   },
   "en": {
     "_name": "English",
@@ -227,7 +232,12 @@
     "ch_note_year": "How many products launched each year.",
     "ch_note_country": "Where each product's vendor is headquartered.",
     "ch_note_vendor": "Top vendors by number of catalogued products.",
-    "ch_note_mount": "How each product physically connects to its host."
+    "ch_note_mount": "How each product physically connects to its host.",
+    "include_gpu": "Include GPUs (comparison)",
+    "sort_mem_desc": "Most memory",
+    "sort_mem_asc": "Least memory",
+    "sort_power_desc": "Highest power",
+    "sort_power_asc": "Lowest power"
   },
   "ja": {
     "_name": "日本語",
@@ -342,7 +352,12 @@
     "ch_note_year": "各年に発売された製品数です。",
     "ch_note_country": "各製品ベンダーの本社所在国別です。",
     "ch_note_vendor": "カタログ製品数による上位ベンダーです。",
-    "ch_note_mount": "製品がホストへ物理的に接続する方式です。"
+    "ch_note_mount": "製品がホストへ物理的に接続する方式です。",
+    "include_gpu": "GPU（比較用）を含む",
+    "sort_mem_desc": "メモリが多い順",
+    "sort_mem_asc": "メモリが少ない順",
+    "sort_power_desc": "消費電力が高い順",
+    "sort_power_asc": "消費電力が低い順"
   },
   "zh": {
     "_name": "中文",
@@ -457,7 +472,12 @@
     "ch_note_year": "每年发布的产品数量。",
     "ch_note_country": "按各产品厂商总部所在国家。",
     "ch_note_vendor": "按目录产品数排列的头部厂商。",
-    "ch_note_mount": "产品与主机的物理连接方式。"
+    "ch_note_mount": "产品与主机的物理连接方式。",
+    "include_gpu": "包含 GPU（对比）",
+    "sort_mem_desc": "内存从多到少",
+    "sort_mem_asc": "内存从少到多",
+    "sort_power_desc": "功耗从高到低",
+    "sort_power_asc": "功耗从低到高"
   },
   "es": {
     "_name": "Español",
@@ -572,7 +592,12 @@
     "ch_note_year": "Cuántos productos se lanzaron cada año.",
     "ch_note_country": "Dónde tiene su sede el fabricante de cada producto.",
     "ch_note_vendor": "Principales fabricantes por número de productos catalogados.",
-    "ch_note_mount": "Cómo se conecta físicamente cada producto a su host."
+    "ch_note_mount": "Cómo se conecta físicamente cada producto a su host.",
+    "include_gpu": "Incluir GPU (comparación)",
+    "sort_mem_desc": "Más memoria",
+    "sort_mem_asc": "Menos memoria",
+    "sort_power_desc": "Mayor consumo",
+    "sort_power_asc": "Menor consumo"
   },
   "he": {
     "_name": "עברית",
@@ -687,6 +712,11 @@
     "ch_note_year": "כמה מוצרים הושקו בכל שנה.",
     "ch_note_country": "היכן ממוקם מטה היצרן של כל מוצר.",
     "ch_note_vendor": "היצרנים המובילים לפי מספר המוצרים בקטלוג.",
-    "ch_note_mount": "כיצד כל מוצר מתחבר פיזית למארח."
+    "ch_note_mount": "כיצד כל מוצר מתחבר פיזית למארח.",
+    "include_gpu": "כלול GPU (השוואה)",
+    "sort_mem_desc": "הכי הרבה זיכרון",
+    "sort_mem_asc": "הכי מעט זיכרון",
+    "sort_power_desc": "צריכה גבוהה",
+    "sort_power_asc": "צריכה נמוכה"
   }
 }
