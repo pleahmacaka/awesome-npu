@@ -219,6 +219,30 @@ Flags: 🇰🇷 Korea, 🇺🇸 USA, 🇳🇱 Netherlands, 🇨🇳 China, 🇳�
 | Horizon Robotics          | [Journey 6P (J6)](https://en.horizon.auto/) ⚠                                                                                                                                                                                           | 🇨🇳    | SoC          | 560            | external LPDDR        | Automotive ADAS / autonomous driving                              | 2024     | -              |
 | Axelera AI                | [Europa](https://axelera.ai/)                                                                                                                                                                                                           | 🇳🇱    | PCIe         | 629            | on-card               | Datacenter-class edge                                             | 2026     | -              |
 | Axelera AI                | [Metis PCIe (4-core)](https://axelera.ai/ai-accelerators#metis-pcie-4-core)                                                                                                                                                             | 🇳🇱    | PCIe         | 856            | up to 8 GB (on-card)  | Multi-stream edge server                                          | 2026-01  | -              |
+| NVIDIA | [Jetson AGX Orin 64GB](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/) | 🇺🇸 | SoM (Jetson module) | 275 TOPS (INT8) | 64 GB LPDDR5 | Edge robotics, autonomous machines | 2022 | - |
+| NVIDIA | [Jetson Orin NX 16GB](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/) | 🇺🇸 | SoM (Jetson module) | 157 TOPS (INT8, Super Mode) | 16 GB LPDDR5 | Edge AI, vision, robotics | 2023 | - |
+| NVIDIA | [Jetson Orin Nano 8GB (Super)](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/) | 🇺🇸 | SoM (Jetson module) | 67 TOPS (INT8) | 8 GB LPDDR5 | Entry edge AI, generative AI | 2024-12 | $249 |
+| NVIDIA | [Jetson AGX Xavier](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/) | 🇺🇸 | SoM (Jetson module) | 32 TOPS (INT8) | 32 GB LPDDR4x | Autonomous machines, robotics | 2018 | - |
+| NVIDIA | [Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-nx/) | 🇺🇸 | SoM (Jetson module) | 21 TOPS (INT8) | 8 GB LPDDR4x | Compact edge AI, vision | 2020 | - |
+| NVIDIA | [Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) | 🇺🇸 | SoM (Jetson module) | 472 GFLOPS (FP16) | 4 GB LPDDR4 | Entry edge AI, education | 2019-03 | $99 |
+| Synaptics | [Astra SL1680](https://www.synaptics.com/products/embedded-processors/astra-sl1680) | 🇺🇸 | SoC | 7.9 TOPS (INT8) | external LPDDR4/LPDDR4X (up to 4 GB) | AI-native edge IoT, vision | 2024-04 | - |
+| Synaptics | [VideoSmart VS680](https://www.synaptics.com/products/multimedia-solutions/vs680) | 🇺🇸 | SoC | 6.75 TOPS (INT8) | external LPDDR4 (typ. 4 GB) | Smart displays, smart cameras | 2020 | - |
+| STMicroelectronics | [STM32MP257](https://www.st.com/en/microcontrollers-microprocessors/stm32mp257.html) | 🇨🇭 | SoC (application MPU) | 1.35 TOPS (INT8) | external LPDDR4/DDR4 (up to 4 GB) | Industrial edge AI, Industry 4.0 | 2023-05 | - |
+| GreenWaves Technologies | [GAP9](https://greenwaves-technologies.com/gap9_processor/) | 🇫🇷 | MCU | ~150 GOPS (NE16) | 1.6 MB on-chip L2 SRAM | Always-on audio AI, hearables | 2022 | - |
+| Canaan | [Kendryte K230](https://www.kendryte.com/k230/en/v2.0/K230_brief_datasheet.html) | 🇨🇳 | SoC (AIoT) | ~6 TOPS (INT8, KPU) | external LPDDR4 (up to 2 GB), 2 MB SRAM | AIoT edge vision | 2023-07 | $40 |
+| Canaan | [Kendryte K510](https://investor.canaan-creative.com/news-releases/news-release-details/canaan-releases-self-developed-edge-ai-chip-kendryte-k510/) | 🇨🇳 | SoC (edge AI) | 2.5 TOPS (INT8, KPU) | external LPDDR3, 8 MB SRAM | Edge computer vision, drones | 2021-07 | - |
+| Axelera AI | [Metis AIPU](https://axelera.ai/ai-accelerators/metis-pcie-ai-acceleration-card) | 🇳🇱 | M.2 / PCIe card | 214 TOPS (INT8) | 1 GB (M.2) / up to 16 GB (PCIe) | High-throughput edge inference | 2023-01 | - |
+| Perceive | [Ergo](https://perceive.io/product/ergo/) | 🇺🇸 | chip (inference) | 4 TOPS | on-chip (no external RAM) | Ultra-low-power edge inference | 2020-03 | - |
+| NXP | [i.MX 943](https://www.nxp.com/products/i.MX94) | 🇳🇱 | SoC (application processor) | 0.5 TOPS (INT8) | external LPDDR5 / LPDDR4X | Industrial & automotive control | 2024-11 | - |
+| Texas Instruments | [AM68A](https://www.ti.com/product/AM68A) | 🇺🇸 | SoC (application processor) | 8 TOPS (INT8) | external LPDDR4 | Edge AI vision / multi-camera | 2023 | - |
+| Texas Instruments | [AM69A](https://www.ti.com/product/AM69A) | 🇺🇸 | SoC (application processor) | 32 TOPS (INT8) | external LPDDR4 with ECC | High-perf vision / robotics | 2023 | - |
+| Amlogic | [A311D2](https://www.amlogic.com/) | 🇨🇳 | SoC (application processor) | 3.2 TOPS (INT8) | up to 8 GB LPDDR4X | Multimedia edge AI (SBC) | 2023 | - |
+| Amlogic | [A311D](https://www.amlogic.com/) | 🇨🇳 | SoC (application processor) | 5 TOPS (INT8) | up to 4 GB LPDDR4X | Edge AI / robotics (SBC) | 2019-06 | - |
+| Amlogic | [C308X](https://www.amlogic.com/) | 🇨🇳 | SoC (camera) | 4 TOPS (INT8) | external LPDDR4 | Smart IP camera | 2023-07 | - |
+| Allwinner | [T527](https://www.allwinnertech.com/) | 🇨🇳 | SoC (application processor) | 2 TOPS (INT8) | up to 8 GB LPDDR4X | Edge AI / industrial | 2024 | - |
+| Qualcomm | [QCS6490](https://www.qualcomm.com/internet-of-things/products/q6-series/qcs6490) | 🇺🇸 | SoC (application processor) | 12 TOPS | external LPDDR5 | Robotics / IoT edge AI | 2021 | - |
+| Qualcomm | [QCS8550](https://www.qualcomm.com/internet-of-things/products/q8-series/qcs8550) | 🇺🇸 | SoC (application processor) | 48 TOPS (INT8) | external LPDDR5X | Premium edge AI / edge box | 2023 | - |
+| Qualcomm | [QCS9075](https://www.qualcomm.com/internet-of-things/products/q9-series/qcs9075) | 🇺🇸 | SoC (application processor) | 100 TOPS (INT8, dense); 200 TOPS sparse | up to 36 GB LPDDR5X | Industrial edge AI / AMR | 2025 | - |
 
 ## Datacenter inference accelerators
 
@@ -279,6 +303,24 @@ Larger AI accelerators aimed at server/datacenter inference rather than embedded
 | Google                 | [TPU v6e (Trillium)](https://cloud.google.com/tpu/docs/v6e)                                                                                                           | 🇺🇸    | Server             | 918 TFLOPS BF16   | 32 GB HBM                      | 2024     | -      |
 | Biren                  | [BR100](https://www.birentech.com/)                                                                                                                                   | 🇨🇳    | OAM                | 1024 TFLOPS BF16  | 64 GB HBM2e                    | 2022     | -      |
 | Intel                  | [Gaudi 3](https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi3.html)                                                            | 🇺🇸    | OAM                | 1835 TFLOPS BF16  | 128 GB HBM2e                   | 2024     | -      |
+| NVIDIA | [T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) | 🇺🇸 | PCIe Gen3 (low-profile) | 130 TOPS (INT8) | 16 GB GDDR6 | 2018-09 | - |
+| NVIDIA | [L4](https://www.nvidia.com/en-us/data-center/l4/) | 🇺🇸 | PCIe Gen4 (low-profile) | 485 TFLOPS (FP8, sparse) | 24 GB GDDR6 | 2023-03 | - |
+| NVIDIA | [L40S](https://www.nvidia.com/en-us/data-center/l40s/) | 🇺🇸 | PCIe Gen4 (dual-slot) | 1466 TFLOPS (FP8, sparse) | 48 GB GDDR6 (ECC) | 2023-08 | - |
+| NVIDIA | [A10](https://www.nvidia.com/en-us/data-center/products/a10-gpu/) | 🇺🇸 | PCIe Gen4 (single-slot) | 250 TOPS (INT8) | 24 GB GDDR6 | 2021-04 | - |
+| NVIDIA | [A100 80GB](https://www.nvidia.com/en-us/data-center/a100/) | 🇺🇸 | SXM4 module | 624 TOPS (INT8) | 80 GB HBM2e | 2020-11 | - |
+| NVIDIA | [H100 SXM](https://www.nvidia.com/en-us/data-center/h100/) | 🇺🇸 | SXM5 module | 3958 TFLOPS (FP8, sparse) | 80 GB HBM3 | 2022 | - |
+| NVIDIA | [H200](https://www.nvidia.com/en-us/data-center/h200/) | 🇺🇸 | SXM5 module | 3958 TFLOPS (FP8, sparse) | 141 GB HBM3e | 2024 | - |
+| NVIDIA | [GH200 Grace Hopper](https://www.nvidia.com/en-us/data-center/grace-hopper-superchip/) | 🇺🇸 | Superchip (Grace + Hopper) | 3958 TFLOPS (FP8, sparse) | 144 GB HBM3e + 480 GB LPDDR5X | 2024 | - |
+| NVIDIA | [B200](https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/) | 🇺🇸 | SXM module (HGX B200) | 18 PFLOPS (FP4, sparse) | 192 GB HBM3e | 2024 | - |
+| NVIDIA | [RTX 6000 Ada](https://www.nvidia.com/en-us/design-visualization/rtx-6000/) | 🇺🇸 | PCIe Gen4 (dual-slot) | 1457 TFLOPS (FP8, sparse) | 48 GB GDDR6 (ECC) | 2022-12 | - |
+| NVIDIA | [GeForce RTX 4090](https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/) | 🇺🇸 | PCIe Gen4 (triple-slot) | 1321 TOPS (INT8, sparse) | 24 GB GDDR6X | 2022-10 | $1599 |
+| AMD | [Instinct MI300X](https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html) | 🇺🇸 | OAM module | 5229 TFLOPS (FP8, sparse) | 192 GB HBM3 | 2023-12 | - |
+| AMD | [Instinct MI300A](https://www.amd.com/en/products/accelerators/instinct/mi300/mi300a.html) | 🇺🇸 | APU (SH5 socket) | 3922 TFLOPS (FP8, sparse) | 128 GB HBM3 | 2023-12 | - |
+| AMD | [Instinct MI325X](https://www.amd.com/en/products/accelerators/instinct/mi300/mi325x.html) | 🇺🇸 | OAM module | 5229 TFLOPS (FP8, sparse) | 256 GB HBM3e | 2024-10 | - |
+| AMD | [Instinct MI250X](https://www.amd.com/en/products/accelerators/instinct/mi200/mi250x.html) | 🇺🇸 | OAM module | 383 TFLOPS (FP16) | 128 GB HBM2e | 2021-11 | - |
+| AMD | [Instinct MI210](https://www.amd.com/en/products/accelerators/instinct/mi200/mi210.html) | 🇺🇸 | PCIe Gen4 (dual-slot) | 181 TFLOPS (FP16) | 64 GB HBM2e | 2022-03 | - |
+| AMD | [Radeon PRO W7900](https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7900.html) | 🇺🇸 | PCIe Gen4 (dual-slot) | 122.6 TFLOPS (FP16) | 48 GB GDDR6 | 2023-04 | $3999 |
+| AMD | [Radeon RX 7900 XTX](https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7900-xtx.html) | 🇺🇸 | PCIe Gen4 card | 122.8 TFLOPS (FP16) | 24 GB GDDR6 | 2022-12 | $999 |
 
 ## Raspberry Pi accelerators
 

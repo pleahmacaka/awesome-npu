@@ -153,6 +153,9 @@ const ENRICH = {
   /* 부분 보강: 체급만 지정 */
   'Syntiant||NDP120': { segment:'mcu', tags:['MCU급','상시구동','오디오'] },
 };
+// 추가 보강 데이터(비교용 GPU + 엣지 MPU/SoC)는 별도 JSON에서 병합
+try { Object.assign(ENRICH, JSON.parse(fs.readFileSync(path.join(SCRIPTS, 'enrich-extra.json'), 'utf8'))); }
+catch (e) { /* enrich-extra.json 없으면 무시 */ }
 
 // ---------- 유틸 ----------
 const escHtml = s => String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -329,7 +332,7 @@ function parseTableUnder(lines, headingText, isDatacenter, usedKeys){
     const enriched = !!(enrich && (enrich.specs || enrich.note || (enrich.tags && enrich.tags.length)));
     const chip = CHIP_OVERRIDE[key] || (enrich && enrich.chip) || '';
     const chipKey = chip || name;
-    const power = (specs && specs['전력']) || null;
+    const power = (enrich && enrich.power) || (specs && specs['전력']) || null;
     const koNote = (enrich && enrich.note) || '';
 
     out.push({

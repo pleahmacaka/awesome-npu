@@ -2185,6 +2185,132 @@
       "zh": "Arm Cortex-M0+ MCU（80 MHz，128 KB 闪存，32 KB SRAM），集成 TI 的 TinyEngine NPU，千片批量价格低于 US$1。相比同类 MCU 上的软件，该 NPU 运行深度学习推理的延迟最多降低 90 倍、能耗最多降低 120 倍。",
       "es": "MCU Arm Cortex-M0+ (80 MHz, 128 KB de flash, 32 KB de SRAM) con la NPU TinyEngine integrada de TI, con un precio inferior a US$1 en cantidades de 1.000 unidades. La NPU ejecuta inferencia de aprendizaje profundo con una latencia hasta 90 veces menor y una energía hasta 120 veces menor que el software en un MCU comparable.",
       "he": "‏MCU מסוג Arm Cortex-M0+ (‏80 MHz, ‏128 KB flash, ‏32 KB SRAM) עם NPU משולב מסוג TinyEngine של TI, במחיר של פחות מ-US$1 בכמויות של 1,000 יחידות. ה-NPU מריץ הסקת למידה עמוקה בזמן השהיה נמוך עד פי 90 ובאנרגיה נמוכה עד פי 120 בהשוואה לתוכנה על MCU דומה."
+    },
+    "NVIDIA||Jetson AGX Orin 64GB": {
+      "en": "NVIDIA's flagship Jetson module delivers up to 275 TOPS of INT8 AI performance using a 2048-core Ampere GPU. It targets advanced robotics, autonomous machines, and multi-sensor edge AI at a configurable 15 W to 60 W."
+    },
+    "NVIDIA||Jetson Orin NX 16GB": {
+      "en": "A compact Jetson Orin module that reaches 157 TOPS in JetPack 6.2 Super Mode, up from 100 TOPS in standard mode. It suits vision AI, robotics, and small language models in a 70 mm module."
+    },
+    "NVIDIA||Jetson Orin Nano 8GB (Super)": {
+      "en": "The Super update lifts the entry Orin Nano to 67 TOPS from 40 TOPS, with the developer kit priced at $249. It brings generative AI and vision transformers to low cost edge devices at 7 W to 25 W."
+    },
+    "NVIDIA||Jetson AGX Xavier": {
+      "en": "A 2018 era Jetson module built on a 512-core Volta GPU with dual NVDLA engines, delivering 32 TOPS of INT8 compute. It powered a generation of robots, drones, and autonomous machines at 10 W to 30 W."
+    },
+    "NVIDIA||Jetson Xavier NX": {
+      "en": "A credit card sized Jetson module with a 384-core Volta GPU and dual NVDLA, rated at 21 TOPS. It brought server class AI to compact devices such as cameras and small robots at 10 W to 20 W."
+    },
+    "NVIDIA||Jetson Nano": {
+      "en": "An entry level Jetson module with a 128-core Maxwell GPU delivering about 472 GFLOPS at FP16. Widely used in education and hobbyist AI, its developer kit launched at $99 in 2019."
+    },
+    "NVIDIA||T4": {
+      "en": "A 70 W single slot Turing inference GPU delivering 130 TOPS of INT8 throughput with 16 GB of GDDR6. It became a data center standard for inference, video, and virtual desktops."
+    },
+    "NVIDIA||L4": {
+      "en": "An Ada Lovelace successor to the T4 in the same 72 W low profile form, reaching 485 FP8 TFLOPS with sparsity and 24 GB of memory. It targets video, inference, and generative AI at scale."
+    },
+    "NVIDIA||L40S": {
+      "en": "A 350 W Ada Lovelace card with 48 GB of memory that reaches 1466 FP8 TFLOPS with sparsity. It balances training, inference, and graphics workloads in a universal data center GPU."
+    },
+    "NVIDIA||A10": {
+      "en": "A 150 W single slot Ampere GPU with 24 GB of GDDR6 delivering 250 TOPS of INT8 performance. It serves inference, graphics, and virtual workstation workloads."
+    },
+    "NVIDIA||A100 80GB": {
+      "en": "The Ampere data center flagship offers 80 GB of HBM2e and 624 TOPS of INT8, or 1248 TOPS with sparsity. It defined large scale AI training and inference in the 2020 to 2022 era."
+    },
+    "NVIDIA||H100 SXM": {
+      "en": "The Hopper flagship introduced the Transformer Engine and FP8, reaching 3958 FP8 TFLOPS with sparsity and 80 GB of HBM3. It is the workhorse of modern large language model training at 700 W."
+    },
+    "NVIDIA||H200": {
+      "en": "An H100 class Hopper GPU upgraded to 141 GB of HBM3e and 4.8 TB/s of bandwidth, keeping the same 3958 FP8 TFLOPS compute. The larger memory speeds inference on very large models."
+    },
+    "NVIDIA||GH200 Grace Hopper": {
+      "en": "A superchip pairing a Hopper GPU with a 72-core Grace CPU over NVLink C2C, combining 144 GB of HBM3e with 480 GB of LPDDR5X. It targets giant model inference and HPC with a coherent memory pool."
+    },
+    "NVIDIA||B200": {
+      "en": "The Blackwell flagship uses a dual die design with 192 GB of HBM3e and reaches 18 PFLOPS of FP4 with sparsity. It roughly doubles Hopper throughput for frontier scale training and inference."
+    },
+    "NVIDIA||RTX 6000 Ada": {
+      "en": "A 300 W workstation GPU with 48 GB of ECC GDDR6 reaching 1457 FP8 TFLOPS with sparsity. It suits local AI development, rendering, and simulation on the desktop."
+    },
+    "NVIDIA||GeForce RTX 4090": {
+      "en": "A prosumer Ada Lovelace card with 24 GB of GDDR6X and 1321 AI TOPS, priced at $1599 at launch. It is widely used for local large language model inference and fine tuning."
+    },
+    "AMD||Instinct MI300X": {
+      "en": "AMD's CDNA 3 flagship packs 192 GB of HBM3 and 304 compute units, reaching 2615 FP8 TFLOPS dense or 5229 with sparsity. Its large memory targets large language model training and inference at 750 W."
+    },
+    "AMD||Instinct MI300A": {
+      "en": "A converged APU combining 24 Zen 4 CPU cores with 228 CDNA 3 GPU compute units and 128 GB of unified HBM3. It reaches about 1961 FP8 TFLOPS and powers the El Capitan supercomputer."
+    },
+    "AMD||Instinct MI325X": {
+      "en": "A memory upgraded CDNA 3 accelerator with 256 GB of HBM3e at 6 TB/s, keeping the MI300X compute of 2615 FP8 TFLOPS dense. The extra capacity targets large language model inference at 1000 W."
+    },
+    "AMD||Instinct MI250X": {
+      "en": "A CDNA 2 accelerator with 128 GB of HBM2e delivering 383 TFLOPS of FP16 and matrix FP64 for HPC. It powers the exascale Frontier supercomputer in an OAM module."
+    },
+    "AMD||Instinct MI210": {
+      "en": "A 300 W PCIe CDNA 2 accelerator with 64 GB of HBM2e delivering 181 TFLOPS of FP16. It brings Instinct compute to standard servers for HPC and AI."
+    },
+    "AMD||Radeon PRO W7900": {
+      "en": "An RDNA 3 workstation card with 48 GB of GDDR6 delivering 122.6 TFLOPS of FP16, priced at $3999. It targets professional AI, rendering, and design workloads."
+    },
+    "AMD||Radeon RX 7900 XTX": {
+      "en": "A flagship RDNA 3 gaming card with 24 GB of GDDR6 and 122.8 TFLOPS of FP16, priced at $999. Its large memory makes it popular for local large language model inference."
+    },
+    "Synaptics||Astra SL1680": {
+      "en": "An AI-native edge IoT SoC with a secure NPU rated around 7.9 TOPS and quad Cortex-A73 cores. It targets smart appliances, vision, and edge gateways via the SyNAP framework."
+    },
+    "Synaptics||VideoSmart VS680": {
+      "en": "A UHD smart display SoC with a dedicated NPU rated 6.75 TOPS INT8 and quad Cortex-A73 cores. It powers smart displays, cameras, and set-top boxes with on-device AI."
+    },
+    "STMicroelectronics||STM32MP257": {
+      "en": "A secure industrial MPU with a 1.35 TOPS NPU running up to 900 MHz and dual Cortex-A35 cores. It targets factory automation, EV chargers, and metering."
+    },
+    "GreenWaves Technologies||GAP9": {
+      "en": "An ultra-low-power RISC-V application processor with an NE16 neural engine, delivering up to about 150 GOPS near 50 mW. It powers always-on audio such as neural noise cancellation in hearables."
+    },
+    "Canaan||Kendryte K230": {
+      "en": "A dual RISC-V C908 AIoT SoC with a KPU neural engine commonly cited near 6 TOPS INT8. Its CanMV dev board ships around 40 dollars for smart cameras and robots."
+    },
+    "Canaan||Kendryte K510": {
+      "en": "A tri-core RISC-V edge AI SoC with a KPU rated about 2.5 TOPS INT8 and BF16 support. It handles multi-stream vision for drones, robotics, and cameras near 2 W."
+    },
+    "Axelera AI||Metis AIPU": {
+      "en": "An edge AI accelerator card whose quad-core Metis AIPU uses digital in-memory computing to reach up to 214 TOPS INT8 at about 15 TOPS per watt. It drives multi-stream vision analytics and VLMs."
+    },
+    "Perceive||Ergo": {
+      "en": "An ultra-low-power edge inference processor delivering over 4 TOPS at about 55 TOPS per watt, running large networks near 20 mW with no external memory. It suits battery and consumer devices."
+    },
+    "NXP||i.MX 943": {
+      "en": "Part of the i.MX 94 family announced in November 2024, combining up to four Cortex-A55 cores, dual Cortex-M33 and M7 real-time cores, and a 0.5 TOPS eIQ Neutron NPU. It targets safe, secure industrial control, PLCs, and automotive gateways with a built-in TSN Ethernet switch."
+    },
+    "Texas Instruments||AM68A": {
+      "en": "Sitara vision SoC with a single C7x-MMA accelerator delivering up to 8 TOPS for edge AI inference. It handles multi-camera analytics in machine vision and smart infrastructure."
+    },
+    "Texas Instruments||AM69A": {
+      "en": "High-performance TI vision SoC with eight Cortex-A72 cores and four C7x-MMA accelerators totaling up to 32 TOPS. It targets demanding multi-camera and robotics workloads at the edge."
+    },
+    "Amlogic||A311D2": {
+      "en": "Octa-core Amlogic SoC with quad Cortex-A73 and quad Cortex-A53 cores plus a 3.2 TOPS NPU, used in the Khadas VIM4 SBC. It combines strong multimedia and 4K support with on-device AI."
+    },
+    "Amlogic||A311D": {
+      "en": "Hexa-core Amlogic SoC with a 5 TOPS NPU, best known from the Khadas VIM3 board. It suits edge AI, robotics, and vision projects that need higher NPU throughput in a compact SBC."
+    },
+    "Amlogic||C308X": {
+      "en": "Dual Cortex-A55 AIoT SoC for smart IP cameras with an AI accelerator rated up to 4 TOPS. It handles on-camera detection and analytics with 1080p H.264/H.265 encoding."
+    },
+    "Allwinner||T527": {
+      "en": "Octa-core Cortex-A55 Allwinner processor with a 2 TOPS NPU and an extra RISC-V core, aimed at industrial and AIoT edge devices. It supports LPDDR4X memory and 4K video decode."
+    },
+    "Qualcomm||QCS6490": {
+      "en": "Qualcomm Dragonwing QCS6490 is a 6 nm IoT SoC with an octa-core Kryo CPU and a Hexagon NPU delivering 12 TOPS. It powers robotics, the RB3 Gen 2 platform, and industrial edge AI with Wi-Fi 6E."
+    },
+    "Qualcomm||QCS8550": {
+      "en": "Premium Qualcomm Dragonwing QCS8550 IoT SoC based on Snapdragon 8 Gen 2, with a Hexagon NPU rated at 48 INT8 TOPS. It targets edge AI boxes and robots that run vision and generative models with Wi-Fi 7."
+    },
+    "Qualcomm||QCS9075": {
+      "en": "Qualcomm Dragonwing QCS9075 is a high-end industrial edge AI SoC with an octa-core Kryo Gen 6 CPU and dual Hexagon NPUs delivering up to 100 dense TOPS, or 200 TOPS with sparsity. It supports up to 36 GB LPDDR5X and targets AMRs, AGVs, and on-device LLM workloads."
     }
   }
 }

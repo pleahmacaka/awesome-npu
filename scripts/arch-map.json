@@ -993,5 +993,186 @@
   ],
   "Texas Instruments||AM13E23019": [
     "CNN"
+  ],
+  "NVIDIA||Jetson AGX Orin 64GB": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "NVIDIA||Jetson Orin NX 16GB": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "NVIDIA||Jetson Orin Nano 8GB (Super)": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "NVIDIA||Jetson AGX Xavier": [
+    "CNN",
+    "Transformer"
+  ],
+  "NVIDIA||Jetson Xavier NX": [
+    "CNN",
+    "Transformer"
+  ],
+  "NVIDIA||Jetson Nano": [
+    "CNN"
+  ],
+  "NVIDIA||T4": [
+    "CNN",
+    "Transformer",
+    "Recommender"
+  ],
+  "NVIDIA||L4": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "NVIDIA||L40S": [
+    "CNN",
+    "Transformer",
+    "LLM",
+    "Diffusion"
+  ],
+  "NVIDIA||A10": [
+    "CNN",
+    "Transformer"
+  ],
+  "NVIDIA||A100 80GB": [
+    "CNN",
+    "Transformer",
+    "LLM",
+    "HPC"
+  ],
+  "NVIDIA||H100 SXM": [
+    "Transformer",
+    "LLM",
+    "Diffusion",
+    "HPC"
+  ],
+  "NVIDIA||H200": [
+    "Transformer",
+    "LLM",
+    "Diffusion"
+  ],
+  "NVIDIA||GH200 Grace Hopper": [
+    "Transformer",
+    "LLM",
+    "HPC"
+  ],
+  "NVIDIA||B200": [
+    "Transformer",
+    "LLM",
+    "MoE"
+  ],
+  "NVIDIA||RTX 6000 Ada": [
+    "CNN",
+    "Transformer",
+    "Diffusion"
+  ],
+  "NVIDIA||GeForce RTX 4090": [
+    "CNN",
+    "Transformer",
+    "LLM",
+    "Diffusion"
+  ],
+  "AMD||Instinct MI300X": [
+    "Transformer",
+    "LLM",
+    "HPC"
+  ],
+  "AMD||Instinct MI300A": [
+    "Transformer",
+    "LLM",
+    "HPC"
+  ],
+  "AMD||Instinct MI325X": [
+    "Transformer",
+    "LLM"
+  ],
+  "AMD||Instinct MI250X": [
+    "CNN",
+    "Transformer",
+    "HPC"
+  ],
+  "AMD||Instinct MI210": [
+    "CNN",
+    "Transformer",
+    "HPC"
+  ],
+  "AMD||Radeon PRO W7900": [
+    "CNN",
+    "Transformer",
+    "Diffusion"
+  ],
+  "AMD||Radeon RX 7900 XTX": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "Synaptics||Astra SL1680": [
+    "CNN"
+  ],
+  "Synaptics||VideoSmart VS680": [
+    "CNN"
+  ],
+  "STMicroelectronics||STM32MP257": [
+    "CNN"
+  ],
+  "GreenWaves Technologies||GAP9": [
+    "CNN"
+  ],
+  "Canaan||Kendryte K230": [
+    "CNN"
+  ],
+  "Canaan||Kendryte K510": [
+    "CNN"
+  ],
+  "Axelera AI||Metis AIPU": [
+    "CNN",
+    "Transformer"
+  ],
+  "Perceive||Ergo": [
+    "CNN",
+    "RNN"
+  ],
+  "NXP||i.MX 943": [
+    "CNN"
+  ],
+  "Texas Instruments||AM68A": [
+    "CNN"
+  ],
+  "Texas Instruments||AM69A": [
+    "CNN",
+    "Transformer"
+  ],
+  "Amlogic||A311D2": [
+    "CNN"
+  ],
+  "Amlogic||A311D": [
+    "CNN"
+  ],
+  "Amlogic||C308X": [
+    "CNN"
+  ],
+  "Allwinner||T527": [
+    "CNN"
+  ],
+  "Qualcomm||QCS6490": [
+    "CNN",
+    "Transformer"
+  ],
+  "Qualcomm||QCS8550": [
+    "CNN",
+    "Transformer",
+    "LLM"
+  ],
+  "Qualcomm||QCS9075": [
+    "CNN",
+    "Transformer",
+    "LLM",
+    "VLM"
   ]
 }

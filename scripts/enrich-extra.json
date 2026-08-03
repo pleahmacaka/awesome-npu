@@ -1,0 +1,525 @@
+{
+  "NVIDIA||Jetson AGX Orin 64GB": {
+    "chip": "GA10B Ampere (Orin)",
+    "segment": "edge",
+    "tags": [
+      "edge",
+      "robotics",
+      "Ampere",
+      "275 TOPS",
+      "SoM"
+    ],
+    "kind": "gpu",
+    "power": "15 W to 60 W",
+    "note": "NVIDIA의 플래그십 Jetson 모듈로 2048코어 Ampere GPU를 사용해 최대 275 TOPS의 INT8 AI 성능을 제공합니다. 15 W에서 60 W까지 조정 가능한 전력으로 고급 로보틱스, 자율 머신, 멀티 센서 엣지 AI를 겨냥합니다."
+  },
+  "NVIDIA||Jetson Orin NX 16GB": {
+    "chip": "GA10B Ampere (Orin)",
+    "segment": "edge",
+    "tags": [
+      "edge",
+      "vision AI",
+      "Ampere",
+      "Super Mode"
+    ],
+    "kind": "gpu",
+    "power": "10 W to 40 W",
+    "note": "JetPack 6.2 슈퍼 모드에서 기존 100 TOPS에서 157 TOPS까지 도달하는 소형 Jetson Orin 모듈입니다. 70 mm 모듈로 비전 AI, 로보틱스, 소형 언어 모델에 적합합니다."
+  },
+  "NVIDIA||Jetson Orin Nano 8GB (Super)": {
+    "chip": "GA10B Ampere (Orin)",
+    "segment": "edge",
+    "tags": [
+      "edge",
+      "entry AI",
+      "generative AI",
+      "$249"
+    ],
+    "kind": "gpu",
+    "power": "7 W to 25 W",
+    "priceUSD": 249,
+    "note": "슈퍼 업데이트로 엔트리급 Orin Nano가 40 TOPS에서 67 TOPS로 향상되었으며 개발자 키트 가격은 249달러입니다. 7 W에서 25 W 전력으로 저비용 엣지 기기에 생성형 AI와 비전 트랜스포머를 제공합니다."
+  },
+  "NVIDIA||Jetson AGX Xavier": {
+    "chip": "GV10B Volta (Xavier)",
+    "segment": "edge",
+    "tags": [
+      "edge",
+      "Volta",
+      "robotics",
+      "autonomous"
+    ],
+    "kind": "gpu",
+    "power": "10 W to 30 W",
+    "note": "512코어 Volta GPU와 두 개의 NVDLA 엔진을 갖춘 2018년대 Jetson 모듈로 32 TOPS의 INT8 연산을 제공합니다. 10 W에서 30 W 전력으로 한 세대의 로봇, 드론, 자율 머신을 구동했습니다."
+  },
+  "NVIDIA||Jetson Xavier NX": {
+    "chip": "GV10B Volta (Xavier)",
+    "segment": "edge",
+    "tags": [
+      "edge",
+      "compact",
+      "Volta",
+      "vision"
+    ],
+    "kind": "gpu",
+    "power": "10 W to 20 W",
+    "note": "384코어 Volta GPU와 두 개의 NVDLA를 갖춘 신용카드 크기의 Jetson 모듈로 21 TOPS 성능을 냅니다. 10 W에서 20 W 전력으로 카메라와 소형 로봇 같은 소형 기기에 서버급 AI를 제공했습니다."
+  },
+  "NVIDIA||Jetson Nano": {
+    "chip": "Tegra X1 Maxwell",
+    "segment": "edge",
+    "tags": [
+      "edge",
+      "entry",
+      "Maxwell",
+      "education"
+    ],
+    "kind": "gpu",
+    "power": "5 W to 10 W",
+    "priceUSD": 99,
+    "note": "128코어 Maxwell GPU를 갖춘 엔트리급 Jetson 모듈로 FP16에서 약 472 GFLOPS를 제공합니다. 교육과 취미용 AI에 널리 쓰였으며 개발자 키트는 2019년 99달러에 출시되었습니다."
+  },
+  "NVIDIA||T4": {
+    "chip": "TU104 Turing",
+    "segment": "datacenter",
+    "tags": [
+      "inference",
+      "Turing",
+      "70W",
+      "data center"
+    ],
+    "kind": "gpu",
+    "power": "70 W",
+    "note": "16 GB GDDR6와 함께 130 TOPS의 INT8 처리량을 제공하는 70 W 단일 슬롯 Turing 추론 GPU입니다. 추론, 비디오, 가상 데스크톱용 데이터센터 표준이 되었습니다."
+  },
+  "NVIDIA||L4": {
+    "chip": "AD104 Ada Lovelace",
+    "segment": "datacenter",
+    "tags": [
+      "inference",
+      "Ada",
+      "video",
+      "low profile"
+    ],
+    "kind": "gpu",
+    "power": "72 W",
+    "note": "동일한 72 W 저프로파일 폼에서 T4를 계승한 Ada Lovelace GPU로 희소성 적용 시 485 FP8 TFLOPS와 24 GB 메모리를 제공합니다. 대규모 비디오, 추론, 생성형 AI를 겨냥합니다."
+  },
+  "NVIDIA||L40S": {
+    "chip": "AD102 Ada Lovelace",
+    "segment": "datacenter",
+    "tags": [
+      "universal",
+      "Ada",
+      "training",
+      "inference"
+    ],
+    "kind": "gpu",
+    "power": "350 W",
+    "note": "48 GB 메모리를 갖춘 350 W Ada Lovelace 카드로 희소성 적용 시 1466 FP8 TFLOPS에 도달합니다. 범용 데이터센터 GPU로 학습, 추론, 그래픽 작업의 균형을 맞춥니다."
+  },
+  "NVIDIA||A10": {
+    "chip": "GA102 Ampere",
+    "segment": "datacenter",
+    "tags": [
+      "inference",
+      "Ampere",
+      "graphics",
+      "VDI"
+    ],
+    "kind": "gpu",
+    "power": "150 W",
+    "note": "24 GB GDDR6를 갖춘 150 W 단일 슬롯 Ampere GPU로 250 TOPS의 INT8 성능을 제공합니다. 추론, 그래픽, 가상 워크스테이션 작업에 사용됩니다."
+  },
+  "NVIDIA||A100 80GB": {
+    "chip": "GA100 Ampere",
+    "segment": "datacenter",
+    "tags": [
+      "training",
+      "Ampere",
+      "HBM2e",
+      "HPC"
+    ],
+    "kind": "gpu",
+    "power": "400 W (TDP)",
+    "note": "Ampere 데이터센터 플래그십으로 80 GB HBM2e와 624 TOPS의 INT8, 희소성 적용 시 1248 TOPS를 제공합니다. 2020년에서 2022년 시기의 대규모 AI 학습과 추론을 정의했습니다."
+  },
+  "NVIDIA||H100 SXM": {
+    "chip": "GH100 Hopper",
+    "segment": "datacenter",
+    "tags": [
+      "training",
+      "Hopper",
+      "FP8",
+      "LLM"
+    ],
+    "kind": "gpu",
+    "power": "700 W (TDP)",
+    "note": "Hopper 플래그십으로 Transformer Engine과 FP8을 도입해 희소성 적용 시 3958 FP8 TFLOPS와 80 GB HBM3를 제공합니다. 700 W에서 현대 대규모 언어 모델 학습의 핵심 장비입니다."
+  },
+  "NVIDIA||H200": {
+    "chip": "GH100 Hopper",
+    "segment": "datacenter",
+    "tags": [
+      "inference",
+      "Hopper",
+      "HBM3e",
+      "LLM"
+    ],
+    "kind": "gpu",
+    "power": "700 W (TDP)",
+    "note": "H100급 Hopper GPU를 141 GB HBM3e와 4.8 TB/s 대역폭으로 업그레이드했으며 동일한 3958 FP8 TFLOPS 연산을 유지합니다. 더 큰 메모리로 초대형 모델의 추론 속도를 높입니다."
+  },
+  "NVIDIA||GH200 Grace Hopper": {
+    "chip": "GH100 Hopper + Grace",
+    "segment": "datacenter",
+    "tags": [
+      "superchip",
+      "Grace",
+      "Hopper",
+      "HPC"
+    ],
+    "kind": "gpu",
+    "power": "450 W to 1000 W",
+    "note": "Hopper GPU와 72코어 Grace CPU를 NVLink C2C로 결합한 슈퍼칩으로 144 GB HBM3e와 480 GB LPDDR5X를 합칩니다. 일관된 메모리 풀로 대형 모델 추론과 HPC를 겨냥합니다."
+  },
+  "NVIDIA||B200": {
+    "chip": "GB100 Blackwell",
+    "segment": "datacenter",
+    "tags": [
+      "Blackwell",
+      "FP4",
+      "LLM",
+      "flagship"
+    ],
+    "kind": "gpu",
+    "power": "1000 W (TDP)",
+    "note": "Blackwell 플래그십으로 듀얼 다이 설계와 192 GB HBM3e를 사용해 희소성 적용 시 18 PFLOPS의 FP4에 도달합니다. 프런티어급 학습과 추론에서 Hopper 처리량을 약 두 배로 높입니다."
+  },
+  "NVIDIA||RTX 6000 Ada": {
+    "chip": "AD102 Ada Lovelace",
+    "segment": "datacenter",
+    "tags": [
+      "workstation",
+      "Ada",
+      "48GB",
+      "rendering"
+    ],
+    "kind": "gpu",
+    "power": "300 W",
+    "note": "48 GB ECC GDDR6를 갖춘 300 W 워크스테이션 GPU로 희소성 적용 시 1457 FP8 TFLOPS에 도달합니다. 데스크톱에서 로컬 AI 개발, 렌더링, 시뮬레이션에 적합합니다."
+  },
+  "NVIDIA||GeForce RTX 4090": {
+    "chip": "AD102 Ada Lovelace",
+    "segment": "datacenter",
+    "tags": [
+      "prosumer",
+      "Ada",
+      "local LLM",
+      "$1599"
+    ],
+    "kind": "gpu",
+    "power": "450 W",
+    "priceUSD": 1599,
+    "note": "24 GB GDDR6X와 1321 AI TOPS를 갖춘 프로슈머 Ada Lovelace 카드로 출시 가격은 1599달러입니다. 로컬 대규모 언어 모델 추론과 파인튜닝에 널리 사용됩니다."
+  },
+  "AMD||Instinct MI300X": {
+    "chip": "CDNA 3 (Aqua Vanjaram)",
+    "segment": "datacenter",
+    "tags": [
+      "training",
+      "CDNA3",
+      "192GB",
+      "LLM"
+    ],
+    "kind": "gpu",
+    "power": "750 W (TDP)",
+    "note": "AMD의 CDNA 3 플래그십으로 192 GB HBM3와 304개 연산 유닛을 탑재해 밀집 연산 2615 FP8 TFLOPS, 희소성 적용 시 5229 TFLOPS에 도달합니다. 750 W에서 대규모 언어 모델 학습과 추론을 겨냥한 대용량 메모리를 갖췄습니다."
+  },
+  "AMD||Instinct MI300A": {
+    "chip": "CDNA 3 + Zen 4",
+    "segment": "datacenter",
+    "tags": [
+      "APU",
+      "CDNA3",
+      "Zen4",
+      "HPC"
+    ],
+    "kind": "gpu",
+    "power": "550 W to 760 W",
+    "note": "24개 Zen 4 CPU 코어와 228개 CDNA 3 GPU 연산 유닛, 128 GB 통합 HBM3를 결합한 융합형 APU입니다. 약 1961 FP8 TFLOPS에 도달하며 El Capitan 슈퍼컴퓨터를 구동합니다."
+  },
+  "AMD||Instinct MI325X": {
+    "chip": "CDNA 3 (Aqua Vanjaram)",
+    "segment": "datacenter",
+    "tags": [
+      "inference",
+      "CDNA3",
+      "256GB",
+      "HBM3e"
+    ],
+    "kind": "gpu",
+    "power": "1000 W (TDP)",
+    "note": "6 TB/s의 256 GB HBM3e를 갖춘 메모리 강화형 CDNA 3 가속기로 MI300X의 밀집 연산 2615 FP8 TFLOPS를 유지합니다. 추가 용량으로 1000 W에서 대규모 언어 모델 추론을 겨냥합니다."
+  },
+  "AMD||Instinct MI250X": {
+    "chip": "CDNA 2 (Aldebaran)",
+    "segment": "datacenter",
+    "tags": [
+      "HPC",
+      "CDNA2",
+      "Frontier",
+      "OAM"
+    ],
+    "kind": "gpu",
+    "power": "560 W (peak)",
+    "note": "128 GB HBM2e를 갖춘 CDNA 2 가속기로 383 TFLOPS의 FP16과 HPC용 행렬 FP64를 제공합니다. OAM 모듈로 엑사스케일 Frontier 슈퍼컴퓨터를 구동합니다."
+  },
+  "AMD||Instinct MI210": {
+    "chip": "CDNA 2 (Aldebaran)",
+    "segment": "datacenter",
+    "tags": [
+      "HPC",
+      "CDNA2",
+      "PCIe",
+      "inference"
+    ],
+    "kind": "gpu",
+    "power": "300 W (TDP)",
+    "note": "64 GB HBM2e를 갖춘 300 W PCIe CDNA 2 가속기로 181 TFLOPS의 FP16을 제공합니다. HPC와 AI를 위해 표준 서버에 Instinct 연산을 제공합니다."
+  },
+  "AMD||Radeon PRO W7900": {
+    "chip": "Navi 31 RDNA 3",
+    "segment": "datacenter",
+    "tags": [
+      "workstation",
+      "RDNA3",
+      "48GB",
+      "$3999"
+    ],
+    "kind": "gpu",
+    "power": "295 W",
+    "priceUSD": 3999,
+    "note": "48 GB GDDR6를 갖춘 RDNA 3 워크스테이션 카드로 122.6 TFLOPS의 FP16을 제공하며 가격은 3999달러입니다. 전문 AI, 렌더링, 디자인 작업을 겨냥합니다."
+  },
+  "AMD||Radeon RX 7900 XTX": {
+    "chip": "Navi 31 RDNA 3",
+    "segment": "datacenter",
+    "tags": [
+      "prosumer",
+      "RDNA3",
+      "local LLM",
+      "$999"
+    ],
+    "kind": "gpu",
+    "power": "355 W",
+    "priceUSD": 999,
+    "note": "24 GB GDDR6와 122.8 TFLOPS의 FP16을 갖춘 플래그십 RDNA 3 게이밍 카드로 가격은 999달러입니다. 대용량 메모리로 로컬 대규모 언어 모델 추론에 인기가 많습니다."
+  },
+  "Synaptics||Astra SL1680": {
+    "chip": "SL1680 (SyNAP NPU)",
+    "segment": "edge",
+    "tags": [
+      "MPU",
+      "SoC",
+      "edge",
+      "vision",
+      "Cortex-A73"
+    ],
+    "note": "약 7.9 TOPS의 보안 NPU와 쿼드 Cortex-A73 코어를 갖춘 AI 네이티브 엣지 IoT SoC입니다. SyNAP 프레임워크로 스마트 가전, 비전, 엣지 게이트웨이를 겨냥합니다."
+  },
+  "Synaptics||VideoSmart VS680": {
+    "chip": "VS680 (NPU)",
+    "segment": "edge",
+    "tags": [
+      "SoC",
+      "smart display",
+      "vision",
+      "Cortex-A73"
+    ],
+    "note": "6.75 TOPS INT8의 전용 NPU와 쿼드 Cortex-A73 코어를 갖춘 UHD 스마트 디스플레이 SoC입니다. 온디바이스 AI로 스마트 디스플레이, 카메라, 셋톱박스를 구동합니다."
+  },
+  "STMicroelectronics||STM32MP257": {
+    "chip": "STM32MP257 (VeriSilicon NPU)",
+    "segment": "edge",
+    "tags": [
+      "MPU",
+      "SoC",
+      "industrial",
+      "Cortex-A35"
+    ],
+    "note": "최대 900 MHz로 동작하는 1.35 TOPS NPU와 듀얼 Cortex-A35 코어를 갖춘 보안 산업용 MPU입니다. 공장 자동화, EV 충전기, 계측을 겨냥합니다."
+  },
+  "GreenWaves Technologies||GAP9": {
+    "chip": "GAP9 (NE16 neural engine)",
+    "segment": "mcu",
+    "tags": [
+      "MCU",
+      "RISC-V",
+      "audio",
+      "ultra-low-power"
+    ],
+    "power": "~50 mW",
+    "note": "NE16 신경 엔진을 갖춘 초저전력 RISC-V 애플리케이션 프로세서로 50 mW 수준에서 최대 약 150 GOPS를 제공합니다. 이어러블의 뉴럴 노이즈 캔슬링 같은 상시 구동 오디오를 구동합니다."
+  },
+  "Canaan||Kendryte K230": {
+    "chip": "K230 (KPU)",
+    "segment": "edge",
+    "tags": [
+      "SoC",
+      "RISC-V",
+      "AIoT",
+      "vision"
+    ],
+    "priceUSD": 40,
+    "note": "KPU 신경 엔진을 갖춘 듀얼 RISC-V C908 AIoT SoC로 흔히 약 6 TOPS INT8로 언급됩니다. CanMV 개발 보드가 약 40달러에 제공되어 스마트 카메라와 로봇에 쓰입니다."
+  },
+  "Canaan||Kendryte K510": {
+    "chip": "K510 (KPU)",
+    "segment": "edge",
+    "tags": [
+      "SoC",
+      "RISC-V",
+      "vision",
+      "drones"
+    ],
+    "power": "~2 W",
+    "note": "KPU가 약 2.5 TOPS INT8과 BF16을 지원하는 트라이 코어 RISC-V 엣지 AI SoC입니다. 약 2 W에서 드론, 로보틱스, 카메라용 멀티 스트림 비전을 처리합니다."
+  },
+  "Axelera AI||Metis AIPU": {
+    "chip": "Metis AIPU (D-IMC)",
+    "segment": "edge",
+    "tags": [
+      "card",
+      "in-memory",
+      "214 TOPS",
+      "vision"
+    ],
+    "power": "~8 W to 15 W",
+    "note": "쿼드 코어 Metis AIPU가 디지털 인메모리 컴퓨팅으로 와트당 약 15 TOPS에서 최대 214 TOPS INT8에 도달하는 엣지 AI 가속기 카드입니다. 멀티 스트림 비전 분석과 VLM을 구동합니다."
+  },
+  "Perceive||Ergo": {
+    "chip": "Ergo",
+    "segment": "edge",
+    "tags": [
+      "chip",
+      "55 TOPS/W",
+      "ultra-low-power",
+      "audio"
+    ],
+    "power": "~20 mW",
+    "note": "외부 메모리 없이 약 20 mW에서 대형 신경망을 실행하며 와트당 약 55 TOPS로 4 TOPS 이상을 제공하는 초저전력 엣지 추론 프로세서입니다. 배터리와 소비자 기기에 적합합니다."
+  },
+  "NXP||i.MX 943": {
+    "chip": "i.MX 943",
+    "segment": "edge",
+    "tags": [
+      "SoC",
+      "MPU",
+      "Industrial",
+      "Functional safety"
+    ],
+    "note": "2024년 11월 발표된 i.MX 94 제품군의 일부로, 최대 4개 Cortex-A55 코어와 듀얼 Cortex-M33 및 M7 실시간 코어, 0.5 TOPS eIQ Neutron NPU를 결합한다. 내장 TSN 이더넷 스위치를 갖추고 안전하고 보안성 높은 산업 제어, PLC, 자동차 게이트웨이를 겨냥한다."
+  },
+  "Texas Instruments||AM68A": {
+    "chip": "AM68A",
+    "segment": "edge",
+    "tags": [
+      "SoC",
+      "Vision",
+      "Edge AI",
+      "Multi-camera"
+    ],
+    "note": "단일 C7x-MMA 가속기로 최대 8 TOPS를 제공하는 Sitara 비전 SoC로, 엣지 AI 추론에 쓰인다. 머신 비전과 스마트 인프라에서 다중 카메라 분석을 처리한다."
+  },
+  "Texas Instruments||AM69A": {
+    "chip": "AM69A",
+    "segment": "edge",
+    "tags": [
+      "SoC",
+      "Vision",
+      "High-performance",
+      "Robotics"
+    ],
+    "note": "8개 Cortex-A72 코어와 4개 C7x-MMA 가속기로 최대 32 TOPS를 내는 고성능 TI 비전 SoC다. 엣지에서 까다로운 다중 카메라 및 로보틱스 워크로드를 겨냥한다."
+  },
+  "Amlogic||A311D2": {
+    "chip": "A311D2",
+    "segment": "edge",
+    "tags": [
+      "SoC",
+      "SBC",
+      "Multimedia",
+      "Edge AI"
+    ],
+    "note": "쿼드 Cortex-A73와 쿼드 Cortex-A53 코어에 3.2 TOPS NPU를 더한 옥타코어 Amlogic SoC로, Khadas VIM4 SBC에 쓰인다. 강력한 멀티미디어와 4K 지원을 온디바이스 AI와 결합한다."
+  },
+  "Amlogic||A311D": {
+    "chip": "A311D",
+    "segment": "edge",
+    "tags": [
+      "SoC",
+      "SBC",
+      "Robotics",
+      "Vision"
+    ],
+    "note": "5 TOPS NPU를 갖춘 헥사코어 Amlogic SoC로, Khadas VIM3 보드로 잘 알려져 있다. 소형 SBC에서 더 높은 NPU 처리량이 필요한 엣지 AI, 로보틱스, 비전 프로젝트에 적합하다."
+  },
+  "Amlogic||C308X": {
+    "chip": "C308X",
+    "segment": "edge",
+    "tags": [
+      "SoC",
+      "Smart camera",
+      "IP camera",
+      "AIoT"
+    ],
+    "note": "스마트 IP 카메라용 듀얼 Cortex-A55 AIoT SoC로, 최대 4 TOPS AI 가속기를 갖췄다. 1080p H.264/H.265 인코딩과 함께 카메라 내 탐지 및 분석을 처리한다."
+  },
+  "Allwinner||T527": {
+    "chip": "T527",
+    "segment": "edge",
+    "tags": [
+      "SoC",
+      "MPU",
+      "Octa-core",
+      "Edge AI"
+    ],
+    "note": "2 TOPS NPU와 별도 RISC-V 코어를 갖춘 옥타코어 Cortex-A55 Allwinner 프로세서로, 산업용 및 AIoT 엣지 기기를 겨냥한다. LPDDR4X 메모리와 4K 비디오 디코딩을 지원한다."
+  },
+  "Qualcomm||QCS6490": {
+    "chip": "QCS6490",
+    "segment": "edge",
+    "tags": [
+      "SoC",
+      "Dragonwing",
+      "Robotics",
+      "Hexagon"
+    ],
+    "note": "Qualcomm Dragonwing QCS6490은 옥타코어 Kryo CPU와 12 TOPS Hexagon NPU를 갖춘 6 nm IoT SoC다. Wi-Fi 6E와 함께 로보틱스, RB3 Gen 2 플랫폼, 산업용 엣지 AI를 구동한다."
+  },
+  "Qualcomm||QCS8550": {
+    "chip": "QCS8550",
+    "segment": "edge",
+    "tags": [
+      "SoC",
+      "Dragonwing",
+      "Premium",
+      "Hexagon"
+    ],
+    "power": "~2.5 W",
+    "note": "Snapdragon 8 Gen 2 기반의 프리미엄 Qualcomm Dragonwing QCS8550 IoT SoC로, 48 INT8 TOPS Hexagon NPU를 갖췄다. Wi-Fi 7과 함께 비전 및 생성형 모델을 실행하는 엣지 AI 박스와 로봇을 겨냥한다."
+  },
+  "Qualcomm||QCS9075": {
+    "chip": "QCS9075",
+    "segment": "edge",
+    "tags": [
+      "SoC",
+      "Dragonwing",
+      "Edge AI",
+      "LLM"
+    ],
+    "note": "Qualcomm Dragonwing QCS9075는 옥타코어 Kryo Gen 6 CPU와 듀얼 Hexagon NPU로 최대 100 dense TOPS, 희소 연산 시 200 TOPS를 제공하는 고급 산업용 엣지 AI SoC다. 최대 36 GB LPDDR5X를 지원하며 AMR, AGV, 온디바이스 LLM 워크로드를 겨냥한다."
+  }
+}

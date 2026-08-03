@@ -70,7 +70,7 @@ function ssrFor(lang){
   // server HTML matches the app's initial state; the client can then skip the
   // costly first re-render. All 237 products stay reachable via detail/vendor
   // pages and the sitemap, and the "include integrated" toggle reveals the rest.
-  const visible = products.filter(p=>p.standalone);
+  const visible = products.filter(p=>p.standalone && p.kind!=='gpu');
   return {
     table:`<table class="db">${THEAD}<tbody>${visible.map(rowS).join('')}</tbody></table>`,
     count:`<b>${visible.length}</b> ${escHtml(T.w_products)}`,
