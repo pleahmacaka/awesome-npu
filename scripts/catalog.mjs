@@ -25,6 +25,21 @@ catch (e) { console.warn('[warn] arch-map.json 없음 — 아키텍처 필드 �
 const ARCH_ORDER = ['CNN','RNN','Transformer','ViT','LLM','VLM','Diffusion','SNN'];
 const sortArch = a => [...(a||[])].sort((x,y)=>{ const i=ARCH_ORDER.indexOf(x), j=ARCH_ORDER.indexOf(y); return (i<0?99:i)-(j<0?99:j); });
 
+/* 지원 정밀도(INT8/FP16/FP8 등): 조사로 채운 맵 + 텍스트에서 파싱한 것 병합. 키: `벤더||제품명` */
+let PRECMAP = {};
+try { PRECMAP = JSON.parse(fs.readFileSync(path.join(SCRIPTS, 'precision-map.json'), 'utf8')); } catch (e) {}
+const PREC_ORDER = ['INT4','INT8','INT16','FP4','FP8','FP16','BF16','FP32','TF32','FP64'];
+function parsePrec(key, texts){
+  const set = new Set((PRECMAP[key]||[]).map(x=>String(x).toUpperCase()));
+  const re = /\b(INT4|INT8|INT16|FP4|FP8|FP16|BF16|FP32|TF32|FP64)\b/gi;
+  for (const t of texts) { let m; const s=String(t||''); while ((m=re.exec(s))) set.add(m[1].toUpperCase()); }
+  return PREC_ORDER.filter(x=>set.has(x));
+}
+
+/* 가격 검증 맵: {키: {usd, approx}}. usd null이면 미공개 확정. */
+let PRICEMAP = {};
+try { PRICEMAP = JSON.parse(fs.readFileSync(path.join(SCRIPTS, 'price-map.json'), 'utf8')); } catch (e) {}
+
 /* 상세 사양 번역 유틸 — 한국어 원본을 6개 언어로 옮긴다.
    이미 표/카드에 별도로 표시되는 항목(성능·메모리·전력·출시)은 상세 그리드에서 제외한다. */
 const LANGS = ['ko', 'en', 'ja', 'zh', 'es', 'he'];
@@ -241,17 +256,32 @@ function parseReleased(raw){
   const y = s.match(/\d{4}/);
   return { date: y ? y[0]+'-01-01' : null, display:s };
 }
-function parsePrice(raw, enrich){
-  const s = (raw||'').trim();
-  let priceUSD = null;
-  if (enrich && Object.prototype.hasOwnProperty.call(enrich,'priceUSD')) {
-    priceUSD = enrich.priceUSD;
+/* 가격 3단계 표기: 정확 "$1,299" / 근사 "~$300" / 미공개 null(다국어 렌더 시 번역).
+   우선순위: price-map.json(조사 검증) > enrich.priceUSD > README 셀 파싱. */
+function fmtUSD(n){
+  return Number.isInteger(n) ? n.toLocaleString('en-US')
+    : n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function parsePrice(raw, enrich, key){
+  const s = (raw||'').replace(/\\/g,'').trim();
+  let priceUSD = null, approx = false;
+  const ov = key != null ? PRICEMAP[key] : undefined;
+  if (ov !== undefined) {
+    priceUSD = ov && ov.usd != null ? ov.usd : null;
+    approx = !!(ov && ov.approx);
   } else {
-    const m = s.match(/\$\s?([\d,]+(?:\.\d+)?)/);
-    if (m) priceUSD = parseFloat(m[1].replace(/,/g,''));
+    if (enrich && Object.prototype.hasOwnProperty.call(enrich,'priceUSD') && enrich.priceUSD != null) {
+      priceUSD = enrich.priceUSD;
+      approx = !!enrich.priceApprox;
+    } else {
+      const nums = [...s.matchAll(/\$\s?([\d,]+(?:\.\d+)?)/g)].map(m=>parseFloat(m[1].replace(/,/g,'')));
+      if (nums.length > 1) { priceUSD = Math.round((nums[0]+nums[nums.length-1])/2); approx = true; }
+      else if (nums.length === 1) priceUSD = nums[0];
+    }
+    if (/~|약|\(target\)|\+|–|—|\ds\b/.test(s)) approx = true;
   }
-  const display = (!s || s === '-') ? null : s; // null = 미공개(다국어 렌더 시 번역)
-  return { priceUSD, display };
+  const display = priceUSD == null ? null : (approx ? '~' : '') + '$' + fmtUSD(priceUSD);
+  return { priceUSD, display, priceApprox: approx };
 }
 function formGroup(form){
   const f = form || '';
@@ -322,7 +352,7 @@ function parseTableUnder(lines, headingText, isDatacenter, usedKeys){
     const useCase = col.useCase >= 0 ? (cells[col.useCase] || '').trim() : '';
     const comp = parseCompute(cells[col.compute] || '', isDatacenter);
     const rel = parseReleased(cells[col.released] || '');
-    const pr = parsePrice(cells[col.price] || '', enrich);
+    const pr = parsePrice(cells[col.price] || '', enrich, key);
 
     const segment = (enrich && enrich.segment) || (isDatacenter ? 'datacenter' : (/MCU|TinyML/i.test(useCase) ? 'mcu' : 'edge'));
     let specs;
@@ -344,8 +374,9 @@ function parseTableUnder(lines, headingText, isDatacenter, usedKeys){
       compute: comp.display === '—' ? null : (cells[col.compute]||'').trim(), computeDisplay: comp.display, tops: comp.tops,
       memory, memGB: parseMemGB(memory), useCase, power, watts: parseWatts(power),
       release: rel.date ? (cells[col.released]||'').trim() : null, releaseDate: rel.date, releaseDisplay: rel.display,
-      price: (cells[col.price]||'').trim(), priceDisplay: pr.display, priceUSD: pr.priceUSD,
+      price: (cells[col.price]||'').trim(), priceDisplay: pr.display, priceUSD: pr.priceUSD, priceApprox: pr.priceApprox,
       segment, tags, arch: sortArch(ARCH[key]),
+      prec: parsePrec(key, [cells[col.compute], ...Object.values(specs||{})]),
       specsI18n: buildSpecsI18n(specs), noteI18n: buildNoteI18n(key, koNote),
     });
   }

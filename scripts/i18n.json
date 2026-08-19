@@ -117,7 +117,9 @@
     "sort_mem_desc": "메모리 많은순",
     "sort_mem_asc": "메모리 적은순",
     "sort_power_desc": "전력 높은순",
-    "sort_power_asc": "전력 낮은순"
+    "sort_power_asc": "전력 낮은순",
+    "prec_label": "정밀도",
+    "cols_btn": "컬럼"
   },
   "en": {
     "_name": "English",
@@ -237,7 +239,9 @@
     "sort_mem_desc": "Most memory",
     "sort_mem_asc": "Least memory",
     "sort_power_desc": "Highest power",
-    "sort_power_asc": "Lowest power"
+    "sort_power_asc": "Lowest power",
+    "prec_label": "Precision",
+    "cols_btn": "Columns"
   },
   "ja": {
     "_name": "日本語",
@@ -357,7 +361,9 @@
     "sort_mem_desc": "メモリが多い順",
     "sort_mem_asc": "メモリが少ない順",
     "sort_power_desc": "消費電力が高い順",
-    "sort_power_asc": "消費電力が低い順"
+    "sort_power_asc": "消費電力が低い順",
+    "prec_label": "精度",
+    "cols_btn": "列"
   },
   "zh": {
     "_name": "中文",
@@ -477,7 +483,9 @@
     "sort_mem_desc": "内存从多到少",
     "sort_mem_asc": "内存从少到多",
     "sort_power_desc": "功耗从高到低",
-    "sort_power_asc": "功耗从低到高"
+    "sort_power_asc": "功耗从低到高",
+    "prec_label": "精度",
+    "cols_btn": "列"
   },
   "es": {
     "_name": "Español",
@@ -597,7 +605,9 @@
     "sort_mem_desc": "Más memoria",
     "sort_mem_asc": "Menos memoria",
     "sort_power_desc": "Mayor consumo",
-    "sort_power_asc": "Menor consumo"
+    "sort_power_asc": "Menor consumo",
+    "prec_label": "Precisión",
+    "cols_btn": "Columnas"
   },
   "he": {
     "_name": "עברית",
@@ -717,6 +727,8 @@
     "sort_mem_desc": "הכי הרבה זיכרון",
     "sort_mem_asc": "הכי מעט זיכרון",
     "sort_power_desc": "צריכה גבוהה",
-    "sort_power_asc": "צריכה נמוכה"
+    "sort_power_asc": "צריכה נמוכה",
+    "prec_label": "דיוק",
+    "cols_btn": "עמודות"
   }
 }

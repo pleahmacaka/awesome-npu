@@ -64,7 +64,7 @@ function ssrFor(lang){
   const THEAD=`<thead><tr><th class="sel"><input type="checkbox" class="selall" aria-label="${escHtml(T.a_selectall)}"></th><th scope="col"><span class="sr">#</span></th>`+
     headCell('product','col_product',{sort:1})+headCell('vendor','col_vendor',{sort:1,filter:1})+headCell('country','col_country',{filter:1})+
     headCell('arch','arch',{filter:1})+headCell('form','col_form',{filter:1})+
-    headCell('perf','col_perf',{r:1,sort:1})+headCell('memory','col_memory',{sort:1})+headCell('power','col_power',{sort:1})+
+    headCell('perf','col_perf',{r:1,sort:1,filter:1})+headCell('memory','col_memory',{sort:1})+headCell('power','col_power',{sort:1})+
     headCell('price','col_price',{r:1,sort:1})+headCell('release','col_release',{r:1,sort:1})+`</tr></thead>`;
   // Render the default catalog view (standalone products, original order) so the
   // server HTML matches the app's initial state; the client can then skip the
@@ -201,6 +201,7 @@ export function renderProduct(p){
       `<dt data-i18n="col_country">${escHtml(TEN.col_country)}</dt><dd id="d-country">${escHtml(cnEN(p.country))}</dd>`+
       dgRow('col_form', `<span data-i18n="mount_${mslug}">${escHtml(mountTxt)}</span>`+(p.form&&p.form.toLowerCase().replace(/[^a-z0-9]/g,'')!==mslug?` <span style="color:var(--ink-3)">(${escHtml(p.form)})</span>`:'')+(p.standalone?'':' <span class="dwarn" style="margin:0" data-i18n="integrated">'+escHtml(TEN.integrated)+'</span>'))+
       dgRow('col_perf', escHtml(p.computeDisplay||'-'))+
+      (p.prec&&p.prec.length?dgRow('prec_label', escHtml(p.prec.join(' · '))):'')+
       dgRow('col_memory', escHtml(p.memory||'-'))+
       dgRow('col_power', escHtml(p.power||'-'))+
       dgRow('col_price', price)+

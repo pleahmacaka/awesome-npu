@@ -34,8 +34,17 @@
   const QUICK_MOUNTS = ["Embedded","PCIe","M.2","USB","SoM","Server"].filter(m=>FORMS.includes(m));
 
   const ARCHS = [...new Set(products.flatMap(p=>p.arch||[]))].sort((a,b)=>["CNN","RNN","Transformer","ViT","LLM","VLM","Diffusion","SNN"].indexOf(a)-["CNN","RNN","Transformer","ViT","LLM","VLM","Diffusion","SNN"].indexOf(b));
+  const PRECS = ["INT4","INT8","INT16","FP4","FP8","FP16","BF16","FP32","TF32","FP64"].filter(x=>products.some(p=>(p.prec||[]).includes(x)));
+
+  // 표 컬럼 표시/숨김 (제품 컬럼은 항상 표시, localStorage에 유지)
+  const COL_IDS=["vendor","country","arch","form","perf","memory","power","price","release"];
+  const COL_KEY={vendor:"col_vendor",country:"col_country",arch:"arch",form:"col_form",perf:"col_perf",memory:"col_memory",power:"col_power",price:"col_price",release:"col_release"};
+  let hiddenCols=new Set();
+  try{const s=JSON.parse(localStorage.getItem("npu-cols")||"[]"); if(Array.isArray(s)) hiddenCols=new Set(s.filter(c=>COL_IDS.includes(c)));}catch(e){}
+  const colOn=c=>!hiddenCols.has(c);
+  function saveCols(){try{localStorage.setItem("npu-cols",JSON.stringify([...hiddenCols]));}catch(e){}}
   const state = { search:"", view:"table", sort:"default",
-    country:new Set(), form:new Set(), vendor:new Set(), arch:new Set(),
+    country:new Set(), form:new Set(), vendor:new Set(), arch:new Set(), prec:new Set(),
     includeIntegrated:false, includeGpu:false, dateFrom:null, dateTo:null, includeNoDate:true, compare:new Set() };
 
   function chipBtn(label, pressed, onclick){
@@ -59,6 +68,7 @@
     multi("f-form", FORMS.map(f=>({key:f,label:mountLabel(f)})), state.form);
     multi("f-arch", ARCHS.map(a=>({key:a,label:a})), state.arch);
     $("f-arch").parentElement.hidden = ARCHS.length===0;
+    if($("f-prec")){ multi("f-prec", PRECS.map(x=>({key:x,label:x})), state.prec); $("f-prec").parentElement.hidden = PRECS.length===0; }
     multi("f-vendor", VENDORS.map(v=>({key:v,label:v})), state.vendor);
     filterVendorChips($("f-vendor-search") ? $("f-vendor-search").value : "");
   }
@@ -69,7 +79,7 @@
       b.style.display = (!q || b.textContent.toLowerCase().indexOf(q)>=0) ? "" : "none";
     });
   }
-  function fcount(){ const n=state.country.size+state.form.size+state.vendor.size+state.arch.size+(state.includeIntegrated?1:0)+(state.includeGpu?1:0)+((state.dateFrom||state.dateTo)?1:0)+(state.includeNoDate?0:1);
+  function fcount(){ const n=state.country.size+state.form.size+state.vendor.size+state.arch.size+state.prec.size+(state.includeIntegrated?1:0)+(state.includeGpu?1:0)+((state.dateFrom||state.dateTo)?1:0)+(state.includeNoDate?0:1);
     const e=$("fcount"); if(n){e.hidden=false;e.textContent=n;}else e.hidden=true; }
 
   function matches(p){
@@ -79,11 +89,12 @@
     if(state.form.size&&!state.form.has(p.formGroup))return false;
     if(state.vendor.size&&!state.vendor.has(p.vendor))return false;
     if(state.arch.size&&!(p.arch||[]).some(a=>state.arch.has(a)))return false;
+    if(state.prec.size&&!(p.prec||[]).some(x=>state.prec.has(x)))return false;
     if(state.dateFrom||state.dateTo){ if(!p.releaseDate){if(!state.includeNoDate)return false;}
       else{const rf=state.dateFrom?state.dateFrom+"-01":null,rt=state.dateTo?state.dateTo+"-31":null;
         if(rf&&p.releaseDate<rf)return false;if(rt&&p.releaseDate>rt)return false;} }
     else if(!p.releaseDate&&!state.includeNoDate)return false;
-    if(state.search){ const hay=[p.vendor,p.product,p.chip,regionOf(p.country),p.country,p.form,p.memory,p.useCase,powerOf(p),...(p.arch||[]),...(p.tags||[]),...specsOf(p).map(x=>x[1]),noteOf(p)].join(" ").toLowerCase();
+    if(state.search){ const hay=[p.vendor,p.product,p.chip,regionOf(p.country),p.country,p.form,p.memory,p.useCase,powerOf(p),...(p.arch||[]),...(p.prec||[]),...(p.tags||[]),...specsOf(p).map(x=>x[1]),noteOf(p)].join(" ").toLowerCase();
       if(!hay.includes(state.search))return false; }
     return true;
   }
@@ -112,34 +123,38 @@
     const w = warnBtn(p);
     const cls = [picked?"picked":"", animate?"ri":""].filter(Boolean).join(" ");
     const st = animate?` style="--i:${Math.min(i,14)}"`:"";
+    const cells={
+      vendor:`<td class="muted"><a class="vn" href="${esc(p.vpage)}">${esc(p.vendor)}</a></td>`,
+      country:`<td>${cc(p)}</td>`,
+      arch:`<td class="arch">${p.arch&&p.arch.length?esc(p.arch.join(" · ")):'<span class="muted">-</span>'}</td>`,
+      form:`<td><span class="seg">${esc(mountLabel(p.formGroup))}</span>${w?" "+w:""}</td>`,
+      perf:`<td class="r"><span class="num">${esc(perf)}</span></td>`,
+      memory:`<td class="muted">${esc(p.memory||"-")}</td>`,
+      power:`<td><span class="num">${esc(powerOf(p))}</span></td>`,
+      price:`<td class="r"><span class="num ${p.priceUSD!=null?'':'muted'}">${esc(priceOf(p))}</span></td>`,
+      release:`<td class="r"><span class="num ${p.releaseDate?'':'muted'}">${esc(relOf(p))}</span></td>`,
+    };
     return `<tr data-id="${esc(p.id)}"${cls?` class="${cls}"`:""}${st}>
       <td class="sel"><input type="checkbox" class="rowchk" data-id="${esc(p.id)}" aria-label="${esc(p.product)}"${picked?" checked":""}></td>
       <td class="idx">${String(i+1).padStart(2,"0")}</td>
       <td class="prod"><a class="pn" href="${esc(p.page)}">${esc(p.product)}</a>${p.chip?`<div class="pchip">${esc(p.chip)}</div>`:""}</td>
-      <td class="muted"><a class="vn" href="${esc(p.vpage)}">${esc(p.vendor)}</a></td>
-      <td>${cc(p)}</td>
-      <td class="arch">${p.arch&&p.arch.length?esc(p.arch.join(" · ")):'<span class="muted">-</span>'}</td>
-      <td><span class="seg">${esc(mountLabel(p.formGroup))}</span>${w?" "+w:""}</td>
-      <td class="r"><span class="num">${esc(perf)}</span></td>
-      <td class="muted">${esc(p.memory||"-")}</td>
-      <td><span class="num">${esc(powerOf(p))}</span></td>
-      <td class="r"><span class="num ${p.priceUSD!=null?'':'muted'}">${esc(priceOf(p))}</span></td>
-      <td class="r"><span class="num ${p.releaseDate?'':'muted'}">${esc(relOf(p))}</span></td>
+      ${COL_IDS.filter(colOn).map(c=>cells[c]).join("\n      ")}
     </tr>`;
   }
   function buildThead(){
-    const hc=(col,k,o)=>{ o=o||{}; const inter=o.sort||o.filter;
-      const fset={vendor:state.vendor,country:state.country,arch:state.arch,form:state.form}[col];
-      const sk={product:'name',vendor:'vendor',perf:'tops',price:'price',release:'date'}[col];
-      const active=(o.filter&&fset&&fset.size>0)||(o.sort&&sk&&(state.sort===sk+'-asc'||state.sort===sk+'-desc'||(sk==='vendor'&&state.sort==='vendor')));
+    // SORTKEY/FILTERSET 상수를 그대로 참조해 SSR·컬럼 메뉴와 어긋나지 않게 한다.
+    const hc=(col,k,o)=>{ o=o||{};
+      const fset=FILTERSET[col]&&FILTERSET[col]();
+      const sk=SORTKEY[col];
+      const inter=!!(sk||fset);
+      const active=(fset&&fset.size>0)||(sk&&(state.sort===sk+'-asc'||state.sort===sk+'-desc'||(sk==='vendor'&&state.sort==='vendor')));
       const cls=[o.r?'r':'',inter?'thx':'',active?'active':''].filter(Boolean).join(' ');
       const caret=inter?'<svg class="thc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>':'';
       return `<th scope="col" data-col="${col}"${cls?` class="${cls}"`:''}><span class="thl">${esc(L[k])}</span>${caret}</th>`; };
+    const OPT={vendor:{},country:{},arch:{},form:{},perf:{r:1},memory:{},power:{},price:{r:1},release:{r:1}};
     return `<thead><tr><th class="sel"><input type="checkbox" class="selall" aria-label="${esc(L.a_selectall)}"></th><th scope="col"><span class="sr">#</span></th>`+
-      hc('product','col_product',{sort:1})+hc('vendor','col_vendor',{sort:1,filter:1})+hc('country','col_country',{filter:1})+
-      hc('arch','arch',{filter:1})+hc('form','col_form',{filter:1})+
-      hc('perf','col_perf',{r:1,sort:1})+hc('memory','col_memory',{})+hc('power','col_power',{})+
-      hc('price','col_price',{r:1,sort:1})+hc('release','col_release',{r:1,sort:1})+`</tr></thead>`; }
+      hc('product','col_product',{})+
+      COL_IDS.filter(colOn).map(c=>hc(c,COL_KEY[c],OPT[c])).join('')+`</tr></thead>`; }
   function table(list){ return `<table class="db">${buildThead()}<tbody>${list.map(row).join("")}</tbody></table>`; }
 
   function entry(p,i){
@@ -236,12 +251,13 @@
 
   // ---- column header menu (click header -> sort / filter) ----
   const SORTKEY={product:'name',vendor:'vendor',perf:'tops',memory:'mem',power:'watts',price:'price',release:'date'};
-  const FILTERSET={vendor:()=>state.vendor,country:()=>state.country,arch:()=>state.arch,form:()=>state.form};
+  const FILTERSET={vendor:()=>state.vendor,country:()=>state.country,arch:()=>state.arch,form:()=>state.form,perf:()=>state.prec};
   const FILTEROPTS={
     vendor:()=>VENDORS.map(v=>({k:v,label:v})),
     country:()=>[...new Set(products.map(p=>p.country))].sort().map(c=>({k:c,label:regionOf(c)})),
     arch:()=>ARCHS.map(a=>({k:a,label:a})),
     form:()=>FORMS.map(f=>({k:f,label:mountLabel(f)})),
+    perf:()=>PRECS.map(x=>({k:x,label:x})),
   };
   const CARETUP='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 15 6-6 6 6"/></svg>';
   const CARETDN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>';
@@ -265,9 +281,23 @@
     const sb=e.target.closest("[data-sort]");
     if(sb){ state.sort=sb.getAttribute("data-sort"); const sel=$("sortSel"); if([...sel.options].some(o=>o.value===state.sort)) sel.value=state.sort; closeColMenu(); render(); return; }
     if(e.target.closest("[data-clearcol]")){ const s=FILTERSET[menuCol]&&FILTERSET[menuCol](); if(s){ s.clear(); buildFilters(); fcount(); render(); } closeColMenu(); } });
-  colMenu.addEventListener("change", e=>{ const cb=e.target.closest("[data-fval]"); if(!cb)return;
+  colMenu.addEventListener("change", e=>{
+    const cv=e.target.closest("[data-colvis]");
+    if(cv){ const c=cv.getAttribute("data-colvis"); cv.checked?hiddenCols.delete(c):hiddenCols.add(c); saveCols(); render(); return; }
+    const cb=e.target.closest("[data-fval]"); if(!cb)return;
     const s=FILTERSET[menuCol]&&FILTERSET[menuCol](); if(!s)return; const v=cb.getAttribute("data-fval");
     cb.checked?s.add(v):s.delete(v); buildFilters(); fcount(); render(); });
+  // 컬럼 표시/숨김 패널 (콜럼 메뉴 재사용)
+  function openColsMenu(btn){
+    menuCol="__cols";
+    colMenu.innerHTML='<div class="cm-sec cm-filter">'+COL_IDS.map(c=>'<label class="cm-chk"><input type="checkbox" data-colvis="'+c+'"'+(colOn(c)?" checked":"")+'><span>'+esc(L[COL_KEY[c]])+'</span></label>').join("")+'</div>';
+    colMenu.hidden=false;
+    const r=btn.getBoundingClientRect(); colMenu.style.left="0px"; colMenu.style.top="0px";
+    const mw=colMenu.offsetWidth,pad=8; let left=(L._dir==="rtl")?(r.right-mw):r.left;
+    left=Math.max(pad,Math.min(left,innerWidth-mw-pad)); colMenu.style.left=left+"px"; colMenu.style.top=(r.bottom+4)+"px";
+  }
+  if($("colsBtn")) $("colsBtn").addEventListener("click",function(e){ e.stopPropagation();
+    (menuCol==="__cols"&&!colMenu.hidden) ? closeColMenu() : openColsMenu(this); });
   document.addEventListener("click", e=>{ const th=e.target.closest&&e.target.closest("th.thx");
     if(th){ e.stopPropagation(); const c=th.getAttribute("data-col"); (menuCol===c&&!colMenu.hidden)?closeColMenu():openColMenu(c,th); }
     else if(!(e.target.closest&&e.target.closest(".colmenu"))) closeColMenu(); });
@@ -354,7 +384,7 @@
     buildFilters(); buildMeta();
     // The server already rendered the default view in this language, so on first
     // load we keep that DOM (big TBT/LCP win) and only sync the working list.
-    if(initial && curLang===window.__SSRLANG){ lastList=sortList(products.filter(matches)); syncSelAll(); }
+    if(initial && curLang===window.__SSRLANG && hiddenCols.size===0){ lastList=sortList(products.filter(matches)); syncSelAll(); }
     else render();
     updateCmp();
     if(newsActive){ newsBuildKws(); newsLoad(); }
@@ -383,7 +413,7 @@
   $("viewTable").onclick=()=>setView("table"); $("viewCard").onclick=()=>setView("card"); $("viewChip").onclick=()=>setView("chip");
   $("filterToggle").onclick=()=>{const d=$("drawer");const o=d.classList.toggle("open");$("filterToggle").setAttribute("aria-expanded",String(o));setTimeout(setSticky,280);};
   $("resetBtn").onclick=()=>{Object.assign(state,{search:"",sort:"default",dateFrom:null,dateTo:null,includeNoDate:true});
-    state.country.clear();state.form.clear();state.vendor.clear();state.arch.clear();state.includeIntegrated=false;state.includeGpu=false;
+    state.country.clear();state.form.clear();state.vendor.clear();state.arch.clear();state.prec.clear();state.includeIntegrated=false;state.includeGpu=false;
     $("search").value="";$("dateFrom").value="";$("dateTo").value="";$("includeNoDate").checked=true;$("includeIntegrated").checked=false;if($("includeGpu"))$("includeGpu").checked=false;$("sortSel").value="default";
     if($("f-vendor-search"))$("f-vendor-search").value="";
     buildFilters();fcount();render();};
