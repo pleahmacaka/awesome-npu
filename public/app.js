@@ -31,7 +31,7 @@
   const FORM_ORDER = ["Embedded","PCIe","M.2","mPCIe","USB","SoM","HAT","Board","MXM","Server","IP"];
   const FORMS = [...new Set(products.map(p=>p.formGroup))].sort((a,b)=>{const i=FORM_ORDER.indexOf(a),j=FORM_ORDER.indexOf(b);return (i<0?99:i)-(j<0?99:j);});
   const VENDORS = [...new Set(products.map(p=>p.vendor))].sort();
-  const QUICK_MOUNTS = ["Embedded","PCIe","M.2","USB","SoM","Server"].filter(m=>FORMS.includes(m));
+  const QUICK_MOUNTS = ["Embedded","PCIe","M.2","mPCIe","USB","SoM","Server"].filter(m=>FORMS.includes(m));
 
   const ARCHS = [...new Set(products.flatMap(p=>p.arch||[]))].sort((a,b)=>["CNN","RNN","Transformer","ViT","LLM","VLM","Diffusion","SNN"].indexOf(a)-["CNN","RNN","Transformer","ViT","LLM","VLM","Diffusion","SNN"].indexOf(b));
   const PRECS = ["INT4","INT8","INT16","FP4","FP8","FP16","BF16","FP32","TF32","FP64"].filter(x=>products.some(p=>(p.prec||[]).includes(x)));

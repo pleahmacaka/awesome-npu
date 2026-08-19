@@ -287,7 +287,7 @@ function formGroup(form){
   const f = form || '';
   // 장착(마운트) 방식 분류: 슬롯/폼팩터로 그룹. SoC 내장은 'Embedded'(MCU/베어메탈).
   if (/M\.2/i.test(f)) return 'M.2';
-  if (/mPCIe/i.test(f)) return 'mPCIe';
+  if (/mPCIe|mini[\s-]?PCIe/i.test(f)) return 'mPCIe';
   if (/USB/i.test(f)) return 'USB';
   if (/MXM/i.test(f)) return 'MXM';
   if (/PCIe|Card/i.test(f)) return 'PCIe';
